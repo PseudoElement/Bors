@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import { ExamplePage } from 'pages/ExamplePage'
+import { ExamplePage } from 'pages'
 
 const Example: NextPage = () => <ExamplePage />
 
