@@ -1,18 +1,4 @@
-$header-desktop-height: 137px;
-$header-mobile-height: 130px;
-
-$header-light-desktop-height: 118px;
-$header-light-mobile-height: 83px;
-
-$header-mobile-mobile-height: 119px;
-
-$breadcrumbs-desktop-height: 48px;
-$breadcrumbs-mobile-height: 31px;
-
-$header-with-breadcrumbs-desktop-height: $header-desktop-height +
-  $breadcrumbs-desktop-height;
-$header-with-breadcrumbs-mobile-height: $header-mobile-height +
-  $breadcrumbs-mobile-height;
+// Example of mixin
 
 $container-desktop-padding: 30px;
 $container-tablet-padding: 30px;
