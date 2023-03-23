@@ -1,0 +1,18 @@
+@use 'styles/style' as *;
+
+.eventSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 160px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.title {
+  font-family: $font-Mont;
+  font-style: normal;
+  font-weight: $fw-semibold;
+  font-size: 100px;
+  line-height: 110%;
+}

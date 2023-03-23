@@ -13,7 +13,7 @@ export const Wrapper = ({
         <span>{text}</span>
       </span>
 
-      <div>{children}</div>
+      <div className={s.children}>{children}</div>
     </div>
   )
 }

@@ -1,7 +1,10 @@
 $color-white: #fff;
+$color-black: #000;
 
 $color-blue: #0A39B1;
 $color-pink: #E0098A;
+
+$color-black-04: rgba(0, 0, 0, 0.04);
 
 $color-dark-blue: rgba(12, 25, 60, 0.8);
 
@@ -9,6 +12,7 @@ $color-gray-01: rgba(255, 255, 255, 0.1);
 $color-gray-02: rgba(255, 255, 255, 0.2);
 
 $border-gradient-access: linear-gradient(to right, $color-blue 50%, $color-pink 100%);
+$pagination-gradient: linear-gradient(#003ad0 29.69%, #e8008b 100%);
 
 $box-shadow-02: 0px 4px 32px rgba(24, 19, 81, 0.2);
 $color-white-01: rgba(255, 255, 255, 0.1);
