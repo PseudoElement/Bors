@@ -1,0 +1,50 @@
+@use 'styles/style' as *;
+
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $color-dark-blue;
+  z-index: 9999;
+}
+
+.popupWrapper {
+  width: 688px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 15px;
+
+
+  >button {
+    position: absolute;
+    right: -12%;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 56px;
+    height: 56px;
+    background: $color-gray-01;
+    border: 1px solid $color-gray-02;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+
+.popupContent {
+  position: relative;
+  min-height: 497px;
+  border-radius: 20px;
+  background: linear-gradient($color-white, $color-white) padding-box,
+    $border-gradient-access border-box;
+  border: 3px solid transparent;
+  box-shadow: $box-shadow-02;
+  backdrop-filter: blur(46.9084px);
+}
