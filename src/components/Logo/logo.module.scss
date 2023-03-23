@@ -1,0 +1,19 @@
+@use 'styles/style' as *;
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 25px;
+
+  .logoText {
+     
+    @include mobile {    
+      width: 246px;
+    }
+  }
+
+  @include mobile {    
+    display: block;
+  }
+}
