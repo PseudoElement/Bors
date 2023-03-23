@@ -1,0 +1,64 @@
+@use 'styles/style' as *;
+
+.card{
+    width: 580px;
+    height: 611px;
+    padding: 0 52px 40px 52px;
+    border-radius: 24px;
+    background: $color-white-01;
+    box-shadow: $color-shadow-0-8;
+    backdrop-filter: blur(63.6903px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image{
+    display: inline-block;
+    margin: -100px 0px 40px 0px;
+}
+
+.date{
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+    font-size: 32px;
+    text-transform: capitalize;
+}
+
+.fakeBtn{
+    margin: 10px auto 0px;
+    width: 133px;
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 85px;
+    border: 1px solid red;
+}
+
+.title{
+    font-size: 24px;
+    font-weight: $fw-bold;
+    margin: 39px auto 0px;
+    text-align: center;
+    max-width: 476px;
+}
+
+.description{
+    margin-top: 20px;
+    text-align: center;
+    max-width: 476px;
+    color: $color-gray-54;
+}
+
+.fakeBtn2{
+    margin-top: auto;
+    width: 133px;
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 85px;
+    border: 1px solid red;
+}
