@@ -4,12 +4,18 @@ $laptop-width: 1024px;
 $desktop-width: 1440px;
 
 @mixin mobile {
-  @media (max-width: #{$tablet-width}) {
+  @media (max-width: #{$mobile-width}) {
     @content;
   }
 }
 
 @mixin tablet {
+  @media (min-width: #{$mobile-width}) and (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin big-tablet {
   @media (min-width: #{$tablet-width}) and (max-width: #{$laptop-width}) {
     @content;
   }
@@ -28,13 +34,13 @@ $desktop-width: 1440px;
 }
 
 @mixin mobile-tablet {
-  @media (max-width: #{$laptop-width}) {
+  @media (max-width: #{$tablet-width}) {
     @content;
   }
 }
 
 @mixin mobile-laptop {
-  @media (max-width: #{$desktop-width}) {
+  @media (max-width: #{$laptop-width}) {
     @content;
   }
 }
