@@ -1,0 +1,49 @@
+@use 'styles/style' as *;
+
+.wrapper {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  padding: 17px 20px;
+  background-color: $color-white;
+  border: 1px solid $color-shadow-0-5;
+  box-shadow: 0px 3px 7px $color-shadow-0-8;
+  border-radius: 16px;
+}
+.withButton {
+  padding: 10px;
+  border-radius: 100px;
+}
+
+.input {
+  width: 100%;
+  font-family: $font-Mont;
+  font-style: normal;
+  font-size: 23px;
+  font-weight: $fw-bold;
+  color: $color-black;
+}
+.inputWithBtn {
+  margin-left: 22px;
+}
+.secretIcon {
+  position: relative;
+  background: url('../../../public/assets/icons/eyeOpen.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  width: 40px;
+}
+.checked {
+  background: url('../../../public/assets/icons/eyeCrossed.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.input[type='password'] {
+  font-family: $font-Mont;
+  font-style: normal;
+  font-weight: 600;
+  background: linear-gradient(90deg, #0A39B1 29.69%, #E0098A 100%);
+  background-clip: text;
+  color: transparent;
+}

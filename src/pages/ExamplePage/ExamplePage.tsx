@@ -1,5 +1,5 @@
 import { FC, useState } from 'react'
-import { Wrapper, EventsCard, Popup, Slider } from 'components'
+import { Wrapper, EventsCard, Popup, Slider, Input } from 'components'
 import { EventSection } from 'features'
 
 import { mock__event_card } from 'shared/mocks/mock_eventsCard'
@@ -12,11 +12,14 @@ export const ExamplePage: FC = () => {
   const sliderItem = event_slider_mock.map(card => <EventsCard {...card} />)
 
   const [openPopup, setOpenPopup] = useState<boolean>(false)
+  const [valueInput, setValueInput] = useState<string>('')
 
   return (
     <div className={s.examplePage}>
       <Wrapper text={'popup'}>
-        <Popup isOpen={openPopup} onClose={() => setOpenPopup(false)}></Popup>
+        <Popup isOpen={openPopup} onClose={() => setOpenPopup(false)}>
+          <></>
+        </Popup>
         <button onClick={() => setOpenPopup(true)}>Popup</button>
       </Wrapper>
       <Wrapper text={'Events Card'}>
@@ -24,6 +27,14 @@ export const ExamplePage: FC = () => {
       </Wrapper>
       <Wrapper text='Slider'>
         <EventSection title='EVENTS' card={sliderItem} />
+      </Wrapper>
+      <Wrapper text='Input'>
+        <Input
+          withIcon={true}
+          placeholder='placeholder'
+          value={valueInput}
+          onChange={setValueInput}
+        />
       </Wrapper>
     </div>
   )
