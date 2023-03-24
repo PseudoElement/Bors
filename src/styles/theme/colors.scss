@@ -4,6 +4,7 @@ $color-black: #000;
 $color-blue: #0a39b1;
 $color-pink: #e0098a;
 
+$color-dark-blue: rgba(12, 25, 60, 0.8);
 $color-gray-a5: #a5a5a5;
 $color-black-blue: rgba(12, 25, 60, 0.8);
 $color-black-04: rgba(0, 0, 0, 0.04);
@@ -18,6 +19,8 @@ $border-gradient-access: linear-gradient(
   $color-blue 50%,
   $color-pink 100%
 );
+
+$color-gradient-blue-pink-90d: linear-gradient(90deg, $color-blue 29.69%, $color-pink 100%);
 $pagination-gradient: linear-gradient(#003ad0 29.69%, #e8008b 100%);
 $password-gradient: linear-gradient(90deg, #0a39b1 29.69%, #e0098a 100%);
 

@@ -1,6 +1,13 @@
 import { FC, useState } from 'react'
-import { Wrapper, EventsCard, Popup, Slider, Input, StocksCard } from 'components'
-import { EventSection } from 'features'
+import {
+  Wrapper,
+  EventsCard,
+  Popup,
+  Slider,
+  Input,
+  StocksCard,
+} from 'components'
+import { EventSection, PasswordRecovery } from 'features'
 
 import { mock__event_card } from 'shared/mocks/mock_eventsCard'
 import { mock__stock_card } from 'shared/mocks/mock_stockCard'
@@ -13,6 +20,8 @@ export const ExamplePage: FC = () => {
   const sliderItem = event_slider_mock.map(card => <EventsCard {...card} />)
 
   const [openPopup, setOpenPopup] = useState<boolean>(false)
+  const [openPasswordRecovery, setOpenPasswordRecovery] =
+    useState<boolean>(false)
   const [valueInput, setValueInput] = useState<string>('')
 
   return (
@@ -37,9 +46,24 @@ export const ExamplePage: FC = () => {
           onChange={setValueInput}
         />
       </Wrapper>
+      <Wrapper text='PasswordRecovery'>
+        <Popup
+          isOpen={openPasswordRecovery}
+          onClose={() => setOpenPasswordRecovery(false)}
+        >
+          <PasswordRecovery />
+        </Popup>
+        <button onClick={() => setOpenPasswordRecovery(true)}>
+          Password recovery
+        </button>
+      </Wrapper>
       <Wrapper text={'Stocks Card'}>
-        <StocksCard {...mock__stock_card} onClick={() => console.log('1234')}/>
-        <StocksCard {...mock__stock_card} onClick={() => console.log('1234')} count={0}/>
+        <StocksCard {...mock__stock_card} onClick={() => console.log('1234')} />
+        <StocksCard
+          {...mock__stock_card}
+          onClick={() => console.log('1234')}
+          count={0}
+        />
       </Wrapper>
     </div>
   )
