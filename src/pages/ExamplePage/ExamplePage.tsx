@@ -1,8 +1,9 @@
 import { FC, useState } from 'react'
-import { Wrapper, EventsCard, Popup, Slider, Input } from 'components'
+import { Wrapper, EventsCard, Popup, Slider, Input, StocksCard } from 'components'
 import { EventSection } from 'features'
 
 import { mock__event_card } from 'shared/mocks/mock_eventsCard'
+import { mock__stock_card } from 'shared/mocks/mock_stockCard'
 import { event_slider_mock } from 'shared/mocks/mock_event_slider'
 
 import s from './examplePage.module.scss'
@@ -35,6 +36,10 @@ export const ExamplePage: FC = () => {
           value={valueInput}
           onChange={setValueInput}
         />
+      </Wrapper>
+      <Wrapper text={'Stocks Card'}>
+        <StocksCard {...mock__stock_card} onClick={() => console.log('1234')}/>
+        <StocksCard {...mock__stock_card} onClick={() => console.log('1234')} count={0}/>
       </Wrapper>
     </div>
   )
