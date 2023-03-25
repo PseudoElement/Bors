@@ -37,10 +37,10 @@ export const Input: FC<InputProps> = ({
         placeholder={placeholder}
         value={value}
       />
-      {withButton ? <Button onClick={onClick} children={withButton} /> : null}
+      {withButton ? <Button onClick={onClick}>{withButton}</Button> : null}
       {withIcon ? (
         <div
-          onClick={() => setChecked(!checked)}
+          onClick={() => setChecked(prev => !prev)}
           className={cn(s.secretIcon, { [s.checked]: checked })}
         />
       ) : null}

@@ -21,3 +21,15 @@
   font-weight: $fw-bold;
   letter-spacing: 0.01em;
 }
+
+@mixin entirety {
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+@mixin flex($flex, $content, $items) {
+  display: $flex;
+  justify-content: $content;
+  align-items: $items;
+}

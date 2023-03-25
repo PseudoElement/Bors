@@ -11,14 +11,16 @@ import {
   Tag,
   Indicator,
   Card,
-  Button
+  Button,
 } from 'components'
 
-import { EventSection, PasswordRecovery, FiltersPanel, Info } from 'features'
+import { EventSection, PasswordRecovery,LeaderboardList, FillRequest, BuyStockList, FiltersPanel, Info, Header, Footer } from 'features'
 
 import { mock__event_card } from 'shared/mocks/mock_eventsCard'
 import { mock__stock_card } from 'shared/mocks/mock_stockCard'
 import { event_slider_mock } from 'shared/mocks/mock_event_slider'
+
+import { mock__leaderboard } from 'shared/mocks/mock_leaderboard'
 import { mockInfoCardsData } from 'shared/mocks/infoCardsData'
 
 import { FilterKeys } from 'shared/types/filterPanel'
@@ -28,6 +30,7 @@ import s from './examplePage.module.scss'
 export const ExamplePage: FC = () => {
   const [openPasswordRecovery, setOpenPasswordRecovery] =
     useState<boolean>(false)
+  const [openBuyStock, setOpenBuyStock] = useState<boolean>(false)
   const [valueInput, setValueInput] = useState<string>('')
 
   const sliderItem = event_slider_mock.map(card => (
@@ -46,6 +49,12 @@ export const ExamplePage: FC = () => {
 
   return (
     <div>
+      <Wrapper text={'header authorised'}>
+        <Header variant='authorised' />
+      </Wrapper>
+      <Wrapper text={'header unauthorised'}>
+        <Header variant='unauthorised' />
+      </Wrapper>
       <Wrapper text={'popup'}>
         <Popup isOpen={openPopup} onClose={() => setOpenPopup(false)}>
           <></>
@@ -58,6 +67,7 @@ export const ExamplePage: FC = () => {
       <Wrapper text='Slider'>
         <EventSection title='EVENTS' card={sliderItem} />
       </Wrapper>
+      <LeaderboardList boards={mock__leaderboard} />
       <Wrapper text='Input'>
         <Input
           withIcon={true}
@@ -65,6 +75,9 @@ export const ExamplePage: FC = () => {
           value={valueInput}
           onChange={setValueInput}
         />
+      </Wrapper>
+      <Wrapper text='FillRequest'>
+        <FillRequest />
       </Wrapper>
       <Wrapper text='PasswordRecovery'>
         <Popup
@@ -77,14 +90,24 @@ export const ExamplePage: FC = () => {
           Password recovery
         </button>
       </Wrapper>
+      <Wrapper text='BuyStock'>
+        <Popup
+          isOpen={openBuyStock}
+          onClose={() => setOpenBuyStock(false)}
+        >
+          <BuyStockList stocks={mock__stock_card} />
+        </Popup>
+        <button onClick={() => setOpenBuyStock(true)}>BuyStock</button>
+      </Wrapper>
       <Wrapper text={'Stocks Card'}>
         <StocksCard {...mock__stock_card} onClick={() => console.log('1234')} />
         <StocksCard
           {...mock__stock_card}
           onClick={() => console.log('1234')}
-          count={0}
+          hasNft={false}
         />
       </Wrapper>
+
       <Wrapper text={'Horizon card'}>
         <HorizonCard
           {...mock__stock_card}
@@ -92,6 +115,7 @@ export const ExamplePage: FC = () => {
           exchangeCurrency={'SET'}
         />
       </Wrapper>
+
       <Wrapper text='Tag'>
         <Tag title='SAAS' />
         <Tag title='E-COMMERCE' />
@@ -107,6 +131,9 @@ export const ExamplePage: FC = () => {
       </Wrapper>
       <Wrapper text='Info'>
         <Info cards={mockInfoCardsData}></Info>
+      </Wrapper>
+      <Wrapper text={'footer'}>
+        <Footer />
       </Wrapper>
     </div>
   )

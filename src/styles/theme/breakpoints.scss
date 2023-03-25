@@ -9,6 +9,12 @@ $desktop-width: 1440px;
   }
 }
 
+@mixin tablet-mobile {
+  @media (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
 @mixin tablet {
   @media (min-width: #{$mobile-width}) and (max-width: #{$tablet-width}) {
     @content;

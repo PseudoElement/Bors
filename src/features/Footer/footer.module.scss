@@ -1,0 +1,219 @@
+@use '../../styles/style.scss' as *;
+
+.footer {
+  width: 100vw;
+  padding-bottom: 18px;
+  background-image: url('../../../public/assets/image/background.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.footerWrapper {
+  margin: 0 auto;
+  max-width: 92%;
+}
+.logoWrapper {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 70px auto;
+  padding-top: 60px;
+  padding-left: 42px;
+  
+  
+  .logoGroup {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    width: 520px;
+
+    .logo {
+      position: relative;
+      width: 98px;
+      height: 146px;
+    }
+    .logoText {
+      position: relative;
+      width: 393px;
+      height: 52px;
+      margin-bottom: 8px;
+    }
+  }
+
+  .logoTitle{
+    width: 479px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: end;
+    margin-left: 64px;
+
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 120%;
+    letter-spacing: -0.045em;
+    color: $color-white; 
+    text-align: start;
+    mix-blend-mode: overlay;
+  }
+}
+
+.line {
+  opacity: 0.3;
+  border: 1px solid $color-white;
+  height: 0;
+  max-width: $max-layout-width;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.contacts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7%;
+  align-items: center;
+  max-width: $max-layout-width;
+  width: 100%;
+  margin: 31px auto;
+  color: $color-white;
+
+  .location {
+    font-size: 32px;
+    line-height: 130%;
+    letter-spacing: -0.02em;
+  }
+
+  .tel{
+    font-size: 48px;
+    line-height: 130%;
+    cursor: pointer;
+  }
+  .mail {
+    font-size: 32px;
+    line-height: 130%;
+    cursor: pointer;
+  }
+  .icons {
+    display: flex;
+    justify-content: space-between;
+    width: 240px;
+    
+
+    .circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: $color-gray-02;
+    cursor: pointer;
+  }
+  }
+}
+
+.agreement {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: $max-footer-bottom-line-width;
+  margin: 21px auto 0 auto;
+
+
+  color: $color-white;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@media (max-width: #{$tablet-width}) {
+  .footer {
+    height: unset;
+    padding-bottom: 10px;
+
+    nav {
+      margin: 32px 0;
+    }
+  }
+  .logoWrapper {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 56px 0 0 0;
+    
+    .logoGroup {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 272px;
+  
+      .logo {
+        position: relative;
+        width: 89px;
+        height: 132px;
+      }
+      .logoText {
+        position: relative;
+        width: 226px;
+        height: 30px;
+        margin-top: 29px;
+        margin-bottom: 32px;
+      }
+    }
+  
+    .logoTitle{
+      width: max(272px, 62%);
+      margin: 0;
+      font-size: 24px;
+      line-height: 110%;
+      letter-spacing: -0.045em;
+      text-align: center;
+      mix-blend-mode: normal;
+
+    }
+  }
+
+  .contacts {
+    justify-content: center;
+    max-width: $max-layout-width;
+    width: 100%;
+    margin: 29px 0 24px 0;
+    gap: max(16px, 10.4%);
+
+  
+    .location {
+      font-size: 24px;
+      line-height: 130%;
+    }
+  
+    .tel{
+      font-size: 36px;
+    }
+
+    .mail {
+      font-size: 24px;
+    }
+
+    .icons {
+      width: 280px;
+
+      .circle {
+      width: 56px;
+      height: 56px;
+    }
+    }
+  }
+  .agreement {
+    justify-content: center;
+    max-width: max(266px, 82%);
+    margin: 14px auto 0 auto;
+    gap: 6px 24px;
+
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

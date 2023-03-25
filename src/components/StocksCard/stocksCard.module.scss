@@ -14,9 +14,8 @@
   align-items: center;
 }
 
-.addedItem{
-  background: linear-gradient($color-white, $color-white) padding-box,
-  $border-gradient-access border-box;
+.addedItem {
+  background: linear-gradient($color-white, $color-white) padding-box, $border-gradient-access border-box;
   position: relative;
   border: 4px solid transparent;
 }

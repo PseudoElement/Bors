@@ -43,8 +43,8 @@ export const PasswordRecovery = () => {
                   An email has been sent to &nbsp;
                   <span className={s.email}>{value}</span>
                   &nbsp; with a link to reset your forgotten password. If you
-                  haven't received an email within 5 minutes, please check your
-                  spam folder or resubmit your recovery request.
+                  haven&apos;t received an email within 5 minutes, please check
+                  your spam folder or resubmit your recovery request.
                 </span>
               )}
             />
@@ -76,10 +76,7 @@ export const PasswordRecovery = () => {
             )}
           />
           <div className={s.resetBtn}>
-            <Button
-              children={'Reset the Password'}
-              onClick={handleSubmit(onSubmit)}
-            />
+            <Button onClick={handleSubmit(onSubmit)}>Reset the Password</Button>
           </div>
         </form>
       )}

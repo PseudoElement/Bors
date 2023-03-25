@@ -1,0 +1,30 @@
+@use '../../styles/style.scss' as *;
+
+.header {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.burger {
+  display: none;
+  position: absolute;
+  top: 15px;
+  left: 9px;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+@media (max-width: #{$tablet-width}) {
+  .header {
+    nav {
+      justify-content: flex-end;
+      margin-right: 16px;
+    }
+  }
+  .burger {
+    display: block;
+  }
+}

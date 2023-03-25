@@ -1,5 +1,7 @@
 $color-white: #fff;
 $color-black: #000;
+$color-gray: #A5A5A5;
+$color-gray: #545454;
 
 $color-blue: #0a39b1;
 $color-blue-b2: #0a39b2;
@@ -8,12 +10,31 @@ $color-pink: #e0098a;
 $color-dark-blue: rgba(12, 25, 60, 0.8);
 $color-gray-a5: #a5a5a5;
 $color-black-blue: rgba(12, 25, 60, 0.8);
+$color-black-light: rgba(10, 57, 178, 0.1);
+
 $color-black-04: rgba(0, 0, 0, 0.04);
 $color-black-05: rgba(0, 0, 0, 0.05);
 $color-black-08: rgba(0, 0, 0, 0.08);
 
+
 $color-gray-01: rgba(255, 255, 255, 0.1);
 $color-gray-02: rgba(255, 255, 255, 0.2);
+$color-gray-085: rgba(255, 255, 255, 0.85);
+
+$color-dark-04: rgba(0, 0, 0, 0.04);
+$color-dark-05: rgba(0, 0, 0, 0.05);
+$color-dark-08: rgba(0, 0, 0, 0.08);
+
+$border-gradient-access: linear-gradient(to right,
+        $color-blue 50%,
+        $color-pink 100%);
+
+
+$border-gradient-access: linear-gradient(to right,
+        $color-blue 50%,
+        $color-pink 100%);
+
+$background-linear-180: linear-gradient(180deg, #F9F9F9 0%, #F3F3F3 9.53%);
 
 $color-gradient-blue-pink-90d: linear-gradient(90deg, $color-blue 29.69%, $color-pink 100%);
 $pagination-gradient: linear-gradient(#003ad0 29.69%, #e8008b 100%);
