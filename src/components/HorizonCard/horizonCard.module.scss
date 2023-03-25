@@ -1,0 +1,137 @@
+@use 'styles/style' as *;
+
+.stockCards {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 30px;
+}
+
+.stockCard {
+  max-width: 400px;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 28px;
+  align-items: center;
+  background: $color-ligth-bg;
+  border: 1px solid $color-dark-blue-border;
+  border-radius: 12px;
+  padding: 0 14px;
+  div:not(:last-of-type)::after {
+    content: '';
+    position: absolute;
+    border-right: 1px solid $color-blue;
+    opacity: 0.15;
+    width: 0px;
+    height: 40px;
+    right: -14px;
+  }
+}
+
+.stockNameBlock {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  max-width: 120px;
+  height: 40px;
+  position: relative;
+  order: 1;
+}
+
+.stockNameBlockImageWrapper {
+  display: flex;
+  width: 40px;
+  height: 40px;
+}
+
+.stockNameBlockTextWrapper {
+  text-align: left;
+  margin-left: 8px;
+  h5 {
+    font-size: 16px;
+  }
+  span {
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    color: $color-ligth-grey;
+  }
+}
+
+.stockCostWrapper {
+  order: 2;
+  position: relative;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .stockCostValue {
+    font-weight: $fw-semibold;
+    font-size: 14px;
+    line-height: 100%;
+    display: flex;
+    align-items: flex-end;
+    letter-spacing: -0.02em;
+    color: $color-blue;
+
+    opacity: 0.6;
+  }
+  .stockCost {
+    font-weight: $fw-semibold;
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: $color-blue;
+    span {
+      font-size: 12px;
+    }
+  }
+}
+
+.stockSumWrapper {
+  order: 3;
+  position: relative;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .stockCostValue {
+    font-weight: $fw-semibold;
+    font-size: 14px;
+    line-height: 100%;
+    display: flex;
+    align-items: flex-end;
+    letter-spacing: -0.02em;
+    color: $color-blue;
+    opacity: 0.6;
+  }
+  .stockCost {
+    font-weight: $fw-semibold;
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: $color-blue;
+    span {
+      font-size: 12px;
+    }
+  }
+}
+
+.cancelBtn {
+  order: 4;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  button {
+    border: none;
+    border-radius: 50%;
+    background: #edf4ff;
+    img {
+      transform: scale(60%);
+      color: $color-blue;
+    }
+  }
+}

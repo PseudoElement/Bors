@@ -1,31 +1,40 @@
 import { FC, useState } from 'react'
+
 import {
   Wrapper,
   EventsCard,
   Popup,
+  HorizonCard,
   Slider,
   Input,
   StocksCard,
   Tag,
   Indicator,
+  Info,
 } from 'components'
-import { EventSection, FiltersPanel, PasswordRecovery } from 'features'
+
+import { EventSection, PasswordRecovery, FiltersPanel } from 'features'
 
 import { mock__event_card } from 'shared/mocks/mock_eventsCard'
 import { mock__stock_card } from 'shared/mocks/mock_stockCard'
 import { event_slider_mock } from 'shared/mocks/mock_event_slider'
 
-import s from './examplePage.module.scss'
 import { FilterKeys } from 'shared/types/filterPanel'
 
-export const ExamplePage: FC = () => {
-  console.log(event_slider_mock)
-  const sliderItem = event_slider_mock.map(card => <EventsCard {...card} />)
+import s from './examplePage.module.scss'
 
-  const [openPopup, setOpenPopup] = useState<boolean>(false)
+export const ExamplePage: FC = () => {
   const [openPasswordRecovery, setOpenPasswordRecovery] =
     useState<boolean>(false)
   const [valueInput, setValueInput] = useState<string>('')
+
+  const sliderItem = event_slider_mock.map(card => (
+    <EventsCard {...card} key={1} />
+  ))
+  const [openPopup, setOpenPopup] = useState<boolean>(false)
+
+  console.log(event_slider_mock)
+
   const [defaultValue, setDefaultValue] = useState<FilterKeys>({
     price: false,
     lineBusiness: false,
@@ -34,7 +43,7 @@ export const ExamplePage: FC = () => {
   console.log(defaultValue)
 
   return (
-    <div className={s.examplePage}>
+    <div>
       <Wrapper text={'popup'}>
         <Popup isOpen={openPopup} onClose={() => setOpenPopup(false)}>
           <></>
@@ -74,6 +83,13 @@ export const ExamplePage: FC = () => {
           count={0}
         />
       </Wrapper>
+      <Wrapper text={'Horizon card'}>
+        <HorizonCard
+          {...mock__stock_card}
+          onClick={() => console.log(1)}
+          exchangeCurrency={'SET'}
+        />
+      </Wrapper>
       <Wrapper text='Tag'>
         <Tag title='SAAS' />
         <Tag title='E-COMMERCE' />
@@ -83,6 +99,9 @@ export const ExamplePage: FC = () => {
       </Wrapper>
       <Wrapper text='Filter Panel'>
         <FiltersPanel defaultValue={defaultValue} onChange={setDefaultValue} />
+      </Wrapper>
+      <Wrapper text='Slider'>
+        <EventSection title='EVENTS' card={sliderItem} />
       </Wrapper>
     </div>
   )
