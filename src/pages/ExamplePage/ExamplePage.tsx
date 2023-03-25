@@ -11,7 +11,7 @@ import {
   Tag,
   Indicator,
   Card,
-  Button
+  Button,
 } from 'components'
 
 import { EventSection, PasswordRecovery, FiltersPanel, Info } from 'features'

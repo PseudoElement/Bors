@@ -3,7 +3,7 @@ export interface Stocks {
     image: string
     appName: string
     appInitials: string
-    currency: string
+    currency: number
     uppedPercent: string
     count: number
 }
