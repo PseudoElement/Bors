@@ -11,6 +11,7 @@ import {
   Tag,
   Indicator,
   Card,
+  Button
 } from 'components'
 
 import { EventSection, PasswordRecovery, FiltersPanel, Info } from 'features'
@@ -100,6 +101,9 @@ export const ExamplePage: FC = () => {
       </Wrapper>
       <Wrapper text='Filter Panel'>
         <FiltersPanel defaultValue={defaultValue} onChange={setDefaultValue} />
+      </Wrapper>
+      <Wrapper text='Button'>
+        <Button>enter</Button>
       </Wrapper>
       <Wrapper text='Info'>
         <Info cards={mockInfoCardsData}></Info>
