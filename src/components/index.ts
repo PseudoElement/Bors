@@ -1,3 +1,4 @@
+import { LeaderboardItems } from './LeaderboardItems/LeaderboardItems';
 import { Button } from './Button/Button'
 import { Wrapper } from './Wrapper'
 import { Input } from './Input/Input'
@@ -19,6 +20,7 @@ export {
   Logo,
   Slider,
   Input,
+  LeaderboardItems,
   StocksCard,
   HorizonCard,
   Tag,

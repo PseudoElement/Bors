@@ -1,0 +1,85 @@
+@use 'styles/style' as *;
+
+.leaderboardList {
+  width: 62%;
+  height: 100%;
+  margin: 0 auto;
+
+  background: $background-linear-180;
+
+  border-radius: 38.2984px;
+  padding: 0 35px 32px;
+  margin-bottom: 30px;
+
+  @include mobile-tablet {
+    width: 84%;
+  }
+
+  @include mobile {
+    width: 318px;
+    padding: 0;
+    margin: 0 auto;
+    border-radius: 0;
+    padding-top: 16px;
+  }
+}
+
+
+.leaderboardInfo {
+  @include flex(flex, space-between, center);
+
+  padding: 25px 35px 16px;
+
+  @media (max-width:659px) {
+    padding: 25px 0px 16px;
+  }
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.leaderboardEntirety {
+  width: 43.6%;
+  @include flex(flex, space-between, center);
+
+  @include tablet-mobile {
+    width: 325px;
+  }
+
+  @include mobile {
+    width: 58%;
+  }
+}
+
+.leaderboardPos {
+  @include entirety;
+}
+
+.leaderboardYie {
+  @include entirety;
+}
+
+.leaderboardInc {
+  @include entirety;
+}
+
+.leaderboardName {
+  @include entirety;
+}
+
+.leaderboardTitle {
+  text-align: center;
+  letter-spacing: -0.045em;
+  color: $color-black;
+  font-weight: $fw-bold;
+  font-size: 40px;
+  margin-bottom: 47px;
+  margin-top: 20px;
+
+  @include mobile {
+    font-size: 32px;
+    font-weight: $fw-semibold;
+    margin-bottom: 24px;
+  }
+}

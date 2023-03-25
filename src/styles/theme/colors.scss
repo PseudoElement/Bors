@@ -1,5 +1,6 @@
 $color-white: #fff;
 $color-black: #000;
+$color-gray: #545454;
 
 $color-blue: #0a39b1;
 $color-blue-b2: #0a39b2;
@@ -24,6 +25,8 @@ $border-gradient-access: linear-gradient(to right,
     $color-blue 50%,
     $color-pink 100%);
 
+
+$background-linear-180: linear-gradient(180deg, #F9F9F9 0%, #F3F3F3 9.53%);
 
 $color-gradient-blue-pink-90d: linear-gradient(90deg, $color-blue 29.69%, $color-pink 100%);
 $pagination-gradient: linear-gradient(#003ad0 29.69%, #e8008b 100%);

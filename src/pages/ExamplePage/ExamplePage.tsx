@@ -14,11 +14,13 @@ import {
   Button,
 } from 'components'
 
-import { EventSection, PasswordRecovery, FillRequest, FiltersPanel, Info, Header, Footer } from 'features'
+import { EventSection, PasswordRecovery,LeaderboardList, FillRequest, FiltersPanel, Info, Header, Footer } from 'features'
 
 import { mock__event_card } from 'shared/mocks/mock_eventsCard'
 import { mock__stock_card } from 'shared/mocks/mock_stockCard'
 import { event_slider_mock } from 'shared/mocks/mock_event_slider'
+
+import { mock__leaderboard } from 'shared/mocks/mock_leaderboard'
 import { mockInfoCardsData } from 'shared/mocks/infoCardsData'
 
 import { FilterKeys } from 'shared/types/filterPanel'
@@ -64,6 +66,7 @@ export const ExamplePage: FC = () => {
       <Wrapper text='Slider'>
         <EventSection title='EVENTS' card={sliderItem} />
       </Wrapper>
+      <LeaderboardList boards={mock__leaderboard} />
       <Wrapper text='Input'>
         <Input
           withIcon={true}
@@ -94,6 +97,7 @@ export const ExamplePage: FC = () => {
           hasNft={false}
         />
       </Wrapper>
+
       <Wrapper text={'Horizon card'}>
         <HorizonCard
           {...mock__stock_card}
@@ -101,6 +105,7 @@ export const ExamplePage: FC = () => {
           exchangeCurrency={'SET'}
         />
       </Wrapper>
+
       <Wrapper text='Tag'>
         <Tag title='SAAS' />
         <Tag title='E-COMMERCE' />
