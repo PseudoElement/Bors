@@ -7,13 +7,14 @@ import {
   Input,
   StocksCard,
 } from 'components'
-import { EventSection, PasswordRecovery } from 'features'
+import { EventSection, FiltersPanel, PasswordRecovery } from 'features'
 
 import { mock__event_card } from 'shared/mocks/mock_eventsCard'
 import { mock__stock_card } from 'shared/mocks/mock_stockCard'
 import { event_slider_mock } from 'shared/mocks/mock_event_slider'
 
 import s from './examplePage.module.scss'
+import { FilterKeys } from 'shared/types/filterPanel'
 
 export const ExamplePage: FC = () => {
   console.log(event_slider_mock)
@@ -23,6 +24,12 @@ export const ExamplePage: FC = () => {
   const [openPasswordRecovery, setOpenPasswordRecovery] =
     useState<boolean>(false)
   const [valueInput, setValueInput] = useState<string>('')
+  const [defaultValue, setDefaultValue] = useState<FilterKeys>({
+    price: false,
+    lineBusiness: false,
+    popularity: false,
+  })
+  console.log(defaultValue)
 
   return (
     <div className={s.examplePage}>
@@ -64,6 +71,9 @@ export const ExamplePage: FC = () => {
           onClick={() => console.log('1234')}
           count={0}
         />
+      </Wrapper>
+      <Wrapper text='Filter Panel'>
+        <FiltersPanel defaultValue={defaultValue} onChange={setDefaultValue} />
       </Wrapper>
     </div>
   )

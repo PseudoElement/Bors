@@ -1,0 +1,29 @@
+@use 'styles/style' as *;
+
+.filterItem {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  padding: 19px 22px;
+  cursor: pointer;
+  background: $color-gray-f6;
+  border-radius: 100px;
+  font-family: $font-Mont;
+  font-style: normal;
+  font-weight: $fw-semibold;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: -0.02em;
+  color: $color-blue-b2;
+}
+.arrow {
+  width: 10px;
+  height: 10px;
+  border-bottom: 1.5px solid $color-blue-b2;
+  border-left: 1.5px solid $color-blue-b2;
+  transform: rotate(-45deg);
+}
+.filters {
+  display: flex;
+  gap: 10px;
+}
