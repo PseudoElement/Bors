@@ -89,7 +89,7 @@ export const ExamplePage: FC = () => {
         <StocksCard
           {...mock__stock_card}
           onClick={() => console.log('1234')}
-          count={0}
+          hasNft={false}
         />
       </Wrapper>
       <Wrapper text={'Horizon card'}>
