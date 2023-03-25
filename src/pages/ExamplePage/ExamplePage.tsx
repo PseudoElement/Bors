@@ -14,16 +14,17 @@ import {
   Button,
 } from 'components'
 
-import { EventSection, PasswordRecovery, FiltersPanel, Info } from 'features'
+import { EventSection, PasswordRecovery, FiltersPanel, Info, Header, Footer } from 'features'
 
 import { mock__event_card } from 'shared/mocks/mock_eventsCard'
 import { mock__stock_card } from 'shared/mocks/mock_stockCard'
 import { event_slider_mock } from 'shared/mocks/mock_event_slider'
-import { mockInfoCardsData } from 'shared/mocks/infoCardsData'
 
+import s from './examplePage.module.scss'
 import { FilterKeys } from 'shared/types/filterPanel'
 
 import s from './examplePage.module.scss'
+import { Footer, Header } from 'features'
 
 export const ExamplePage: FC = () => {
   const [openPasswordRecovery, setOpenPasswordRecovery] =
@@ -46,6 +47,12 @@ export const ExamplePage: FC = () => {
 
   return (
     <div>
+      <Wrapper text={'header authorised'}>
+        <Header variant='authorised' />
+      </Wrapper>
+      <Wrapper text={'header unauthorised'}>
+        <Header variant='unauthorised' />
+      </Wrapper>
       <Wrapper text={'popup'}>
         <Popup isOpen={openPopup} onClose={() => setOpenPopup(false)}>
           <></>
@@ -107,6 +114,9 @@ export const ExamplePage: FC = () => {
       </Wrapper>
       <Wrapper text='Info'>
         <Info cards={mockInfoCardsData}></Info>
+      </Wrapper>
+      <Wrapper text={'footer'}>
+        <Footer />
       </Wrapper>
     </div>
   )

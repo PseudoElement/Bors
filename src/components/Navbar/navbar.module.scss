@@ -1,0 +1,191 @@
+@use '../../styles/style.scss' as *;
+
+.nav1 {
+  display: flex;
+  justify-content: space-between;
+  margin: 24px auto;
+  max-width: $max-layout-width;
+  width: 100%;
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 110%;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $color-white;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 76%;
+    list-style: none;
+    padding: 0;
+  }
+
+  li{
+    cursor: pointer;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    width: 287px;
+    height: 60px;
+    background: $color-gray-02;
+    box-shadow: 0px 4px 10px $color-shadow-0-6;
+    border-radius: 79px;
+    border: none;
+
+    font-size: 18px;
+    line-height: 110%;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $color-white;
+    cursor: pointer;
+  }
+
+  .btnImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-left: 4px;
+    margin-right: 6px;
+    border-radius: 62px;
+    background: $color-gray-02;
+  }
+}
+
+.nav2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: $max-layout-width;
+  width: 100%;
+  height: 80px;
+  margin: 0 auto;
+
+  background: $color-gray-085;
+  border: 1px solid $color-shadow-0-5;
+  box-shadow: $color-shadow-0-8;
+  backdrop-filter: blur(63.7px);
+  border-radius: 16px;
+
+  .logoGroup2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 246px;
+    margin-left: 23px;
+  }
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    width: 580px;
+    height: 50px;
+    list-style: none;
+    padding: 0;
+    margin: 30px 0 0;
+  }
+  .link {
+    display: block;
+    position: relative;
+    font-size: 20px;
+    line-height: 110%;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $color-gray-54;
+    cursor: pointer;
+  }
+  .active {
+    font-weight: 800;
+    background: $password-gradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  .link.active::after {
+    content: '';
+    position: absolute;
+    top: 46px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    border-radius: 24px;
+    background: $border-gradient-access;
+  }
+
+  .userInfo {
+    display: flex;
+    margin-right: 24px;
+  }
+  .avatarGroup {
+    display: flex;
+    align-items: center;
+
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 100%;
+    letter-spacing: -0.03em;
+  }
+  .userFoto {
+    width: 52px;
+    height: 52px;
+    margin-left: 16px;
+    border-radius: 50%;
+  }
+  .verticalLine {
+    height: 0;
+    width: 40px;
+    border: 1px solid $color-gray-eb;
+    transform: rotate(90deg);
+    margin: 20px 0;
+  }
+  .userBalance {
+    & div {
+      margin-bottom: 6px;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 100%;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: $color-gray-a5;
+    }
+
+    & span {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 100%;
+      letter-spacing: -0.03em;
+      background: $password-gradient;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+  }
+}
+
+@media (max-width: #{$tablet-width}) {
+  .nav1 {
+    justify-content: center;
+    margin: 16px 0;
+    ul {
+      display: none;
+    }
+    button {
+      width: 227px;
+      height: 50px;
+      font-size: 13px;
+      line-height: 110%;
+    }
+    .btnImg {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}

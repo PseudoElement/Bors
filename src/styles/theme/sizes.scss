@@ -5,6 +5,8 @@ $container-tablet-padding: 30px;
 $container-mobile-padding: 15px;
 
 $checkbox-size: 15px;
+$max-layout-width: 1776px;
+$max-footer-bottom-line-width: 978px;
 
 @mixin container {
   max-width: 1276px;
