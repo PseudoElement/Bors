@@ -7,5 +7,7 @@ import { EventsCard } from './EventsCard/EventsCard'
 import { StocksCard } from './StocksCard/StocksCard'
 import { Slider } from './Slider/Slider'
 import { Logo } from './Logo/Logo'
+import { Tag } from './Tag/Tag'
+import { Indicator } from './Indicator/Indicator'
 
-export { Button, Wrapper, EventsCard, Popup, Logo, Slider,Input, StocksCard }
+export { Button, Wrapper, EventsCard, Popup, Logo, Slider,Input, StocksCard, Tag, Indicator }
