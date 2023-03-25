@@ -6,6 +6,7 @@ import { EventSection } from './EventSection/EventSection'
 import { Intro } from './Intro/Intro'
 import { PasswordRecovery } from './PasswordRecovery/PasswordRecovety'
 import { FiltersPanel } from './FiltersPanel/FiltersPanel'
+import { FillRequest } from './FillRequest/FillRequest'
 
 export {
   Layout,
@@ -16,4 +17,6 @@ export {
   PasswordRecovery,
   FiltersPanel,
   Info,
+  FillRequest
 }
+

@@ -14,17 +14,16 @@ import {
   Button,
 } from 'components'
 
-import { EventSection, PasswordRecovery, FiltersPanel, Info, Header, Footer } from 'features'
+import { EventSection, PasswordRecovery, FillRequest, FiltersPanel, Info, Header, Footer } from 'features'
 
 import { mock__event_card } from 'shared/mocks/mock_eventsCard'
 import { mock__stock_card } from 'shared/mocks/mock_stockCard'
 import { event_slider_mock } from 'shared/mocks/mock_event_slider'
+import { mockInfoCardsData } from 'shared/mocks/infoCardsData'
 
-import s from './examplePage.module.scss'
 import { FilterKeys } from 'shared/types/filterPanel'
 
 import s from './examplePage.module.scss'
-import { Footer, Header } from 'features'
 
 export const ExamplePage: FC = () => {
   const [openPasswordRecovery, setOpenPasswordRecovery] =
@@ -72,6 +71,9 @@ export const ExamplePage: FC = () => {
           value={valueInput}
           onChange={setValueInput}
         />
+      </Wrapper>
+      <Wrapper text='FillRequest'>
+        <FillRequest />
       </Wrapper>
       <Wrapper text='PasswordRecovery'>
         <Popup
