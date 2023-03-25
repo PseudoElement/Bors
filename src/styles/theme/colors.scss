@@ -15,26 +15,35 @@ $color-black-08: rgba(0, 0, 0, 0.08);
 $color-gray-01: rgba(255, 255, 255, 0.1);
 $color-gray-02: rgba(255, 255, 255, 0.2);
 
+$color-gradient-blue-pink-90d: linear-gradient(
+  90deg,
+  $color-blue 29.69%,
+  $color-pink 100%
+);
+$pagination-gradient: linear-gradient(#003ad0 29.69%, #e8008b 100%);
+$password-gradient: linear-gradient(90deg, #0a39b1 29.69%, #e0098a 100%);
+
 $border-gradient-access: linear-gradient(
   to right,
   $color-blue 50%,
   $color-pink 100%
 );
-
-$color-gradient-blue-pink-90d: linear-gradient(90deg, $color-blue 29.69%, $color-pink 100%);
 $pagination-gradient: linear-gradient(#003ad0 29.69%, #e8008b 100%);
-$password-gradient: linear-gradient(90deg, #0a39b1 29.69%, #e0098a 100%);
 
 $box-shadow-02: 0px 4px 32px rgba(24, 19, 81, 0.2);
 $color-white-01: rgba(255, 255, 255, 0.1);
 $color-gray-54: #545454;
 $color-gray-a5: #a5a5a5;
-$color-gray-eb: #EBEBEB;
-$color-gray-f6: #F6F9FC;
+$color-gray-eb: #ebebeb;
+$color-gray-f6: #f6f9fc;
 
-$color-green-0d: #4ACC0D;
+$color-green-0d: #4acc0d;
 
 $color-shadow-0-24: 0px 5px 10px rgba(0, 0, 0, 0.24);
+
+$color-ligth-grey: #a5a5a5;
+$color-dark-blue-border: rgba(10, 57, 178, 0.1);
+$color-ligth-bg: #f6f9fc;
 
 $color-shadow-0-4: rgba(0, 0, 0, 0.04);
 $color-shadow-0-5: rgba(0, 0, 0, 0.05);
