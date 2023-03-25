@@ -6,6 +6,8 @@ import {
   Slider,
   Input,
   StocksCard,
+  Tag,
+  Indicator,
 } from 'components'
 import { EventSection, FiltersPanel, PasswordRecovery } from 'features'
 
@@ -71,6 +73,13 @@ export const ExamplePage: FC = () => {
           onClick={() => console.log('1234')}
           count={0}
         />
+      </Wrapper>
+      <Wrapper text='Tag'>
+        <Tag title='SAAS' />
+        <Tag title='E-COMMERCE' />
+      </Wrapper>
+      <Wrapper text='Indicator'>
+        <Indicator title='Market Cap' indicator='678,17 billion $' />
       </Wrapper>
       <Wrapper text='Filter Panel'>
         <FiltersPanel defaultValue={defaultValue} onChange={setDefaultValue} />
