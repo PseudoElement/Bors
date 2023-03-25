@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 import s from './horizonCard.module.scss'
 
-export const HorizonCard: FC<{
+interface HorizonCardProps {
   id: number
   image: string
   appName: string
@@ -12,11 +12,20 @@ export const HorizonCard: FC<{
   currency: string | number
   uppedPercent: string
   count: number
-}> = (
-  { id, image, appName, appInitials, currency, count },
-  onClick?: () => void,
+  onClick?: () => void
   exchangeCurrency?: string
-) => {
+}
+
+export const HorizonCard: FC<HorizonCardProps> = ({
+  id,
+  image,
+  appName,
+  appInitials,
+  currency,
+  count,
+  onClick,
+  exchangeCurrency,
+}) => {
   return (
     <div className={s.stockCard} key={id}>
       <div className={s.stockNameBlock}>
