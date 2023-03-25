@@ -15,19 +15,11 @@ $color-black-08: rgba(0, 0, 0, 0.08);
 $color-gray-01: rgba(255, 255, 255, 0.1);
 $color-gray-02: rgba(255, 255, 255, 0.2);
 
-$color-gradient-blue-pink-90d: linear-gradient(
-  90deg,
-  $color-blue 29.69%,
-  $color-pink 100%
-);
+$color-gradient-blue-pink-90d: linear-gradient(90deg, $color-blue 29.69%, $color-pink 100%);
 $pagination-gradient: linear-gradient(#003ad0 29.69%, #e8008b 100%);
 $password-gradient: linear-gradient(90deg, #0a39b1 29.69%, #e0098a 100%);
 
-$border-gradient-access: linear-gradient(
-  to right,
-  $color-blue 50%,
-  $color-pink 100%
-);
+$border-gradient-access: linear-gradient(to right, $color-blue 50%, $color-pink 100%);
 $pagination-gradient: linear-gradient(#003ad0 29.69%, #e8008b 100%);
 
 $box-shadow-02: 0px 4px 32px rgba(24, 19, 81, 0.2);
@@ -48,12 +40,8 @@ $color-ligth-bg: #f6f9fc;
 $color-shadow-0-4: rgba(0, 0, 0, 0.04);
 $color-shadow-0-5: rgba(0, 0, 0, 0.05);
 $color-shadow-0-6: rgba(0, 0, 0, 0.06);
-<<<<<<< HEAD
-$color-shadow-0-8: rgba(0, 0, 0, 0.08);
-=======
 $color-shadow-0-8: rgba(0, 0, 0, 0.08);
 
 $color-purple-05: rgba(103, 114, 229, 0.5);
 $color-purple-005: rgba(103, 114, 229, 0.05);
 $color-purple: #6772e5;
->>>>>>> e4c78040b132e1146f370efdbdb966f2be598546

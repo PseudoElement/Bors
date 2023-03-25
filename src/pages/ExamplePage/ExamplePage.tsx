@@ -101,9 +101,6 @@ export const ExamplePage: FC = () => {
       <Wrapper text='Filter Panel'>
         <FiltersPanel defaultValue={defaultValue} onChange={setDefaultValue} />
       </Wrapper>
-      <Wrapper text='Slider'>
-        <EventSection title='EVENTS' card={sliderItem} />
-      </Wrapper>
       <Wrapper text='Info'>
         <Info cards={mockInfoCardsData}></Info>
       </Wrapper>
