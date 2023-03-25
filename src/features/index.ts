@@ -7,6 +7,7 @@ import { EventSection } from './EventSection/EventSection'
 import { Intro } from './Intro/Intro'
 import { PasswordRecovery } from './PasswordRecovery/PasswordRecovety'
 import { FiltersPanel } from './FiltersPanel/FiltersPanel'
+import { BuyStockList } from './BuyStockList/BuyStockList'
 import { FillRequest } from './FillRequest/FillRequest'
 
 export {
@@ -19,6 +20,6 @@ export {
   FiltersPanel,
   LeaderboardList,
   Info,
+  BuyStockList,
   FillRequest
 }
-

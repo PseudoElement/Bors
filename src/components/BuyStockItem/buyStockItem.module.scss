@@ -1,0 +1,70 @@
+@use 'styles/style' as *;
+
+.buystockItem {
+  width: 250px;
+  height: 70px;
+  background: $color-gray-f6;
+  border: 1px solid $color-black-light;
+  border-radius: 12px;
+  margin: 0 4px 8px;
+}
+
+.buystockWrapper {
+  position: relative;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px 18px;
+}
+
+.buystockRow {
+  display: flex;
+  align-items: center;
+
+  &::after {
+    content: '';
+    width: 40px;
+    position: absolute;
+    left: 49%;
+    top: 50%;
+    opacity: 0.15;
+    border: 1px solid $color-blue-b2;
+    transform: rotate(90deg);
+  }
+
+  >div:last-child {
+    margin-left: 8px;
+  }
+
+  +div {
+    margin-left: 14px;
+  }
+}
+
+.buystockTitle {
+  font-size: 16px;
+}
+
+.buystockInitials {
+  color: $color-gray;
+  font-size: 18px;
+  font-weight: $fw-bold;
+  letter-spacing: -0.02em;
+}
+
+.buystockStoks {
+  letter-spacing: -0.02em;
+  color: $color-blue-b2;
+  opacity: 0.6;
+  font-size: 16px;
+  font-weight: $fw-semibold;
+}
+
+.buystockCurrency {
+  color: $color-blue-b2;
+  letter-spacing: -0.02em;
+  font-weight: $fw-bold;
+  font-size: 18px;
+  text-transform: uppercase;
+}

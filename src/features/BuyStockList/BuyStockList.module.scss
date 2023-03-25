@@ -1,0 +1,37 @@
+@use 'styles/style' as *;
+
+.buystockTitle {
+  width: 100%;
+  max-width: 431px;
+  font-size: 40px;
+  margin: 0 auto;
+  line-height: 140%;
+  font-weight: $fw-bold;
+  letter-spacing: -0.03em;
+  margin-top: 64px;
+}
+
+.buystockList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 34px;
+  margin-bottom: 33px;
+}
+
+.buystockDescription {
+  width: 100%;
+  max-width: 432px;
+  margin: 0 auto;
+  line-height: 140%;
+  font-size: 22px;
+  color: $color-gray;
+  letter-spacing: -0.02em;
+  font-weight: $fw-semibold;
+}
+
+.buystockBtn {
+  max-width: 161px;
+  margin: 48px auto;
+}

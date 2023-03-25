@@ -1,7 +1,8 @@
 import { FC, ReactNode } from 'react'
-import cn from 'classnames'
 
 import s from './button.module.scss'
+
+import cn from 'classnames'
 
 interface ButtonProps {
   children: string | ReactNode
@@ -18,6 +19,7 @@ export const Button: FC<ButtonProps> = ({ children, onClick, type = 'button', cl
     <button className={cn(s.button, className)} type={type} onClick={handleClick} >
       {children}
     </button>
+
   )
 
 }

@@ -8,3 +8,7 @@ export interface Stocks {
     uppedPercent: string
     count: number
 }
+
+export interface StocksList {
+    stocks: Stocks[]
+}

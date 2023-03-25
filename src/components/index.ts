@@ -11,11 +11,13 @@ import { Logo } from './Logo/Logo'
 import { HorizonCard } from './HorizonCard/horizonCardFull'
 import { Tag } from './Tag/Tag'
 import { Indicator } from './Indicator/Indicator'
+import { BuyStockItem } from './BuyStockItem/BuyStockItem'
 
 export {
   Button,
   Wrapper,
   EventsCard,
+  BuyStockItem,
   Popup,
   Logo,
   Slider,
@@ -27,3 +29,4 @@ export {
   Indicator,
   Card,
 }
+

@@ -14,7 +14,7 @@ import {
   Button,
 } from 'components'
 
-import { EventSection, PasswordRecovery,LeaderboardList, FillRequest, FiltersPanel, Info, Header, Footer } from 'features'
+import { EventSection, PasswordRecovery,LeaderboardList, FillRequest, BuyStockList, FiltersPanel, Info, Header, Footer } from 'features'
 
 import { mock__event_card } from 'shared/mocks/mock_eventsCard'
 import { mock__stock_card } from 'shared/mocks/mock_stockCard'
@@ -30,6 +30,7 @@ import s from './examplePage.module.scss'
 export const ExamplePage: FC = () => {
   const [openPasswordRecovery, setOpenPasswordRecovery] =
     useState<boolean>(false)
+  const [openBuyStock, setOpenBuyStock] = useState<boolean>(false)
   const [valueInput, setValueInput] = useState<string>('')
 
   const sliderItem = event_slider_mock.map(card => (
@@ -88,6 +89,15 @@ export const ExamplePage: FC = () => {
         <button onClick={() => setOpenPasswordRecovery(true)}>
           Password recovery
         </button>
+      </Wrapper>
+      <Wrapper text='BuyStock'>
+        <Popup
+          isOpen={openBuyStock}
+          onClose={() => setOpenBuyStock(false)}
+        >
+          <BuyStockList stocks={mock__stock_card} />
+        </Popup>
+        <button onClick={() => setOpenBuyStock(true)}>BuyStock</button>
       </Wrapper>
       <Wrapper text={'Stocks Card'}>
         <StocksCard {...mock__stock_card} onClick={() => console.log('1234')} />
