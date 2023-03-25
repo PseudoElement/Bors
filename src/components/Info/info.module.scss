@@ -1,101 +1,86 @@
 @use 'styles/style' as *;
 
 @media (min-width: #{$tablet-width}) {
-  .cards {
+  .card {
+    position: relative;
     display: flex;
-    padding: 125px 0 183px 0;
+    gap: 16px;
     flex-direction: column;
-    max-width: 920px;
-    gap: 73px;
-    .card {
-      position: relative;
-      display: flex;
-      gap: 16px;
-      flex-direction: column;
-      align-items: center;
-      font-style: normal;
-      font-weight: 700;
-      font-size: 40px;
-      line-height: 130%;
-      text-align: center;
-      letter-spacing: -0.045em;
+    align-items: center;
+    font-style: normal;
+    font-weight: $fw-bold;
+    font-size: 40px;
+    line-height: 1.3;
+    text-align: center;
+    letter-spacing: -0.045em;
+  }
 
-      .cardTitle {
-        span {
-          background: $border-gradient-access;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-      }
-      .cardImageWrapper {
-        display: flex;
-        justify-content: center;
-        .cardImage {
-          top: 0;
-          left: 0;
-          z-index: 2;
-        }
-      }
-      .cardImageWrapper:last-of-type {
-        position: absolute;
-        z-index: 1;
-        bottom: -42px;
-        opacity: 0.2;
-        filter: blur(20px);
-      }
+  .cardTitle {
+    span {
+      background: $border-gradient-access;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
+  }
+
+  .cardImageWrapper {
+    display: flex;
+    justify-content: center;
+    .cardImage {
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
+  }
+
+  .cardImageWrapper:last-of-type {
+    position: absolute;
+    z-index: 1;
+    bottom: -42px;
+    opacity: 0.2;
+    filter: blur(20px);
   }
 }
 
 @media (max-width: #{$tablet-width}) {
-  .cards {
+  .card {
+    position: relative;
+    width: 85%;
+    gap: 24px;
     display: flex;
-    align-items: center;
-    width: 100%;
     flex-direction: column;
-    padding: 72px 0 144px 0;
-    gap: 40px;
-    .card {
-      position: relative;
-      width: 85%;
-      gap: 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-style: normal;
-      font-weight: 600;
-      font-size: 26px;
-      line-height: 125%;
-      /* or 32px */
-
-      text-align: center;
-      letter-spacing: -0.045em;
-      .cardTitle {
-        span {
-          background: $border-gradient-access;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-      }
-      .cardImageWrapper {
-        display: flex;
-        justify-content: center;
-        width: 178px;
-        .cardImage {
-          top: 0;
-          left: 0;
-          z-index: 2;
-        }
-      }
-      .cardImageWrapper:last-of-type {
-        position: absolute;
-        width: 156px;
-        z-index: 1;
-        bottom: -16px;
-        opacity: 0.2;
-        filter: blur(20px);
-      }
+    align-items: center;
+    justify-content: center;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 1.25;
+    text-align: center;
+    letter-spacing: -0.045em;
+  }
+  .cardTitle {
+    span {
+      background: $border-gradient-access;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
+  }
+  .cardImageWrapper {
+    display: flex;
+    justify-content: center;
+    width: 178px;
+    .cardImage {
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
+  }
+  .cardImageWrapper:last-of-type {
+    position: absolute;
+    width: 156px;
+    z-index: 1;
+    bottom: -16px;
+    opacity: 0.2;
+    filter: blur(20px);
   }
 }

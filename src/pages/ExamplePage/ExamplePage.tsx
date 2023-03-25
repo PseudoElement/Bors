@@ -10,14 +10,15 @@ import {
   StocksCard,
   Tag,
   Indicator,
-  Info,
+  Card,
 } from 'components'
 
-import { EventSection, PasswordRecovery, FiltersPanel } from 'features'
+import { EventSection, PasswordRecovery, FiltersPanel, Info } from 'features'
 
 import { mock__event_card } from 'shared/mocks/mock_eventsCard'
 import { mock__stock_card } from 'shared/mocks/mock_stockCard'
 import { event_slider_mock } from 'shared/mocks/mock_event_slider'
+import { mockInfoCardsData } from 'shared/mocks/infoCardsData'
 
 import { FilterKeys } from 'shared/types/filterPanel'
 
@@ -102,6 +103,9 @@ export const ExamplePage: FC = () => {
       </Wrapper>
       <Wrapper text='Slider'>
         <EventSection title='EVENTS' card={sliderItem} />
+      </Wrapper>
+      <Wrapper text='Info'>
+        <Info cards={mockInfoCardsData}></Info>
       </Wrapper>
     </div>
   )

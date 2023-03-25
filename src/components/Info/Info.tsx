@@ -3,11 +3,10 @@ import Image from 'next/image'
 
 import s from './info.module.scss'
 
-export const Info: FC<{ title: string; image: string }> = ({
+export const Card: FC<{ title: string; image: string }> = ({
   title,
   image,
 }) => {
-  console.log('ok')
   return (
     <div className={s.card}>
       <p
