@@ -14,7 +14,18 @@ import {
   Button,
 } from 'components'
 
-import { EventSection, PasswordRecovery,LeaderboardList, FillRequest, BuyStockList, FiltersPanel, Info, Header, Footer } from 'features'
+import {
+  EventSection,
+  PasswordRecovery,
+  LeaderboardList,
+  FillRequest,
+  BuyStockList,
+  FiltersPanel,
+  Info,
+  Header,
+  Footer,
+  MyStocks,
+} from 'features'
 
 import { mock__event_card } from 'shared/mocks/mock_eventsCard'
 import { mock__stock_card } from 'shared/mocks/mock_stockCard'
@@ -91,10 +102,7 @@ export const ExamplePage: FC = () => {
         </button>
       </Wrapper>
       <Wrapper text='BuyStock'>
-        <Popup
-          isOpen={openBuyStock}
-          onClose={() => setOpenBuyStock(false)}
-        >
+        <Popup isOpen={openBuyStock} onClose={() => setOpenBuyStock(false)}>
           <BuyStockList stocks={mock__stock_card} />
         </Popup>
         <button onClick={() => setOpenBuyStock(true)}>BuyStock</button>
@@ -131,6 +139,9 @@ export const ExamplePage: FC = () => {
       </Wrapper>
       <Wrapper text='Info'>
         <Info cards={mockInfoCardsData}></Info>
+      </Wrapper>
+      <Wrapper text='My Stocks'>
+        <MyStocks />
       </Wrapper>
       <Wrapper text={'footer'}>
         <Footer />
