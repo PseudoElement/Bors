@@ -10,7 +10,7 @@ export const mock__stock_card = [
     appInitials: 'FGM',
     currency: '53,44',
     uppedPercent: '3,42',
-    count: 3
+    count: 3,
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ export const mock__stock_card = [
     appInitials: 'STP',
     currency: '53,44',
     uppedPercent: '3,42',
-    count: 3
+    count: 3,
   },
   {
     id: 3,
@@ -28,7 +28,6 @@ export const mock__stock_card = [
     appInitials: 'AMZN',
     currency: '53,44',
     uppedPercent: '3,42',
-    count: 3
+    count: 3,
   },
 ]
-

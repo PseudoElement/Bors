@@ -9,6 +9,7 @@ import { PasswordRecovery } from './PasswordRecovery/PasswordRecovety'
 import { FiltersPanel } from './FiltersPanel/FiltersPanel'
 import { BuyStockList } from './BuyStockList/BuyStockList'
 import { FillRequest } from './FillRequest/FillRequest'
+import { MyStocks } from './MyStocks/MyStocks'
 
 export {
   Layout,
@@ -21,5 +22,6 @@ export {
   LeaderboardList,
   Info,
   BuyStockList,
-  FillRequest
+  FillRequest,
+  MyStocks,
 }
