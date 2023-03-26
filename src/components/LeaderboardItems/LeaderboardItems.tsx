@@ -5,7 +5,13 @@ import { PropsLeaderboard } from 'shared/types/leaderboard'
 
 import s from './leaderboardItems.module.scss'
 
-export const LeaderboardItems: FC<PropsLeaderboard> = ({ id, user, position, tempyield, amountOfIncome }) => {
+export const LeaderboardItems: FC<PropsLeaderboard> = ({
+  id,
+  user,
+  position,
+  tempyield,
+  amountOfIncome,
+}) => {
   const { name, avatarUrl } = user
 
   return (
@@ -35,7 +41,9 @@ export const LeaderboardItems: FC<PropsLeaderboard> = ({ id, user, position, tem
               <span className={s.leaderboardYield}>{tempyield}%</span>
             </div>
             <div>
-              <span className={s.leaderboardAmountOfIncome}>{amountOfIncome} SEK</span>
+              <span className={s.leaderboardAmountOfIncome}>
+                {amountOfIncome} SEK
+              </span>
             </div>
           </div>
         </div>

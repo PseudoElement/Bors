@@ -52,7 +52,7 @@ export const HorizonCard: FC<HorizonCardProps> = ({
       <div className={s.stockCostWrapper}>
         <span className={s.stockCostValue}>1 stocks</span>
         <h5 className={s.stockCost}>
-          {currency.toString().replace('.', ',')}
+          {/* {currency.toString().replace('.', ',')} */}
           <span className={s.exchangeCurrency}>
             {' '}
             {exchangeCurrency || 'SET'}

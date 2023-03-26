@@ -7,12 +7,9 @@ import s from './LeaderboardList.module.scss'
 
 export const LeaderboardList: FC<PropsLeaderboardList> = ({ boards }) => {
   return (
-    <Slider
-      slidesPerView={1}
-      spaceBetween={30}
-    >
+    <Slider slidesPerView={1} spaceBetween={30}>
       {boards.map(board => (
-        <div key={board.id}>
+        <div className={s.loaderBoard} key={board.id}>
           <h2 className={s.leaderboardTitle}>March 17, 2023</h2>
           <div className={s.leaderboardList}>
             <div className={s.leaderboardWrapper}>
@@ -32,7 +29,9 @@ export const LeaderboardList: FC<PropsLeaderboardList> = ({ boards }) => {
                   </div>
                 </div>
               </div>
-              {boards.map(board => <LeaderboardItems key={board.id} {...board} />)}
+              {boards.map(board => (
+                <LeaderboardItems key={board.id} {...board} />
+              ))}
             </div>
           </div>
         </div>
