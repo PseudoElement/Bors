@@ -2,21 +2,16 @@ import React from 'react'
 import { FC } from 'react'
 import Image from 'next/image'
 
-import s from './horizonCard.module.scss'
+import { Stocks } from 'shared/types/stocks'
 
-interface HorizonCardProps {
-  id: number
-  image: string
-  appName: string
-  appInitials: string
-  currency: string | number
-  uppedPercent: string
-  count: number
+import s from './StockHorizonCard.module.scss'
+
+interface StockHorizonCardProps extends Stocks {
   onClick?: () => void
   exchangeCurrency?: string
 }
 
-export const HorizonCard: FC<HorizonCardProps> = ({
+export const StockHorizonCard: FC<StockHorizonCardProps> = ({
   id,
   image,
   appName,
@@ -38,10 +33,10 @@ export const HorizonCard: FC<HorizonCardProps> = ({
         </div>
       </div>
       {onClick && (
-        <div className={s.stockSumWrapper}>
-          <span className={s.stockCostValue}>{count} stocks</span>
+        <div className={s.stockCostWrapper}>
+          <span className={s.stockCostValue}>1 stocks</span>
           <h5 className={s.stockCost}>
-            {(count * Number(currency)).toFixed(2).toString().replace('.', ',')}
+            {currency.toString().replace('.', ',')}
             <span className={s.exchangeCurrency}>
               {' '}
               {exchangeCurrency || 'SET'}
@@ -49,16 +44,17 @@ export const HorizonCard: FC<HorizonCardProps> = ({
           </h5>
         </div>
       )}
-      <div className={s.stockCostWrapper}>
-        <span className={s.stockCostValue}>1 stocks</span>
+      <div className={s.stockSumWrapper}>
+        <span className={s.stockCostValue}>{count} stocks</span>
         <h5 className={s.stockCost}>
-          {/* {currency.toString().replace('.', ',')} */}
+          {(count * +currency).toFixed(2).toString().replace('.', ',')}
           <span className={s.exchangeCurrency}>
             {' '}
             {exchangeCurrency || 'SET'}
           </span>
         </h5>
       </div>
+
       {onClick && (
         <div className={s.cancelBtn}>
           <button onClick={onClick}>

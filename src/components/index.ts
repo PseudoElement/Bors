@@ -9,7 +9,7 @@ import { Card } from './Info/Info'
 import { StocksCard } from './StocksCard/StocksCard'
 import { Slider } from './Slider/Slider'
 import { Logo } from './Logo/Logo'
-import { HorizonCard } from './HorizonCard/horizonCardFull'
+import { StockHorizonCard } from './StockHorizonCard/StockHorizonCard'
 import { Tag } from './Tag/Tag'
 import { Indicator } from './Indicator/Indicator'
 import { BuyStockItem } from './BuyStockItem/BuyStockItem'
@@ -25,7 +25,7 @@ export {
   Input,
   LeaderboardItems,
   StocksCard,
-  HorizonCard,
+  StockHorizonCard,
   Tag,
   Indicator,
   Card,

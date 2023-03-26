@@ -4,7 +4,7 @@ import {
   Wrapper,
   EventsCard,
   Popup,
-  HorizonCard,
+  StockHorizonCard,
   Slider,
   Input,
   StocksCard,
@@ -57,6 +57,12 @@ export const ExamplePage: FC = () => {
     popularity: false,
   })
   console.log(defaultValue)
+
+  const stockHorizonData = {
+    ...mock__stock_card[1],
+    onClick: () => {},
+    exchangeCurrency: 'SET',
+  }
 
   return (
     <div>
@@ -121,11 +127,7 @@ export const ExamplePage: FC = () => {
       </Wrapper>
 
       <Wrapper text={'Horizon card'}>
-        <HorizonCard
-          {...mock__stock_card}
-          onClick={() => console.log(1)}
-          exchangeCurrency={'SET'}
-        />
+        <StockHorizonCard {...stockHorizonData} />
       </Wrapper>
 
       <Wrapper text='Tag'>
