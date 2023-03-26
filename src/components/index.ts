@@ -4,6 +4,7 @@ import { Wrapper } from './Wrapper'
 import { Input } from './Input/Input'
 import { Popup } from './Popup/Popup'
 import { EventsCard } from './EventsCard/EventsCard'
+import { EventSlider } from './EventSlider/EventSlider'
 import { Card } from './Info/Info'
 import { StocksCard } from './StocksCard/StocksCard'
 import { Slider } from './Slider/Slider'
@@ -28,5 +29,7 @@ export {
   Tag,
   Indicator,
   Card,
+  EventSlider
 }
+
 

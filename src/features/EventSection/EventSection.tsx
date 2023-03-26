@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react'
-import { Slider } from 'components'
+import { EventSlider } from 'components'
 import s from './event.module.scss'
 
 interface EventSectionProps {
@@ -11,14 +11,16 @@ export const EventSection: FC<EventSectionProps> = ({ card, title }) => {
   return (
     <div className={s.eventSection}>
       <div className={s.title}>{title}</div>
-      <Slider
+      <EventSlider
         slidesPerView={3}
         spaceBetween={24}
         withNavigation={true}
         withPagination={true}
+        nextEl={'btnNext'}
+        prevEl={'btnPreve'}
       >
         {card}
-      </Slider>
+      </EventSlider>
     </div>
   )
 }

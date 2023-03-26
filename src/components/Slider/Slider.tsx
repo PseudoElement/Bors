@@ -7,8 +7,8 @@ import { A11y, Navigation, Pagination, Autoplay } from 'swiper'
 import s from './slider.module.scss'
 
 import 'swiper/css'
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 
 import ArrowIcon from '/public/assets/icons/Arrow.svg'
 
@@ -64,14 +64,15 @@ export const Slider: FC<SliderProps> = ({
         centeredSlides={centeredSlides}
         breakpoints={breakpoints}
         zoom={true}
-        allowSlideNext={false}
         loop={true}
         initialSlide={Math.floor(children.length / 2)}
       >
         {children.length
           ? children.map((child, idx) => (
-            <SwiperSlide className={cn(s['swiper-slide'])} key={idx}>{child}</SwiperSlide>
-          ))
+              <SwiperSlide className={cn(s['swiper-slide'])} key={idx}>
+                {child}
+              </SwiperSlide>
+            ))
           : null}
       </Swiper>
     </>

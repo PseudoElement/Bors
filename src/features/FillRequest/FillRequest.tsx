@@ -13,7 +13,6 @@ import s from './fillRequest.module.scss'
 type EmailRecoveryFormProps = { email: string }
 
 export const FillRequest: FC = () => {
-
   const {
     control,
     handleSubmit,
@@ -33,7 +32,9 @@ export const FillRequest: FC = () => {
     <div className={s.fillrequest}>
       <div className={s.fillrequestWrapper}>
         <form className={s.fillrequestAuth}>
-          <h3 className={s.fillrequestTitle}>Fill out an application for authorization</h3>
+          <h3 className={s.fillrequestTitle}>
+            Fill out an application for authorization
+          </h3>
           <Controller
             name='email'
             control={control}
@@ -50,14 +51,13 @@ export const FillRequest: FC = () => {
                 onClick={handleSubmit(onSubmit)}
                 type='email'
                 withButton='Send'
-
               />
             )}
           />
-          <Button className={s.fillrequestBtn}>
-            Send
-          </Button>
-          <span className={s.fillrequestInfo}>By clicking the button you agree to the processing of personal data</span>
+          <Button className={s.fillrequestBtn}>Send</Button>
+          <span className={s.fillrequestInfo}>
+            By clicking the button you agree to the processing of personal data
+          </span>
         </form>
         <div className={s.fillrequestImage}>
           <Image width={482} height={482} src={image} alt='Fill Request' />

@@ -28,9 +28,8 @@ import {
 } from 'features'
 
 import { mock__event_card } from 'shared/mocks/mock_eventsCard'
-import { mock__stock_card } from 'shared/mocks/mock_stockCard'
 import { event_slider_mock } from 'shared/mocks/mock_event_slider'
-
+import { mock__stock_card } from 'shared/mocks/mock_stockCard'
 import { mock__leaderboard } from 'shared/mocks/mock_leaderboard'
 import { mockInfoCardsData } from 'shared/mocks/infoCardsData'
 
@@ -39,14 +38,15 @@ import { FilterKeys } from 'shared/types/filterPanel'
 import s from './examplePage.module.scss'
 
 export const ExamplePage: FC = () => {
+  console.log(event_slider_mock)
+  const sliderItem = event_slider_mock.map((card, idx) => (
+    <EventsCard {...card} key={idx} />
+  ))
   const [openPasswordRecovery, setOpenPasswordRecovery] =
     useState<boolean>(false)
   const [openBuyStock, setOpenBuyStock] = useState<boolean>(false)
   const [valueInput, setValueInput] = useState<string>('')
 
-  const sliderItem = event_slider_mock.map(card => (
-    <EventsCard {...card} key={1} />
-  ))
   const [openPopup, setOpenPopup] = useState<boolean>(false)
 
   console.log(event_slider_mock)
@@ -78,7 +78,9 @@ export const ExamplePage: FC = () => {
       <Wrapper text='Slider'>
         <EventSection title='EVENTS' card={sliderItem} />
       </Wrapper>
-      <LeaderboardList boards={mock__leaderboard} />
+      <Wrapper text='LeaderboardList'>
+        <LeaderboardList boards={mock__leaderboard} />
+      </Wrapper>
       <Wrapper text='Input'>
         <Input
           withIcon={true}
@@ -108,11 +110,13 @@ export const ExamplePage: FC = () => {
         <button onClick={() => setOpenBuyStock(true)}>BuyStock</button>
       </Wrapper>
       <Wrapper text={'Stocks Card'}>
-        <StocksCard {...mock__stock_card} onClick={() => console.log('1234')} />
         <StocksCard
-          {...mock__stock_card}
+          {...mock__stock_card[0]}
           onClick={() => console.log('1234')}
-          hasNft={false}
+        />
+        <StocksCard
+          {...mock__stock_card[1]}
+          onClick={() => console.log('1234')}
         />
       </Wrapper>
 
