@@ -7,3 +7,7 @@ export interface Events {
   description: string
   btnTitle: string
 }
+
+export interface EventsList {
+  cards: Events[]
+}

@@ -52,8 +52,6 @@ export const ExamplePage: FC = () => {
 
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
-  console.log(event_slider_mock)
-
   const [defaultValue, setDefaultValue] = useState<FilterKeys>({
     price: false,
     lineBusiness: false,
@@ -63,14 +61,14 @@ export const ExamplePage: FC = () => {
 
   const stockHorizonData = {
     ...mock__stock_card[1],
-    onClick: () => {},
+    onClick: () => { },
     exchangeCurrency: 'SET',
   }
 
   return (
     <div>
       <Wrapper text={'header authorised'}>
-        <Header variant='authorised' />
+        {/* <Header variant='authorised' /> */}
       </Wrapper>
       <Wrapper text={'header unauthorised'}>
         <Header variant='unauthorised' />
@@ -85,7 +83,7 @@ export const ExamplePage: FC = () => {
         <EventsCard {...mock__event_card} />
       </Wrapper>
       <Wrapper text='Slider'>
-        <EventSection title='EVENTS' card={sliderItem} />
+        <EventSection title='EVENTS' cards={event_slider_mock} />
       </Wrapper>
       <Wrapper text='LeaderboardList'>
         <LeaderboardList boards={mock__leaderboard} />
@@ -158,7 +156,7 @@ export const ExamplePage: FC = () => {
         <MyStocks />
       </Wrapper>
       <Wrapper text={'footer'}>
-        <Footer />
+        {/* <Footer /> */}
       </Wrapper>
     </div>
   )

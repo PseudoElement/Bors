@@ -8,5 +8,5 @@ export type ComponentProps = {
 }
 
 export type CardsType = {
-  cards: horizonCard[] | infoCardData[]
+  cards: infoCardData[]
 }

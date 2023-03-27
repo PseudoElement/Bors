@@ -11,7 +11,7 @@ interface Variant {
 
 export const Navbar: FC<Variant> = ({ variant }) => {
   const [activeLink, setActiveLink] = useState<string>('Buy Stocks')
-  return variant === 'authorised' ? (
+  return variant === 'unauthorised' ? (
     <nav className={s.nav2}>
       <div className={s.logoGroup2}>
         <Image
@@ -111,7 +111,7 @@ export const Navbar: FC<Variant> = ({ variant }) => {
         </li>
       </ul>
       <button>
-        <div className={s.btnImg} onClick={() => {}}>
+        <div className={s.btnImg} onClick={() => { }}>
           <AccountImg />
         </div>
         Personal Account

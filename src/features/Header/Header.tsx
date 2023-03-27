@@ -11,15 +11,17 @@ interface Variant {
 export const Header: FC<Variant> = ({ variant }) => {
   return (
     <header className={s.header}>
-      <button className={s.burger}>
-        <Image
-          src='/assets/icons/hamburger.svg'
-          width={33.33}
-          height={20.83}
-          alt='burger menu'
-        />
-      </button>
-      <Navbar variant={variant} />
+      <div className={s.headerWrapper}>
+        <button className={s.burger}>
+          <Image
+            src='/assets/icons/hamburger.svg'
+            width={33.33}
+            height={20.83}
+            alt='burger menu'
+          />
+        </button>
+        <Navbar variant={variant} />
+      </div>
     </header>
   )
 }

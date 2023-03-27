@@ -103,6 +103,6 @@ export const mock__leaderboard: PropsLeaderboard[] = [
     },
     position: '10',
     tempyield: 8,
-    amountOfIncome: '706 521'
+    amountOfIncome: '706 521',
   }
 ]

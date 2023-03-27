@@ -15,15 +15,17 @@
     width: 84%;
   }
 
-  @include mobile {
+  @media (max-width:490px) {
     width: 318px;
     padding: 0;
     margin: 0 auto;
     border-radius: 0;
     padding-top: 16px;
+    padding-bottom: 10px;
   }
 }
-.loaderBoard{
+
+.loaderBoard {
   width: 100%
 }
 
@@ -37,20 +39,20 @@
     padding: 25px 0px 16px;
   }
 
-  @include mobile {
+  @media (max-width:490px) {
     display: none;
   }
 }
 
 .leaderboardEntirety {
-  width: 43.6%;
+  width: 44.6%;
   @include flex(flex, space-between, center);
 
   @include tablet-mobile {
     width: 325px;
   }
 
-  @include mobile {
+  @media (max-width:490px) {
     width: 58%;
   }
 }
@@ -80,9 +82,25 @@
   margin-bottom: 47px;
   margin-top: 20px;
 
-  @include mobile {
+  @media (max-width:490px) {
     font-size: 32px;
     font-weight: $fw-semibold;
     margin-bottom: 24px;
+  }
+}
+
+.leaderboardListTitle {
+  font-size: 100px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $color-black;
+  font-weight: $fw-semibold;
+  margin-top: 213px;
+  margin-bottom: 48px;
+
+  @media (max-width:490px) {
+    font-size: 56px;
+    letter-spacing: 0.05em;
   }
 }
