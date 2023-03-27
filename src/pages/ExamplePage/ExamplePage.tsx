@@ -25,6 +25,7 @@ import {
   Header,
   Footer,
   MyStocks,
+  LoginRegistrationModal
 } from 'features'
 
 import { mock__event_card } from 'shared/mocks/mock_eventsCard'
@@ -48,6 +49,8 @@ export const ExamplePage: FC = () => {
   const [valueInput, setValueInput] = useState<string>('')
 
   const [openPopup, setOpenPopup] = useState<boolean>(false)
+
+  const [isOpen, setIsOpen] = useState<boolean>(false)
 
   console.log(event_slider_mock)
 
@@ -124,6 +127,11 @@ export const ExamplePage: FC = () => {
           {...mock__stock_card[1]}
           onClick={() => console.log('1234')}
         />
+      </Wrapper>
+
+      <Wrapper text='Login and Registration modal'>
+        <button onClick={() => setIsOpen(prev => !prev)}>{isOpen ? 'hide modal' : 'show modal'}</button>
+        <LoginRegistrationModal isOpen={isOpen} onClose={() => setIsOpen(prev => !prev)} />
       </Wrapper>
 
       <Wrapper text={'Horizon card'}>

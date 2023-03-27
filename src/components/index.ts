@@ -13,6 +13,8 @@ import { StockHorizonCard } from './StockHorizonCard/StockHorizonCard'
 import { Tag } from './Tag/Tag'
 import { Indicator } from './Indicator/Indicator'
 import { BuyStockItem } from './BuyStockItem/BuyStockItem'
+import { LoginForm } from './LoginForm/LoginForm';
+import { RegistrationForm } from './RegistrationForm/RegistrationForm';
 
 export {
   Button,
@@ -29,7 +31,9 @@ export {
   Tag,
   Indicator,
   Card,
-  EventSlider
+  EventSlider,
+  LoginForm,
+  RegistrationForm
 }
 
 

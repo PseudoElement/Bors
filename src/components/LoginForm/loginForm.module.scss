@@ -1,0 +1,48 @@
+@use 'styles/style' as *;
+
+.form {
+    margin-top: 30px;
+}
+
+.labelText {
+    text-align: start;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: $color-gray-a5;
+    font-weight: $fw-semibold;
+}
+
+.label {
+    display: block;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.labelInner {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    font-size: 20px;
+    color: $color-gray-a5;
+    font-weight: $fw-semibold;
+    align-items: flex-end;
+}
+.forgotPassword {
+    font-size: 14px;
+    color: $color-blue-b2;
+}
+
+.errorMessage {
+    position: absolute;
+    left: 0;
+    bottom: -25px;
+    text-align: start;
+    color: $color-red;
+}
+
+.submitBtn {
+    display: block;
+    margin-top: 30px;
+    width: 100%;
+}

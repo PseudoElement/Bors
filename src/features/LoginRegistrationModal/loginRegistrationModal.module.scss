@@ -1,0 +1,26 @@
+@use 'styles/style' as *;
+
+.modal {
+    position: fixed;
+    top: 100px;
+    right: 66px;
+    padding: 44px 56px;
+    max-width: 500px;
+    min-height: 490px;
+    border-radius: 30px;
+    background: $color-white;
+    box-shadow: $color-shadow-0-24;
+    backdrop-filter: blur(63.6903px);
+    z-index: 99;
+}
+
+.title {
+    text-align: start;
+    font-size: 32px;
+    font-weight: $fw-bold;
+    color: $color-gray-a5;
+    cursor: pointer;
+}
+.activeTitle {
+    color: $color-black;
+}
