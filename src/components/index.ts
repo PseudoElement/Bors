@@ -9,10 +9,12 @@ import { Card } from './Info/Info'
 import { StocksCard } from './StocksCard/StocksCard'
 import { Slider } from './Slider/Slider'
 import { Logo } from './Logo/Logo'
-import { HorizonCard } from './HorizonCard/horizonCardFull'
+import { StockHorizonCard } from './StockHorizonCard/StockHorizonCard'
 import { Tag } from './Tag/Tag'
 import { Indicator } from './Indicator/Indicator'
 import { BuyStockItem } from './BuyStockItem/BuyStockItem'
+import { LoginForm } from './LoginForm/LoginForm';
+import { RegistrationForm } from './RegistrationForm/RegistrationForm';
 
 export {
   Button,
@@ -25,11 +27,13 @@ export {
   Input,
   LeaderboardItems,
   StocksCard,
-  HorizonCard,
+  StockHorizonCard,
   Tag,
   Indicator,
   Card,
-  EventSlider
+  EventSlider,
+  LoginForm,
+  RegistrationForm
 }
 
 

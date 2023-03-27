@@ -4,7 +4,7 @@ import {
   Wrapper,
   EventsCard,
   Popup,
-  HorizonCard,
+  StockHorizonCard,
   Slider,
   Input,
   StocksCard,
@@ -25,6 +25,7 @@ import {
   Header,
   Footer,
   MyStocks,
+  LoginRegistrationModal
 } from 'features'
 
 import { mock__event_card } from 'shared/mocks/mock_eventsCard'
@@ -49,6 +50,8 @@ export const ExamplePage: FC = () => {
 
   const [openPopup, setOpenPopup] = useState<boolean>(false)
 
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+
   console.log(event_slider_mock)
 
   const [defaultValue, setDefaultValue] = useState<FilterKeys>({
@@ -57,6 +60,12 @@ export const ExamplePage: FC = () => {
     popularity: false,
   })
   console.log(defaultValue)
+
+  const stockHorizonData = {
+    ...mock__stock_card[1],
+    onClick: () => {},
+    exchangeCurrency: 'SET',
+  }
 
   return (
     <div>
@@ -120,12 +129,13 @@ export const ExamplePage: FC = () => {
         />
       </Wrapper>
 
+      <Wrapper text='Login and Registration modal'>
+        <button onClick={() => setIsOpen(prev => !prev)}>{isOpen ? 'hide modal' : 'show modal'}</button>
+        <LoginRegistrationModal isOpen={isOpen} onClose={() => setIsOpen(prev => !prev)} />
+      </Wrapper>
+
       <Wrapper text={'Horizon card'}>
-        <HorizonCard
-          {...mock__stock_card}
-          onClick={() => console.log(1)}
-          exchangeCurrency={'SET'}
-        />
+        <StockHorizonCard {...stockHorizonData} />
       </Wrapper>
 
       <Wrapper text='Tag'>

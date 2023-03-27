@@ -10,6 +10,7 @@ import { FiltersPanel } from './FiltersPanel/FiltersPanel'
 import { BuyStockList } from './BuyStockList/BuyStockList'
 import { FillRequest } from './FillRequest/FillRequest'
 import { MyStocks } from './MyStocks/MyStocks'
+import { LoginRegistrationModal } from './LoginRegistrationModal/LoginRegistrationModal';
 
 export {
   Layout,
@@ -24,4 +25,5 @@ export {
   BuyStockList,
   FillRequest,
   MyStocks,
+  LoginRegistrationModal
 }
