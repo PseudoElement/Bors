@@ -62,17 +62,18 @@ export const Slider: FC<SliderProps> = ({
         navigation={navigationOptions || false}
         pagination={paginationOptions}
         centeredSlides={centeredSlides}
+        initialSlide={children.length - 1}
         breakpoints={breakpoints}
+        allowSlideNext={false}
         zoom={true}
         loop={true}
-        initialSlide={Math.floor(children.length / 2)}
       >
         {children.length
           ? children.map((child, idx) => (
-              <SwiperSlide className={cn(s['swiper-slide'])} key={idx}>
-                {child}
-              </SwiperSlide>
-            ))
+            <SwiperSlide className={cn(s['swiper-slide'])} key={idx}>
+              {child}
+            </SwiperSlide>
+          ))
           : null}
       </Swiper>
     </>

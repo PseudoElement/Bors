@@ -8,13 +8,12 @@
   backdrop-filter: blur(80px);
   border-radius: 40px;
   height: 288px;
+  margin: 195px auto 196px;
 
   @media (max-width:771px) {
-    height: 600px;
-  }
-
-  @include mobile {
-    min-height: 650px;
+    width: 90%;
+    height: 100%;
+    margin: 30px auto;
   }
 }
 
@@ -29,6 +28,10 @@
     display: block;
     padding-left: 0;
   }
+
+  @media (max-width:598px) {
+    margin-top: 140px;
+  }
 }
 
 .fillrequestAuth {
@@ -38,17 +41,20 @@
   @media (max-width:1094px) {
     padding: 16px 0;
     margin: 0 auto;
+    text-align: center;
   }
 
   @media (max-width:771px) {
     width: 90%;
-    position: relative;
-    top: 215px;
+  }
+
+  @media (max-width:490px) {
+    padding-top: 240px;
   }
 
   @include mobile {
     width: 100%;
-    padding: 46px 24px;
+    padding: 26px 4px;
   }
 }
 
@@ -58,6 +64,10 @@
   font-size: 32px;
   letter-spacing: -0.04em;
   font-weight: $fw-bold;
+
+  @media (max-width:593px) {
+    font-size: 28px;
+  }
 }
 
 .fillrequestInfo {
@@ -66,24 +76,24 @@
   letter-spacing: -0.02em;
   font-size: 16px;
   margin-top: 24px;
+
+  @media (max-width:1094px) {
+    @include flex(flex, center, null);
+  }
 }
 
 .fillrequestImage {
-  position: relative;
+  position: absolute;
   right: 5%;
   top: -110px;
 
-  @media (max-width:771px) {
-    width: 351px;
-    height: 351px;
-    top: -370px;
-    right: 0;
-    margin: 0 auto;
+  @media (max-width:1094px) {
+    display: none;
   }
 
-  @include mobile {
-    top: -575px;
-    right: 0;
+  @media (max-width:490px) {
+    display: block;
+    top: -130px;
   }
 }
 
@@ -96,6 +106,13 @@
   background: $color-white;
   border: 1px solid $color-dark-05;
   box-shadow: 0px 3px 7px $color-dark-08;
+
+  >input {
+    @media (max-width:593px) {
+      text-align: center;
+      margin: 0;
+    }
+  }
 
   &::placeholder {
     font-weight: $fw-semibold;

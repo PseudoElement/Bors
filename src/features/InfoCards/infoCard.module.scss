@@ -1,5 +1,9 @@
 @use 'styles/style' as *;
 
+.cards {
+  margin: 0 auto;
+}
+
 @media (min-width: #{$tablet-width}) {
   .cards {
     display: flex;

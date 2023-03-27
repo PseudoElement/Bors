@@ -24,7 +24,7 @@
     margin: 0 auto 8px;
   }
 
-  @include mobile {
+  @media (max-width:490px) {
     max-width: 265px;
   }
 }
@@ -42,7 +42,7 @@
     padding-top: 10px;
   }
 
-  @include mobile {
+  @media (max-width:490px) {
     width: 100%;
     @include flex(flex, space-between, null);
     font-size: 11px;
@@ -55,7 +55,7 @@
 }
 
 .leaderboardData {
-  width: 74%;
+  width: 70%;
   @include flex(flex, space-between, null);
 
   @media (max-width:659px) {
@@ -88,7 +88,7 @@
     }
   }
 
-  @include mobile {
+  @media (max-width:490px) {
     &::after {
       width: 94%;
       left: 50%;
@@ -113,7 +113,7 @@
     padding: 0 34px 0 13px;
   }
 
-  @include mobile {
+  @media (max-width:490px) {
     flex-direction: column;
     width: 100%;
     padding-left: 20px;
@@ -128,7 +128,7 @@
   font-weight: $fw-semibold;
   font-size: 22px;
 
-  @include mobile {
+  @media (max-width:490px) {
     font-size: 18px;
     letter-spacing: -0.02em;
   }

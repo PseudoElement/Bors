@@ -1,13 +1,14 @@
-import { FC} from 'react'
+import { FC } from 'react'
 import s from './logo.module.scss'
-import LogoImage from '/public/assets/image/logoImage.svg'
 import LogoText from '/public/assets/image/logoText.svg'
+import LogoImage from '/public/assets/icons/Logo.png'
+import Image from 'next/image'
 
 export const Logo: FC = () => {
   return (
-  <div className={s.logo}>
-    <LogoImage className={s.logoImage} />
-    <LogoText className={s.logoText} />
-  </div>
+    <div className={s.logo}>
+      <Image src={LogoImage} className={s.logoImage} alt='Logo' />
+      <LogoText className={s.logoText} />
+    </div>
   )
 }

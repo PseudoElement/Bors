@@ -1,12 +1,16 @@
 @use 'styles/style' as *;
 
 .slider {
-  padding: 0;
-  margin: 0;
   position: relative;
   width: 100%;
+  padding: 0 65px;
+  box-sizing: border-box;
 
-  [class*='swiper-horizontal'] > [class*='swiper-pagination-bullets'] {
+  &>div {
+    overflow: visible;
+  }
+
+  [class*='swiper-horizontal']>[class*='swiper-pagination-bullets'] {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,6 +18,7 @@
     position: absolute;
     bottom: 15px;
     height: fit-content;
+
     @include mobile-tablet {
       gap: 10px;
     }
@@ -23,6 +28,7 @@
     display: flex;
     justify-content: center;
   }
+
   [class*='swiper'] {
     overflow: visible;
     height: 720px;
@@ -42,6 +48,7 @@
     border: none;
     background: $pagination-gradient;
   }
+
   .swiperButtonPrev {
     position: absolute;
     bottom: 0;
@@ -49,24 +56,29 @@
     height: 52px;
     background: $color-shadow-0-4;
     border-radius: 37px;
+
     &::after {
       font-size: 20px;
       color: $color-black;
       opacity: 0.2;
     }
   }
+
   [class*='swiper-button-next'] {
     right: 0;
   }
+
   [class*='swiper-button-prev'] {
     left: 0;
   }
+
   .swiperButtonNext {
     bottom: 0;
     width: 52px;
     height: 52px;
     background: $color-shadow-0-4;
     border-radius: 37px;
+
     &::after {
       font-size: 20px;
       color: $color-black;
@@ -75,12 +87,14 @@
   }
 }
 
+
 .navigationButton {
   position: relative;
   bottom: 30px;
   margin: 0 auto;
   max-width: 470px;
   width: 100%;
+
   @include mobile-tablet {
     max-width: 600px;
   }
