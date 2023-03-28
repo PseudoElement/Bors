@@ -1,0 +1,12 @@
+@use 'styles/style' as *;
+
+.sponsor {
+    width: 266px;
+    height: 117px;
+    background-color: $color-white;
+    border-radius: 83px;
+    box-shadow: 0 2px 5px $color-black-08;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -10,6 +10,7 @@ import { FiltersPanel } from './FiltersPanel/FiltersPanel'
 import { BuyStockList } from './BuyStockList/BuyStockList'
 import { FillRequest } from './FillRequest/FillRequest'
 import { MyStocks } from './MyStocks/MyStocks'
+import { Sponsors } from './Sponsors/Sponsors';
 import { LoginRegistrationModal } from './LoginRegistrationModal/LoginRegistrationModal';
 import { CardStocksInfo } from './CardStocksInfo/CardStocksInfo';
 
@@ -26,6 +27,7 @@ export {
   BuyStockList,
   FillRequest,
   MyStocks,
+  Sponsors,
   LoginRegistrationModal,
-  CardStocksInfo
+  CardStocksInfo,
 }
