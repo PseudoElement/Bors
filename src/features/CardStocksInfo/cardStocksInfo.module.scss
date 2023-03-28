@@ -1,0 +1,146 @@
+@use 'styles/style' as *;
+
+.wrapperCardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+  max-width: 930px;
+  padding: 55px;
+  font-family: $font-Mont;
+  font-style: normal;
+  & > div:nth-child(2) {
+    padding-bottom: 25px;
+    border-bottom: 1px solid $color-gray-eb;
+  }
+  & > div:nth-child(3) {
+    padding-bottom: 25px;
+    border-bottom: 1px solid $color-gray-eb;
+  }
+  & > div:nth-child(4) {
+    padding-bottom: 25px;
+    border-bottom: 1px solid $color-gray-eb;
+  }
+}
+
+.wrapperHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.titleCard {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 66px;
+}
+
+.appName {
+  font-weight: $fw-bold;
+  font-size: 32px;
+  line-height: 100%;
+  display: flex;
+  align-items: flex-end;
+  letter-spacing: -0.02em;
+  color: $color-black;
+}
+.currentSection {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 25px;
+  border-left: 1px solid $color-gray-eb;
+  .titleCurent {
+    font-weight: $fw-semibold;
+    font-size: 15px;
+    line-height: 100%;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: $color-gray-a5;
+  }
+  .curentValue {
+    font-weight: $fw-bold;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -0.03em;
+    background: $pagination-gradient;
+    background-clip: text;
+    color: transparent;
+    & > span {
+      font-size: 25px;
+      margin-left: 5px;
+    }
+  }
+}
+.countryCard {
+  display: flex;
+  gap: 10px;
+  .countryInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+  }
+  .country {
+    text-align: start;
+  }
+}
+
+.countryIssuer {
+  font-weight: $fw-semibold;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: -0.02em;
+  color: $color-gray-a5;
+}
+
+.country {
+  font-weight: $fw-bold;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: -0.02em;
+  color: $color-black;
+}
+
+.cardTags {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+}
+.textInfoCard {
+  text-align: start;
+  font-style: normal;
+  font-weight: $fw-semibold;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  color: $color-gray-54;
+}
+.indicators {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+.titleIndicators {
+  font-weight: $fw-bold;
+  font-size: 24px;
+  line-height: 140%;
+  color: $color-black;
+}
+.indicatorsItem {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  column-gap: 16px;
+}
+.buyButton {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  & > button {
+    width: 100%;
+  }
+}

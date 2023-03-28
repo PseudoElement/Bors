@@ -13,7 +13,7 @@ interface PopupProps {
   onClose: () => void
   className?: string
   isClosable?: boolean
-  contentClassName?: string,
+  contentClassName?: string
 }
 
 export const Popup: FC<PopupProps> = ({
@@ -35,16 +35,16 @@ export const Popup: FC<PopupProps> = ({
       ref={!isClosable ? overlayRef : null}
     >
       <div className={s.popupWrapper}>
-        {isClosable && (
-          <button onClick={onClose}>
-            <CloseIcon className={s.popupClose} />
-          </button>
-        )}
         <div
           className={cn(s.popupContent, contentClassName)}
           ref={isClosable ? overlayRef : null}
         >
-          {children}
+          {isClosable && (
+            <button onClick={onClose}>
+              <CloseIcon className={s.popupClose} />
+            </button>
+          )}
+          <div className={s.wrapperContent}>{children}</div>
         </div>
       </div>
     </div>
