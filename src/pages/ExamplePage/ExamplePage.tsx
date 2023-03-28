@@ -25,7 +25,8 @@ import {
   Header,
   Footer,
   MyStocks,
-  LoginRegistrationModal
+  LoginRegistrationModal,
+  CardStocksInfo,
 } from 'features'
 
 import { mock__event_card } from 'shared/mocks/mock_eventsCard'
@@ -37,6 +38,7 @@ import { mockInfoCardsData } from 'shared/mocks/infoCardsData'
 import { FilterKeys } from 'shared/types/filterPanel'
 
 import s from './examplePage.module.scss'
+import { card_stocks_info } from 'shared/mocks/mock_cardStocksInfo'
 
 export const ExamplePage: FC = () => {
   console.log(event_slider_mock)
@@ -61,7 +63,7 @@ export const ExamplePage: FC = () => {
 
   const stockHorizonData = {
     ...mock__stock_card[1],
-    onClick: () => { },
+    onClick: () => {},
     exchangeCurrency: 'SET',
   }
 
@@ -128,8 +130,13 @@ export const ExamplePage: FC = () => {
       </Wrapper>
 
       <Wrapper text='Login and Registration modal'>
-        <button onClick={() => setIsOpen(prev => !prev)}>{isOpen ? 'hide modal' : 'show modal'}</button>
-        <LoginRegistrationModal isOpen={isOpen} onClose={() => setIsOpen(prev => !prev)} />
+        <button onClick={() => setIsOpen(prev => !prev)}>
+          {isOpen ? 'hide modal' : 'show modal'}
+        </button>
+        <LoginRegistrationModal
+          isOpen={isOpen}
+          onClose={() => setIsOpen(prev => !prev)}
+        />
       </Wrapper>
 
       <Wrapper text={'Horizon card'}>
@@ -155,8 +162,12 @@ export const ExamplePage: FC = () => {
       <Wrapper text='My Stocks'>
         <MyStocks />
       </Wrapper>
-      <Wrapper text={'footer'}>
-        {/* <Footer /> */}
+      <Wrapper text={'footer'}>{/* <Footer /> */}</Wrapper>
+      <Wrapper text='CardStocksInfo'>
+        <Popup isOpen={openPopup} onClose={() => setOpenPopup(false)}>
+          <CardStocksInfo {...card_stocks_info} />
+        </Popup>
+        <button onClick={() => setOpenPopup(true)}>Popup</button>
       </Wrapper>
     </div>
   )
