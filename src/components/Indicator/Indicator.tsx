@@ -1,10 +1,6 @@
 import { FC } from 'react'
+import { IndicatorProps } from 'shared/types/indicators'
 import s from './indicator.module.scss'
-
-interface IndicatorProps {
-  title: string
-  indicator: string
-}
 
 export const Indicator: FC<IndicatorProps> = ({ title, indicator }) => {
   return (
