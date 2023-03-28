@@ -1,6 +1,8 @@
 import { FC } from 'react'
-
 import Image from 'next/image'
+import cn from 'classnames'
+
+import { Button } from 'components'
 
 import { Events } from 'shared/types/events'
 
@@ -24,7 +26,7 @@ export const EventsCard: FC<EventsCardProps> = ({
   return (
     <div className={s.card}>
       <div className={s.image}>
-        <Image src={image} width='202' height='202' alt='image'/>
+        <Image src={image} width='202' height='202' alt='image' />
       </div>
       <div className={s.date}>
         <div className={s.days}>
@@ -32,10 +34,10 @@ export const EventsCard: FC<EventsCardProps> = ({
         </div>
         <div className={s.month}>{month}</div>
       </div>
-      <div className={s.fakeBtn}>{btnTitle}</div>
+      <div className={cn(s.customButton)}><span className={s.btnTitle}>{btnTitle}</span></div>
       <h4 className={s.title}>{title}</h4>
       <p className={s.description}>{description}</p>
-      <div className={s.fakeBtn2}>Participate</div>
+      <Button className={s.button}>Participate</Button>
     </div>
   )
 }
