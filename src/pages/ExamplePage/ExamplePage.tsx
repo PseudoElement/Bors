@@ -26,6 +26,7 @@ import {
   Header,
   Footer,
   MyStocks,
+  UserAccount,
   Sponsors,
   LoginRegistrationModal,
   CardStocksInfo,
@@ -44,7 +45,6 @@ import s from './examplePage.module.scss'
 import { card_stocks_info } from 'shared/mocks/mock_cardStocksInfo'
 
 export const ExamplePage: FC = () => {
-  console.log(event_slider_mock)
   const sliderItem = event_slider_mock.map((card, idx) => (
     <EventsCard {...card} key={idx} />
   ))
@@ -78,6 +78,10 @@ export const ExamplePage: FC = () => {
 
       <Wrapper text={'header unauthorised'}>
         <Header variant='unauthorised' />
+      </Wrapper>
+
+      <Wrapper text={'account'}>
+        <UserAccount />
       </Wrapper>
 
       <Wrapper text={'popup'}>

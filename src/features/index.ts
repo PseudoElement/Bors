@@ -1,4 +1,4 @@
-import { LeaderboardList } from './LeaderboardList/LeaderboardList';
+import { LeaderboardList } from './LeaderboardList/LeaderboardList'
 import { Layout } from './Layout/Layout'
 import { Header } from './Header/Header'
 import { Footer } from './Footer/Footer'
@@ -13,6 +13,7 @@ import { MyStocks } from './MyStocks/MyStocks'
 import { Sponsors } from './Sponsors/Sponsors';
 import { LoginRegistrationModal } from './LoginRegistrationModal/LoginRegistrationModal';
 import { CardStocksInfo } from './CardStocksInfo/CardStocksInfo';
+import { UserAccount } from './UserAccount/UserAccount'
 
 export {
   Layout,
@@ -27,6 +28,7 @@ export {
   BuyStockList,
   FillRequest,
   MyStocks,
+  UserAccount,
   Sponsors,
   LoginRegistrationModal,
   CardStocksInfo,

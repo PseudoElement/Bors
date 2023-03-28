@@ -1,5 +1,5 @@
-import { LeaderboardItems } from './LeaderboardItems/LeaderboardItems';
-import { Button } from './Button/Button'
+import { LeaderboardItems } from './LeaderboardItems/LeaderboardItems'
+import { Button } from './Button'
 import { Wrapper } from './Wrapper'
 import { Input } from './Input/Input'
 import { Popup } from './Popup/Popup'
@@ -16,6 +16,7 @@ import { BuyStockItem } from './BuyStockItem/BuyStockItem'
 import { Sponsor } from './Sponsor/Sponsor';
 import { LoginForm } from './LoginForm/LoginForm';
 import { RegistrationForm } from './RegistrationForm/RegistrationForm';
+import { Balance } from './Balance/Balance'
 
 export {
   Button,
@@ -35,7 +36,6 @@ export {
   EventSlider,
   Sponsor,
   LoginForm,
-  RegistrationForm
+  RegistrationForm,
+  Balance,
 }
-
-
