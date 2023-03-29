@@ -5,6 +5,7 @@
   height: 960px;
   background: url('../../../public/assets/image/backgroundIntro.png');
   background-size: cover;
+  pointer-events: none;
 
   @media (max-width: 768px) {
     height: 843px;
