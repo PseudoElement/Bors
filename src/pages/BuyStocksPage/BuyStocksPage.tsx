@@ -7,10 +7,9 @@ import { FiltersPanel } from 'features'
 
 import { mock__stock_card } from 'shared/mocks/mock_stockCard'
 
-import s from './personalAccountPage.module.scss'
+import s from './buyStocksPage.module.scss'
 
-export const PersonalAccountPage: FC = () => {
-    const arr = new Array(24).fill('')
+export const BuyStocksPage: FC = () => {
 
     return (
         <div className={cn(s.page, s.container)}>
@@ -25,13 +24,7 @@ export const PersonalAccountPage: FC = () => {
                     onChange={() => { }}
                 />
                 <div className={s.grid}>
-                    {arr.map((item, index) =>
-                        index % 3 === 0 ? (
-                            <StocksCard key={index} {...mock__stock_card[2]} />
-                        ) : index % 2 === 0 ? (
-                            <StocksCard key={index} {...mock__stock_card[0]} />
-                        ) : <StocksCard key={index} {...mock__stock_card[1]} />
-                    )}
+                    {mock__stock_card.map(item => <StocksCard key={item.id} {...item} />)}
                 </div>
             </div>
         </div>
