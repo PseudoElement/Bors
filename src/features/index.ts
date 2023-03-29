@@ -10,9 +10,10 @@ import { FiltersPanel } from './FiltersPanel/FiltersPanel'
 import { BuyStockList } from './BuyStockList/BuyStockList'
 import { FillRequest } from './FillRequest/FillRequest'
 import { MyStocks } from './MyStocks/MyStocks'
-import { Sponsors } from './Sponsors/Sponsors';
-import { LoginRegistrationModal } from './LoginRegistrationModal/LoginRegistrationModal';
-import { CardStocksInfo } from './CardStocksInfo/CardStocksInfo';
+import { LoginRegistrationModal } from './LoginRegistrationModal/LoginRegistrationModal'
+import { CardStocksInfo } from './CardStocksInfo/CardStocksInfo'
+import { BottomBuySection } from './BottomBuySection/BottomBuySection'
+import { Sponsors } from './Sponsors/Sponsors'
 import { UserAccount } from './UserAccount/UserAccount'
 
 export {
@@ -32,4 +33,5 @@ export {
   Sponsors,
   LoginRegistrationModal,
   CardStocksInfo,
+  BottomBuySection,
 }

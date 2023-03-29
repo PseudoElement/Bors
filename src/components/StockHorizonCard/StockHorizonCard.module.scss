@@ -9,12 +9,12 @@
 }
 
 .stockCard {
-  max-width: 400px;
+  width: 400px;
   height: 60px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 28px;
+  gap: 25px;
   align-items: center;
   background: $color-gray-f6;
   border: 1px solid $color-dark-blue-border;
@@ -35,7 +35,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  max-width: 120px;
+  width: 120px;
   height: 40px;
   position: relative;
   order: 1;
@@ -64,9 +64,11 @@
   order: 2;
   position: relative;
   height: 40px;
+  width: 80px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  text-align: left;
   .stockCostValue {
     font-weight: $fw-semibold;
     font-size: 14px;
@@ -94,6 +96,8 @@
   order: 3;
   position: relative;
   height: 40px;
+  width: 80px;
+  text-align: left;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -30,6 +30,7 @@ import {
   Sponsors,
   LoginRegistrationModal,
   CardStocksInfo,
+  BottomBuySection,
 } from 'features'
 
 import { mock__sponsors_card } from 'shared/mocks/mock_sponsors_cards'
@@ -90,7 +91,9 @@ export const ExamplePage: FC = () => {
         </Popup>
         <button onClick={() => setOpenPopup(true)}>Popup</button>
       </Wrapper>
-
+      <Wrapper text='Bottom Buy Section'>
+        <BottomBuySection stocks={mock__stock_card} />
+      </Wrapper>
       <Wrapper text={'Events Card'}>
         <EventsCard {...mock__event_card} />
       </Wrapper>
