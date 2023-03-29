@@ -4,7 +4,7 @@
 }
 .title {
   font-size: 100px;
-  font-weight: $fw-medium;
+  font-weight: $fw-semibold;
   line-height: 110px;
   letter-spacing: 0.1em;
   text-align: center;
@@ -16,7 +16,6 @@
   display: flex;
   flex-wrap: wrap;
 }
-
 
 .sponsor {
   margin: 8px;

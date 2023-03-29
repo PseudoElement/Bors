@@ -5,7 +5,7 @@ import s from './infoCard.module.scss'
 
 export const Info = ({ cards }: CardsListProps) => {
   return (
-    <section className={s.cards}>
+    <section className={s.cards} id={'about'}>
       {cards.map((card, index) => (
         <Card key={index} title={card.title} image={card.image} />
       ))}

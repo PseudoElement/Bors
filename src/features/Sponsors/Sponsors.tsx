@@ -12,7 +12,7 @@ interface SponsorsProps {
 
 export const Sponsors: FC<SponsorsProps> = ({ cards }) => {
   return (
-    <section className={s.wrap}>
+    <section className={s.wrap} id={'sponsors'}>
       <div className={s.title}>Sponsors</div>
 
       <div className={s.sponsors}>

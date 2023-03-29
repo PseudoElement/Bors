@@ -38,16 +38,17 @@ import { event_slider_mock } from 'shared/mocks/mock_event_slider'
 import { mock__stock_card } from 'shared/mocks/mock_stockCard'
 import { mock__leaderboard } from 'shared/mocks/mock_leaderboard'
 import { mockInfoCardsData } from 'shared/mocks/infoCardsData'
+import { card_stocks_info } from 'shared/mocks/mock_cardStocksInfo'
 
 import { FilterKeys } from 'shared/types/filterPanel'
 
 import s from './examplePage.module.scss'
-import { card_stocks_info } from 'shared/mocks/mock_cardStocksInfo'
 
 export const ExamplePage: FC = () => {
   const sliderItem = event_slider_mock.map((card, idx) => (
     <EventsCard {...card} key={idx} />
   ))
+
   const [openPasswordRecovery, setOpenPasswordRecovery] =
     useState<boolean>(false)
   const [openBuyStock, setOpenBuyStock] = useState<boolean>(false)
@@ -62,7 +63,6 @@ export const ExamplePage: FC = () => {
     lineBusiness: false,
     popularity: false,
   })
-  console.log(defaultValue)
 
   const stockHorizonData = {
     ...mock__stock_card[1],
@@ -96,7 +96,7 @@ export const ExamplePage: FC = () => {
       </Wrapper>
 
       <Wrapper text='Slider'>
-        <EventSection title='EVENTS' cards={event_slider_mock} />
+        <EventSection cards={event_slider_mock} />
       </Wrapper>
 
       <Wrapper text='LeaderboardList'>
