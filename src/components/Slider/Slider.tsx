@@ -1,16 +1,14 @@
 import { FC, ReactNode } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import cn from 'classnames'
+import { Navigation, Pagination } from 'swiper'
 
-import { A11y, Navigation, Pagination, Autoplay } from 'swiper'
+import ArrowIcon from '/public/assets/icons/Arrow.svg'
 
 import s from './slider.module.scss'
-
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-
-import ArrowIcon from '/public/assets/icons/Arrow.svg'
 
 interface SliderProps {
   children: ReactNode[] | []
@@ -54,28 +52,28 @@ export const Slider: FC<SliderProps> = ({
           </div>
         </div>
       )}
-      <Swiper
-        autoHeight={true}
-        modules={[Navigation, Pagination, A11y, Autoplay]}
-        spaceBetween={spaceBetween}
-        slidesPerView={slidesPerView}
-        navigation={navigationOptions || false}
-        pagination={paginationOptions}
-        centeredSlides={centeredSlides}
-        initialSlide={children.length - 1}
-        breakpoints={breakpoints}
-        allowSlideNext={false}
-        zoom={true}
-        loop={true}
-      >
-        {children.length
-          ? children.map((child, idx) => (
-            <SwiperSlide className={cn(s['swiper-slide'])} key={idx}>
-              {child}
-            </SwiperSlide>
-          ))
-          : null}
-      </Swiper>
+
+      <div className={s.slider}>
+        <Swiper
+          autoHeight={true}
+          modules={[Navigation, Pagination]}
+          spaceBetween={spaceBetween}
+          slidesPerView={slidesPerView}
+          navigation={navigationOptions || false}
+          pagination={paginationOptions}
+          centeredSlides={centeredSlides}
+          initialSlide={children.length - 1}
+          breakpoints={breakpoints}
+        >
+          {children.length
+            ? children.map((child, idx) => (
+                <SwiperSlide className={cn(s['swiper-slide'])} key={idx}>
+                  {child}
+                </SwiperSlide>
+              ))
+            : null}
+        </Swiper>
+      </div>
     </>
   )
 }

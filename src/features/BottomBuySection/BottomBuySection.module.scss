@@ -1,0 +1,37 @@
+@use 'styles/style' as *;
+
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 8px;
+  width: 98%;
+  height: 80px;
+  position: relative;
+  background: $color-white;
+  border: 1px solid $color-gray-01;
+  box-shadow: 0px 5px 10px $color-black-08;
+  backdrop-filter: blur(63.6903px);
+  border-radius: 16px;
+  padding: 10px;
+}
+
+.cards {
+  height: 60px;
+  display: flex;
+  z-index: 1;
+  gap: 8px;
+  overflow-x: auto;
+}
+
+.cards::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+.button {
+  min-width: 180px;
+  height: 56px;
+  white-space: none;
+}

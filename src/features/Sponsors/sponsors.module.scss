@@ -1,0 +1,38 @@
+@use 'styles/style' as *;
+.wrap {
+  margin: 190px 0;
+}
+.title {
+  font-size: 100px;
+  font-weight: $fw-semibold;
+  line-height: 110px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.sponsors {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sponsor {
+  margin: 8px;
+}
+
+.sponsor:nth-child(1) {
+  margin-left: 370px;
+}
+
+.sponsor:nth-child(3) {
+  margin-right: 200px;
+}
+
+.sponsor:nth-child(4) {
+  margin-left: 230px;
+}
+
+.sponsor:nth-child(8) {
+  margin-left: 100px;
+}

@@ -1,28 +1,32 @@
-import { FC, ReactNode } from 'react'
+import { FC } from 'react'
+
 import { EventsCard, EventSlider } from 'components'
+
+import { Events, EventsList } from 'shared/types/events'
+
 import s from './event.module.scss'
-import { EventsList } from 'shared/types/events'
 
 interface EventSectionTitle {
-  title: string
+  cards: Events[]
 }
 
-export const EventSection: FC<EventsList & EventSectionTitle> = ({ cards, title }) => {
+export const EventSection: FC<EventsList & EventSectionTitle> = ({ cards }) => {
   return (
-    <div className={s.eventSection}>
-      <div className={s.title}>{title}</div>
+    <div className={s.eventSection} id={'event'}>
+      <div className={s.title}>EVENTS</div>
+
       <EventSlider
         slidesPerView={3.3}
         spaceBetween={24}
         withNavigation={true}
         withPagination={true}
         nextEl={'btnNext'}
-        prevEl={'btnPreve'}
+        prevEl={'btnPrev'}
       >
         {cards.map(card => (
           <EventsCard key={card.id} {...card} />
         ))}
       </EventSlider>
-    </div >
+    </div>
   )
 }

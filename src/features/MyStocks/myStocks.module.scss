@@ -63,26 +63,15 @@
 }
 .userInfo {
   display: flex;
-  gap: 40px;
-  & > div {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    &:not(:last-child){
-        padding-right: 60px;
-        border-right: 1px solid #EBEBEB;
-    }
-  }
 }
 
-.currency{
-    font-size: 35px;
-    line-height: 60px;
+.currency {
+  font-size: 35px;
+  line-height: 60px;
 }
 
-.userCard{
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
+.userCard {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
 }

@@ -1,0 +1,112 @@
+@use 'styles/style' as *;
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.wrapperAvatar {
+  display: flex;
+  align-items: center;
+}
+
+.wrapperBalance {
+  display: flex;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  border-radius: 100%;
+  border: 12px solid $color-white;
+  box-shadow: $box-shadow-08;
+  background: $color-white;
+}
+
+.changeAvatar {
+  padding: 0 132px 0 60px;
+}
+
+.labelUpload {
+  color: $color-blue;
+  cursor: pointer;
+}
+
+.textUpload {
+  margin-top: 12px;
+}
+
+.inputUpload {
+  display: none;
+}
+
+.iconUpload {
+  width: 64px;
+  height: 64px;
+  background: $color-white;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.wrapperField {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(356px, 1fr));
+}
+
+.field {
+  max-width: 356px;
+  text-align: start;
+  margin-top: 60px;
+}
+
+.wrapperFullField {
+  text-align: start;
+  margin-top: 60px;
+}
+
+.wrapperFlexField {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flexField {
+  width: 556px;
+  text-align: start;
+  margin-top: 60px;
+}
+
+.textField {
+  margin-top: 14px;
+}
+
+.labelField {
+  font-weight: $fw-semibold;
+  font-size: 18px;
+  color: $color-gray-a5;
+}
+
+.requiredField {
+  color: $color-red;
+}
+
+.btnsAction {
+  display: flex;
+  justify-content: center;
+  margin-top: 98px;
+
+  :last-child {
+    margin-left: 32px;
+  }
+}
+
+.errMessage {
+  color: $color-red;
+}
+
+.btnCancel {
+  background: #eef2fc;
+  color: $color-blue;
+}
