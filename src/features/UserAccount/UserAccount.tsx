@@ -60,7 +60,7 @@ export const UserAccount: React.FC = () => {
           <div className={s.changeAvatar}>
             <label htmlFor='file-upload' className={s.labelUpload}>
               <div className={s.iconUpload}>
-                <Image src={mock_user_icons.camera} width={30} height={25} />
+                <Image src={mock_user_icons.camera} width={30} height={25} alt='user image'/>
               </div>
               <input
                 type='file'
