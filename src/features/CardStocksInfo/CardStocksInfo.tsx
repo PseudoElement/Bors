@@ -11,7 +11,7 @@ import s from './cardStocksInfo.module.scss'
 
 interface CardStocksInfoProps extends Stocks {
   currencyValue: string
-  countryImage: ImageProps['src']
+  countryImage?: ImageProps['src']
   country: string
   tag: string[]
   textInfoCard: string

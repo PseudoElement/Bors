@@ -1,5 +1,5 @@
-import { LeaderboardItems } from './LeaderboardItems/LeaderboardItems';
-import { Button } from './Button/Button'
+import { LeaderboardItems } from './LeaderboardItems/LeaderboardItems'
+import { Button } from './Button'
 import { Wrapper } from './Wrapper'
 import { Input } from './Input/Input'
 import { Popup } from './Popup/Popup'
@@ -13,8 +13,11 @@ import { StockHorizonCard } from './StockHorizonCard/StockHorizonCard'
 import { Tag } from './Tag/Tag'
 import { Indicator } from './Indicator/Indicator'
 import { BuyStockItem } from './BuyStockItem/BuyStockItem'
+import { Sponsor } from './Sponsor/Sponsor';
 import { LoginForm } from './LoginForm/LoginForm';
 import { RegistrationForm } from './RegistrationForm/RegistrationForm';
+import { Balance } from './Balance/Balance'
+import Counter from './Counter/Counter'
 
 export {
   Button,
@@ -32,8 +35,9 @@ export {
   Indicator,
   Card,
   EventSlider,
+  Sponsor,
   LoginForm,
-  RegistrationForm
+  RegistrationForm,
+  Balance,
+  Counter
 }
-
-

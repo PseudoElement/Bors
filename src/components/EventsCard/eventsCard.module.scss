@@ -1,66 +1,97 @@
 @use 'styles/style' as *;
 
-.card{
-    width: 100%;
-    max-width: 580px;
-    height: 611px;
-    padding: 150px 52px 40px 52px;
-    border-radius: 24px;
-    background: $color-white-01;
-    box-shadow: 0px 5px 10px $color-shadow-0-8;
-    backdrop-filter: blur(63.6903px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-sizing: border-box;
+.cardWrap {
+  position: relative;
 }
 
-.image{
-    position: absolute;
-    top: -100px;
+.card {
+  width: 100%;
+  max-width: 580px;
+  min-height: 611px;
+  padding: 140px 52px 40px 52px;
+  border-radius: 24px;
+  background: $color-white-01;
+  box-shadow: 0 5px 10px $color-shadow-0-8;
+  backdrop-filter: blur(63.6903px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-.date{
-    display: flex;
-    justify-content: center;
-    column-gap: 10px;
-    font-size: 32px;
-    text-transform: capitalize;
+.image {
+  margin-bottom: -100px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
 }
 
-.fakeBtn{
-    margin: 10px auto 0px;
-    width: 133px;
-    height: 43px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 85px;
-    border: 1px solid red;
+.shadow {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 200px;
+  width: 100px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.34);
+  filter: blur(50px);
 }
 
-.title{
-    font-size: 24px;
-    font-weight: $fw-bold;
-    margin: 39px auto 0px;
-    text-align: center;
-    max-width: 476px;
+.date {
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+  font-size: 32px;
+  text-transform: capitalize;
 }
 
-.description{
-    margin-top: 20px;
-    text-align: center;
-    max-width: 476px;
-    color: $color-gray-54;
+.title {
+  font-size: 24px;
+  font-weight: $fw-bold;
+  margin: 39px auto 0;
+  text-align: center;
+  max-width: 476px;
 }
 
-.fakeBtn2{
-    margin-top: auto;
-    width: 133px;
-    height: 43px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 85px;
-    border: 1px solid red;
+.description {
+  margin-top: 20px;
+  text-align: center;
+  max-width: 476px;
+  color: $color-gray-54;
+}
+
+.button {
+  margin-top: 20px;
+  padding: 15px 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.customButton {
+  margin-top: 23px;
+  padding: 13px 30px;
+  border-radius: 85px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient($color-white, $color-white) padding-box,
+    $border-gradient-access border-box;
+  position: relative;
+  border: 1.5px solid transparent;
+}
+
+.btnTitle {
+  background: linear-gradient(90deg, #8925ff 0%, #e53ff3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.8px;
+  font-size: 15px;
+  font-weight: $fw-extrabold;
+  text-transform: uppercase;
 }

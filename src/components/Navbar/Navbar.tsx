@@ -1,8 +1,11 @@
-import { FC, useState } from 'react'
+import { FC, useState, useContext } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
+import { TabContext } from 'context/TabProvider'
+
 import AccountImg from '/public/assets/icons/accountImg.svg'
+
 import s from './navbar.module.scss'
 
 interface Variant {
@@ -10,8 +13,12 @@ interface Variant {
 }
 
 export const Navbar: FC<Variant> = ({ variant }) => {
+
   const [activeLink, setActiveLink] = useState<string>('Buy Stocks')
-  return variant === 'unauthorised' ? (
+
+  const { setActiveTab } = useContext(TabContext)
+
+  return variant === 'authorised' ? (
     <nav className={s.nav2}>
       <div className={s.logoGroup2}>
         <Image
@@ -32,31 +39,33 @@ export const Navbar: FC<Variant> = ({ variant }) => {
 
       <ul>
         <li
-          onClick={() => setActiveLink('Buy Stocks')}
+          onClick={() => { setActiveLink('Buy Stocks') }}
           id='Buy Stocks'
           className={
             activeLink === 'Buy Stocks' ? s.link + ' ' + s.active : s.link
           }
         >
-          <Link href='#'>Buy Stocks</Link>
+          <div onClick={() => setActiveTab('Buy Stocks')}>Buy Stocks</div>
         </li>
+
         <li
-          onClick={() => setActiveLink('Rersonal Account')}
-          id='Rersonal Account'
+          onClick={() => { setActiveLink('Personal Account') }}
+          id='Personal Account'
           className={
-            activeLink === 'Rersonal Account' ? s.link + ' ' + s.active : s.link
+            activeLink === 'Personal Account' ? s.link + ' ' + s.active : s.link
           }
         >
-          <Link href='#'>Rersonal Account</Link>
+          <div onClick={() => setActiveTab('Personal Account')}>Personal Account</div>
         </li>
+
         <li
-          onClick={() => setActiveLink('My Stocks')}
+          onClick={() => { setActiveLink('My Stocks') }}
           id='My Stocks'
           className={
             activeLink === 'My Stocks' ? s.link + ' ' + s.active : s.link
           }
         >
-          <Link href='#'>My Stocks</Link>
+          <div onClick={() => setActiveTab('My Stocks')}>My Stocks</div>
         </li>
       </ul>
 
@@ -73,12 +82,16 @@ export const Navbar: FC<Variant> = ({ variant }) => {
             />
           </div>
         </div>
+
         <div className={s.verticalLine}></div>
+
         <div className={s.userBalance}>
           <div>Balance</div>
           <span>8.983,66 sek</span>
         </div>
+
         <div className={s.verticalLine}></div>
+
         <Image
           src='/assets/icons/logout.svg'
           width={24}
@@ -92,20 +105,25 @@ export const Navbar: FC<Variant> = ({ variant }) => {
     <nav className={s.nav1}>
       <ul>
         <li>
-          <Link href='#'>About the platform</Link>
+          <Link href='#about'>About the platform</Link>
         </li>
+
         <li>
-          <Link href='#'>Events</Link>
+          <Link href='#event'>Events</Link>
         </li>
+
         <li>
-          <Link href='#'>Leaderboard</Link>
+          <Link href='#leaderboard'>Leaderboard</Link>
         </li>
+
         <li>
-          <Link href='#'>Sponsors</Link>
+          <Link href='#sponsors'>Sponsors</Link>
         </li>
+
         <li>
-          <Link href='#'>Contacts</Link>
+          <Link href='#contacts'>Contacts</Link>
         </li>
+
         <li>
           <Link href='#'>Stock</Link>
         </li>

@@ -1,7 +1,4 @@
-import { FC } from 'react'
-
 import Image from 'next/image'
-
 import { SubmitHandler, useForm, Controller } from 'react-hook-form'
 
 import { Button, Input } from 'components'
@@ -12,7 +9,7 @@ import s from './fillRequest.module.scss'
 
 type EmailRecoveryFormProps = { email: string }
 
-export const FillRequest: FC = () => {
+export const FillRequest = () => {
   const {
     control,
     handleSubmit,
@@ -29,7 +26,7 @@ export const FillRequest: FC = () => {
   }
 
   return (
-    <div className={s.fillrequest}>
+    <div className={s.fillrequest} id={'contacts'}>
       <div className={s.fillrequestWrapper}>
         <form className={s.fillrequestAuth}>
           <h3 className={s.fillrequestTitle}>

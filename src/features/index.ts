@@ -1,4 +1,4 @@
-import { LeaderboardList } from './LeaderboardList/LeaderboardList';
+import { LeaderboardList } from './LeaderboardList/LeaderboardList'
 import { Layout } from './Layout/Layout'
 import { Header } from './Header/Header'
 import { Footer } from './Footer/Footer'
@@ -10,8 +10,12 @@ import { FiltersPanel } from './FiltersPanel/FiltersPanel'
 import { BuyStockList } from './BuyStockList/BuyStockList'
 import { FillRequest } from './FillRequest/FillRequest'
 import { MyStocks } from './MyStocks/MyStocks'
-import { LoginRegistrationModal } from './LoginRegistrationModal/LoginRegistrationModal';
-import { CardStocksInfo } from './CardStocksInfo/CardStocksInfo';
+import { LoginRegistrationModal } from './LoginRegistrationModal/LoginRegistrationModal'
+import { CardStocksInfo } from './CardStocksInfo/CardStocksInfo'
+import { BottomBuySection } from './BottomBuySection/BottomBuySection'
+import { Sponsors } from './Sponsors/Sponsors'
+import { UserAccount } from './UserAccount/UserAccount'
+import { BuyStock } from './BuyStock/BuyStock'
 
 export {
   Layout,
@@ -26,6 +30,10 @@ export {
   BuyStockList,
   FillRequest,
   MyStocks,
+  UserAccount,
+  Sponsors,
   LoginRegistrationModal,
-  CardStocksInfo
+  CardStocksInfo,
+  BottomBuySection,
+  BuyStock
 }

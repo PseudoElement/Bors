@@ -1,6 +1,6 @@
 import { MainPage } from './MainPage/MainPage';
 import { HomePage } from './HomePage/HomePage'
 import { ExamplePage } from './ExamplePage/ExamplePage'
-import { BuyStocksPage } from './BuyStocksPage/BuyStocksPage';
+import { ProfilePage } from './ProfilePage/ProfilePage';
 
-export { ExamplePage, HomePage, MainPage, BuyStocksPage }
+export { ExamplePage, HomePage, MainPage, ProfilePage }

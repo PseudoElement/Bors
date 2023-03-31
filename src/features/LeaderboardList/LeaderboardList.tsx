@@ -1,17 +1,17 @@
 import { FC } from 'react'
-import { PropsLeaderboardList } from 'shared/types/leaderboard'
 
 import { LeaderboardItems, Slider } from 'components'
+
+import { PropsLeaderboardList } from 'shared/types/leaderboard'
 
 import s from './LeaderboardList.module.scss'
 
 export const LeaderboardList: FC<PropsLeaderboardList> = ({ boards }) => {
-  // boards.unshift(boards.pop() as any);
-  // console.log(boards)
 
   return (
-    <>
+    <div id={'leaderboard'}>
       <h2 className={s.leaderboardListTitle}>Leaderboard</h2>
+
       <Slider slidesPerView={1} spaceBetween={30}>
         {boards.map((board) => (
           <div className={s.loaderBoard} key={board.id}>
@@ -42,6 +42,6 @@ export const LeaderboardList: FC<PropsLeaderboardList> = ({ boards }) => {
           </div>
         ))}
       </Slider>
-    </>
+    </div>
   )
 }

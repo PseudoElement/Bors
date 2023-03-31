@@ -3,8 +3,9 @@
 .slider {
   position: relative;
   width: 100%;
-  padding: 0 65px;
+  padding: 110px 65px 80px;
   box-sizing: border-box;
+  height: auto;
 
   &>div {
     overflow: visible;
@@ -16,8 +17,7 @@
     align-items: center;
     gap: 24px;
     position: absolute;
-    bottom: 15px;
-    height: fit-content;
+    bottom: -60px;
 
     @include mobile-tablet {
       gap: 10px;
@@ -31,7 +31,6 @@
 
   [class*='swiper'] {
     overflow: visible;
-    height: 720px;
   }
 
   [class='swiper-pagination-bullet'] {
@@ -73,7 +72,6 @@
   }
 
   .swiperButtonNext {
-    bottom: 0;
     width: 52px;
     height: 52px;
     background: $color-shadow-0-4;
@@ -90,11 +88,10 @@
 
 .navigationButton {
   position: relative;
-  bottom: 30px;
+  bottom: -45px;
   margin: 0 auto;
   max-width: 470px;
   width: 100%;
-
   @include mobile-tablet {
     max-width: 600px;
   }

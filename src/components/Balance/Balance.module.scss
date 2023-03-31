@@ -1,0 +1,62 @@
+@use 'styles/style' as *;
+
+.wrapper {
+  display: flex;
+  padding: 0px 40px;
+  border-right: 1px solid $color-gray-eb;
+}
+
+.wrapper:first-child {
+  padding-left: 0px;
+}
+
+.wrapper:last-child {
+  border-right: none;
+  padding-right: 0px;
+}
+
+.wrapperContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.title {
+  font-style: normal;
+  font-weight: $fw-semibold;
+  font-size: 18px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: $color-gray-a5;
+}
+
+.content {
+  display: flex;
+  gap: 10px;
+  background: $password-gradient;
+  background-clip: text;
+  color: transparent;
+  font-style: normal;
+  font-weight: $fw-bold;
+  font-size: 48px;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+}
+
+.currency {
+  text-transform: uppercase;
+  font-size: 35px;
+}
+
+.imageProfit {
+  display: flex;
+  align-items: center;
+  color: $color-green-0d;
+}
+
+.textProfit {
+  color: md_color_green;
+  font-weight: $fw-semibold;
+  font-size: 24px;
+}
