@@ -1,8 +1,7 @@
-import { FC, useState, useContext } from 'react'
+import { FC, useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import Image from 'next/image'
-
-import { TabContext } from 'context/TabProvider'
 
 import AccountImg from '/public/assets/icons/accountImg.svg'
 
@@ -16,7 +15,14 @@ export const Navbar: FC<Variant> = ({ variant }) => {
 
   const [activeLink, setActiveLink] = useState<string>('Buy Stocks')
 
-  const { setActiveTab } = useContext(TabContext)
+  const { push } = useRouter()
+
+  useEffect(() => {
+    if (variant === 'authorised') {
+      push('/profile/buy-stocks')
+    }
+  }, [variant])
+
 
   return variant === 'authorised' ? (
     <nav className={s.nav2}>
@@ -45,7 +51,7 @@ export const Navbar: FC<Variant> = ({ variant }) => {
             activeLink === 'Buy Stocks' ? s.link + ' ' + s.active : s.link
           }
         >
-          <div onClick={() => setActiveTab('Buy Stocks')}>Buy Stocks</div>
+          <Link href={'/profile/buy-stocks'}><a>Buy Stocks</a></Link>
         </li>
 
         <li
@@ -55,7 +61,7 @@ export const Navbar: FC<Variant> = ({ variant }) => {
             activeLink === 'Personal Account' ? s.link + ' ' + s.active : s.link
           }
         >
-          <div onClick={() => setActiveTab('Personal Account')}>Personal Account</div>
+          <Link href={'/profile/personal-account'}><a>Personal Account</a></Link>
         </li>
 
         <li
@@ -65,7 +71,7 @@ export const Navbar: FC<Variant> = ({ variant }) => {
             activeLink === 'My Stocks' ? s.link + ' ' + s.active : s.link
           }
         >
-          <div onClick={() => setActiveTab('My Stocks')}>My Stocks</div>
+          <Link href={'/profile/my-stocks'}><a>My Stocks</a></Link>
         </li>
       </ul>
 
