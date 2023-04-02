@@ -4,6 +4,7 @@
 }
 .title {
   font-size: 100px;
+  font-weight: $fw-medium;
   font-weight: $fw-semibold;
   line-height: 110px;
   letter-spacing: 0.1em;
@@ -11,28 +12,17 @@
   text-transform: uppercase;
 }
 
-.sponsors {
-  margin-top: 50px;
-  display: flex;
-  flex-wrap: wrap;
+.firstLine {
+    display: flex;
+    justify-content: center;
 }
 
-.sponsor {
-  margin: 8px;
+.secondLine {
+    display: flex;
+    justify-content: center;
 }
 
-.sponsor:nth-child(1) {
-  margin-left: 370px;
-}
-
-.sponsor:nth-child(3) {
-  margin-right: 200px;
-}
-
-.sponsor:nth-child(4) {
-  margin-left: 230px;
-}
-
-.sponsor:nth-child(8) {
-  margin-left: 100px;
+.thirdLine {
+    display: flex;
+    justify-content: center;
 }

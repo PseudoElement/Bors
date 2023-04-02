@@ -1,6 +1,8 @@
-import { FC, useState, useEffect } from 'react'
+import { FC, useState, useEffect, useRef } from 'react'
 
 import { LoginForm, RegistrationForm } from 'components'
+
+import { useClickOutside } from 'shared/hooks/useClickOutside'
 
 import s from './loginRegistrationModal.module.scss'
 
@@ -14,7 +16,9 @@ export const LoginRegistrationModal: FC<LoginRegistrationModalProps> = ({
   isOpen,
 }) => {
   const [isActive, setIsActive] = useState<string>('login')
+  const overlayRef = useRef<HTMLDivElement>(null)
 
+  useClickOutside(overlayRef, onClose)
   useEffect(() => {
     if (isOpen === true) {
       document.body.style.overflow = 'hidden'
@@ -28,22 +32,28 @@ export const LoginRegistrationModal: FC<LoginRegistrationModalProps> = ({
   }
 
   return (
-    <div onClick={e => e.stopPropagation()} className={s.modal}>
-      <div className={s.title}>
-        <span
-          onClick={() => setIsActive('login')}
-          className={isActive === 'login' ? s.activeTitle : ''}
-        >
-          Login
-        </span>{' '}
-        <span
-          onClick={() => setIsActive('registration')}
-          className={isActive === 'registration' ? s.activeTitle : ''}
-        >
-          / Registration
-        </span>
+    <div className={s.popupOverlay} ref={!isOpen ? overlayRef : null}>
+      <div
+        onClick={e => e.stopPropagation()}
+        className={s.modal}
+        ref={isOpen ? overlayRef : null}
+      >
+        <div className={s.title}>
+          <span
+            onClick={() => setIsActive('login')}
+            className={isActive === 'login' ? s.activeTitle : ''}
+          >
+            Login
+          </span>{' '}
+          <span
+            onClick={() => setIsActive('registration')}
+            className={isActive === 'registration' ? s.activeTitle : ''}
+          >
+            / Registration
+          </span>
+        </div>
+        {isActive === 'login' ? <LoginForm /> : <RegistrationForm />}
       </div>
-      {isActive === 'login' ? <LoginForm /> : <RegistrationForm />}
     </div>
   )
 }
