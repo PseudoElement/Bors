@@ -45,8 +45,10 @@
   background: url('../../../public/assets/icons/eyeCrossed.png');
   background-repeat: no-repeat;
   background-size: cover;
+  width: 40px;
 }
 .input[type='password'] {
+  width: 100%;
   font-family: $font-Mont;
   font-style: normal;
   font-weight: 600;
