@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write ./src/**/*.*"
+    "format": "prettier --write ./src/**/*.*",
+    "docker:start": "docker-compose up -d --build",
+    "docker:stop": "docker-compose down"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
