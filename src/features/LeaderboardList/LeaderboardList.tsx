@@ -10,12 +10,17 @@ export const LeaderboardList: FC<PropsLeaderboardList> = ({ boards }) => {
 
   return (
     <div id={'leaderboard'}>
-      <h2 className={s.leaderboardListTitle}>Leaderboard</h2>
-
-      <Slider slidesPerView={1} spaceBetween={30}>
+      <h2 className={s.leaderboardListTitle}>
+        Leader <br className={s.leaderboardBr} /> <span>board</span>
+      </h2>
+      <h2 className={s.leaderboardTitle}>March 17, 2023</h2>
+      <Slider
+        slidesPerView={2}
+        spaceBetween={90}
+        centeredSlides={true}
+      >
         {boards.map((board) => (
           <div className={s.loaderBoard} key={board.id}>
-            <h2 className={s.leaderboardTitle}>March 17, 2023</h2>
             <div className={s.leaderboardList}>
               <div className={s.leaderboardWrapper}>
                 <div className={s.leaderboardInfo}>
