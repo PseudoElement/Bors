@@ -11,7 +11,7 @@ import s from './cardStocksInfo.module.scss'
 
 interface CardStocksInfoProps extends Stocks {
   currencyValue: string
-  countryImage?: ImageProps['src']
+  countryImage?: ImageProps['src'] | undefined
   country: string
   tag: string[]
   textInfoCard: string
@@ -50,7 +50,7 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
           </div>
         </div>
         <div className={s.countryCard}>
-          <Image width={36} height={36} src={countryImage} alt='country icon'/>
+          <Image width={36} height={36} src={countryImage!} alt='country icon'/>
           <div className={s.countryInfo}>
             <span className={s.countryIssuer}>Country of the issuer</span>
             <span className={s.country}>{country}</span>

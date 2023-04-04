@@ -92,7 +92,7 @@ export const ExamplePage: FC = () => {
         <button onClick={() => setOpenPopup(true)}>Popup</button>
       </Wrapper>
       <Wrapper text='Bottom Buy Section'>
-        <BottomBuySection stocks={mock__stock_card} />
+        <BottomBuySection stocks={mock__stock_card}  onClose={() => console.log(1)}/>
       </Wrapper>
       <Wrapper text={'Events Card'}>
         <EventsCard {...mock__event_card} />
