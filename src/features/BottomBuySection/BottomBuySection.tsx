@@ -6,11 +6,15 @@ import { StocksList } from 'shared/types/stocks'
 
 import s from './BottomBuySection.module.scss'
 
-export const BottomBuySection: FC<StocksList> = ({ stocks }) => {
+interface BottomBuySectionProps extends StocksList {
+  onClose: () => void
+}
+
+export const BottomBuySection: FC<BottomBuySectionProps> = ({ stocks, onClose }) => {
   const dataCall = (index: number) => {
     return {
       ...stocks[index],
-      onClick: () => {},
+      onClick: () => { },
       exchangeCurrency: 'SET',
     }
   }
@@ -22,7 +26,7 @@ export const BottomBuySection: FC<StocksList> = ({ stocks }) => {
           <StockHorizonCard {...dataCall(index)} key={index} />
         ))}
       </div>
-      <Button className={s.button}>Buy Stock</Button>
+      <Button onClick={onClose} className={s.button}>Buy Stock</Button>
     </section>
   )
 }

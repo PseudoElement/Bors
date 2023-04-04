@@ -1,7 +1,9 @@
 @use 'styles/style' as *;
 
 .wrapperStocks {
-  width: 100%;
+  padding: 140px 14px 100px;
+  max-width: 1438px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -63,6 +65,8 @@
 }
 .userInfo {
   display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
 }
 
 .currency {
@@ -74,4 +78,5 @@
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
+  justify-content: center;
 }

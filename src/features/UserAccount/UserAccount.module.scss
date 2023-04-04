@@ -1,17 +1,32 @@
 @use 'styles/style' as *;
 
+.wrapper {
+  padding: 140px 16px 100px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
 .header {
   display: flex;
   align-items: center;
+  @media screen and (max-width: 1440px) {
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 32px;
+  }
 }
 
 .wrapperAvatar {
   display: flex;
   align-items: center;
+  column-gap: 30px;
 }
 
 .wrapperBalance {
   display: flex;
+  @media screen and (max-width: 1440px) {
+    flex-direction: column;
+  }
 }
 
 .avatar {
@@ -25,6 +40,9 @@
 
 .changeAvatar {
   padding: 0 132px 0 60px;
+  @media screen and (max-width: 1440px) {
+    padding: 0;
+  }
 }
 
 .labelUpload {
@@ -53,12 +71,18 @@
 .wrapperField {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(356px, 1fr));
+  @include tablet-mobile {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .field {
-  max-width: 356px;
+  width: 356px;
   text-align: start;
   margin-top: 60px;
+  @include tablet-mobile {
+    width: 100%;
+  }
 }
 
 .wrapperFullField {
@@ -70,12 +94,19 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  column-gap: 10px;
+  @include tablet-mobile {
+    flex-direction: column;
+  }
 }
 
 .flexField {
   width: 556px;
   text-align: start;
   margin-top: 60px;
+  @include tablet-mobile {
+    width: 100%;
+  }
 }
 
 .textField {
@@ -96,9 +127,16 @@
   display: flex;
   justify-content: center;
   margin-top: 98px;
+  column-gap: 32px;
+  @media screen and (max-width: 466px) {
+    flex-direction: column;
+    row-gap: 28px;
+  }
 
-  :last-child {
-    margin-left: 32px;
+  .actionBtn {
+    @media screen and (max-width: 466px) {
+      width: 100%;
+    }
   }
 }
 

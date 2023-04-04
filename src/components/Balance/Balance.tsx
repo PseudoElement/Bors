@@ -18,7 +18,7 @@ export const Balance: React.FC<BalanceProps> = ({
           {currency && <span className={s.currency}>{currency}</span>}
           {profit && (
             <div className={s.imageProfit}>
-              <Image src='/assets/icons/ArrowUp.svg' width={24} height={18} alt='arrow up'/>
+              <Image src='/assets/icons/ArrowUp.svg' width={24} height={18} alt='arrow up' />
               <span className={s.textProfit}>{profit}</span>
             </div>
           )}

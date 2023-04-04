@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { Children, FC, ReactNode, useEffect, useState } from 'react'
 import { FilterKeys } from 'shared/types/filterPanel'
 import s from './filtersPanel.module.scss'
 
@@ -25,11 +25,13 @@ const FilterItem: FC<FilterItemProps> = ({ title, onChange }) => {
 interface FiltersPanelProps {
   onChange: (value: FilterKeys) => void
   defaultValue: FilterKeys
+  children?: ReactNode
 }
 
 export const FiltersPanel: FC<FiltersPanelProps> = ({
   onChange,
   defaultValue,
+  children
 }) => {
   const [valueFilters, setValueFilters] = useState<FilterKeys>(defaultValue)
   useEffect(() => {
@@ -53,6 +55,7 @@ export const FiltersPanel: FC<FiltersPanelProps> = ({
         }
         title='By line of business'
       />
+      {children && children}
     </div>
   )
 }

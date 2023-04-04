@@ -1,7 +1,7 @@
 @use 'styles/style' as *;
 
 .buystockItem {
-  width: 250px;
+  min-width: 250px;
   height: 70px;
   background: $color-gray-f6;
   border: 1px solid $color-black-light;
@@ -21,23 +21,11 @@
 .buystockRow {
   display: flex;
   align-items: center;
+  padding-right: 16px;
+  gap: 5px;
+  border-right: 1px solid $color-blue-b2-opacity;
 
-  &::after {
-    content: '';
-    width: 40px;
-    position: absolute;
-    left: 49%;
-    top: 50%;
-    opacity: 0.15;
-    border: 1px solid $color-blue-b2;
-    transform: rotate(90deg);
-  }
-
-  >div:last-child {
-    margin-left: 8px;
-  }
-
-  +div {
+  + div {
     margin-left: 14px;
   }
 }

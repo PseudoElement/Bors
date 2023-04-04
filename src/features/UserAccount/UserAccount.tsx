@@ -2,12 +2,9 @@ import Image from 'next/image'
 
 import { Balance, Button, Input } from 'components'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
-import {
-  mock_user_balance,
-  mock_user_fields,
-  mock_user_icons,
-} from 'shared/mocks/mock_userAccount'
+import { mock_user_balance, mock_user_fields, mock_user_icons } from 'shared/mocks/mock_userAccount'
 
+import cn from 'classnames'
 import s from './UserAccount.module.scss'
 
 interface UserFieldsProps {
@@ -60,7 +57,12 @@ export const UserAccount: React.FC = () => {
           <div className={s.changeAvatar}>
             <label htmlFor='file-upload' className={s.labelUpload}>
               <div className={s.iconUpload}>
-                <Image src={mock_user_icons.camera} width={30} height={25} alt='user image'/>
+                <Image
+                  src={mock_user_icons.camera}
+                  width={30}
+                  height={25}
+                  alt='user image'
+                />
               </div>
               <input
                 type='file'
@@ -148,8 +150,10 @@ export const UserAccount: React.FC = () => {
           ))}
         </div>
         <div className={s.btnsAction}>
-          <Button type='submit'>Save changes</Button>
-          <Button type='button' className={s.btnCancel}>
+          <Button className={s.actionBtn} type='submit'>
+            Save changes
+          </Button>
+          <Button className={cn(s.actionBtn, s.btnCancel)} type='button'>
             Сancel changes
           </Button>
         </div>

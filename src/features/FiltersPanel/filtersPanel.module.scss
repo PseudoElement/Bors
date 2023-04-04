@@ -24,6 +24,12 @@
   transform: rotate(-45deg);
 }
 .filters {
+  max-width: 1438px;
   display: flex;
+  align-items: center;
   gap: 10px;
+  @media screen and (max-width: 1160px) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }

@@ -17,6 +17,7 @@ import { Sponsor } from './Sponsor/Sponsor';
 import { LoginForm } from './LoginForm/LoginForm';
 import { RegistrationForm } from './RegistrationForm/RegistrationForm';
 import { Balance } from './Balance/Balance'
+import Counter from './Counter/Counter'
 
 export {
   Button,
@@ -38,4 +39,5 @@ export {
   LoginForm,
   RegistrationForm,
   Balance,
+  Counter
 }

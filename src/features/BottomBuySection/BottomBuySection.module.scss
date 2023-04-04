@@ -4,10 +4,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
   gap: 8px;
   width: 98%;
-  height: 80px;
+  min-height: 80px;
   position: relative;
   background: $color-white;
   border: 1px solid $color-gray-01;
@@ -15,23 +14,37 @@
   backdrop-filter: blur(63.6903px);
   border-radius: 16px;
   padding: 10px;
+  @media screen and (max-width: 658px) {
+    flex-direction: column;
+  }
 }
 
 .cards {
-  height: 60px;
+  height: 67px;
   display: flex;
   z-index: 1;
   gap: 8px;
+  overflow-y: hidden;
   overflow-x: auto;
+  width: 100%;
 }
 
 .cards::-webkit-scrollbar {
-  width: 0px;
-  height: 0px;
+  width: auto;
+  height: 5px;
+  background-color: $color-black-08;
+}
+
+.cards::-webkit-scrollbar-thumb {
+  background: $border-gradient-access;
+  border-radius: 100px;
 }
 
 .button {
   min-width: 180px;
   height: 56px;
   white-space: none;
+  @media screen and (max-width: 658px) {
+    width: 100%;
+  }
 }

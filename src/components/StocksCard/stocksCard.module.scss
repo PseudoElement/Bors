@@ -13,6 +13,24 @@
   flex-direction: column;
   align-items: center;
   outline: 0.73px solid $color-black-05;
+  @media screen and (max-width: 484px) {
+    width: 210px;
+  }
+  @media screen and (max-width: 464px) {
+    width: 200px;
+  }
+  @media screen and (max-width: 444px) {
+    width: 190px;
+  }
+  @media screen and (max-width: 424px) {
+    width: 180px;
+  }
+  @media screen and (max-width: 404px) {
+    width: 175px;
+  }
+  @media screen and (max-width: 386px) {
+    width: 100%;
+  }
 }
 
 .addedItem {
@@ -20,7 +38,6 @@
   position: relative;
   box-shadow: inset 230px 3px 8px $color-gray-f6, 0px 3px 8px $color-black-08;
 }
-
 
 .image {
   margin-bottom: 39px;

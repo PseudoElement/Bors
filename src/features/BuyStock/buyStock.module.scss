@@ -1,0 +1,71 @@
+@use 'styles/style' as *;
+
+.container {
+    padding: 140px 14px 100px;
+    max-width: 1438px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 56px;
+    font-weight: $fw-bold;
+    margin-bottom: 20px;
+}
+
+.pageDescription {
+    max-width: 728px;
+    color: $color-gray-a5;
+    font-size: 20px;
+    font-weight: $fw-semibold;
+}
+
+.filterWrapper {
+    width: 100%;
+    margin-top: 40px;
+    position: relative;
+}
+
+.grid {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    row-gap: 32px;
+    column-gap: 16px;
+    flex-wrap: wrap;
+    @media screen and (max-width: 492px) {
+        row-gap: 10px;
+        column-gap: 8px;
+    }
+}
+
+.bottomBuySection {
+    margin-top: 32px;
+}
+
+.searchInput {
+    border-radius: 100px;
+    height: 58px;
+    max-width: 456px;
+    padding: 10px 22px;
+    box-shadow: none;
+    background-color: $color-gray-f6;
+    border: none;
+    input {
+        background-color: $color-gray-f6;
+        color: $color-blue;
+        padding-right: 25px;
+        &::-webkit-input-placeholder {
+            color: $color-blue;
+        }
+    }
+}
+
+.inputWrapper {
+    position: relative;
+}
+
+.searchIcon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
