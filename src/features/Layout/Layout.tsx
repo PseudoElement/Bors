@@ -1,9 +1,7 @@
 import { FC, ReactNode } from 'react'
 import { useRouter } from 'next/router'
-import { Footer } from 'features/Footer/Footer'
-import { Header } from 'features/Header/Header'
+import { Footer, Header } from 'features'
 
-import s from './layout.module.scss'
 
 type PropsLayout = {
   children: string | ReactNode

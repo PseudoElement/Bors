@@ -9,7 +9,7 @@ import { Stocks } from 'shared/types/stocks'
 
 import UpArrow from '/public/assets/image/ArrowUp.svg'
 
-import cls from 'classnames'
+import cn from 'classnames'
 import s from './stocksCard.module.scss'
 
 interface StocksCardProps extends Stocks {
@@ -44,11 +44,18 @@ export const StocksCard: FC<StocksCardProps> = ({
     setIsActiveCard(prev => !prev)
   }
 
+  useEffect(() => {
+    if (counterValue === 0) {
+      setCounterValue(1)
+      setIsActiveCard(false)
+    }
+  }, [counterValue])
+
   return (
     <>
       <div
         onClick={onShow}
-        className={cls(s.card, isActiveCard ? s.addedItem : '')}
+        className={cn(s.card, { [s.addedItem]: isActiveCard })}
       >
         <div className={s.image}>
           <Image src={image} width={56} height={56} alt='amazon logo' />

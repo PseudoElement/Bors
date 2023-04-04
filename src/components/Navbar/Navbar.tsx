@@ -159,8 +159,7 @@ export const Navbar: FC<Variant> = ({ variant }) => {
                 </div>
               </div>
             </div>
-            {
-              isOpenMenu &&
+            {isOpenMenu && (
               <div className={s.burgerMenuList}>
                 <div className={s.burgerMenuTop}>
                   <div className={s.burgerMenuTopItem}>
@@ -182,21 +181,42 @@ export const Navbar: FC<Variant> = ({ variant }) => {
                 </div>
                 <div className={s.linkItem}>
                   <Link href={'/profile/buy-stocks'}>
-                    <a onClick={() => setActiveLink('Buy Stocks')} className={cn(s.burgerLink, { [s.active]: activeLink === 'Buy Stocks' })}>Buy Stocks</a>
+                    <a
+                      onClick={() => setActiveLink('Buy Stocks')}
+                      className={cn(s.burgerLink, {
+                        [s.active]: activeLink === 'Buy Stocks',
+                      })}
+                    >
+                      Buy Stocks
+                    </a>
                   </Link>
                 </div>
                 <div className={s.linkItem}>
                   <Link href={'/profile/personal-account'}>
-                    <a onClick={() => setActiveLink('Personal account')} className={cn(s.burgerLink, { [s.active]: activeLink === 'Personal account' })}>Personal account</a>
+                    <a
+                      onClick={() => setActiveLink('Personal account')}
+                      className={cn(s.burgerLink, {
+                        [s.active]: activeLink === 'Personal account',
+                      })}
+                    >
+                      Personal account
+                    </a>
                   </Link>
                 </div>
                 <div className={s.linkItem}>
                   <Link href={'/profile/my-stocks'}>
-                    <a onClick={() => setActiveLink('My Stocks')} className={cn(s.burgerLink, { [s.active]: activeLink === 'My Stocks' })}>My Stocks</a>
+                    <a
+                      onClick={() => setActiveLink('My Stocks')}
+                      className={cn(s.burgerLink, {
+                        [s.active]: activeLink === 'My Stocks',
+                      })}
+                    >
+                      My Stocks
+                    </a>
                   </Link>
                 </div>
               </div>
-            }
+            )}
           </nav>
         )
       ) : (
