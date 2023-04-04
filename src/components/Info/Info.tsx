@@ -14,10 +14,10 @@ export const Card: FC<{ title: string; image: string }> = ({
         dangerouslySetInnerHTML={{ __html: title }}
       ></p>
       <div className={s.cardImageWrapper}>
-        <Image className={s.cardImage} src={image} width={210} height={210} />
+        <Image className={s.cardImage} src={image} width={210} height={210} alt='info card'/>
       </div>
       <div className={s.cardImageWrapper}>
-        <Image className={s.cardImage} src={image} width={210} height={210} />
+        <Image className={s.cardImage} src={image} width={210} height={210} alt='info card'/>
       </div>
     </div>
   )

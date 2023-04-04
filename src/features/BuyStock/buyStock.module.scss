@@ -1,23 +1,22 @@
 @use 'styles/style' as *;
 
 .container {
-    padding-top: 140px;
-    padding-bottom: 100px;
-    max-width: 1400px;
+    padding: 140px 14px 100px;
+    max-width: 1438px;
     margin: 0 auto;
 }
 
 .title {
     font-size: 56px;
-    font-weight: 700;
+    font-weight: $fw-bold;
     margin-bottom: 20px;
 }
 
 .pageDescription {
     max-width: 728px;
-    color: #a5a5a5;
+    color: $color-gray-a5;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: $fw-semibold;
 }
 
 .filterWrapper {
@@ -28,10 +27,15 @@
 
 .grid {
     margin-top: 32px;
-    display: grid;
+    display: flex;
+    justify-content: center;
     row-gap: 32px;
     column-gap: 16px;
-    grid-template-columns: repeat(6, 220px);
+    flex-wrap: wrap;
+    @media screen and (max-width: 492px) {
+        row-gap: 10px;
+        column-gap: 8px;
+    }
 }
 
 .bottomBuySection {
@@ -41,17 +45,17 @@
 .searchInput {
     border-radius: 100px;
     height: 58px;
-    width: 456px;
+    max-width: 456px;
     padding: 10px 22px;
     box-shadow: none;
-    background-color: #f6f9fc;
+    background-color: $color-gray-f6;
     border: none;
     input {
-        background-color: #f6f9fc;
-        color: #0a39b2;
+        background-color: $color-gray-f6;
+        color: $color-blue;
         padding-right: 25px;
         &::-webkit-input-placeholder {
-            color: #0a39b2;
+            color: $color-blue;
         }
     }
 }

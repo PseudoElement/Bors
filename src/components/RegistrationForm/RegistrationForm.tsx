@@ -46,7 +46,7 @@ export const RegistrationForm: FC = () => {
                 <Controller
                     name='name'
                     control={control}
-                    rules={{ required: 'is name required' }}
+                    rules={{ required: 'name is required' }}
                     render={({ field: { onChange, value } }) => (
                         <Input value={value!} onChange={onChange} />
                     )}
@@ -61,7 +61,7 @@ export const RegistrationForm: FC = () => {
                 <Controller
                     name='email'
                     control={control}
-                    rules={{ required: 'is email required' }}
+                    rules={{ required: 'email is required' }}
                     render={({ field: { onChange, value } }) => (
                         <Input type='email' value={value} onChange={onChange} />
                     )}
@@ -76,7 +76,7 @@ export const RegistrationForm: FC = () => {
                 <Controller
                     name='password'
                     control={control}
-                    rules={{ required: 'is password required', minLength: 6 }}
+                    rules={{ required: 'password is required', minLength: 6 }}
                     render={({ field: { onChange, value } }) => (
                         <Input withIcon={true} value={value} onChange={onChange} />
                     )}
@@ -92,7 +92,7 @@ export const RegistrationForm: FC = () => {
                     name='confirmPassword'
                     control={control}
                     rules={{
-                        required: 'is confirm password required',
+                        required: 'password confirmation is required',
                         minLength: 6,
                         validate: (value: string, data: FormInputProps) =>
                             value === data.password || "Passwords doesn't match",
@@ -115,7 +115,7 @@ export const RegistrationForm: FC = () => {
             </Button>
 
             <p className={s.agreeInfo}>
-                By clicking the "Register" button, I consent to the collection and
+                By clicking the &quot;Register&quot; button, I consent to the collection and
                 processing of my personal data in accordance with the{' '}
                 <Link href={'#'}>
                     <a className={s.link}>Policy</a>

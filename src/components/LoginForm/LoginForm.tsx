@@ -38,7 +38,7 @@ export const LoginForm: FC = () => {
                 <Controller
                     name='email'
                     control={control}
-                    rules={{ required: 'is email required' }}
+                    rules={{ required: 'email is required' }}
                     render={({ field: { onChange, value } }) => (
                         <Input type='email' value={value} onChange={onChange} />
                     )}
@@ -56,7 +56,7 @@ export const LoginForm: FC = () => {
                 <Controller
                     name='password'
                     control={control}
-                    rules={{ required: 'is password required' }}
+                    rules={{ required: 'password is required' }}
                     render={({ field: { onChange, value } }) => (
                         <Input withIcon={true} value={value} onChange={onChange} />
                     )}

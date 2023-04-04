@@ -6,7 +6,7 @@
   margin: 24px auto;
   max-width: $max-layout-width;
   width: 100%;
-
+  column-gap: 20px;
   font-weight: 400;
   font-size: 18px;
   line-height: 110%;
@@ -16,6 +16,7 @@
 
   ul {
     display: flex;
+    column-gap: 15px;
     justify-content: space-between;
     align-items: center;
     width: 76%;
@@ -23,8 +24,11 @@
     padding: 0;
   }
 
-  li{
+  li {
     cursor: pointer;
+    @media screen and (max-width: 1157px) {
+      font-size: 16px;
+    }
   }
 
   button {
@@ -73,12 +77,27 @@
   backdrop-filter: blur(63.7px);
   border-radius: 16px;
 
+  @media screen and (max-width: 1500px) {
+    column-gap: 30px;
+  }
+
+  .logoText2 {
+    display: flex;
+    align-items: center;
+    @media screen and (max-width: 1390px) {
+      display: none;
+    }
+  }
+
   .logoGroup2 {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 246px;
     margin-left: 23px;
+    @media screen and (max-width: 1390px) {
+      width: max-content;
+    }
   }
 
   ul {
@@ -99,6 +118,9 @@
     text-transform: uppercase;
     color: $color-gray-54;
     cursor: pointer;
+    @media screen and (max-width: 1062px) {
+      font-size: 16px;
+    }
   }
   .active {
     font-weight: 800;
@@ -127,7 +149,7 @@
     display: flex;
     align-items: center;
 
-    font-weight: 700;
+    font-weight: $fw-bold;
     font-size: 22px;
     line-height: 100%;
     letter-spacing: -0.03em;
@@ -138,17 +160,13 @@
     margin-left: 16px;
     border-radius: 50%;
   }
-  .verticalLine {
-    height: 0;
-    width: 40px;
-    border: 1px solid $color-gray-eb;
-    transform: rotate(90deg);
-    margin: 20px 0;
-  }
   .userBalance {
+    padding: 0 20px;
+    border-right: 1px solid $color-gray-eb;
+    margin-right: 20px;
     & div {
       margin-bottom: 6px;
-      font-weight: 600;
+      font-weight: $fw-semibold;
       font-size: 13px;
       line-height: 100%;
       letter-spacing: 0.07em;
@@ -157,7 +175,7 @@
     }
 
     & span {
-      font-weight: 700;
+      font-weight: $fw-bold;
       font-size: 24px;
       line-height: 100%;
       letter-spacing: -0.03em;
@@ -187,5 +205,157 @@
       width: 40px;
       height: 40px;
     }
+  }
+}
+
+.mobileNavBar {
+  padding: 14px 24px;
+  width: 100%;
+  border-radius: 16px;
+  background: $color-white;
+  border: 1px solid $color-black-05;
+  box-shadow: 0px 5px 10px $color-black-08;
+  backdrop-filter: blur(63px);
+}
+
+.mobileNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.avatarGroup {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+  padding-right: 16px;
+  border-right: 1px solid $color-gray-eb;
+}
+
+.userName {
+  word-break: break-all;
+  overflow-wrap: break-word;
+  font-size: 16px;
+  font-weight: $fw-bold;
+}
+
+.mobileNavbarWrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 26px;
+}
+
+.burgerMenu {
+  width: 34px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.burgerMenuLine {
+  width: 100%;
+  height: 5px;
+  background: $password-gradient;
+  border-radius: 80px;
+  position: absolute;
+  &:first-child {
+    top: 0;
+    left: 0;
+    transition: 0.3s ease-in;
+  }
+  &:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    transition: 0.3s ease-in;
+  }
+  &:last-child {
+    bottom: 0;
+    left: 0;
+    transition: 0.3s ease-in;
+  }
+}
+
+.activeMenu {
+  .burgerMenuLine {
+    &:first-child {
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+      left: 0;
+    }
+    &:nth-child(2) {
+      opacity: 0;
+    }
+    &:last-child {
+      bottom: 50%;
+      transform: translateY(50%) rotate(-45deg);
+      left: 0;
+    }
+  }
+}
+
+.burgerMenuList {
+  margin-top: 16px;
+  border-top: 1px solid $color-gray-eb;
+  padding-top: 16px;
+}
+
+.burgerMenuTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 21px;
+}
+
+.burgerMenuBalance,
+.burgerMenuLogout {
+  font-size: 13px;
+  font-weight: $fw-semibold;
+  color: $color-gray-a5;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.burgerMenuBalanceNum {
+  font-size: 20px;
+  font-weight: $fw-bold;
+  background: $password-gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.burgerMenuLogoutWrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.linkItem {
+  width: 100%;
+  padding: 21px 16px;
+  border: 1px solid $color-dark-05;
+  box-shadow: 0px 5px 10px $color-dark-08;
+  backdrop-filter: blur(63px);
+  border-radius: 16px;
+  background-color: $color-white;
+  &:not(:last-child) {
+    margin-bottom: 5px;
+  }
+}
+
+.burgerLink {
+  color: $color-gray-54;
+  font-size: 22px;
+  font-weight: $fw-semibold;
+}
+
+.linkItem {
+  .active {
+    font-weight: $fw-bold;
+    background: $password-gradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }

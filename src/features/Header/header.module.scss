@@ -4,8 +4,11 @@
   position: absolute;
   margin: 0 auto;
   width: 100%;
-  padding: 0 36px;
+  padding: 0px 36px;
   z-index: 99;
+  @media screen and (max-width: 1500px) {
+    padding: 0px 8px;
+  }
 }
 
 .headerWrapper {
@@ -26,12 +29,12 @@
 
 @media (max-width: #{$tablet-width}) {
   .header {
-    nav {
-      justify-content: flex-end;
-      margin-right: 16px;
-    }
+    position: absolute;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 8px;
+    z-index: 99;
   }
-
   .burger {
     display: block;
   }

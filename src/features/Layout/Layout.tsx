@@ -10,12 +10,12 @@ type PropsLayout = {
 }
 
 export const Layout: FC<PropsLayout> = ({ children }) => {
-
-  const { asPath } = useRouter()
+  const router = useRouter()
+  const reg = /\#\w+/;
 
   return (
     <>
-      <Header variant={asPath === '/' ? 'unauthorised' : 'authorised'} />
+      <Header variant={router.asPath === '/' || reg.test(router.asPath) ? 'unauthorised' : 'authorised'} />
       {children}
       <Footer />
     </>

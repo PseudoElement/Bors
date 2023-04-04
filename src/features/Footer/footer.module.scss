@@ -19,8 +19,7 @@
   margin: 0 auto 70px auto;
   padding-top: 60px;
   padding-left: 42px;
-  
-  
+
   .logoGroup {
     display: flex;
     flex-wrap: wrap;
@@ -41,7 +40,7 @@
     }
   }
 
-  .logoTitle{
+  .logoTitle {
     width: 479px;
     display: flex;
     flex-wrap: wrap;
@@ -52,9 +51,12 @@
     font-size: 32px;
     line-height: 120%;
     letter-spacing: -0.045em;
-    color: $color-white; 
+    color: $color-white;
     text-align: start;
     mix-blend-mode: overlay;
+    @media screen and (max-width: 1215px) {
+      font-size: 26px;
+    }
   }
 }
 
@@ -84,7 +86,7 @@
     letter-spacing: -0.02em;
   }
 
-  .tel{
+  .tel {
     font-size: 48px;
     line-height: 130%;
     cursor: pointer;
@@ -98,18 +100,17 @@
     display: flex;
     justify-content: space-between;
     width: 240px;
-    
 
     .circle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: $color-gray-02;
-    cursor: pointer;
-  }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: $color-gray-02;
+      cursor: pointer;
+    }
   }
 }
 
@@ -119,7 +120,6 @@
   justify-content: space-between;
   max-width: $max-footer-bottom-line-width;
   margin: 21px auto 0 auto;
-
 
   color: $color-white;
   font-size: 16px;
@@ -143,14 +143,14 @@
     align-items: center;
     margin: 0 auto;
     padding: 56px 0 0 0;
-    
+
     .logoGroup {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       width: 272px;
-  
+
       .logo {
         position: relative;
         width: 89px;
@@ -164,8 +164,8 @@
         margin-bottom: 32px;
       }
     }
-  
-    .logoTitle{
+
+    .logoTitle {
       width: max(272px, 62%);
       margin: 0;
       font-size: 24px;
@@ -173,7 +173,6 @@
       letter-spacing: -0.045em;
       text-align: center;
       mix-blend-mode: normal;
-
     }
   }
 
@@ -184,13 +183,12 @@
     margin: 29px 0 24px 0;
     gap: max(16px, 10.4%);
 
-  
     .location {
       font-size: 24px;
       line-height: 130%;
     }
-  
-    .tel{
+
+    .tel {
       font-size: 36px;
     }
 
@@ -202,9 +200,9 @@
       width: 280px;
 
       .circle {
-      width: 56px;
-      height: 56px;
-    }
+        width: 56px;
+        height: 56px;
+      }
     }
   }
   .agreement {
