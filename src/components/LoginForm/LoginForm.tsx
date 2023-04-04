@@ -23,7 +23,7 @@ export const LoginForm: FC = () => {
         },
     })
 
-    const onSubmitLogin: SubmitHandler<FormInputProps> = data => {
+    const onSubmitLogin: SubmitHandler<FormInputProps> = (data) => {
         console.log(data)
         reset({
             email: '',
