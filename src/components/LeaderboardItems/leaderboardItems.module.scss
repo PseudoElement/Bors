@@ -2,7 +2,6 @@
 
 .leaderboardItem {
   width: 100%;
-  max-width: 928px;
   height: 68px;
 
   @include flex(flex, space-between, center);
@@ -15,17 +14,18 @@
   margin-bottom: 6px;
 
   @media (max-width:659px) {
+    width: 95%;
     display: block;
-    max-width: 520px;
     height: 80px;
     padding: 10px;
     border-radius: 12px;
     height: 100%;
-    margin: 0 auto 8px;
+    margin: 0 auto;
+    margin-bottom: 8px;
   }
 
   @media (max-width:490px) {
-    max-width: 265px;
+    width: 89%;
   }
 }
 
@@ -55,11 +55,15 @@
 }
 
 .leaderboardData {
-  width: 70%;
+  width: 72%;
   @include flex(flex, space-between, null);
 
   @media (max-width:659px) {
     width: 66%;
+  }
+
+  @media (max-width:490px) {
+    width: 62%;
   }
 }
 
@@ -98,7 +102,7 @@
 }
 
 .leaderboardCount {
-  width: 36%;
+  width: 37%;
   @include flex(flex, space-between, center);
   padding: 0 34px 0 36px;
 

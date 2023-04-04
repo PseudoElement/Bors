@@ -1,14 +1,15 @@
-import { FC, ReactNode } from 'react'
+import { FC, ReactNode, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import cn from 'classnames'
 import { Navigation, Pagination } from 'swiper'
+import cn from 'classnames'
 
 import ArrowIcon from '/public/assets/icons/Arrow.svg'
 
-import s from './slider.module.scss'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+
+import s from './slider.module.scss'
 
 interface SliderProps {
   children: ReactNode[] | []
@@ -32,13 +33,23 @@ export const Slider: FC<SliderProps> = ({
   spaceBetween = 0,
   nextEl = 'moreNext',
   prevEl = 'morePrev',
-  breakpoints,
 }) => {
   const paginationOptions = withPagination && { clickable: true }
   const navigationOptions = withNavigation && {
     nextEl: `.${nextEl}`,
     prevEl: `.${prevEl}`,
   }
+
+  const [active, setActive] = useState(9);
+
+  const handleClick = () => {
+    if (active === children.length - 10) {
+      setActive(0)
+    } else {
+      setActive(prev => prev - 1)
+    }
+  }
+
 
   return (
     <>
@@ -47,7 +58,7 @@ export const Slider: FC<SliderProps> = ({
           <div className={cn(s.swiperButtonNext, nextEl)}>
             <ArrowIcon alt='arrow' />
           </div>
-          <div className={cn(s.swiperButtonPrev, prevEl)}>
+          <div onClick={handleClick} className={cn(s.swiperButtonPrev, prevEl)}>
             <ArrowIcon alt='arrow' />
           </div>
         </div>
@@ -59,18 +70,29 @@ export const Slider: FC<SliderProps> = ({
           modules={[Navigation, Pagination]}
           spaceBetween={spaceBetween}
           slidesPerView={slidesPerView}
+          breakpoints={{
+            1220: {
+              slidesPerView: 2,
+            },
+            768: {
+              slidesPerView: 1,
+            },
+            320: {
+              slidesPerView: 1,
+            },
+          }}
           navigation={navigationOptions || false}
           pagination={paginationOptions}
           centeredSlides={centeredSlides}
+          allowSlideNext={false}
           initialSlide={children.length - 1}
-          breakpoints={breakpoints}
         >
           {children.length
             ? children.map((child, idx) => (
-                <SwiperSlide className={cn(s['swiper-slide'])} key={idx}>
-                  {child}
-                </SwiperSlide>
-              ))
+              <SwiperSlide className={cn(s[`${idx === active ? 'swiper-slide active' : 'swiper-slide'}`])} key={idx}>
+                {child}
+              </SwiperSlide>
+            ))
             : null}
         </Swiper>
       </div>
