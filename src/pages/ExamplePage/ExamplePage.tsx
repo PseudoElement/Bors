@@ -31,6 +31,7 @@ import {
   LoginRegistrationModal,
   CardStocksInfo,
   BottomBuySection,
+  DropMenu
 } from 'features'
 
 import { mock__sponsors_card } from 'shared/mocks/mock_sponsors_cards'
@@ -40,10 +41,13 @@ import { mock__stock_card } from 'shared/mocks/mock_stockCard'
 import { mock__leaderboard } from 'shared/mocks/mock_leaderboard'
 import { mockInfoCardsData } from 'shared/mocks/infoCardsData'
 import { card_stocks_info } from 'shared/mocks/mock_cardStocksInfo'
+import { mock_by_line_of_business } from 'shared/mocks/mock_filters'
+import { mock_by_popularity } from 'shared/mocks/mock_filters'
 
 import { FilterKeys } from 'shared/types/filterPanel'
 
 import s from './examplePage.module.scss'
+import style from '../../features/DropMenu/dropMenu.module.scss'
 
 export const ExamplePage: FC = () => {
   const sliderItem = event_slider_mock.map((card, idx) => (
@@ -79,6 +83,18 @@ export const ExamplePage: FC = () => {
 
       <Wrapper text={'header unauthorised'}>
         <Header variant='unauthorised' />
+      </Wrapper>
+      <Wrapper text={'drop menu'}>
+        <DropMenu title='By line of business'
+          onChange={(data) => console.log('business ', data)}
+          data={mock_by_line_of_business}
+          className={style.wide}
+          defaultValues={[false, false, true, false, true, false]}/>
+          <DropMenu title='By popularity'
+          onChange={(data) => console.log('popularity ', data)}
+          data={mock_by_popularity}
+          className={style.short}
+          defaultValues={[false, true]}/>
       </Wrapper>
 
       <Wrapper text={'account'}>
@@ -149,7 +165,7 @@ export const ExamplePage: FC = () => {
         />
       </Wrapper>
 
-      <Wrapper text='Login and Registration modal'>
+      {/* <Wrapper text='Login and Registration modal'>
         <button onClick={() => setIsOpen(prev => !prev)}>
           {isOpen ? 'hide modal' : 'show modal'}
         </button>
@@ -157,7 +173,7 @@ export const ExamplePage: FC = () => {
           isOpen={isOpen}
           onClose={() => setIsOpen(prev => !prev)}
         />
-      </Wrapper>
+      </Wrapper> */}
 
       <Wrapper text={'Horizon card'}>
         <StockHorizonCard {...stockHorizonData} />

@@ -1,0 +1,120 @@
+@use 'styles/style' as *;
+
+.menuOverlay {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+
+}
+
+.block {
+  display: block;
+}
+
+.dropMenu {
+  width: 456px;
+  font-family: $font-Mont;
+  font-style: normal;
+  font-weight: $fw-semibold;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: -0.02em;
+  color: $color-blue-b2;
+
+  
+}
+
+.wide {
+  width: 456px;
+
+  @include tablet-mobile {
+    width: 370px;
+  }
+
+  @media (max-width: 400px) {
+    width: 300px;
+  }
+}
+
+.short {
+  width: 220px;
+  @media (max-width: 400px) {
+    width: 300px;
+  }
+}
+
+.select {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 19px 22px;
+  cursor: pointer;
+  background: $color-gray-f6;
+  border-radius: 100px;
+
+  @include tablet-mobile {
+    padding: 14px 22px;
+  }
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 9px;
+  padding: 8px;
+  background: $color-gray-f6;
+  border: 0.75px solid $color-dark-blue-border;
+  box-shadow: 0px 4.8px 12px $color-shadow-5-24;
+  backdrop-filter: blur(63.7px);
+  border-radius: 30px;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+.openMenu {
+  opacity: 1;
+  pointer-events: all;
+}
+.container {
+  position: relative;
+  width: 92%;
+  overflow: hidden;
+}
+.selected {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 3000px;
+  color: $color-pink-2;
+  overflow: hidden;
+}
+.mask {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 60px;
+  height: 40px;
+  background: linear-gradient(270deg, $color-gray-f6 26.49%, $color-gray-0 100%);
+}
+.arrow {
+  width: 19px;
+  height: 10px;
+  background: url('/assets/icons/BlueArrow.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.resetMenuBtn {
+  width: 14px;
+  height: 14px;
+  border: none;
+  background: url('/assets/icons/X.svg');
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+}

@@ -16,6 +16,7 @@ import { BottomBuySection } from './BottomBuySection/BottomBuySection'
 import { Sponsors } from './Sponsors/Sponsors'
 import { UserAccount } from './UserAccount/UserAccount'
 import { BuyStock } from './BuyStock/BuyStock'
+import { DropMenu } from './DropMenu/DropMenu'
 
 export {
   Layout,
@@ -36,4 +37,5 @@ export {
   CardStocksInfo,
   BottomBuySection,
   BuyStock
+  DropMenu
 }

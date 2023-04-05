@@ -1,0 +1,33 @@
+@use 'styles/style' as *;
+
+.optionContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 19px 16px 14px;
+  border-radius: 100px;
+  cursor: pointer;
+
+  &:hover {
+    background: $color-gray-e5;
+  }
+}
+
+.option {
+  width: 85%;
+  text-align: left;
+}
+.selected {
+  color: $color-pink-2;
+}
+
+.checkMark {
+  width: 20px;
+  height: 13px;
+}
+
+.checked {
+  background-image: url('/assets/icons/Checkmark.svg');
+  background-position: center;
+  background-size: cover;
+}
