@@ -24,8 +24,13 @@
 
 .wrapperBalance {
   display: flex;
-  @media screen and (max-width: 1440px) {
+  column-gap: 30px;
+  @media screen and (max-width: 921px) {
+    column-gap: 20px;
+  }
+  @media screen and (max-width: 768px) {
     flex-direction: column;
+    row-gap: 14px;
   }
 }
 
