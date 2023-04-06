@@ -2,7 +2,7 @@
 
 .fillrequest {
   width: 100%;
-  max-width: 1400px;
+  max-width: 95%;
   background: $color-gray-01;
   box-shadow: 0 4px 9px $color-dark-08;
   backdrop-filter: blur(80px);
@@ -124,6 +124,12 @@
   @include mobile {
     width: 80%;
     margin: 0 auto;
+  }
+}
+
+@media (max-width:593px) {
+  .fillrequestInpuBtn {
+    display: none;
   }
 }
 

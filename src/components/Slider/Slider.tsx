@@ -66,12 +66,13 @@ export const Slider: FC<SliderProps> = ({
 
       <div className={s.slider}>
         <Swiper
+          className={s.swiper}
           autoHeight={true}
           modules={[Navigation, Pagination]}
           spaceBetween={spaceBetween}
           slidesPerView={slidesPerView}
           breakpoints={{
-            1220: {
+            1372: {
               slidesPerView: 2,
             },
             768: {
@@ -89,7 +90,7 @@ export const Slider: FC<SliderProps> = ({
         >
           {children.length
             ? children.map((child, idx) => (
-              <SwiperSlide className={cn(s[`${idx === active ? 'swiper-slide active' : 'swiper-slide'}`])} key={idx}>
+              <SwiperSlide className={cn(s['swiper-slide'])} key={idx}>
                 {child}
               </SwiperSlide>
             ))

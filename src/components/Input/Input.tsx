@@ -12,6 +12,7 @@ interface InputProps {
   value: string
   type?: string
   classname?: string
+  classNameBtn?: string
   placeholder?: string
   withButton?: string
   withIcon?: boolean
@@ -24,6 +25,7 @@ export const Input: FC<InputProps> = ({
   type = 'text',
   classname,
   placeholder,
+  classNameBtn,
   withButton = '',
   withIcon = false,
 }) => {
@@ -37,7 +39,7 @@ export const Input: FC<InputProps> = ({
         placeholder={placeholder}
         value={value}
       />
-      {withButton ? <Button onClick={onClick}>{withButton}</Button> : null}
+      {withButton ? <Button className={classNameBtn} onClick={onClick}>{withButton}</Button> : null}
       {withIcon ? (
         <div
           onClick={() => setChecked(prev => !prev)}

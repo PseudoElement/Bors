@@ -1,7 +1,7 @@
 @use 'styles/style' as *;
 
 .leaderboardList {
-  max-width: 928px;
+  max-width: 90%;
   width: 100%;
   height: 100%;
   margin: 0 auto;
@@ -12,9 +12,14 @@
   padding: 0 35px 32px;
   margin-bottom: 30px;
 
+  @include mobile-laptop {
+    max-width: 85%;
+  }
+
   @include mobile-tablet {
     width: 84%;
     margin: 0 auto;
+    padding-top: 35px;
   }
 
   @media (max-width:490px) {
@@ -44,16 +49,13 @@
 
   padding: 25px 35px 16px;
 
-  @media (max-width:659px) {
-    padding: 25px 0px 16px;
-  }
-
-  @media (max-width:490px) {
+  @include tablet-mobile {
     display: none;
   }
 }
 
 .leaderboardEntirety {
+  min-width: 388px;
   width: 44.6%;
   @include flex(flex, space-between, center);
 

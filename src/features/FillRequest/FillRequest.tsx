@@ -44,6 +44,7 @@ export const FillRequest = () => {
                 placeholder={'Your e-mail'}
                 classname={s.fillrequestInput}
                 value={value}
+                classNameBtn={s.fillrequestInpuBtn}
                 onChange={onChange}
                 onClick={handleSubmit(onSubmit)}
                 type='email'
