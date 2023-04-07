@@ -36,6 +36,6 @@ export {
   LoginRegistrationModal,
   CardStocksInfo,
   BottomBuySection,
-  BuyStock
-  DropMenu
+  BuyStock,
+  DropMenu,
 }

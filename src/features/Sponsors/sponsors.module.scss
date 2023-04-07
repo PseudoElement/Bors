@@ -1,4 +1,6 @@
 @use 'styles/style' as *;
+
+
 .wrap {
   margin: 190px 0;
 }
@@ -25,4 +27,49 @@
 .thirdLine {
     display: flex;
     justify-content: center;
+}
+
+@media (max-width: #{$tablet-width}) {
+  .title {
+    font-size: 80px;
+    font-weight: $fw-medium;
+    font-weight: $fw-semibold;
+    line-height: 61px;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+@media (max-width: #{$mobile-width}) {
+  .title {
+    font-size: 50px;
+    font-weight: $fw-medium;
+    font-weight: $fw-semibold;
+    line-height: 61px;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .sponsors {
+    column-count: 2;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .firstLine {
+    display: inline-block;
+  }
+
+  .secondLine {
+    display: inline-block;
+  }
+
+  .thirdLine {
+    display: inline-block;
+  }
 }
