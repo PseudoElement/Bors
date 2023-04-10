@@ -55,7 +55,6 @@ export const RegistrationForm: FC = () => {
                     <div className={s.errorMessage}>{errors.name.message}</div>
                 )}
             </label>
-
             <label className={s.label}>
                 <span className={s.labelText}>E-mail</span>
                 <Controller

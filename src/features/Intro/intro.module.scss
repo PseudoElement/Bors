@@ -5,7 +5,6 @@
   height: 960px;
   background: url('../../../public/assets/image/backgroundIntro.png');
   background-size: cover;
-  pointer-events: none;
 
   @media (max-width: 768px) {
     height: 843px;
@@ -49,7 +48,7 @@
 
       font-family: 'Mont';
       font-style: normal;
-      font-weight: 600;
+      font-weight: $fw-semibold;
       font-size: 56px;
       line-height: 110%;
       letter-spacing: -0.045em;
@@ -58,7 +57,7 @@
       align-items: flex-end;
       text-align: center;
 
-      color: #FFFFFF;
+      color: $color-white;
 
       @include mobile-tablet {
         font-size: 50px;
