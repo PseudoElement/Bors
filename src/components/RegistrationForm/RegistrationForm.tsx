@@ -1,42 +1,63 @@
 import { FC } from 'react'
-import { useForm, Controller, SubmitHandler } from 'react-hook-form'
 import Link from 'next/link'
+import { useForm, Controller, SubmitHandler } from 'react-hook-form'
 
 import { Input, Button } from 'components'
 
+import { cookies } from 'shared/utils/Cookies'
+import { UserRegRequest } from 'shared/types/user'
+import { useAppDispatch } from 'shared/hooks/redux'
+import { userRegister } from 'shared/api/routes/user'
+import { newUserRequested } from 'store/slices/userSlice'
+
 import s from './registrationForm.module.scss'
 
-interface FormInputProps {
-    name: string
-    email: string
-    password: string
-    confirmPassword: string
-}
-
 export const RegistrationForm: FC = () => {
+
+    const dispatch = useAppDispatch()
+
     const {
         control,
         handleSubmit,
         formState: { errors },
         getValues,
         reset,
-    } = useForm<FormInputProps>({
+    } = useForm<UserRegRequest>({
         defaultValues: {
             name: '',
             email: '',
             password: '',
-            confirmPassword: '',
+            confirm_password: '',
         },
     })
 
-    const onSubmitRegistration: SubmitHandler<FormInputProps> = data => {
-        console.log(data)
-        reset({
-            name: '',
-            email: '',
-            password: '',
-            confirmPassword: '',
-        })
+    const registerUser = async (user: UserRegRequest) => {
+        try {
+            const { data } = await userRegister(user)
+            const userData = {
+                user: data.data.user,
+                authStatus: data.status,
+                token: data.data.access_token,
+                authError: null,
+            }
+            cookies.set('token', data.data.access_token)
+            dispatch(newUserRequested(userData))
+            reset()
+        }
+        catch (error) {
+            console.log(error)
+            const errorData = {
+                user: null,
+                authStatus: null,
+                token: null,
+                authError: error.message
+            }
+            dispatch(newUserRequested(errorData))
+        }
+    }
+
+    const onSubmitRegistration: SubmitHandler<UserRegRequest> = data => {
+        registerUser(data)
     }
 
     return (
@@ -88,24 +109,24 @@ export const RegistrationForm: FC = () => {
             <label className={s.label}>
                 <span className={s.labelText}>Confirm password</span>
                 <Controller
-                    name='confirmPassword'
+                    name='confirm_password'
                     control={control}
                     rules={{
                         required: 'password confirmation is required',
                         minLength: 6,
-                        validate: (value: string, data: FormInputProps) =>
+                        validate: (value: string, data: UserRegRequest) =>
                             value === data.password || "Passwords doesn't match",
                     }}
                     render={({ field: { onChange, value } }) => (
                         <Input withIcon={true} value={value!} onChange={onChange} />
                     )}
                 />
-                {errors.confirmPassword && (
-                    <div className={s.errorMessage}>{errors.confirmPassword.message}</div>
+                {errors.confirm_password && (
+                    <div className={s.errorMessage}>{errors.confirm_password.message}</div>
                 )}
-                {errors.confirmPassword
+                {errors.confirm_password
                     ? ''
-                    : getValues('password') !== getValues('confirmPassword') && (
+                    : getValues('password') !== getValues('confirm_password') && (
                         <div className={s.errorMessage}>password mismatch</div>
                     )}
             </label>

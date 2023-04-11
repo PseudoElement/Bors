@@ -1,9 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
-import { User } from '../../shared/types/user'
+import { UserShort } from '../../shared/types/user'
 
 export interface UserState {
-  user: User | null
+  user: UserShort | null
   authStatus: string | null
   authError: string | null
   token: string | null
@@ -16,14 +15,15 @@ const initialState: UserState = {
   token: null,
 }
 
-export const userSlice = createSlice({
+const userSlice = createSlice({
   name: 'userSlice',
   initialState,
   reducers: {
     newUserRequested: (state, action) => {
-      state.user = action.payload.data.user
-      state.token = action.payload.data.access_token
-      state.authStatus = action.payload.status
+      state.user = action.payload.user
+      state.token = action.payload.token
+      state.authStatus = action.payload.authStatus
+      state.authError = action.payload.authError
     },
   },
 })

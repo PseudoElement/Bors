@@ -7,6 +7,14 @@ export interface User {
   last_name: string
 }
 
+export interface UserShort {
+  id: number
+  email: string
+  name: string
+  updated_at: string
+  created_at: string
+}
+
 export interface UserRegRequest {
   email: string
   name: string
@@ -22,7 +30,7 @@ export interface UserAuthRequest {
 export interface UserAuthResponse {
   status: string
   messge: string
-  data : {
+  data: {
     access_token: string
     token_type: string
     expires_in: number
