@@ -1,5 +1,19 @@
-import { Children, FC, ReactNode, useEffect, useState } from 'react'
+import { FC, ReactNode, useEffect, useState } from 'react'
 import { FilterKeys } from 'shared/types/filterPanel'
+
+import { DropMenu } from 'features/DropMenu/DropMenu'
+
+import { Button, Popup } from 'components'
+
+import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
+
+import FilterIcon from '/public/assets/icons/FiltersHorizontal.svg'
+
+import {
+  mock_by_line_of_business,
+  mock_by_popularity,
+} from 'shared/mocks/mock_filters'
+
 import s from './filtersPanel.module.scss'
 
 interface FilterItemProps {
@@ -31,31 +45,78 @@ interface FiltersPanelProps {
 export const FiltersPanel: FC<FiltersPanelProps> = ({
   onChange,
   defaultValue,
-  children
+  children,
 }) => {
   const [valueFilters, setValueFilters] = useState<FilterKeys>(defaultValue)
+
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+
+  const { width } = useWindowDimensions()
   useEffect(() => {
     onChange(valueFilters)
   }, [valueFilters])
   return (
-    <div className={s.filters}>
-      <FilterItem
-        onChange={value => setValueFilters({ ...valueFilters, price: value })}
-        title='By price'
-      />
-      <FilterItem
-        onChange={value =>
-          setValueFilters({ ...valueFilters, popularity: value })
-        }
-        title='By popularuty'
-      />
-      <FilterItem
-        onChange={value =>
-          setValueFilters({ ...valueFilters, lineBusiness: value })
-        }
-        title='By line of business'
-      />
-      {children && children}
-    </div>
+    <>
+      {width <= 567 &&
+        <>
+          <div onClick={() => setIsOpen(true)} className={s.mobileSelect}>
+            Filter stocks <FilterIcon />
+          </div>
+          <Popup isOpen={isOpen} onClose={() => setIsOpen(false)}>
+            <div className={s.mobileFilterPanel}>
+              <div className={s.mobileFilterTitle}>Filter stocks</div>
+              <div className={s.mobileFilters}>
+                <DropMenu
+                  title='By popularity'
+                  onChange={data => console.log('popularity ', data)}
+                  data={mock_by_popularity}
+                  className={s.short}
+                  defaultValues={[false, false]}
+                />
+                <DropMenu
+                  title='By price'
+                  onChange={data => console.log('popularity ', data)}
+                  data={mock_by_popularity}
+                  className={s.short}
+                  defaultValues={[false, false]}
+                />
+                <DropMenu
+                  title='By line of business'
+                  onChange={data => console.log('business ', data)}
+                  data={mock_by_line_of_business}
+                  className={s.wide}
+                  defaultValues={[false, false, false, false, false, false]}
+                />
+                {children && children}
+                <Button className={s.btn}>Filter</Button>
+              </div>
+            </div>
+          </Popup>
+        </>}
+      <div className={s.filters}>
+        <DropMenu
+          title='By popularity'
+          onChange={data => console.log('popularity ', data)}
+          data={mock_by_popularity}
+          className={s.short}
+          defaultValues={[false, false]}
+        />
+        <DropMenu
+          title='By price'
+          onChange={data => console.log('popularity ', data)}
+          data={mock_by_popularity}
+          className={s.short}
+          defaultValues={[false, false]}
+        />
+        <DropMenu
+          title='By line of business'
+          onChange={data => console.log('business ', data)}
+          data={mock_by_line_of_business}
+          className={s.wide}
+          defaultValues={[false, false, false, false, false, false]}
+        />
+        {children && children}
+      </div>
+    </>
   )
 }

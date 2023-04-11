@@ -37,5 +37,5 @@ export {
   CardStocksInfo,
   BottomBuySection,
   BuyStock,
-  DropMenu,
+  DropMenu
 }

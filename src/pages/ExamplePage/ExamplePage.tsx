@@ -31,7 +31,7 @@ import {
   LoginRegistrationModal,
   CardStocksInfo,
   BottomBuySection,
-  DropMenu
+  DropMenu,
 } from 'features'
 
 import { mock__sponsors_card } from 'shared/mocks/mock_sponsors_cards'
@@ -71,7 +71,7 @@ export const ExamplePage: FC = () => {
 
   const stockHorizonData = {
     ...mock__stock_card[1],
-    onClick: () => {},
+    onClick: () => { },
     exchangeCurrency: 'SET',
   }
 
@@ -85,16 +85,20 @@ export const ExamplePage: FC = () => {
         <Header variant='unauthorised' />
       </Wrapper>
       <Wrapper text={'drop menu'}>
-        <DropMenu title='By line of business'
-          onChange={(data) => console.log('business ', data)}
+        <DropMenu
+          title='By line of business'
+          onChange={data => console.log('business ', data)}
           data={mock_by_line_of_business}
           className={style.wide}
-          defaultValues={[false, false, true, false, true, false]}/>
-          <DropMenu title='By popularity'
-          onChange={(data) => console.log('popularity ', data)}
+          defaultValues={[false, false, true, false, true, false]}
+        />
+        <DropMenu
+          title='By popularity'
+          onChange={data => console.log('popularity ', data)}
           data={mock_by_popularity}
           className={style.short}
-          defaultValues={[false, true]}/>
+          defaultValues={[false, true]}
+        />
       </Wrapper>
 
       <Wrapper text={'account'}>
@@ -108,7 +112,10 @@ export const ExamplePage: FC = () => {
         <button onClick={() => setOpenPopup(true)}>Popup</button>
       </Wrapper>
       <Wrapper text='Bottom Buy Section'>
-        <BottomBuySection stocks={mock__stock_card}  onClose={() => console.log(1)}/>
+        <BottomBuySection
+          stocks={mock__stock_card}
+          onClose={() => console.log(1)}
+        />
       </Wrapper>
       <Wrapper text={'Events Card'}>
         <EventsCard {...mock__event_card} />

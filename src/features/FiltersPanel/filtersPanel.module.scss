@@ -1,6 +1,7 @@
 @use 'styles/style' as *;
 
-.filterItem {
+.filterItem,
+.mobileSelect {
   display: flex;
   gap: 30px;
   align-items: center;
@@ -15,6 +16,15 @@
   line-height: 100%;
   letter-spacing: -0.02em;
   color: $color-blue-b2;
+}
+
+.mobileSelect {
+  margin: 0 auto;
+  max-width: 358px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 .arrow {
   width: 10px;
@@ -31,5 +41,54 @@
   @media screen and (max-width: 1160px) {
     flex-wrap: wrap;
     justify-content: center;
+  }
+  @media screen and (max-width: 567px) {
+    display: none;
+  }
+}
+
+.mobileFilterPanel {
+  width: 358px;
+  height: 100%;
+  background-color: $color-white;
+  border-radius: 20px;
+  padding: 32px 20px;
+}
+
+.mobileFilters {
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+  -ms-overflow-style: none;
+}
+
+.mobileFilterTitle {
+  font-size: 26px;
+  text-align: center;
+  font-weight: $fw-bold;
+  color: $color-black;
+  margin-bottom: 24px;
+}
+
+.btn {
+  width: 100%;
+  margin-top: 32px;
+}
+
+.wide {
+  width: 456px;
+
+  @media screen and (max-width: 567px) {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+.short {
+  width: 220px;
+  @media screen and (max-width: 567px) {
+    width: 100%;
+    margin-bottom: 20px;
   }
 }

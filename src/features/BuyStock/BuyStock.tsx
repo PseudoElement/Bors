@@ -25,8 +25,6 @@ export const BuyStock: FC = () => {
     const [stockInBasket, setStockInBasket] = useState<any[]>([])
     const [searchValue, setSearchValue] = useState<string>('')
 
-    console.log(stockInBasket)
-
     return <>
         <Popup
             isOpen={showBuyStockList}
