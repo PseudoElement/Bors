@@ -3,6 +3,10 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 
+import { logoutUserRequested } from 'store/slices/userSlice'
+import { logoutAuth } from 'shared/api/routes/user'
+import { useAppDispatch } from 'shared/hooks/redux'
+
 import { LoginRegistrationModal } from 'features'
 
 import AccountImg from '/public/assets/icons/accountImg.svg'
@@ -17,11 +21,23 @@ interface Variant {
 }
 
 export const Navbar: FC<Variant> = ({ variant }) => {
+  const dispatch = useAppDispatch()
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   const [activeLink, setActiveLink] = useState<string>('Buy Stocks')
 
   const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false)
+
+  const logoutUser = async () => {
+    try {
+      await logoutAuth()
+
+      dispatch(logoutUserRequested())
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const { width } = useWindowDimensions()
 
@@ -40,7 +56,7 @@ export const Navbar: FC<Variant> = ({ variant }) => {
         onClose={() => setIsOpen(false)}
       />
 
-      {variant === 'authorised' ? (
+      {variant === 'unauthorised' ? (
         width > 900 ? (
           <nav className={s.nav2}>
             <div className={s.logoGroup2}>
@@ -118,6 +134,7 @@ export const Navbar: FC<Variant> = ({ variant }) => {
               <Image
                 src='/assets/icons/logout.svg'
                 width={24}
+                onClick={logoutUser}
                 height={24}
                 alt='logout'
                 style={{ cursor: 'pointer' }}
