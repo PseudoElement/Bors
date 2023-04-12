@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { UserAuthResponse } from 'shared/types/user'
+import { User } from 'shared/types/user'
 
 export interface UserState {
-  user: UserAuthResponse | null
+  user: User | null
   authStatus: string | null
   authError: string | null
   token: string | null
@@ -26,20 +26,20 @@ const userSlice = createSlice({
       state.authError = action.payload.authError
     },
     userMeResponse(state, action) {
-      state.user = action.payload.user
-      state.token = action.payload.token
-      state.authStatus = action.payload.authStatus
-      state.authError = action.payload.authError
+      state.user = action.payload.data
+      state.authStatus = action.payload.status
+      state.authError = null
     },
-    logoutUserRequested: (state) => {
+    logoutUserRequested: state => {
       state.user = null
       state.token = null
       state.authStatus = null
-    }
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { newUserRequested, logoutUserRequested, userMeResponse } = userSlice.actions
+export const { newUserRequested, logoutUserRequested, userMeResponse } =
+  userSlice.actions
 
 export default userSlice.reducer

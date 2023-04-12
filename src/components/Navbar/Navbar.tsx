@@ -2,18 +2,17 @@ import { FC, useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
+import cn from 'classnames'
+
+import { LoginRegistrationModal } from 'features'
 
 import { logoutUserRequested } from 'store/slices/userSlice'
 import { logoutAuth } from 'shared/api/routes/user'
 import { useAppDispatch } from 'shared/hooks/redux'
-
-import { LoginRegistrationModal } from 'features'
+import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
 
 import AccountImg from '/public/assets/icons/accountImg.svg'
 
-import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
-
-import cn from 'classnames'
 import s from './navbar.module.scss'
 
 interface Variant {
@@ -33,7 +32,6 @@ export const Navbar: FC<Variant> = ({ variant }) => {
       await logoutAuth()
 
       dispatch(logoutUserRequested())
-
     } catch (error) {
       console.log(error)
     }
@@ -56,7 +54,7 @@ export const Navbar: FC<Variant> = ({ variant }) => {
         onClose={() => setIsOpen(false)}
       />
 
-      {variant === 'unauthorised' ? (
+      {variant === 'authorised' ? (
         width > 900 ? (
           <nav className={s.nav2}>
             <div className={s.logoGroup2}>

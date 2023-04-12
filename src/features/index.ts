@@ -2,7 +2,6 @@ import { LeaderboardList } from './LeaderboardList/LeaderboardList'
 import { Layout } from './Layout/Layout'
 import { Header } from './Header/Header'
 import { Footer } from './Footer/Footer'
-import { Info } from './InfoCards/InfoCard'
 import { EventSection } from './EventSection/EventSection'
 import { Intro } from './Intro/Intro'
 import { PasswordRecovery } from './PasswordRecovery/PasswordRecovety'
@@ -17,6 +16,7 @@ import { Sponsors } from './Sponsors/Sponsors'
 import { UserAccount } from './UserAccount/UserAccount'
 import { BuyStock } from './BuyStock/BuyStock'
 import { DropMenu } from './DropMenu/DropMenu'
+import { InfoSection } from './InfoSection/InfoSection'
 
 export {
   Layout,
@@ -27,7 +27,6 @@ export {
   PasswordRecovery,
   FiltersPanel,
   LeaderboardList,
-  Info,
   BuyStockList,
   FillRequest,
   MyStocks,
@@ -37,5 +36,6 @@ export {
   CardStocksInfo,
   BottomBuySection,
   BuyStock,
-  DropMenu
+  InfoSection,
+  DropMenu,
 }

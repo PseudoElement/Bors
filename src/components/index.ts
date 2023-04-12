@@ -5,7 +5,6 @@ import { Input } from './Input/Input'
 import { Popup } from './Popup/Popup'
 import { EventsCard } from './EventsCard/EventsCard'
 import { EventSlider } from './EventSlider/EventSlider'
-import { Card } from './Info/Info'
 import { StocksCard } from './StocksCard/StocksCard'
 import { Slider } from './Slider/Slider'
 import { Logo } from './Logo/Logo'
@@ -13,11 +12,12 @@ import { StockHorizonCard } from './StockHorizonCard/StockHorizonCard'
 import { Tag } from './Tag/Tag'
 import { Indicator } from './Indicator/Indicator'
 import { BuyStockItem } from './BuyStockItem/BuyStockItem'
-import { Sponsor } from './Sponsor/Sponsor';
-import { LoginForm } from './LoginForm/LoginForm';
-import { RegistrationForm } from './RegistrationForm/RegistrationForm';
+import { Sponsor } from './Sponsor/Sponsor'
+import { LoginForm } from './LoginForm/LoginForm'
+import { RegistrationForm } from './RegistrationForm/RegistrationForm'
 import { Balance } from './Balance/Balance'
-import Counter from './Counter/Counter'
+import { Counter } from './Counter/Counter'
+import { InfoCard } from './InfoCard/InfoCard'
 
 export {
   Button,
@@ -33,11 +33,11 @@ export {
   StockHorizonCard,
   Tag,
   Indicator,
-  Card,
   EventSlider,
   Sponsor,
   LoginForm,
   RegistrationForm,
   Balance,
-  Counter
+  Counter,
+  InfoCard,
 }

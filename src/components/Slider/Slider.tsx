@@ -40,7 +40,7 @@ export const Slider: FC<SliderProps> = ({
     prevEl: `.${prevEl}`,
   }
 
-  const [active, setActive] = useState(9);
+  const [active, setActive] = useState(9)
 
   const handleClick = () => {
     if (active === children.length - 10) {
@@ -49,7 +49,6 @@ export const Slider: FC<SliderProps> = ({
       setActive(prev => prev - 1)
     }
   }
-
 
   return (
     <>
@@ -90,10 +89,10 @@ export const Slider: FC<SliderProps> = ({
         >
           {children.length
             ? children.map((child, idx) => (
-              <SwiperSlide className={cn(s['swiper-slide'])} key={idx}>
-                {child}
-              </SwiperSlide>
-            ))
+                <SwiperSlide className={cn(s['swiper-slide'])} key={idx}>
+                  {child}
+                </SwiperSlide>
+              ))
             : null}
         </Swiper>
       </div>

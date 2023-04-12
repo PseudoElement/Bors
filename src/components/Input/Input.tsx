@@ -9,7 +9,7 @@ import Image from 'next/image'
 interface InputProps {
   onClick?: () => void
   onChange: (value: string) => void
-  value: string
+  value: string | null
   type?: string
   classname?: string
   classNameBtn?: string
@@ -37,9 +37,13 @@ export const Input: FC<InputProps> = ({
         type={checked ? 'password' : type}
         onChange={e => onChange(e.target.value)}
         placeholder={placeholder}
-        value={value}
+        value={value ? value : ''}
       />
-      {withButton ? <Button className={classNameBtn} onClick={onClick}>{withButton}</Button> : null}
+      {withButton ? (
+        <Button className={classNameBtn} onClick={onClick}>
+          {withButton}
+        </Button>
+      ) : null}
       {withIcon ? (
         <div
           onClick={() => setChecked(prev => !prev)}

@@ -247,5 +247,4 @@ export const mock__stock_card: Stocks[] = [
     count: 3,
     hasNft: true,
   },
-
 ]

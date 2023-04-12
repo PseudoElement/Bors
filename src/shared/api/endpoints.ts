@@ -15,3 +15,10 @@ export const endpoints_stock = {
   stock_id: (id: number) => `/stock/${id}/`,
   stock_top: '/stock/top/',
 }
+
+export const endpoints_site = {
+  site_form: '/site/form/',
+  site_info: '/site/info/',
+  sponsors: '/site/sponsors/',
+  stocks_top: '/stocks/top/',
+}

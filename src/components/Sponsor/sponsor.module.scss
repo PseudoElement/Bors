@@ -1,37 +1,37 @@
 @use 'styles/style' as *;
 
 .sponsor {
-    width: 266px;
-    height: 117px;
-    background-color: $color-white;
-    border-radius: 83px;
-    box-shadow: 0 2px 5px $color-black-08;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 8px 16px 8px;
+  width: 266px;
+  height: 117px;
+  background-color: $color-white;
+  border-radius: 83px;
+  box-shadow: 0 2px 5px $color-black-08;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 8px 16px 8px;
 }
 
 @media (max-width: #{$tablet-width}) {
-    .sponsor {
-     width: 140px;
-     height: 100px;
-     margin: 0 8px 8px 8px;
-    }
- 
-    .img {
-     width: 60%;
-    }
- }
+  .sponsor {
+    width: 140px;
+    height: 100px;
+    margin: 0 8px 8px 8px;
+  }
+
+  .img {
+    width: 60%;
+  }
+}
 
 @media (max-width: #{$mobile-width}) {
-   .sponsor {
+  .sponsor {
     width: 140px;
     height: 89px;
     margin: 0 8px 8px 8px;
-   }
+  }
 
-   .img {
+  .img {
     width: 60%;
-   }
+  }
 }

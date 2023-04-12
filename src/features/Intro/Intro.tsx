@@ -1,22 +1,24 @@
 import { FC } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import s from './intro.module.scss'
+
+import { SiteData } from 'shared/types/site'
 import IconDown from '/public/assets/icons/iconDown.png'
-import { Logo } from 'components'
 
-export const Intro: FC = () => {
+import s from './intro.module.scss'
 
+export const Intro: FC<SiteData> = ({ logo, desc }) => {
   return (
     <div className={s.intro}>
       <div className={s.backgroundMask}></div>
+
       <div className={s.container}>
         <div className={s.logo}>
-          <Logo />
+          <Image src={logo} width={596} height={168} alt='logo' />
         </div>
-        <p className={s.text}>
-          Simple and convenient platform for online stock trading
-        </p>
+
+        <p className={s.text}>{desc}</p>
+
         <Link href={'#info'} scroll={false}>
           <div className={s.iconContainer}>
             <Image className={s.iconDown} src={IconDown} alt='icon down' />

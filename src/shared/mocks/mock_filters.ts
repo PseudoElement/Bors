@@ -5,14 +5,9 @@ export const mock_by_line_of_business = [
   'Telecommunications',
   'Pharmaceutics and medicine',
   'IT',
-  'Consumer goods and retail chains'
+  'Consumer goods and retail chains',
 ]
 
-export const mock_by_popularity = [
-  'Most popular',
-  'Least popular'
-]
+export const mock_by_popularity = ['Most popular', 'Least popular']
 
-export const mock_by_price = [
-
-]
+export const mock_by_price = []

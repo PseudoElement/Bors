@@ -10,11 +10,14 @@ interface BottomBuySectionProps extends StocksList {
   onClose: () => void
 }
 
-export const BottomBuySection: FC<BottomBuySectionProps> = ({ stocks, onClose }) => {
+export const BottomBuySection: FC<BottomBuySectionProps> = ({
+  stocks,
+  onClose,
+}) => {
   const dataCall = (index: number) => {
     return {
       ...stocks[index],
-      onClick: () => { },
+      onClick: () => {},
       exchangeCurrency: 'SET',
     }
   }
@@ -26,7 +29,9 @@ export const BottomBuySection: FC<BottomBuySectionProps> = ({ stocks, onClose })
           <StockHorizonCard {...dataCall(index)} key={index} />
         ))}
       </div>
-      <Button onClick={onClose} className={s.button}>Buy Stock</Button>
+      <Button onClick={onClose} className={s.button}>
+        Buy Stock
+      </Button>
     </section>
   )
 }

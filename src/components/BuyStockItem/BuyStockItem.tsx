@@ -6,7 +6,15 @@ import { Stocks } from 'shared/types/stocks'
 
 import s from './buyStockItem.module.scss'
 
-export const BuyStockItem: FC<Stocks> = ({ id, appName, currency, count, uppedPercent, appInitials, image }) => {
+export const BuyStockItem: FC<Stocks> = ({
+  id,
+  appName,
+  currency,
+  count,
+  uppedPercent,
+  appInitials,
+  image,
+}) => {
   return (
     <div className={s.buystockItem}>
       <div className={s.buystockWrapper}>

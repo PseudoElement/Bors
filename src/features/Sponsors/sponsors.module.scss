@@ -1,6 +1,5 @@
 @use 'styles/style' as *;
 
-
 .wrap {
   margin: 190px 0;
 }
@@ -15,18 +14,18 @@
 }
 
 .firstLine {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .secondLine {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .thirdLine {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 @media (max-width: #{$tablet-width}) {

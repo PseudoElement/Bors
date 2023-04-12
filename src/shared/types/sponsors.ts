@@ -1,5 +1,4 @@
 export interface Sponsors {
-    id: number
-    image: string
+  id: number
+  image: string
 }
-  

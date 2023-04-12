@@ -7,13 +7,12 @@
   gap: 25px;
 
   .logoText {
-     
-    @include mobile {    
+    @include mobile {
       width: 246px;
     }
   }
 
-  @include mobile {    
+  @include mobile {
     display: block;
   }
 }

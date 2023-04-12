@@ -60,8 +60,10 @@ export const EventSlider: FC<EventSliderProps> = ({
       >
         {children.length
           ? children.map((child, idx) => (
-            <SwiperSlide className={s['swiper-slide']} key={idx}>{child}</SwiperSlide>
-          ))
+              <SwiperSlide className={s['swiper-slide']} key={idx}>
+                {child}
+              </SwiperSlide>
+            ))
           : []}
       </Swiper>
 

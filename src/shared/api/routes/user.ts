@@ -1,13 +1,13 @@
-import { UserRegRequest, UserAuthResponse, LogoutUser, UserAuthRequest } from '../../types/user'
+import {
+  UserRegRequest,
+  UserAuthResponse,
+  LogoutUser,
+  UserAuthRequest,
+  UserMeResponse,
+} from '../../types/user'
 
 import { api, endpoints_user } from '../index'
 import { AxiosPromise } from 'axios'
-
-// export const example = (
-//   newUserForms: UserRegRequest
-// ): AxiosPromise<UserRegResponse> => {
-//   return api.post(endpoints_user.login, newUserForms)
-// }
 
 export const userAuth = (
   authUserForms: UserAuthRequest
@@ -15,7 +15,7 @@ export const userAuth = (
   return api.post(endpoints_user.login, authUserForms)
 }
 
-export const authMe = (): AxiosPromise<UserAuthResponse> => {
+export const authMe = (): AxiosPromise<UserMeResponse> => {
   return api.get(endpoints_user.auth_me)
 }
 
@@ -28,4 +28,3 @@ export const userRegister = (
 ): AxiosPromise<UserRegRequest> => {
   return api.post(endpoints_user.register, regUserForms)
 }
-

@@ -97,7 +97,11 @@
   right: -10px;
   width: 60px;
   height: 40px;
-  background: linear-gradient(270deg, $color-gray-f6 26.49%, $color-gray-0 100%);
+  background: linear-gradient(
+    270deg,
+    $color-gray-f6 26.49%,
+    $color-gray-0 100%
+  );
 }
 .arrow {
   width: 19px;

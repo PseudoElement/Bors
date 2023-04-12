@@ -7,19 +7,16 @@ import { PropsLeaderboardList } from 'shared/types/leaderboard'
 import s from './LeaderboardList.module.scss'
 
 export const LeaderboardList: FC<PropsLeaderboardList> = ({ boards }) => {
-
   return (
     <div id={'leaderboard'}>
       <h2 className={s.leaderboardListTitle}>
         Leader <br className={s.leaderboardBr} /> <span>board</span>
       </h2>
+
       <h2 className={s.leaderboardTitle}>March 17, 2023</h2>
-      <Slider
-        slidesPerView={2}
-        spaceBetween={90}
-        centeredSlides={true}
-      >
-        {boards.map((board) => (
+
+      <Slider slidesPerView={2} spaceBetween={90} centeredSlides={true}>
+        {boards.map(board => (
           <div className={s.loaderBoard} key={board.id}>
             <div className={s.leaderboardList}>
               <div className={s.leaderboardWrapper}>
@@ -39,7 +36,7 @@ export const LeaderboardList: FC<PropsLeaderboardList> = ({ boards }) => {
                     </div>
                   </div>
                 </div>
-                {boards.map((board) => (
+                {boards.map(board => (
                   <LeaderboardItems key={board.id} {...board} />
                 ))}
               </div>

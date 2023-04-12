@@ -17,6 +17,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
+    domains: ['stock.yarbek.uz'],
     remotePatterns: [
       {
         protocol: 'https',

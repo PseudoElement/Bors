@@ -1,4 +1,4 @@
-import { MainPage } from './MainPage/MainPage';
+import { MainPage } from './MainPage/MainPage'
 import { HomePage } from './HomePage/HomePage'
 import { ExamplePage } from './ExamplePage/ExamplePage'
 

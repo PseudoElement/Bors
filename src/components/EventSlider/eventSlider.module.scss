@@ -7,11 +7,11 @@
   box-sizing: border-box;
   height: auto;
 
-  &>div {
+  & > div {
     overflow: visible;
   }
 
-  [class*='swiper-horizontal']>[class*='swiper-pagination-bullets'] {
+  [class*='swiper-horizontal'] > [class*='swiper-pagination-bullets'] {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,7 +84,6 @@
     }
   }
 }
-
 
 .navigationButton {
   position: relative;

@@ -39,7 +39,6 @@ import { mock__event_card } from 'shared/mocks/mock_eventsCard'
 import { event_slider_mock } from 'shared/mocks/mock_event_slider'
 import { mock__stock_card } from 'shared/mocks/mock_stockCard'
 import { mock__leaderboard } from 'shared/mocks/mock_leaderboard'
-import { mockInfoCardsData } from 'shared/mocks/infoCardsData'
 import { card_stocks_info } from 'shared/mocks/mock_cardStocksInfo'
 import { mock_by_line_of_business } from 'shared/mocks/mock_filters'
 import { mock_by_popularity } from 'shared/mocks/mock_filters'
@@ -71,7 +70,7 @@ export const ExamplePage: FC = () => {
 
   const stockHorizonData = {
     ...mock__stock_card[1],
-    onClick: () => { },
+    onClick: () => {},
     exchangeCurrency: 'SET',
   }
 
@@ -204,7 +203,7 @@ export const ExamplePage: FC = () => {
       </Wrapper>
 
       <Wrapper text='Info'>
-        <Info cards={mockInfoCardsData}></Info>
+        {/*<Info cards={mockInfoCardsData}></Info>*/}
       </Wrapper>
 
       <Wrapper text='My Stocks'>
@@ -215,7 +214,7 @@ export const ExamplePage: FC = () => {
 
       <Wrapper text='CardStocksInfo'>
         <Popup isOpen={openPopup} onClose={() => setOpenPopup(false)}>
-          <CardStocksInfo {...card_stocks_info} />
+          {/*<CardStocksInfo {...card_stocks_info} />*/}
         </Popup>
         <button onClick={() => setOpenPopup(true)}>Popup</button>
       </Wrapper>

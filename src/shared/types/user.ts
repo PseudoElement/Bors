@@ -61,3 +61,9 @@ export interface UserAuthResponse {
     user: User
   }
 }
+
+export interface UserMeResponse {
+  status: string
+  messge: string
+  data: User
+}

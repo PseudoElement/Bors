@@ -20,26 +20,38 @@ interface StocksCardProps extends Stocks {
 export const StocksCard: FC<StocksCardProps> = ({
   id,
   image,
-  appName,
-  appInitials,
-  currency,
-  uppedPercent,
+  price,
+  onShow,
   onClick,
+  revenue_growth,
+  updated_at,
+  created_at,
+  name,
+  company_name,
+  company_code,
   count,
-  hasNft,
-  onShow
+  country,
+  desc,
+  country_id,
+  ebitda,
+  p_e,
+  p_s,
+  diluted_eps,
+  growth_eps,
+  market_cap,
+  net_profit_margin,
+  real_count,
+  buy_sum_count,
 }) => {
   const [isActiveCard, setIsActiveCard] = useState<boolean>(false)
-
   const [counterValue, setCounterValue] = useState(1)
-
-
 
   const changeCounter = (value: number) => {
     setCounterValue(value)
   }
 
-  const addNft = () => {
+  const addNft = (e: any) => {
+    e.stopPropagation()
     onClick?.()
     setIsActiveCard(prev => !prev)
   }
@@ -62,34 +74,36 @@ export const StocksCard: FC<StocksCardProps> = ({
         </div>
 
         <div className={s.appName}>
-          <span className={s.name}>{appName}</span>
-          <span className={s.initials}>{appInitials}</span>
+          <span className={s.name}>{company_name}</span>
+          <span className={s.initials}>{company_code}</span>
         </div>
 
         <div className={s.statistics}>
           <span className={s.currency}>
-            {currency} <span>SEK</span>
+            {price?.price} <span>SEK</span>
           </span>
           <span className={s.percent}>
             {' '}
-            <UpArrow /> +{uppedPercent}%
+            <UpArrow /> +{price?.percentage}%
           </span>
         </div>
-        {
-          isActiveCard ? <Counter min={0} max={10} value={counterValue} onChange={changeCounter} /> :
-            <div className={s.buy}>
-              <span
-                className={s.buyBtn}
-                onClick={e => {
-                  addNft()
-                  e.stopPropagation()
-                }}
-              >
-                {hasNft ? 'buy more' : 'Buy'}
-              </span>
-              <span className={s.buyText}>Available stock 824</span>
-            </div>
-        }
+
+        {isActiveCard ? (
+          <Counter
+            min={0}
+            max={10}
+            value={counterValue}
+            onChange={changeCounter}
+          />
+        ) : (
+          <div className={s.buy}>
+            <button className={s.buyBtn} onClick={e => addNft(e)}>
+              {false ? 'buy more' : 'Buy'}
+            </button>
+
+            <span className={s.buyText}>Available stock 824</span>
+          </div>
+        )}
       </div>
     </>
   )

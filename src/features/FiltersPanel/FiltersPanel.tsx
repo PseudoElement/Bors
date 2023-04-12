@@ -57,7 +57,7 @@ export const FiltersPanel: FC<FiltersPanelProps> = ({
   }, [valueFilters])
   return (
     <>
-      {width <= 567 &&
+      {width <= 567 && (
         <>
           <div onClick={() => setIsOpen(true)} className={s.mobileSelect}>
             Filter stocks <FilterIcon />
@@ -92,7 +92,8 @@ export const FiltersPanel: FC<FiltersPanelProps> = ({
               </div>
             </div>
           </Popup>
-        </>}
+        </>
+      )}
       <div className={s.filters}>
         <DropMenu
           title='By popularity'

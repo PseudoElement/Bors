@@ -1,46 +1,61 @@
+import { FC, useEffect } from 'react'
 import Image from 'next/image'
+import cn from 'classnames'
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 
 import { Balance, Button, Input } from 'components'
-import { Controller, SubmitHandler, useForm } from 'react-hook-form'
-import { mock_user_balance, mock_user_fields, mock_user_icons } from 'shared/mocks/mock_userAccount'
 
-import cn from 'classnames'
+import { useAppDispatch } from 'shared/hooks/redux'
+import { authMe } from 'shared/api/routes/user'
+import { userMeResponse } from 'store/slices/userSlice'
+
+import { User } from 'shared/types/user'
+import {
+  mock_user_balance,
+  mock_user_fields,
+  mock_user_icons,
+} from 'shared/mocks/mock_userAccount'
+
 import s from './UserAccount.module.scss'
 
-interface UserFieldsProps {
-  username: string
-  firstname: string
-  lastname: string
-  email: string
-  phone: string
-  homeadress: string
-  avanza: string
-  nordnet: string
-}
+export const UserAccount: FC = () => {
+  const dispatch = useAppDispatch()
 
-export const UserAccount: React.FC = () => {
+  const getUser = async () => {
+    try {
+      const data = await authMe()
+      dispatch(userMeResponse(data.data))
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   const {
     control,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<UserFieldsProps>({
+  } = useForm<User>({
     defaultValues: {
-      username: '',
-      firstname: '',
-      lastname: '',
+      name: '',
+      first_name: null,
+      last_name: '',
       email: '',
-      phone: '',
-      homeadress: '',
-      avanza: '',
-      nordnet: '',
+      phone_number: null,
+      home_address: '',
+      avanza: null,
+      nordnet: null,
     },
   })
 
-  const onSubmitHanlder: SubmitHandler<UserFieldsProps> = data => {
+  const onSubmitHanlder: SubmitHandler<User> = data => {
     console.log(data)
     reset()
   }
+
+  useEffect(() => {
+    getUser()
+  }, [dispatch])
 
   return (
     <div className={s.wrapper}>
@@ -88,9 +103,10 @@ export const UserAccount: React.FC = () => {
                 {item.label}
                 <span className={s.requiredField}>*</span>
               </label>
+
               <div className={s.textField}>
                 <Controller
-                  name={item.name as 'firstname'}
+                  name={item.name as 'first_name'}
                   control={control}
                   rules={{ required: `${item.label} field required` }}
                   render={({ field: { onChange, value } }) => (
@@ -98,6 +114,7 @@ export const UserAccount: React.FC = () => {
                   )}
                 />
               </div>
+
               {errors[item.name as 'email'] && (
                 <span className={s.errMessage}>
                   {errors[item.name as 'email']?.message}
@@ -110,9 +127,10 @@ export const UserAccount: React.FC = () => {
           <label htmlFor='homeadress' className={s.labelField}>
             Home Adress<span className={s.requiredField}>*</span>
           </label>
+
           <div>
             <Controller
-              name='homeadress'
+              name='home_address'
               control={control}
               rules={{ required: `Home Adress field required` }}
               render={({ field: { onChange, value } }) => (
@@ -120,8 +138,8 @@ export const UserAccount: React.FC = () => {
               )}
             />
           </div>
-          {errors.homeadress && (
-            <span className={s.errMessage}>{errors.homeadress.message}</span>
+          {errors.home_address && (
+            <span className={s.errMessage}>{errors.home_address.message}</span>
           )}
         </div>
         <div className={s.wrapperFlexField}>
