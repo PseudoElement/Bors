@@ -14,7 +14,7 @@ export const Intro: FC<SiteData> = ({ logo, desc }) => {
 
       <div className={s.container}>
         <div className={s.logo}>
-          <Image src={logo} width={596} height={168} alt='logo' />
+          {logo && <Image src={logo} width={596} height={168} alt='logo' />}
         </div>
 
         <p className={s.text}>{desc}</p>

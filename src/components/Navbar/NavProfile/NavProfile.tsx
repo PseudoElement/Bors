@@ -20,7 +20,7 @@ export interface NavMainProps {
 export const NavProfile: FC<NavMainProps> = ({ classNames }) => {
   const dispatch = useAppDispatch()
   const { push } = useRouter()
-  const [activeLink, setActiveLink] = useState<string>('Buy Stocks')
+  const [activeLink, setActiveLink] = useState<string>('Personal Account')
 
   const logoutUser = async () => {
     await push('/')

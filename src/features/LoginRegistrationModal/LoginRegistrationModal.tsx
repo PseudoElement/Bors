@@ -19,6 +19,7 @@ export const LoginRegistrationModal: FC<LoginRegistrationModalProps> = ({
   const overlayRef = useRef<HTMLDivElement>(null)
 
   useClickOutside(overlayRef, onClose)
+
   useEffect(() => {
     if (isOpen === true) {
       document.body.style.overflow = 'hidden'
@@ -52,7 +53,7 @@ export const LoginRegistrationModal: FC<LoginRegistrationModalProps> = ({
             / Registration
           </span>
         </div>
-        {isActive === 'login' ? <LoginForm /> : <RegistrationForm />}
+        {isActive === 'login' ? <LoginForm onClose={onClose}/> : <RegistrationForm />}
       </div>
     </div>
   )

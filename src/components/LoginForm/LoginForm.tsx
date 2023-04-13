@@ -1,15 +1,13 @@
 import { FC } from 'react'
 import { useForm, Controller, SubmitHandler } from 'react-hook-form'
-import { useSelector, useDispatch } from 'react-redux'
-import { createAsyncThunk, createSlice, configureStore } from '@reduxjs/toolkit'
-
-import { updateUserHash } from 'store/slices/userAuth'
+import { useRouter } from 'next/router'
 
 import { Input, Button } from 'components'
 
 import { userAuth } from 'shared/api/routes/user'
+import { userAuthResponse } from 'store/slices/userSlice'
+import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { cookies } from 'shared/utils/Cookies'
-import { useAppDispatch } from 'shared/hooks/redux'
 
 import s from './loginForm.module.scss'
 
@@ -18,9 +16,15 @@ export interface FormInputProps {
   password: string
 }
 
-export const LoginForm: FC = () => {
-  const dispatch = useAppDispatch()
+interface LoginFormProps {
+  onClose: () => void
+}
 
+export const LoginForm: FC<LoginFormProps> = ({ onClose }) => {
+  const dispatch = useAppDispatch()
+  const { push } = useRouter()
+  const user = useAppSelector(state => state.user)
+  console.log(user)
   const {
     control,
     handleSubmit,
@@ -38,11 +42,11 @@ export const LoginForm: FC = () => {
 
     try {
       const response = await userAuth(loginData)
-
-      if (response) {
-        const hash = response.data.data.access_token
-        dispatch(updateUserHash(hash))
+      if (response.data.status !== 'error') {
+        dispatch(userAuthResponse(response.data.data))
         cookies.set('token', response.data.data.access_token)
+        await onClose()
+        await push('profile/account')
       }
       reset({
         email: '',

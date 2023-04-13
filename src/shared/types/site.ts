@@ -1,7 +1,7 @@
 export interface SiteData {
-  desc: string
-  infos: InfoCardProps[]
-  logo: string
+  desc?: string
+  infos?: InfoCardProps[]
+  logo?: string
 }
 
 export interface InfoCardProps {
