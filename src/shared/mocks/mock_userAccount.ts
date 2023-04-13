@@ -3,19 +3,19 @@ import { BalanceProps } from 'shared/types/balance'
 export const mock_user_fields = {
   short: [
     {
-      label: 'User name',
+      label: 'Name',
       type: 'text',
-      name: 'username',
+      name: 'name',
     },
     {
       label: 'First name',
       type: 'text',
-      name: 'firstname',
+      name: 'first_name',
     },
     {
       label: 'Last name',
       type: 'text',
-      name: 'lastname',
+      name: 'last_name',
     },
     {
       label: 'Email',
@@ -25,7 +25,7 @@ export const mock_user_fields = {
     {
       label: 'Phone',
       type: 'phone',
-      name: 'phone',
+      name: 'phone_number',
     },
   ],
   flex: [

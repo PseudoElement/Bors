@@ -2,12 +2,13 @@ import { FC, useEffect } from 'react'
 import Image from 'next/image'
 import cn from 'classnames'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import { AxiosError } from 'axios'
 
 import { Balance, Button, Input } from 'components'
 
 import { useAppDispatch } from 'shared/hooks/redux'
-import { authMe } from 'shared/api/routes/user'
-import { userMeResponse } from 'store/slices/userSlice'
+import { authMe, userUpdate } from 'shared/api/routes/user'
+import { userMeResponse, userUpdateResponse } from 'store/slices/userSlice'
 
 import { User } from 'shared/types/user'
 import {
@@ -48,9 +49,18 @@ export const UserAccount: FC = () => {
     },
   })
 
-  const onSubmitHanlder: SubmitHandler<User> = data => {
-    console.log(data)
-    reset()
+  const onSubmitHanlder: SubmitHandler<User> = async formData => {
+    try {
+      const { data } = await userUpdate(formData)
+      dispatch(userUpdateResponse({ user: data.data, errorMessage: null }))
+    } catch (error) {
+      dispatch(
+        userUpdateResponse({
+          user: null,
+          errorMessage: (error as AxiosError).message,
+        })
+      )
+    }
   }
 
   useEffect(() => {

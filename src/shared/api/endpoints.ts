@@ -4,7 +4,7 @@ export const endpoints_user = {
   auth_me: '/auth/me/',
   logout: '/auth/logout/',
   forgot: '/auth/forgot/',
-  profile: '/auth/profile/',
+  profile: '/auth/profil/',
   avatar: '/auth/avatar/',
 }
 

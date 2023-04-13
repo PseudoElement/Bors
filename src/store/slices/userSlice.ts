@@ -6,6 +6,7 @@ export interface UserState {
   authStatus: string | null
   authError: string | null
   token: string | null
+  errMessage: string | null
 }
 
 const initialState: UserState = {
@@ -13,6 +14,7 @@ const initialState: UserState = {
   authStatus: null,
   authError: null,
   token: null,
+  errMessage: null,
 }
 
 const userSlice = createSlice({
@@ -41,6 +43,10 @@ const userSlice = createSlice({
       state.authStatus = 'success'
       state.authError = null
     },
+    userUpdateResponse(state, action) {
+      state.user = action.payload.user ? action.payload.user : state.user
+      state.errMessage = action.payload.errorMessage
+    },
   },
 })
 
@@ -50,6 +56,7 @@ export const {
   logoutUserRequested,
   userMeResponse,
   userAuthResponse,
+  userUpdateResponse,
 } = userSlice.actions
 
 export default userSlice.reducer

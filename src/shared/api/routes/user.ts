@@ -5,6 +5,7 @@ import {
   UserAuthRequest,
   UserMeResponse,
   UserRegResponse,
+  User,
 } from '../../types/user'
 
 import { api, endpoints_user } from '../index'
@@ -28,4 +29,10 @@ export const userRegister = (
   regUserForms: UserRegRequest
 ): AxiosPromise<UserRegResponse> => {
   return api.post(endpoints_user.register, regUserForms)
+}
+
+export const userUpdate = (
+  updateUserForm: User
+): AxiosPromise<UserMeResponse> => {
+  return api.post(endpoints_user.profile, updateUserForm)
 }
