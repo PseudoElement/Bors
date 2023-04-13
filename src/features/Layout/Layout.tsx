@@ -8,19 +8,13 @@ type PropsLayout = {
 
 export const Layout: FC<PropsLayout> = ({ children }) => {
   const router = useRouter()
-  const reg = /\#\w+/
+  const navVariant = router.pathname === '/'
 
   return (
     <>
-      <Header
-        variant={
-          router.asPath === '/' || reg.test(router.asPath)
-            ? 'unauthorised'
-            : 'authorised'
-        }
-      />
+      <Header variant={navVariant} />
       {children}
-      {router.asPath === '/' && <Footer />}
+      {navVariant && <Footer />}
     </>
   )
 }

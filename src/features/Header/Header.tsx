@@ -5,7 +5,7 @@ import { Navbar } from 'components/Navbar/Navbar'
 import s from './header.module.scss'
 
 interface Variant {
-  variant: string
+  variant: boolean
 }
 
 export const Header: FC<Variant> = ({ variant }) => {

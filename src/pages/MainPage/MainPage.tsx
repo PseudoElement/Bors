@@ -25,7 +25,9 @@ export const MainPage = () => {
       console.error(e)
     }
   }
+
   useEffect(() => {
+    if (infoCards) return
     getInfo()
   }, [])
 

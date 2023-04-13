@@ -1,0 +1,155 @@
+@use "styles/style" as *;
+
+.mobileNavBar {
+  padding: 14px 24px;
+  width: 100%;
+  border-radius: 16px;
+  background: $color-white;
+  border: 1px solid $color-black-05;
+  box-shadow: 0px 5px 10px $color-black-08;
+  backdrop-filter: blur(63px);
+}
+
+.mobileNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.avatarGroup {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+  padding-right: 16px;
+  border-right: 1px solid $color-gray-eb;
+}
+
+.userName {
+  word-break: break-all;
+  overflow-wrap: break-word;
+  font-size: 16px;
+  font-weight: $fw-bold;
+}
+
+.mobileNavbarWrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 26px;
+}
+
+.burgerMenu {
+  width: 34px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.burgerMenuLine {
+  width: 100%;
+  height: 5px;
+  background: $password-gradient;
+  border-radius: 80px;
+  position: absolute;
+  &:first-child {
+    top: 0;
+    left: 0;
+    transition: 0.3s ease-in;
+  }
+  &:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    transition: 0.3s ease-in;
+  }
+  &:last-child {
+    bottom: 0;
+    left: 0;
+    transition: 0.3s ease-in;
+  }
+}
+
+.activeMenu {
+  .burgerMenuLine {
+    &:first-child {
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+      left: 0;
+    }
+    &:nth-child(2) {
+      opacity: 0;
+    }
+    &:last-child {
+      bottom: 50%;
+      transform: translateY(50%) rotate(-45deg);
+      left: 0;
+    }
+  }
+}
+
+.burgerMenuList {
+  margin-top: 16px;
+  border-top: 1px solid $color-gray-eb;
+  padding-top: 16px;
+}
+
+.burgerMenuTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 21px;
+}
+
+.burgerMenuBalance,
+.burgerMenuLogout {
+  font-size: 13px;
+  font-weight: $fw-semibold;
+  color: $color-gray-a5;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.burgerMenuBalanceNum {
+  font-size: 20px;
+  font-weight: $fw-bold;
+  background: $password-gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.burgerMenuLogoutWrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  border: none;
+  background-color: transparent;
+}
+
+.linkItem {
+  width: 100%;
+  padding: 21px 16px;
+  border: 1px solid $color-dark-05;
+  box-shadow: 0 5px 10px $color-dark-08;
+  backdrop-filter: blur(63px);
+  border-radius: 16px;
+  background-color: $color-white;
+  &:not(:last-child) {
+    margin-bottom: 5px;
+  }
+}
+
+.burgerLink {
+  color: $color-gray-54;
+  font-size: 22px;
+  font-weight: $fw-semibold;
+}
+
+.linkItem {
+  .active {
+    font-weight: $fw-bold;
+    background: $password-gradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
