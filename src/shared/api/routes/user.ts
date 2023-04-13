@@ -4,6 +4,7 @@ import {
   LogoutUser,
   UserAuthRequest,
   UserMeResponse,
+  UserRegResponse,
 } from '../../types/user'
 
 import { api, endpoints_user } from '../index'
@@ -25,6 +26,6 @@ export const logoutAuth = (): AxiosPromise<LogoutUser> => {
 
 export const userRegister = (
   regUserForms: UserRegRequest
-): AxiosPromise<UserRegRequest> => {
+): AxiosPromise<UserRegResponse> => {
   return api.post(endpoints_user.register, regUserForms)
 }

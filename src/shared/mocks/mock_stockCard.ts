@@ -6,7 +6,7 @@ import MailchimpLogo from '/public/assets/image/mailchimpLogo.png'
 import ZapierLogo from '/public/assets/image/zapierLogo.png'
 import NetflixLogo from '/public/assets/image/netflixLogo.png'
 
-export const mock__stock_card: Stocks[] = [
+export const mock__stock_card = [
   {
     id: 1,
     image: FigmaLogo.src,

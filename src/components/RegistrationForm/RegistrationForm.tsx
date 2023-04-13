@@ -39,16 +39,16 @@ export const RegistrationForm: FC = () => {
         token: data.data.access_token,
         authError: null,
       }
-      cookies.set('token', data.data.access_token)
-      dispatch(newUserRequested(userData))
-      reset()
+      await cookies.set('token', data.data.access_token)
+      await dispatch(newUserRequested(userData))
+      await reset()
     } catch (error) {
-      console.log(error)
+      console.error(error)
       const errorData = {
         user: null,
         authStatus: null,
         token: null,
-        authError: error.message,
+        authError: 'registration error'
       }
       dispatch(newUserRequested(errorData))
     }

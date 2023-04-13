@@ -1,5 +1,4 @@
 import { horizonCard } from './horizonCards'
-import { infoCardData } from './infoCards'
 
 export type ComponentProps = {
   component: React.ComponentType<any>
@@ -8,5 +7,5 @@ export type ComponentProps = {
 }
 
 export type CardsType = {
-  cards: infoCardData[]
+  cards: any[]
 }

@@ -27,13 +27,17 @@ export const Footer: FC = () => {
             Simple and convenient platform for online stock trading
           </div>
         </div>
-        <Navbar variant='unauthorised' />
+        <Navbar variant={true} />
+
         <div className={s.line}></div>
+
         <div className={s.contacts}>
           <span className={s.location}>The Netherlands, Leiden</span>
+
           <Link href='tel:88005501550'>
             <span className={s.tel}>8 800 550-15-50</span>
           </Link>
+
           <div className={s.icons}>
             <Link href='https://twitter.com'>
               <div className={s.circle}>
@@ -45,6 +49,7 @@ export const Footer: FC = () => {
                 />
               </div>
             </Link>
+
             <Link href='https://twitter.com'>
               <div className={s.circle}>
                 <Image
@@ -55,6 +60,7 @@ export const Footer: FC = () => {
                 />
               </div>
             </Link>
+
             <Link href='https://twitter.com'>
               <div className={s.circle}>
                 <Image
@@ -65,6 +71,7 @@ export const Footer: FC = () => {
                 />
               </div>
             </Link>
+
             <Link href='https://twitter.com'>
               <div className={s.circle}>
                 <Image
@@ -76,11 +83,14 @@ export const Footer: FC = () => {
               </div>
             </Link>
           </div>
+
           <Link href='mailto:Bors@Jakten.bj'>
             <span className={s.mail}>Bors@Jakten.bj</span>
           </Link>
         </div>
+
         <div className={s.line}></div>
+
         <div className={s.agreement}>
           <span>@ 2023 Bors Jakten</span>
           <span>

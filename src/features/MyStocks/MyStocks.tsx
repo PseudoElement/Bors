@@ -17,7 +17,7 @@ export interface MyStocksInfo {
 }
 
 export const MyStocks = () => {
-  const [userInfo, setUserInfo] = useState<MyStocksInfo>(mock_my_stocks)
+  const [userInfo, setUserInfo] = useState<MyStocksInfo | null>(null)
 
   return (
     <div className={s.wrapperStocks}>
@@ -34,8 +34,9 @@ export const MyStocks = () => {
             <Balance {...item} key={key} />
           ))}
         </div>
+
         <div className={s.userCard}>
-          {userInfo.myCard.map((card, idx) => (
+          {userInfo?.myCard.map((card, idx) => (
             <StocksCard key={idx} {...card} />
           ))}
         </div>

@@ -46,6 +46,17 @@ export interface UserRegRequest {
   confirm_password: string
 }
 
+export interface UserRegResponse {
+  status: string
+  messge: string
+  data: {
+    access_token: string
+    token_type: string
+    expires_in: number
+    user: UserShort
+  }
+}
+
 export interface UserAuthRequest {
   email: string
   password: string

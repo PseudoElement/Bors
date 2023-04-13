@@ -1,15 +1,13 @@
 import { FC, useState, useEffect } from 'react'
 import Image from 'next/image'
+import cn from 'classnames'
 
 import { CardStocksInfo } from 'features'
-
-import Counter from 'components/Counter/Counter'
+import { Counter } from 'components'
 
 import { Stocks } from 'shared/types/stocks'
-
 import UpArrow from '/public/assets/image/ArrowUp.svg'
 
-import cn from 'classnames'
 import s from './stocksCard.module.scss'
 
 interface StocksCardProps extends Stocks {

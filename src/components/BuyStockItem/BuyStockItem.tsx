@@ -8,12 +8,20 @@ import s from './buyStockItem.module.scss'
 
 export const BuyStockItem: FC<Stocks> = ({
   id,
-  appName,
-  currency,
-  count,
-  uppedPercent,
-  appInitials,
   image,
+  count,
+  real_count,
+  updated_at,
+  buy_sum_count,
+  created_at,
+  p_e,
+  p_s,
+  price,
+  company_name,
+  name,
+  company_code,
+  country,
+  country_id,
 }) => {
   return (
     <div className={s.buystockItem}>
@@ -23,13 +31,13 @@ export const BuyStockItem: FC<Stocks> = ({
             <Image width={40} height={40} src={image} alt='Icon' />
           </div>
           <div>
-            <h5 className={s.buystockTitle}>{appName}</h5>
-            <span className={s.buystockInitials}>{appInitials}</span>
+            <h5 className={s.buystockTitle}>{company_name}</h5>
+            <span className={s.buystockInitials}>{company_code}</span>
           </div>
         </div>
         <div>
           <span className={s.buystockStoks}>{count} stoks</span>
-          <p className={s.buystockCurrency}>{currency} sek</p>
+          <p className={s.buystockCurrency}>{price.price} sek</p>
         </div>
       </div>
     </div>

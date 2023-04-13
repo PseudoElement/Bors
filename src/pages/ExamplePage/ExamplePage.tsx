@@ -10,7 +10,6 @@ import {
   StocksCard,
   Tag,
   Indicator,
-  Card,
   Button,
   Sponsor,
 } from 'components'
@@ -22,7 +21,6 @@ import {
   FillRequest,
   BuyStockList,
   FiltersPanel,
-  Info,
   Header,
   Footer,
   MyStocks,
@@ -81,7 +79,7 @@ export const ExamplePage: FC = () => {
       </Wrapper>
 
       <Wrapper text={'header unauthorised'}>
-        <Header variant='unauthorised' />
+        <Header variant={true} />
       </Wrapper>
       <Wrapper text={'drop menu'}>
         <DropMenu
@@ -111,10 +109,10 @@ export const ExamplePage: FC = () => {
         <button onClick={() => setOpenPopup(true)}>Popup</button>
       </Wrapper>
       <Wrapper text='Bottom Buy Section'>
-        <BottomBuySection
-          stocks={mock__stock_card}
-          onClose={() => console.log(1)}
-        />
+        {/*<BottomBuySection*/}
+        {/*  stocks={mock__stock_card}*/}
+        {/*  onClose={() => console.log(1)}*/}
+        {/*/>*/}
       </Wrapper>
       <Wrapper text={'Events Card'}>
         <EventsCard {...mock__event_card} />
@@ -155,20 +153,20 @@ export const ExamplePage: FC = () => {
 
       <Wrapper text='BuyStock'>
         <Popup isOpen={openBuyStock} onClose={() => setOpenBuyStock(false)}>
-          <BuyStockList stocks={mock__stock_card} />
+          {/*<BuyStockList stocks={mock__stock_card} />*/}
         </Popup>
         <button onClick={() => setOpenBuyStock(true)}>BuyStock</button>
       </Wrapper>
 
       <Wrapper text={'Stocks Card'}>
-        <StocksCard
-          {...mock__stock_card[0]}
-          onClick={() => console.log('1234')}
-        />
-        <StocksCard
-          {...mock__stock_card[1]}
-          onClick={() => console.log('1234')}
-        />
+        {/*<StocksCard*/}
+        {/*  {...mock__stock_card[0]}*/}
+        {/*  onClick={() => console.log('1234')}*/}
+        {/*/>*/}
+        {/*<StocksCard*/}
+        {/*  {...mock__stock_card[1]}*/}
+        {/*  onClick={() => console.log('1234')}*/}
+        {/*/>*/}
       </Wrapper>
 
       {/* <Wrapper text='Login and Registration modal'>
@@ -182,7 +180,7 @@ export const ExamplePage: FC = () => {
       </Wrapper> */}
 
       <Wrapper text={'Horizon card'}>
-        <StockHorizonCard {...stockHorizonData} />
+        {/*<StockHorizonCard {...stockHorizonData} />*/}
       </Wrapper>
 
       <Wrapper text='Tag'>
