@@ -1,16 +1,26 @@
 import { FC } from 'react'
 import { useForm, Controller, SubmitHandler } from 'react-hook-form'
+import { useSelector, useDispatch } from 'react-redux'
+import { createAsyncThunk, createSlice, configureStore } from '@reduxjs/toolkit'
+
+import { updateUserHash } from 'store/slices/userAuth'
 
 import { Input, Button } from 'components'
 
+import { userAuth } from 'shared/api/routes/user'
+import { cookies } from 'shared/utils/Cookies'
+import { useAppDispatch } from 'shared/hooks/redux'
+
 import s from './loginForm.module.scss'
 
-interface FormInputProps {
+export interface FormInputProps {
   email: string
   password: string
 }
 
 export const LoginForm: FC = () => {
+  const dispatch = useAppDispatch()
+
   const {
     control,
     handleSubmit,
@@ -23,12 +33,24 @@ export const LoginForm: FC = () => {
     },
   })
 
-  const onSubmitLogin: SubmitHandler<FormInputProps> = data => {
-    console.log(data)
-    reset({
-      email: '',
-      password: '',
-    })
+  const onSubmitLogin: SubmitHandler<FormInputProps> = async data => {
+    const loginData = { email: data.email, password: data.password }
+
+    try {
+      const response = await userAuth(loginData)
+
+      if (response) {
+        const hash = response.data.data.access_token
+        dispatch(updateUserHash(hash))
+        cookies.set('token', response.data.data.access_token)
+      }
+      reset({
+        email: '',
+        password: '',
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
