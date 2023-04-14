@@ -34,8 +34,8 @@ export const main_nav_links = [
     label: 'Contacts',
     link: '#contacts',
   },
-  {
+  /*   {
     label: 'Stock',
     link: '#',
-  },
+  }, */
 ]
