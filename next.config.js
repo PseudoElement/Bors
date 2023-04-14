@@ -17,13 +17,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['stock.yarbek.uz'],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'developer.laros.ch',
-      },
-    ],
+    domains: ['api.xn--brsjakten-07a.se'],
   },
   i18n: {
     locales: ['de'],

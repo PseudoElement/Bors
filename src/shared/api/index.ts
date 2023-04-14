@@ -3,7 +3,7 @@ import { cookies } from '../utils/Cookies'
 
 export * from './endpoints'
 
-export const BASE_URL = 'https://stock.yarbek.uz'
+export const BASE_URL = 'https://api.xn--brsjakten-07a.se'
 
 export const api = Axios.create({
   baseURL: BASE_URL + '/api/v1',
@@ -13,3 +13,4 @@ export const api = Axios.create({
     Authorization: `Bearer ${cookies.get('token')}`,
   },
 })
+
