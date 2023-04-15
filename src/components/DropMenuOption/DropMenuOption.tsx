@@ -8,15 +8,31 @@ interface DropMenuItemProps {
   title: string
   setMenuState: Dispatch<SetStateAction<DropMenuState>>
   menuState: DropMenuState
+  onMenuClose: () => void
 }
 
 export const DropMenuOption: FC<DropMenuItemProps> = ({
   title,
   setMenuState,
   menuState,
+  onMenuClose,
 }) => {
+
   const handleClick = () => {
-    setMenuState({ ...menuState, [title]: !menuState[title] })
+
+    // get menuState with all filters setted to false
+    const defaultMenu:DropMenuState = Object.keys(menuState).reduce(
+      (a: {}, v: string) => ({
+        ...a,
+        [v]:  false,
+      }),
+      {}
+    )
+    // set new menuState with chosen filter
+    setMenuState({...defaultMenu, [title]: true})
+
+    // apply changes
+    onMenuClose()
   }
 
   return (

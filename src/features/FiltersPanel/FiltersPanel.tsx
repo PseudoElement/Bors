@@ -71,21 +71,19 @@ export const FiltersPanel: FC<FiltersPanelProps> = ({
                   onChange={data => console.log('popularity ', data)}
                   data={mock_by_popularity}
                   className={s.short}
-                  defaultValues={[false, false]}
+                  
                 />
                 <DropMenu
                   title='By price'
                   onChange={data => console.log('popularity ', data)}
                   data={mock_by_popularity}
                   className={s.short}
-                  defaultValues={[false, false]}
                 />
                 <DropMenu
                   title='By line of business'
                   onChange={data => console.log('business ', data)}
                   data={mock_by_line_of_business}
                   className={s.wide}
-                  defaultValues={[false, false, false, false, false, false]}
                 />
                 {children && children}
                 <Button className={s.btn}>Filter</Button>
@@ -100,21 +98,18 @@ export const FiltersPanel: FC<FiltersPanelProps> = ({
           onChange={data => console.log('popularity ', data)}
           data={mock_by_popularity}
           className={s.short}
-          defaultValues={[false, false]}
         />
         <DropMenu
           title='By price'
           onChange={data => console.log('popularity ', data)}
           data={mock_by_popularity}
           className={s.short}
-          defaultValues={[false, false]}
         />
         <DropMenu
           title='By line of business'
           onChange={data => console.log('business ', data)}
           data={mock_by_line_of_business}
           className={s.wide}
-          defaultValues={[false, false, false, false, false, false]}
         />
         {children && children}
       </div>

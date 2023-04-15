@@ -8,9 +8,9 @@ import { useClickOutside } from 'shared/hooks/useClickOutside'
 import s from './dropMenu.module.scss'
 
 interface DropMenuProps {
-  defaultValues?: boolean[]
+  defaultValue?: number
   title: string
-  onChange: (selectedOptions: string[]) => void
+  onChange: (selectedOption: string) => void
   data: string[]
   className?: string
 }
@@ -18,7 +18,7 @@ export interface DropMenuState {
   [key: string]: boolean
 }
 export const DropMenu: FC<DropMenuProps> = ({
-  defaultValues,
+  defaultValue,
   title,
   onChange,
   data,
@@ -28,22 +28,23 @@ export const DropMenu: FC<DropMenuProps> = ({
     data.reduce(
       (a, v, i) => ({
         ...a,
-        [v]: defaultValues === undefined ? false : defaultValues[i],
+        [v]: defaultValue === undefined ? false : defaultValue === i ? true : false,
       }),
       {}
     )
   )
 
   const [activeDropMenu, setActiveDropMenu] = useState<boolean>(false)
-  const [showInMenuTitle, setShowInMenuTitle] = useState<string[]>([])
+  const [showInMenuTitle, setShowInMenuTitle] = useState<string>('')
 
   const overlayRef = useRef<HTMLDivElement>(null)
 
-  let activeFilters = Object.keys(menuState).filter(item => menuState[item])
+  let activeFilter = Object.keys(menuState).find(item => menuState[item])
+
   const onMenuClose = () => {
     setActiveDropMenu(false)
-    setShowInMenuTitle(activeFilters)
-    onChange(activeFilters)
+    setShowInMenuTitle(activeFilter ? activeFilter : '')
+    onChange(activeFilter ? activeFilter : '')
   }
 
   const handleMenuClick = () => {
@@ -56,15 +57,15 @@ export const DropMenu: FC<DropMenuProps> = ({
   const handleResetBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation()
 
-    setShowInMenuTitle([])
+    setShowInMenuTitle('')
     setMenuState(data.reduce((a, v) => ({ ...a, [v]: false }), {}))
-    onChange([])
+    onChange('')
   }
 
   useEffect(() => {
-    setShowInMenuTitle(activeFilters)
-    onChange(activeFilters)
-  }, [])
+    setShowInMenuTitle(activeFilter ? activeFilter : '')
+    onChange(activeFilter ? activeFilter : '')
+  }, [activeFilter])
 
   useClickOutside(overlayRef, onMenuClose)
 
@@ -87,7 +88,7 @@ export const DropMenu: FC<DropMenuProps> = ({
           ) : (
             <>
               <div className={s.container}>
-                <div className={s.selected}>{showInMenuTitle.join(', ')}</div>
+                <div className={s.selected}>{showInMenuTitle}</div>
                 <div className={s.mask}></div>
               </div>
 
@@ -105,6 +106,7 @@ export const DropMenu: FC<DropMenuProps> = ({
               title={item}
               menuState={menuState}
               setMenuState={setMenuState}
+              onMenuClose={onMenuClose}
             />
           ))}
         </div>
