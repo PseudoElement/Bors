@@ -25,6 +25,7 @@ export const UserAccount: FC = () => {
   const getUser = async () => {
     try {
       const data = await authMe()
+
       dispatch(userMeResponse(data.data))
     } catch (error) {
       console.error(error)

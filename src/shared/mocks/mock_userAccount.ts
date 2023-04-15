@@ -27,6 +27,11 @@ export const mock_user_fields = {
       type: 'phone',
       name: 'phone_number',
     },
+    {
+      label: 'Security Phone',
+      type: 'phone',
+      name: 'security_number',
+    },
   ],
   flex: [
     {

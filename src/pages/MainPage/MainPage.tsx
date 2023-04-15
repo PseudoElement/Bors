@@ -21,6 +21,7 @@ export const MainPage = () => {
     try {
       const data = await getInfoCards()
       setInfoCards(data.data.data)
+
     } catch (e) {
       console.error(e)
     }
