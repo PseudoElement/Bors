@@ -6,27 +6,32 @@ import { AxiosError } from 'axios'
 
 import { Balance, Button, Input } from 'components'
 
-import { useAppDispatch } from 'shared/hooks/redux'
+import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { authMe, userUpdate } from 'shared/api/routes/user'
-import { userMeResponse, userUpdateResponse } from 'store/slices/userSlice'
+import { userMeResponse, userUpdateResponse, newUserRequested } from 'store/slices/userSlice'
 
 import { User } from 'shared/types/user'
+import { setAddValues } from 'shared/helpers/setAddValues'
 import {
   mock_user_balance,
   mock_user_fields,
   mock_user_icons,
 } from 'shared/mocks/mock_userAccount'
 
+import AvatarImage from '/public/assets/image/avatar.png'
+
 import s from './UserAccount.module.scss'
 
 export const UserAccount: FC = () => {
   const dispatch = useAppDispatch()
+  const user = useAppSelector(state => state.user.user)
 
   const getUser = async () => {
     try {
       const data = await authMe()
 
       dispatch(userMeResponse(data.data))
+
     } catch (error) {
       console.error(error)
     }
@@ -35,8 +40,8 @@ export const UserAccount: FC = () => {
   const {
     control,
     handleSubmit,
+    setValue,
     formState: { errors },
-    reset,
   } = useForm<User>({
     defaultValues: {
       name: '',
@@ -47,8 +52,13 @@ export const UserAccount: FC = () => {
       home_address: '',
       avanza: null,
       nordnet: null,
+      avatar: ''
     },
   })
+
+  useEffect(() => {
+    setAddValues(user, setValue)
+  }, [user])
 
   const onSubmitHanlder: SubmitHandler<User> = async formData => {
     try {
@@ -64,19 +74,23 @@ export const UserAccount: FC = () => {
     }
   }
 
+  const onClearSubmit = () => {
+    setAddValues(user, setValue)
+  }
+
   useEffect(() => {
     getUser()
   }, [dispatch])
 
   return (
     <div className={s.wrapper}>
-      <div className={s.header}>
+      {user && <div className={s.header}>
         <div className={s.wrapperAvatar}>
           <div className={s.avatar}>
             <Image
               width={159}
               height={159}
-              src={mock_user_icons.avatar}
+              src={!user?.avatar ? AvatarImage : user?.avatar as string}
               alt='avatar'
             />
           </div>
@@ -102,11 +116,11 @@ export const UserAccount: FC = () => {
         </div>
         <div className={s.wrapperBalance}>
           {mock_user_balance.map((item, key) => (
-            <Balance {...item} key={key} />
+            <Balance key={key} count={user?.balance} currency={item.currency} title={item.title} />
           ))}
         </div>
-      </div>
-      <form className={s.form} onSubmit={handleSubmit(onSubmitHanlder)}>
+      </div>}
+      {user && <form className={s.form} onSubmit={handleSubmit(onSubmitHanlder)}>
         <div className={s.wrapperField}>
           {mock_user_fields.short.map((item, key) => (
             <div className={s.field} key={key}>
@@ -114,18 +128,20 @@ export const UserAccount: FC = () => {
                 {item.label}
                 <span className={s.requiredField}>*</span>
               </label>
-
               <div className={s.textField}>
                 <Controller
                   name={item.name as 'first_name'}
                   control={control}
                   rules={{ required: `${item.label} field required` }}
                   render={({ field: { onChange, value } }) => (
-                    <Input type={item.type} value={value} onChange={onChange} />
+                    <Input
+                      type={item.type}
+                      value={value}
+                      onChange={onChange}
+                    />
                   )}
                 />
               </div>
-
               {errors[item.name as 'email'] && (
                 <span className={s.errMessage}>
                   {errors[item.name as 'email']?.message}
@@ -138,7 +154,6 @@ export const UserAccount: FC = () => {
           <label htmlFor='homeadress' className={s.labelField}>
             Home Adress<span className={s.requiredField}>*</span>
           </label>
-
           <div>
             <Controller
               name='home_address'
@@ -182,11 +197,11 @@ export const UserAccount: FC = () => {
           <Button className={s.actionBtn} type='submit'>
             Save changes
           </Button>
-          <Button className={cn(s.actionBtn, s.btnCancel)} type='button'>
+          <Button onClick={onClearSubmit} className={cn(s.actionBtn, s.btnCancel)} type='button'>
             Сancel changes
           </Button>
         </div>
-      </form>
+      </form>}
     </div>
   )
 }

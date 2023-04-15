@@ -1,18 +1,18 @@
 export interface User {
-  avanza: null
+  avanza: null | string
   avatar: string
   balance: number
   buy_amount: number
   created_at: string
   email: string
   email_verified_at: null
-  first_name: null
+  first_name: null | string
   forgot_password_at: string
   home_address: null | string
   id: number
   last_name: string | null
   name: string
-  nordnet: null
+  nordnet: null | string
   old_position: number
   old_stock_balance: number
   phone_number: null | number
@@ -24,6 +24,7 @@ export interface User {
   stock_balance: number
   updated_at: string
 }
+
 
 export interface LogoutUser {
   data: {

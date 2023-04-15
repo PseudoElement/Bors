@@ -50,18 +50,18 @@ export const mock_user_fields = {
 export const mock_user_balance: BalanceProps[] = [
   {
     title: 'balance',
-    count: '135,44',
+    count: 135.44,
     currency: 'sek',
   },
   {
     title: 'profitability',
-    count: '8.983,66',
+    count: 8.98366,
     currency: 'sek',
     profit: '+5.63%',
   },
   {
     title: 'rating',
-    count: '387',
+    count: 387,
     profit: '+4',
   },
 ]

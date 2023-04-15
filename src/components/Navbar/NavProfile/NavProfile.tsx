@@ -6,10 +6,12 @@ import { useRouter } from 'next/router'
 
 import { logoutAuth } from 'shared/api/routes/user'
 import { logoutUserRequested } from 'store/slices/userSlice'
-import { useAppDispatch } from 'shared/hooks/redux'
+import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { cookies } from 'shared/utils/Cookies'
 
 import { nav_links } from 'shared/mocks/navBar'
+
+import AvatarImage from '/public/assets/image/avatar.png'
 
 import s from './navProfile.module.scss'
 
@@ -33,6 +35,8 @@ export const NavProfile: FC<NavMainProps> = ({ classNames }) => {
       console.error(error)
     }
   }
+
+  const user = useAppSelector(state => state.user.user)
 
   return (
     <nav className={cn(s.nav2, classNames)}>
@@ -77,24 +81,24 @@ export const NavProfile: FC<NavMainProps> = ({ classNames }) => {
       </ul>
 
       <div className={s.userInfo}>
-        <div className={s.avatarGroup}>
-          <span>Green Tree</span>
+        {user && <div className={s.avatarGroup}>
+          <span>{user?.name}</span>
 
           <div className={s.userFoto}>
             <Image
-              src='/assets/image/user.png'
+              src={!user?.avatar ? AvatarImage : user?.avatar as string}
               width={52}
               height={52}
               style={{ objectFit: 'cover' }}
               alt='avatar'
             />
           </div>
-        </div>
+        </div>}
 
-        <div className={s.userBalance}>
+        {user && <div className={s.userBalance}>
           <div>Balance</div>
-          <span>8.983,66 sek</span>
-        </div>
+          <span>{String(user?.balance)} sek</span>
+        </div>}
 
         <Image
           src={'/assets/icons/logout.svg'}

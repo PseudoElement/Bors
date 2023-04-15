@@ -36,6 +36,8 @@ export const BuyStock: FC = () => {
     }
   }
 
+  console.log(stocks)
+
   useEffect(() => {
     getAllStocks()
   }, [dispatch])
@@ -68,7 +70,7 @@ export const BuyStock: FC = () => {
         <div className={s.filterWrapper}>
           <FiltersPanel
             defaultValue={{ price: true, lineBusiness: true, popularity: true }}
-            onChange={() => {}}
+            onChange={() => { }}
           >
             <div className={s.inputWrapper}>
               <div className={s.searchIcon}>
