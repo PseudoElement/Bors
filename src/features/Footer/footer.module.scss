@@ -72,35 +72,33 @@
 .contacts {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 7%;
+  justify-content: space-between;
+  gap: 5px;
   align-items: center;
   max-width: $max-layout-width;
   width: 100%;
   margin: 31px auto;
   color: $color-white;
-
-  .location {
+  
+  .location,
+  .mail,
+  .instLink {
     font-size: 32px;
     line-height: 130%;
     letter-spacing: -0.02em;
   }
-
-  .tel {
-    font-size: 48px;
-    line-height: 130%;
+  
+  .mail,
+  .instLink {
     cursor: pointer;
   }
-  .mail {
-    font-size: 32px;
-    line-height: 130%;
-    cursor: pointer;
-  }
-  .icons {
+  
+  .instLink {
     display: flex;
-    justify-content: space-between;
-    width: 240px;
-
+    align-items: center;
+    gap: 18px;
+    
+    
     .circle {
       display: flex;
       align-items: center;
@@ -117,15 +115,16 @@
 .agreement {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   max-width: $max-footer-bottom-line-width;
   margin: 21px auto 0 auto;
-
+  gap: 64px;
+  
   color: $color-white;
   font-size: 16px;
+  font-weight: $fw-light;
   line-height: 20px;
   letter-spacing: 0.05em;
-  text-transform: uppercase;
 }
 
 @media (max-width: #{$tablet-width}) {
@@ -175,30 +174,24 @@
       mix-blend-mode: normal;
     }
   }
-
+  
   .contacts {
+    flex-direction: column;
     justify-content: center;
     max-width: $max-layout-width;
     width: 100%;
     margin: 29px 0 24px 0;
     gap: max(16px, 10.4%);
-
-    .location {
-      font-size: 24px;
-      line-height: 130%;
-    }
-
-    .tel {
-      font-size: 36px;
-    }
-
-    .mail {
+    
+    .location,
+    .mail,
+    .instLink {
       font-size: 24px;
     }
-
+    
     .icons {
       width: 280px;
-
+      
       .circle {
         width: 56px;
         height: 56px;
@@ -206,11 +199,10 @@
     }
   }
   .agreement {
-    justify-content: center;
     max-width: max(266px, 82%);
     margin: 14px auto 0 auto;
-    gap: 6px 24px;
-
+    gap: 22px;
+    
     font-size: 12px;
     line-height: 15px;
   }

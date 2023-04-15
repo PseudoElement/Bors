@@ -23,7 +23,7 @@ export const main_nav_links = [
   //   link: '#event',
   // },
   {
-    label: 'Leaderboard',
+    label: 'Topplistan',
     link: '#leaderboard',
   },
   {
@@ -31,7 +31,7 @@ export const main_nav_links = [
     link: '#sponsors',
   },
   {
-    label: 'Contacts',
+    label: 'Kontakta Oss',
     link: '#contacts',
   },
   /*   {

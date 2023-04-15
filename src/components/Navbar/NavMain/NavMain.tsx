@@ -29,7 +29,7 @@ export const NavMain: FC<NavMainProps> = ({ classNames, menuOpen }) => {
         <div className={s.btnImg}>
           <AccountImg />
         </div>
-        Personal Account
+        <p>Logga In</p>
       </button>
     </nav>
   )
