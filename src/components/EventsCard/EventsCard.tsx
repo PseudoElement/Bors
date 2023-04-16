@@ -41,7 +41,7 @@ export const EventsCard: FC<EventsCardProps> = ({
 
         <h4 className={s.title}>{title}</h4>
         <p className={s.description}>{description}</p>
-        <Button className={s.button}>Participate</Button>
+        <Button className={s.button}>Delta</Button>
       </div>
     </div>
   )

@@ -3,32 +3,32 @@ import { BalanceProps } from 'shared/types/balance'
 export const mock_user_fields = {
   short: [
     {
-      label: 'Name',
+      label: 'Användarnamn',
       type: 'text',
       name: 'name',
     },
     {
-      label: 'First name',
+      label: 'Namn',
       type: 'text',
       name: 'first_name',
     },
     {
-      label: 'Last name',
+      label: 'Efternamn',
       type: 'text',
       name: 'last_name',
     },
     {
-      label: 'Email',
+      label: 'E-post',
       type: 'email',
       name: 'email',
     },
     {
-      label: 'Phone',
+      label: 'Telefonnummer',
       type: 'phone',
       name: 'phone_number',
     },
     {
-      label: 'Security Phone',
+      label: 'Säkerhetstelefon',
       type: 'phone',
       name: 'security_number',
     },
@@ -49,18 +49,18 @@ export const mock_user_fields = {
 
 export const mock_user_balance: BalanceProps[] = [
   {
-    title: 'balance',
+    title: 'Saldo',
     count: 135.44,
     currency: 'sek',
   },
   {
-    title: 'profitability',
+    title: 'Avkastning',
     count: 8.98366,
     currency: 'sek',
     profit: '+5.63%',
   },
   {
-    title: 'rating',
+    title: 'Rangordning',
     count: 387,
     profit: '+4',
   },

@@ -96,10 +96,10 @@ export const StocksCard: FC<StocksCardProps> = ({
         ) : (
           <div className={s.buy}>
             <button className={s.buyBtn} onClick={e => addNft(e)}>
-              {false ? 'buy more' : 'Buy'}
+              {false ? 'Köp mer' : 'Köpa'}
             </button>
 
-            <span className={s.buyText}>Available stock 824</span>
+            <span className={s.buyText}>Tillgängliga aktier 824</span>
           </div>
         )}
       </div>

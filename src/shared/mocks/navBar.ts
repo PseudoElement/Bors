@@ -1,21 +1,21 @@
 export const nav_links = [
   {
-    label: 'Buy Stocks',
+    label: 'KÖP AKTIER',
     link: '/profile/buy_stocks',
   },
   {
-    label: 'Personal Account',
+    label: 'MITT KONTO',
     link: '/profile/account',
   },
   {
-    label: 'My Stocks',
+    label: 'MINA AKTIER',
     link: '/profile/my_stocks',
   },
 ]
 
 export const main_nav_links = [
   {
-    label: 'About the platform',
+    label: 'Hem',
     link: '#about',
   },
   // {
@@ -27,7 +27,7 @@ export const main_nav_links = [
     link: '#leaderboard',
   },
   {
-    label: 'Sponsors',
+    label: 'Sponsor',
     link: '#sponsors',
   },
   {

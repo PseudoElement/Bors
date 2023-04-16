@@ -12,25 +12,25 @@ export const card_stocks_info = {
   hasNft: true,
   currencyValue: 'SEK',
   countryImage: CountryImage,
-  country: 'Switzerland',
-  tag: ['E-commerce', 'FinTech', 'SaaS', 'Software'],
+  country: 'Schweiz',
+  tag: ['E-handel', 'FinTech', 'SaaS', 'Programvara'],
   textInfoCard:
-    'A technology company that creates a software platform for conducting Internet business. Using Stripe, web developers can integrate payment processing into their website without having to register a merchant account. Stripe was founded on September 29, 2011 by brothers John and Patrick Collison',
+    'Ett teknikföretag som skapar en mjukvaruplattform för att bedriva internetaffärer. Med hjälp av Stripe kan webbutvecklare integrera betalningshantering på sin webbplats utan att behöva registrera ett handelskonto. Stripe grundades den 29 september 2011 av bröderna John och Patrick Collison',
   indicators: [
     {
-      title: 'Market Cap',
-      indicator: '678,17 billion $',
+      title: 'Börsvärde',
+      indicator: '678,17 miljard $',
     },
     {
-      title: 'Diluted EPS',
+      title: 'Utspädd EPS',
       indicator: '105,31 $',
     },
     {
       title: 'Ebitda',
-      indicator: '67,44 billion $',
+      indicator: '67,44 miljard $',
     },
     {
-      title: 'Growth EPS',
+      title: 'Tillväxt EPS',
       indicator: '-4,37%',
     },
     {
@@ -38,7 +38,7 @@ export const card_stocks_info = {
       indicator: '17,74',
     },
     {
-      title: 'Revenue growth',
+      title: 'Omsättningstillväxt',
       indicator: '32,52%',
     },
     {
@@ -46,42 +46,42 @@ export const card_stocks_info = {
       indicator: '1,34',
     },
     {
-      title: 'Net Profit Margin',
+      title: 'Nettovinstmarginal',
       indicator: '3,01%',
     },
   ],
   profit: [
     {
-      title: 'Revenue 2021',
-      indicator: '48,32 billion $',
+      title: 'Inkomst 2021',
+      indicator: '48,32 miljard $',
     },
     {
-      title: 'Revenue 2021',
-      indicator: '48,32 billion $',
+      title: 'Inkomst 2021',
+      indicator: '48,32 miljard $',
     },
     {
-      title: 'Revenue 2011',
-      indicator: '48,32 billion $',
+      title: 'Inkomst 2011',
+      indicator: '48,32 miljard $',
     },
     {
-      title: 'Revenue 2021',
-      indicator: '6,5 billion $',
+      title: 'Inkomst 2021',
+      indicator: '6,5 miljard $',
     },
     {
-      title: 'Revenue 2021',
-      indicator: '6,5 billion $',
+      title: 'Inkomst 2021',
+      indicator: '6,5 miljard $',
     },
     {
-      title: 'Revenue 2021',
-      indicator: '6,5 billion $',
+      title: 'Inkomst 2021',
+      indicator: '6,5 miljard $',
     },
     {
-      title: 'Revenue 2021',
-      indicator: '6,5 billion $',
+      title: 'Inkomst 2021',
+      indicator: '6,5 miljard $',
     },
     {
-      title: 'Revenue 2021',
-      indicator: '6,5 billion $',
+      title: 'Inkomst 2021',
+      indicator: '6,5 miljard $',
     },
   ],
 }

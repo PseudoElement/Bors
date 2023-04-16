@@ -8,7 +8,7 @@ import { useClickOutside } from 'shared/hooks/useClickOutside'
 import s from './dropMenu.module.scss'
 
 interface DropMenuProps {
-  defaultValue?: number
+  defaultValues?: boolean[]
   title: string
   onChange: (selectedOption: string) => void
   data: string[]
@@ -18,7 +18,7 @@ export interface DropMenuState {
   [key: string]: boolean
 }
 export const DropMenu: FC<DropMenuProps> = ({
-  defaultValue,
+  defaultValues,
   title,
   onChange,
   data,
@@ -28,7 +28,7 @@ export const DropMenu: FC<DropMenuProps> = ({
     data.reduce(
       (a, v, i) => ({
         ...a,
-        [v]: defaultValue === undefined ? false : defaultValue === i ? true : false,
+        [v]: defaultValues === undefined ? false : defaultValues[i],
       }),
       {}
     )

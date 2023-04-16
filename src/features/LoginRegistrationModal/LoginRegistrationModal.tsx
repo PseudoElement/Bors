@@ -44,13 +44,13 @@ export const LoginRegistrationModal: FC<LoginRegistrationModalProps> = ({
             onClick={() => setIsActive('login')}
             className={isActive === 'login' ? s.activeTitle : ''}
           >
-            Login
+            Logga In
           </span>{' '}
           <span
             onClick={() => setIsActive('registration')}
             className={isActive === 'registration' ? s.activeTitle : ''}
           >
-            / Registration
+            / Registrering
           </span>
         </div>
         {isActive === 'login' ? <LoginForm onClose={onClose}/> : <RegistrationForm />}

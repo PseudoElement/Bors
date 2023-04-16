@@ -30,7 +30,7 @@ export const FillRequest = () => {
       <div className={s.fillrequestWrapper}>
         <form className={s.fillrequestAuth}>
           <h3 className={s.fillrequestTitle}>
-            Fill out an application for authorization
+            Fyll i din e-postadress för att få del av framtida aktietävlingar
           </h3>
 
           <Controller
@@ -41,14 +41,14 @@ export const FillRequest = () => {
             }}
             render={({ field: { onChange, value } }) => (
               <Input
-                placeholder={'Your e-mail'}
+                placeholder={'Din E-post'}
                 classname={s.fillrequestInput}
                 value={value}
                 classNameBtn={s.fillrequestInpuBtn}
                 onChange={onChange}
                 onClick={handleSubmit(onSubmit)}
                 type='email'
-                withButton='Send'
+                withButton='Sänd'
               />
             )}
           />
@@ -56,7 +56,7 @@ export const FillRequest = () => {
           <Button className={s.fillrequestBtn}>Send</Button>
 
           <span className={s.fillrequestInfo}>
-            By clicking the button you agree to the processing of personal data
+            Genom att klicka på “Sänd” godkänner du behandlingen av dina personuppgifter
           </span>
         </form>
 

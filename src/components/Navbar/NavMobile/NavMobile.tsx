@@ -72,12 +72,12 @@ export const NavMobile: FC<NavMobileProps> = ({ classNames }) => {
         <div className={s.burgerMenuList}>
           <div className={s.burgerMenuTop}>
             <div className={s.burgerMenuTopItem}>
-              <div className={s.burgerMenuBalance}>Balance</div>
+              <div className={s.burgerMenuBalance}>Saldo</div>
               <div className={s.burgerMenuBalanceNum}>8.983,66 SEK</div>
             </div>
 
             <button className={s.burgerMenuLogoutWrapper} onClick={logoutUser}>
-              <div className={s.burgerMenuLogout}>Log out</div>
+              <div className={s.burgerMenuLogout}>Logga ut</div>
               <div>
                 <Image
                   src='/assets/icons/logout.svg'

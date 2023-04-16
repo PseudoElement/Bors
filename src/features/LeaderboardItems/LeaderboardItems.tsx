@@ -23,13 +23,13 @@ export const LeaderboardItems: FC<PropsLeaderboard> = ({
       <div className={s.leaderboardCount}>
         <div className={s.leaderboardInfo}>
           <div>
-            <span className={s.leaderboardPos}>Position</span>
+            <span className={s.leaderboardPos}>Avkastning</span>
           </div>
           <div>
-            <span className={s.leaderboardYie}>Yield</span>
+            <span className={s.leaderboardYie}>Avkastning</span>
           </div>
           <div>
-            <span className={s.leaderboardInc}>Amount of income</span>
+            <span className={s.leaderboardInc}>Inkomstbelopp</span>
           </div>
         </div>
         <div>

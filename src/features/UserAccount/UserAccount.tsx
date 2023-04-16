@@ -110,7 +110,7 @@ export const UserAccount: FC = () => {
                 id='file-upload'
                 className={s.inputUpload}
               />
-              <div className={s.textUpload}>Change</div>
+              <div className={s.textUpload}>Ändra</div>
             </label>
           </div>
         </div>
@@ -132,7 +132,7 @@ export const UserAccount: FC = () => {
                 <Controller
                   name={item.name as 'first_name'}
                   control={control}
-                  rules={{ required: `${item.label} field required` }}
+                  rules={{ required: `${item.label} is required` }}
                   render={({ field: { onChange, value } }) => (
                     <Input
                       type={item.type}
@@ -152,13 +152,13 @@ export const UserAccount: FC = () => {
         </div>
         <div className={s.wrapperFullField}>
           <label htmlFor='homeadress' className={s.labelField}>
-            Home Adress<span className={s.requiredField}>*</span>
+            Adress<span className={s.requiredField}>*</span>
           </label>
           <div>
             <Controller
               name='home_address'
               control={control}
-              rules={{ required: `Home Adress field required` }}
+              rules={{ required: `homeaddress is required` }}
               render={({ field: { onChange, value } }) => (
                 <Input type='text' value={value} onChange={onChange} />
               )}
@@ -179,7 +179,7 @@ export const UserAccount: FC = () => {
                 <Controller
                   name={item.name as 'avanza'}
                   control={control}
-                  rules={{ required: `${item.label} field required` }}
+                  rules={{ required: `${item.label} is required` }}
                   render={({ field: { onChange, value } }) => (
                     <Input type={item.type} value={value} onChange={onChange} />
                   )}
@@ -195,10 +195,10 @@ export const UserAccount: FC = () => {
         </div>
         <div className={s.btnsAction}>
           <Button className={s.actionBtn} type='submit'>
-            Save changes
+            Spara ändringar
           </Button>
           <Button onClick={onClearSubmit} className={cn(s.actionBtn, s.btnCancel)} type='button'>
-            Сancel changes
+            Avbryt ändringar
           </Button>
         </div>
       </form>}

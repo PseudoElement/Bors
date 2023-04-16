@@ -61,7 +61,7 @@ export const RegistrationForm: FC = () => {
   return (
     <form onSubmit={handleSubmit(onSubmitRegistration)} className={s.form}>
       <label className={s.label}>
-        <span className={s.labelText}>Name</span>
+        <span className={s.labelText}>Användarnamn</span>
         <Controller
           name='name'
           control={control}
@@ -75,7 +75,7 @@ export const RegistrationForm: FC = () => {
         )}
       </label>
       <label className={s.label}>
-        <span className={s.labelText}>E-mail</span>
+        <span className={s.labelText}>E-post</span>
         <Controller
           name='email'
           control={control}
@@ -90,7 +90,7 @@ export const RegistrationForm: FC = () => {
       </label>
 
       <label className={s.label}>
-        <span className={s.labelText}>Password</span>
+        <span className={s.labelText}>Lösenord</span>
         <Controller
           name='password'
           control={control}
@@ -105,7 +105,7 @@ export const RegistrationForm: FC = () => {
       </label>
 
       <label className={s.label}>
-        <span className={s.labelText}>Confirm password</span>
+        <span className={s.labelText}>Bekräfta lösenord</span>
         <Controller
           name='confirm_password'
           control={control}
@@ -131,7 +131,7 @@ export const RegistrationForm: FC = () => {
             )}
       </label>
       <Button type='submit' className={s.submitBtn}>
-        Register
+      Registrera dig 
       </Button>
 
       <p className={s.agreeInfo}>

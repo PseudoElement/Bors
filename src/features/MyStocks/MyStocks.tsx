@@ -22,10 +22,9 @@ export const MyStocks = () => {
   return (
     <div className={s.wrapperStocks}>
       <div className={s.wrapperText}>
-        <div className={s.title}>My Stocks</div>
+        <div className={s.title}>Mina aktier</div>
         <div className={s.subtitle}>
-          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-          sint. Velit officia consequat duis enim velit mollit.
+          Du kan köpa aktier för 1 000 000 demo kronor, men kan inte sälja eller byta ditt innehav under aktietävlingen. 
         </div>
       </div>
       <div className={s.wrapperContent}>

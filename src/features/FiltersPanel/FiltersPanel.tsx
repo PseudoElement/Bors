@@ -60,33 +60,33 @@ export const FiltersPanel: FC<FiltersPanelProps> = ({
       {width <= 567 && (
         <>
           <div onClick={() => setIsOpen(true)} className={s.mobileSelect}>
-            Filter stocks <FilterIcon />
+          Filtrera lager <FilterIcon />
           </div>
           <Popup isOpen={isOpen} onClose={() => setIsOpen(false)}>
             <div className={s.mobileFilterPanel}>
-              <div className={s.mobileFilterTitle}>Filter stocks</div>
+              <div className={s.mobileFilterTitle}>Filtrera lager</div>
               <div className={s.mobileFilters}>
                 <DropMenu
-                  title='By popularity'
+                  title='Efter popularitet'
                   onChange={data => console.log('popularity ', data)}
                   data={mock_by_popularity}
                   className={s.short}
                   
                 />
                 <DropMenu
-                  title='By price'
+                  title='Efter pris'
                   onChange={data => console.log('popularity ', data)}
                   data={mock_by_popularity}
                   className={s.short}
                 />
                 <DropMenu
-                  title='By line of business'
+                  title='Efter bransch'
                   onChange={data => console.log('business ', data)}
                   data={mock_by_line_of_business}
                   className={s.wide}
                 />
                 {children && children}
-                <Button className={s.btn}>Filter</Button>
+                <Button className={s.btn}>Filtrera</Button>
               </div>
             </div>
           </Popup>
@@ -94,19 +94,19 @@ export const FiltersPanel: FC<FiltersPanelProps> = ({
       )}
       <div className={s.filters}>
         <DropMenu
-          title='By popularity'
+          title='Efter popularitet'
           onChange={data => console.log('popularity ', data)}
           data={mock_by_popularity}
           className={s.short}
         />
         <DropMenu
-          title='By price'
+          title='Efter pris'
           onChange={data => console.log('popularity ', data)}
           data={mock_by_popularity}
           className={s.short}
         />
         <DropMenu
-          title='By line of business'
+          title='Efter bransch'
           onChange={data => console.log('business ', data)}
           data={mock_by_line_of_business}
           className={s.wide}

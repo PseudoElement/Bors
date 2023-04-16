@@ -77,7 +77,7 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
       <div className={s.textInfoCard}>{textInfoCard}</div>
 
       <div className={s.indicators}>
-        <div className={s.titleIndicators}>Indicators</div>
+        <div className={s.titleIndicators}>Indikatorer</div>
 
         <div className={s.indicatorsItem}>
           {indicators.map((item, idx) => (
@@ -91,7 +91,7 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
       </div>
 
       <div className={s.indicators}>
-        <div className={s.titleIndicators}>Revenue and profit</div>
+        <div className={s.titleIndicators}>Intäkter och vinst</div>
 
         <div className={s.indicatorsItem}>
           {profit.map((item, idx) => (
@@ -105,7 +105,7 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
       </div>
 
       <div className={s.buyButton}>
-        <Button>Buy Stocks</Button>
+        <Button>Köp aktier</Button>
       </div>
     </div>
   )

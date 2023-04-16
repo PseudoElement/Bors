@@ -60,7 +60,7 @@ export const BuyStock: FC = () => {
       </Popup>
 
       <div className={cn(s.page, s.container)}>
-        <h1 className={s.title}>Buy Stocks</h1>
+        <h1 className={s.title}>Köp aktier</h1>
 
         <p className={s.pageDescription}>
           Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
@@ -83,7 +83,7 @@ export const BuyStock: FC = () => {
               </div>
               <Input
                 classname={s.searchInput}
-                placeholder='Search'
+                placeholder='Sök'
                 value={searchValue}
                 onChange={e => setSearchValue(e)}
               />
