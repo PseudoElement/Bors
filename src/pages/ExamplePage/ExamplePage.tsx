@@ -82,7 +82,7 @@ export const ExamplePage: FC = () => {
         <Header variant={true} />
       </Wrapper>
       <Wrapper text={'drop menu'}>
-        <DropMenu
+      <DropMenu
           title='By line of business'
           onChange={data => console.log('business ', data)}
           data={mock_by_line_of_business}
@@ -189,7 +189,7 @@ export const ExamplePage: FC = () => {
       </Wrapper>
 
       <Wrapper text='Indicator'>
-        <Indicator title='Market Cap' indicator='678,17 billion $' />
+        <Indicator title='Market Cap' indicator='678,17 miljard $' />
       </Wrapper>
 
       <Wrapper text='Filter Panel'>

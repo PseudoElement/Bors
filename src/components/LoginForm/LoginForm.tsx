@@ -60,11 +60,11 @@ export const LoginForm: FC<LoginFormProps> = ({ onClose }) => {
   return (
     <form onSubmit={handleSubmit(onSubmitLogin)} className={s.form}>
       <label className={s.label}>
-        <span className={s.labelText}>E-mail</span>
+        <span className={s.labelText}>E-post</span>
         <Controller
           name='email'
           control={control}
-          rules={{ required: 'email is required' }}
+          rules={{ required: 'e-post krävs' }}
           render={({ field: { onChange, value } }) => (
             <Input type='email' value={value} onChange={onChange} />
           )}
@@ -76,13 +76,13 @@ export const LoginForm: FC<LoginFormProps> = ({ onClose }) => {
 
       <label className={s.label}>
         <div className={s.labelInner}>
-          <span>Password</span>
-          <span className={s.forgotPassword}>Forgot your password?</span>
+          <span>Lösenord</span>
+          <span className={s.forgotPassword}>Glömt ditt lösenord?</span>
         </div>
         <Controller
           name='password'
           control={control}
-          rules={{ required: 'password is required' }}
+          rules={{ required: 'lösenord krävs' }}
           render={({ field: { onChange, value } }) => (
             <Input withIcon={true} value={value} onChange={onChange} />
           )}
@@ -93,7 +93,7 @@ export const LoginForm: FC<LoginFormProps> = ({ onClose }) => {
       </label>
 
       <Button type='submit' className={s.submitBtn}>
-        Enter
+        Stiga på
       </Button>
     </form>
   )

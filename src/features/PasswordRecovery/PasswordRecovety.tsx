@@ -32,7 +32,7 @@ export const PasswordRecovery = () => {
   return (
     <div className={s.wrapper}>
       <div className={s.titleInfo}>
-        <div className={s.title}>Password recovery</div>
+        <div className={s.title}>Återställning av lösenord</div>
         <div className={cn(s.subtitle, { [s.subtitleEmail]: sendModal })}>
           {sendModal ? (
             <Controller
@@ -40,11 +40,9 @@ export const PasswordRecovery = () => {
               control={control}
               render={({ field: { value } }) => (
                 <span>
-                  An email has been sent to &nbsp;
+                  Ett mail har sänts till  &nbsp;
                   <span className={s.email}>{value}</span>
-                  &nbsp; with a link to reset your forgotten password. If you
-                  haven&apos;t received an email within 5 minutes, please check
-                  your spam folder or resubmit your recovery request.
+                  &nbsp; med en länk för att återställa ditt lösenord. Om du inte har fått ett e-post inom 5 minuter, se gärna över din skräppost.
                 </span>
               )}
             />
@@ -55,7 +53,7 @@ export const PasswordRecovery = () => {
       </div>
       {sendModal ? (
         <Button>
-          <Link href={'/'}>To the Main Page</Link>
+          <Link href={'/'}>Till huvudsidan</Link>
         </Button>
       ) : (
         <form className={s.form}>
@@ -68,7 +66,7 @@ export const PasswordRecovery = () => {
                   required: true,
                   minLength: { value: 8, message: 'error' },
                 })}
-                placeholder={'Enter e-mail'}
+                placeholder={'Skriv in e-mail'}
                 value={value}
                 onChange={onChange}
                 type='email'
@@ -76,7 +74,7 @@ export const PasswordRecovery = () => {
             )}
           />
           <div className={s.resetBtn}>
-            <Button onClick={handleSubmit(onSubmit)}>Reset the Password</Button>
+            <Button onClick={handleSubmit(onSubmit)}>Återställ lösenordet</Button>
           </div>
         </form>
       )}

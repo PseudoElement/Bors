@@ -10,10 +10,10 @@ export const LeaderboardList: FC<PropsLeaderboardList> = ({ boards }) => {
   return (
     <div id={'leaderboard'}>
       <h2 className={s.leaderboardListTitle}>
-        Leader <br className={s.leaderboardBr} /> <span>board</span>
+        TOPP <br className={s.leaderboardBr} /> <span>LISTAN</span>
       </h2>
 
-      <h2 className={s.leaderboardTitle}>March 17, 2023</h2>
+      <h2 className={s.leaderboardTitle}>Mars 17, 2023</h2>
 
       <Slider slidesPerView={2} spaceBetween={90} centeredSlides={true}>
         {boards.map(board => (
@@ -22,17 +22,17 @@ export const LeaderboardList: FC<PropsLeaderboardList> = ({ boards }) => {
               <div className={s.leaderboardWrapper}>
                 <div className={s.leaderboardInfo}>
                   <div>
-                    <span className={s.leaderboardName}>Name</span>
+                    <span className={s.leaderboardName}>Namn</span>
                   </div>
                   <div className={s.leaderboardEntirety}>
                     <div>
-                      <span className={s.leaderboardPos}>Position</span>
+                      <span className={s.leaderboardPos}>Avkastning</span>
                     </div>
                     <div>
-                      <span className={s.leaderboardYie}>Yield</span>
+                      <span className={s.leaderboardYie}>Avkastning</span>
                     </div>
                     <div>
-                      <span className={s.leaderboardInc}>Amount of income</span>
+                      <span className={s.leaderboardInc}>Inkomstbelopp</span>
                     </div>
                   </div>
                 </div>

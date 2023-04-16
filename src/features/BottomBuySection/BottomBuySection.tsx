@@ -30,7 +30,7 @@ export const BottomBuySection: FC<BottomBuySectionProps> = ({
         ))}
       </div>
       <Button onClick={onClose} className={s.button}>
-        Buy Stock
+        Köp aktier
       </Button>
     </section>
   )
