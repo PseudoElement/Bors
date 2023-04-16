@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-
+import Head from 'next/head'
 import {
   FillRequest,
   Intro,
@@ -42,6 +42,10 @@ export const MainPage = () => {
 
   return (
     <>
+      <Head>
+        <title>HEM</title>
+        <meta name="description" content="Skapa ett konto kostnadsfritt på mindre än en minut för att delta i BörsJaktens aktietävling om tusentals kronor." />
+      </Head>
       <Intro {...infoCards} />
       <InfoSection {...infoCards} />
       <LeaderboardList boards={mock__leaderboard} />

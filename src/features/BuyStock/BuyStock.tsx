@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 import Image from 'next/image'
+import Head from 'next/head'
 import cn from 'classnames'
 
 import { StocksCard, Popup, Input } from 'components'
@@ -44,6 +45,10 @@ export const BuyStock: FC = () => {
 
   return (
     <>
+      <Head>
+        <title>KÖP AKTIER</title>
+        <meta name="description" content="Nu kan du handla aktier med dina demokronor och skapa din drömportfölj." />
+      </Head>
       <Popup
         isOpen={showBuyStockList}
         onClose={() => setShowBuyStockList(false)}
@@ -63,8 +68,7 @@ export const BuyStock: FC = () => {
         <h1 className={s.title}>Köp aktier</h1>
 
         <p className={s.pageDescription}>
-          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-          sint. Velit officia consequat duis enim velit mollit.{' '}
+          Du kan köpa aktier för 1 000 000 demo kronor, men kan inte sälja eller byta ditt innehav under aktietävlingen.{' '}
         </p>
 
         <div className={s.filterWrapper}>

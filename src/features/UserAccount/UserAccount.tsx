@@ -1,5 +1,6 @@
 import { FC, useEffect } from 'react'
 import Image from 'next/image'
+import Head from 'next/head'
 import cn from 'classnames'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { AxiosError } from 'axios'
@@ -84,6 +85,10 @@ export const UserAccount: FC = () => {
 
   return (
     <div className={s.wrapper}>
+      <Head>
+        <title>MITT KONTO</title>
+        <meta name="description" content="Fyll i information om dig och ditt AF kontonummer hos Avanza eller Nordnet för att bli tilldelad aktier gratis." />
+      </Head>
       {user && <div className={s.header}>
         <div className={s.wrapperAvatar}>
           <div className={s.avatar}>
