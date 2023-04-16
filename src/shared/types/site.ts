@@ -38,3 +38,11 @@ export interface SiteDataResponse {
   messge: string
   status: string
 }
+
+export interface SiteSendEmailResponse {
+  created_at: string
+  email: string
+  id: number
+  message?: string
+  updated_at: string
+}

@@ -1,106 +1,137 @@
 @use 'styles/style' as *;
 
-.fillrequest {
+.fillRequestSection {
+  padding: 40px 20px;
+  margin-bottom: 154px;
+}
+
+.fillRequestCard {
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+
+  @include mobile-laptop {
+    display: block;
+  }
+}
+
+.image {
+  position: relative;
+  z-index: 1;
+
+  order: 2;
+  width: 412px;
+  height: 412px;
+  margin: -40px 0 -40px -500px;
+  pointer-events: none;
+
+  @include laptop {
+    margin-left: -420px;
+  }
+
+  @include mobile-laptop {
+    margin: 0 auto -230px auto;
+  }
+
+  @include tablet-mobile {
+    width: 252px;
+    height: 252px;
+    margin: 0 auto -140px auto;
+  }
+}
+
+.shadow {
+  width: 300px;
+  height: 100%;
+  border-radius: 50%;
+  opacity: 0.3;
+
+  background-color: $color-purple;
+  filter: blur(100px);
+
+  position: absolute;
+  right: 150px;
+  top: 0;
+
+  @include laptop {
+    right: 100px;
+  }
+  @include mobile-laptop {
+    background-color: #2c0060;
+    width: 90%;
+    height: 300px;
+    top: -40%;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  @include tablet-mobile {
+    top: -200px;
+  }
+}
+
+.forms {
+  order: 1;
+  position: relative;
+
   width: 100%;
-  max-width: 95%;
+  padding: 46px 500px 46px 52px;
+  border-radius: 40px;
+
   background: $color-gray-01;
   box-shadow: 0 4px 9px $color-dark-08;
   backdrop-filter: blur(80px);
-  border-radius: 40px;
-  height: 288px;
-  margin: 195px auto 196px;
 
-  @media (max-width: 771px) {
-    width: 90%;
-    height: 100%;
-    margin: 30px auto;
+  @include laptop {
+    padding-right: 400px;
+  }
+  @include mobile-laptop {
+    overflow: hidden;
+    padding: 270px 46px 46px 46px;
+  }
+  @include tablet-mobile {
+    border-radius: 24px;
+    padding: 160px 24px 24px 24px;
   }
 }
 
-.fillrequestWrapper {
-  position: relative;
-  width: 100%;
-  @include flex(flex, space-between, null);
-  padding-left: 52px;
+.title {
+  font-family: $font-Mont;
+  font-size: 32px;
+  font-weight: $fw-semibold;
+  line-height: 42px;
+  letter-spacing: -0.04em;
+  text-align: left;
+  margin-bottom: 32px;
 
-  @media (max-width: 771px) {
-    position: relative;
-    display: block;
-    padding-left: 0;
-  }
-
-  @media (max-width: 598px) {
-    margin-top: 140px;
-  }
-}
-
-.fillrequestAuth {
-  width: 63%;
-  margin: 46px 0;
-
-  @media (max-width: 1094px) {
-    padding: 16px 0;
-    margin: 0 auto;
+  @include mobile-laptop {
     text-align: center;
   }
-
-  @media (max-width: 771px) {
-    width: 90%;
-  }
-
-  @media (max-width: 490px) {
-    padding-top: 240px;
-  }
-
-  @include mobile {
-    width: 100%;
-    padding: 26px 4px;
-  }
-}
-
-.fillrequestTitle {
-  @include flex(flex, flex-start, null);
-  margin-bottom: 32px;
-  font-size: 32px;
-  letter-spacing: -0.04em;
-  font-weight: $fw-bold;
-
-  @media (max-width: 593px) {
+  @include tablet-mobile {
     font-size: 28px;
+    line-height: 36px;
   }
 }
 
-.fillrequestInfo {
-  @include flex(flex, flex-start, null);
+.info {
   color: $color-gray-a5;
   letter-spacing: -0.02em;
   font-size: 16px;
   margin-top: 24px;
+  width: 100%;
 
-  @media (max-width: 1094px) {
-    @include flex(flex, center, null);
+  @include mobile-laptop {
+    text-align: center;
+  }
+  @include tablet-mobile {
+    font-size: 12px;
+    line-height: 17px;
   }
 }
 
-.fillrequestImage {
-  position: absolute;
-  right: 5%;
-  top: -110px;
-
-  @media (max-width: 1094px) {
-    display: none;
-  }
-
-  @media (max-width: 490px) {
-    display: block;
-    top: -130px;
-  }
-}
-
-.fillrequestInput {
+.input {
   max-width: 726px;
   width: 100%;
-  height: 76px;
   margin-bottom: 24px;
   border-radius: 38px;
   background: $color-white;
@@ -108,7 +139,7 @@
   box-shadow: 0px 3px 7px $color-dark-08;
 
   > input {
-    @media (max-width: 593px) {
+    @include tablet-mobile {
       text-align: center;
       margin: 0;
     }
@@ -121,30 +152,25 @@
     color: $color-gray-a5;
   }
 
-  @include mobile {
-    width: 80%;
-    margin: 0 auto;
-  }
-}
-
-@media (max-width: 593px) {
-  .fillrequestInpuBtn {
-    display: none;
-  }
-}
-
-.fillrequestBtn {
-  display: none;
-
-  @media (max-width: 593px) {
+  @include tablet-mobile {
     display: block;
-    width: 113px;
-    padding: 14px 34px;
-    margin: 0 auto;
-    margin-top: 32px;
+    height:160px;
+    border: none;
+    box-shadow: none;
 
-    > div {
-      width: 100%;
+    >input {
+      border: 1px solid $color-dark-05;
+      height: 76px;
+      box-shadow: 0px 3px 7px $color-dark-08;
+      border-radius: 38px;
     }
+
+     > button {
+       margin: 20px auto;
+     }
+  }
+
+  @include mobile-laptop {
+    margin: auto;
   }
 }
