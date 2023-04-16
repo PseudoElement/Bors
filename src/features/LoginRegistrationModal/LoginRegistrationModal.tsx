@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, useRef } from 'react'
+import { FC, useState, useEffect, useRef, Dispatch, SetStateAction } from 'react'
 
 import { LoginForm, RegistrationForm } from 'components'
 
@@ -9,11 +9,13 @@ import s from './loginRegistrationModal.module.scss'
 interface LoginRegistrationModalProps {
   isOpen: boolean
   onClose: () => void
+  setIsOpenPasswordRecovery: Dispatch<SetStateAction<boolean>>
 }
 
 export const LoginRegistrationModal: FC<LoginRegistrationModalProps> = ({
   onClose,
   isOpen,
+  setIsOpenPasswordRecovery
 }) => {
   const [isActive, setIsActive] = useState<string>('login')
   const overlayRef = useRef<HTMLDivElement>(null)
@@ -53,7 +55,7 @@ export const LoginRegistrationModal: FC<LoginRegistrationModalProps> = ({
             / Registrering
           </span>
         </div>
-        {isActive === 'login' ? <LoginForm onClose={onClose}/> : <RegistrationForm />}
+        {isActive === 'login' ? <LoginForm setIsOpenPasswordRecovery={setIsOpenPasswordRecovery} onClose={onClose}/> : <RegistrationForm />}
       </div>
     </div>
   )

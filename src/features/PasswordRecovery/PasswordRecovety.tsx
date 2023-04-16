@@ -1,11 +1,12 @@
 import { useState } from 'react'
-
+import { SubmitHandler, useForm, Controller } from 'react-hook-form'
 import Link from 'next/link'
+import cn from 'classnames'
 
 import { Button, Input } from 'components'
-import { SubmitHandler, useForm, Controller } from 'react-hook-form'
 
-import cn from 'classnames'
+import { userRecoverPassword } from 'shared/api/routes/user'
+
 import s from './passwordRecovery.module.scss'
 
 interface PasswordRecoveryFormProps {
@@ -13,7 +14,8 @@ interface PasswordRecoveryFormProps {
 }
 
 export const PasswordRecovery = () => {
-  const [sendModal, setSendModal] = useState<boolean>(false)
+  const [isOpenSuccess, setIsOpenSuccess] = useState<boolean>(false)
+
   const {
     control,
     handleSubmit,
@@ -25,16 +27,28 @@ export const PasswordRecovery = () => {
     },
   })
 
-  const onSubmit: SubmitHandler<PasswordRecoveryFormProps> = defaultValues => {
-    console.log(defaultValues.email) //TODO send a request email
-    setSendModal(true)
+  const onSubmit: SubmitHandler<PasswordRecoveryFormProps> = data => {
+    recoverPassword(data)
   }
+
+  const recoverPassword = async (data: PasswordRecoveryFormProps) => {
+    const { email } = data;
+    try {
+      const response = await userRecoverPassword(email)
+      if(response) {
+        setIsOpenSuccess(true)
+      }
+    } catch (error) {
+      console.error('error from recoverPassword ', error)
+    }
+  }
+
   return (
     <div className={s.wrapper}>
       <div className={s.titleInfo}>
         <div className={s.title}>Återställning av lösenord</div>
-        <div className={cn(s.subtitle, { [s.subtitleEmail]: sendModal })}>
-          {sendModal ? (
+        <div className={cn(s.subtitle, { [s.subtitleEmail]: isOpenSuccess })}>
+          {isOpenSuccess ? (
             <Controller
               name='email'
               control={control}
@@ -51,12 +65,12 @@ export const PasswordRecovery = () => {
           )}
         </div>
       </div>
-      {sendModal ? (
+      {isOpenSuccess ? (
         <Button>
           <Link href={'/'}>Till huvudsidan</Link>
         </Button>
       ) : (
-        <form className={s.form}>
+        <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
           <Controller
             name='email'
             control={control}
@@ -74,7 +88,7 @@ export const PasswordRecovery = () => {
             )}
           />
           <div className={s.resetBtn}>
-            <Button onClick={handleSubmit(onSubmit)}>Återställ lösenordet</Button>
+            <Button type='submit'>Återställ lösenordet</Button>
           </div>
         </form>
       )}

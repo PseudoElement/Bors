@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { Dispatch, FC, SetStateAction } from 'react'
 import { useForm, Controller, SubmitHandler } from 'react-hook-form'
 import { useRouter } from 'next/router'
 
@@ -18,9 +18,10 @@ export interface FormInputProps {
 
 interface LoginFormProps {
   onClose: () => void
+  setIsOpenPasswordRecovery: Dispatch<SetStateAction<boolean>>
 }
 
-export const LoginForm: FC<LoginFormProps> = ({ onClose }) => {
+export const LoginForm: FC<LoginFormProps> = ({ onClose, setIsOpenPasswordRecovery }) => {
   const dispatch = useAppDispatch()
   const { push } = useRouter()
   const user = useAppSelector(state => state.user)
@@ -57,6 +58,11 @@ export const LoginForm: FC<LoginFormProps> = ({ onClose }) => {
     }
   }
 
+    const handleRecoveryPassword = () => {
+        onClose()
+        setIsOpenPasswordRecovery(true)
+    }
+
   return (
     <form onSubmit={handleSubmit(onSubmitLogin)} className={s.form}>
       <label className={s.label}>
@@ -77,7 +83,7 @@ export const LoginForm: FC<LoginFormProps> = ({ onClose }) => {
       <label className={s.label}>
         <div className={s.labelInner}>
           <span>Lösenord</span>
-          <span className={s.forgotPassword}>Glömt ditt lösenord?</span>
+          <span className={s.forgotPassword} onClick={handleRecoveryPassword}>Glömt ditt lösenord?</span>
         </div>
         <Controller
           name='password'

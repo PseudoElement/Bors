@@ -8,7 +8,7 @@ import { AxiosError } from 'axios'
 import { Balance, Button, Input } from 'components'
 
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
-import { authMe, userUpdate } from 'shared/api/routes/user'
+import { authMe, userAvatar, userUpdate } from 'shared/api/routes/user'
 import { userMeResponse, userUpdateResponse, newUserRequested } from 'store/slices/userSlice'
 
 import { User } from 'shared/types/user'
@@ -79,6 +79,14 @@ export const UserAccount: FC = () => {
     setAddValues(user, setValue)
   }
 
+  const changeAvatar = async (avatar: File) => {
+    try {
+      await userAvatar(avatar)
+    } catch (error) {
+      console.error('error from changeAvatar ', error)
+    }
+  }
+
   useEffect(() => {
     getUser()
   }, [dispatch])
@@ -114,6 +122,7 @@ export const UserAccount: FC = () => {
                 name='file-upload'
                 id='file-upload'
                 className={s.inputUpload}
+                onChange={(e) => {if(e.target.files) changeAvatar(e.target.files[0])}}
               />
               <div className={s.textUpload}>Ändra</div>
             </label>

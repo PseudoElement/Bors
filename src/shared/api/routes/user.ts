@@ -36,3 +36,15 @@ export const userUpdate = (
 ): AxiosPromise<UserMeResponse> => {
   return api.post(endpoints_user.profile, updateUserForm)
 }
+
+export const userRecoverPassword = (
+  email: string
+): AxiosPromise<string> => {
+  return api.post(endpoints_user.forgot, {email})
+}
+
+export const userAvatar = (
+  avatar: File
+): AxiosPromise<string> => {
+  return api.post(endpoints_user.avatar, {avatar})
+}
