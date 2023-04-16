@@ -8,28 +8,36 @@ import {
   InfoSection,
 } from 'features'
 
-import { getInfoCards } from 'shared/api/routes/main'
+import { getInfoCards, getSponsorsInfo } from 'shared/api/routes/main'
 
-import { SiteData } from 'shared/types/site'
+import { SiteData, SponsorType } from 'shared/types/site'
 import { mock__leaderboard } from 'shared/mocks/mock_leaderboard'
-import { mock__sponsors_card } from 'shared/mocks/mock_sponsors_cards'
 
 export const MainPage = () => {
   const [infoCards, setInfoCards] = useState<SiteData | null>(null)
+  const [sponsorsCards, setSponsorsCards] = useState<SponsorType[] | null>(null)
 
   const getInfo = async () => {
     try {
-      const data = await getInfoCards()
-      setInfoCards(data.data.data)
+      const { data } = await getInfoCards()
+      setInfoCards(data.data)
+    } catch (e) {
+      console.error(e)
+    }
+  }
 
+  const getSponsors = async () => {
+    try {
+      const { data } = await getSponsorsInfo()
+      setSponsorsCards(data.data)
     } catch (e) {
       console.error(e)
     }
   }
 
   useEffect(() => {
-    if (infoCards) return
     getInfo()
+    getSponsors()
   }, [])
 
   return (
@@ -37,7 +45,7 @@ export const MainPage = () => {
       <Intro {...infoCards} />
       <InfoSection {...infoCards} />
       <LeaderboardList boards={mock__leaderboard} />
-      <Sponsors cards={mock__sponsors_card} />
+      {sponsorsCards ? <Sponsors cards={sponsorsCards} /> : null}
       <FillRequest />
     </>
   )
