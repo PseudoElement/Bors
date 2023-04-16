@@ -1,3 +1,5 @@
+import { PropsLeaderboard, PropsLeaderboardList } from './leaderboard'
+
 export interface SiteData {
   desc?: string
   infos?: InfoCardProps[]
@@ -38,3 +40,28 @@ export interface SiteDataResponse {
   messge: string
   status: string
 }
+
+export interface SponsorsResponse {
+  data: SponsorsList
+  messge: string
+  status: string
+}
+
+export interface SiteSendEmailResponse {
+  created_at: string
+  email: string
+  id: number
+  message?: string
+  updated_at: string
+}
+
+export interface LeadersInfoResponse {
+  data: PropsLeaderboard[]
+  messge: string
+  status: string
+}
+
+export interface PropsLeadersResponse {
+  date: Date
+}
+

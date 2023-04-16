@@ -8,14 +8,22 @@ import {
   InfoSection,
 } from 'features'
 
-import { getInfoCards, getSponsorsInfo } from 'shared/api/routes/main'
+import {
+  getInfoCards,
+  getSponsorsInfo,
+  getLeadersInfo,
+} from 'shared/api/routes/main'
 
 import { SiteData, SponsorType } from 'shared/types/site'
+import { PropsLeaderboard } from 'shared/types/leaderboard'
 import { mock__leaderboard } from 'shared/mocks/mock_leaderboard'
 
 export const MainPage = () => {
   const [infoCards, setInfoCards] = useState<SiteData | null>(null)
   const [sponsorsCards, setSponsorsCards] = useState<SponsorType[] | null>(null)
+  const [LeadersList, setLeadersList] = useState<PropsLeaderboard[] | null>(
+    null
+  )
 
   const getInfo = async () => {
     try {
@@ -35,9 +43,21 @@ export const MainPage = () => {
     }
   }
 
+  const getLeaders = async () => {
+    try {
+      let date = new Date().getDate
+      const { data } = await getLeadersInfo(date.toString())
+      console.log('date:', data)
+      setLeadersList(data.data)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
   useEffect(() => {
     getInfo()
     getSponsors()
+    getLeaders()
   }, [])
 
   return (
