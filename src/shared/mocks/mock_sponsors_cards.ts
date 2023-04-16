@@ -10,16 +10,16 @@ import Bolt from '/public/assets/image/bolt.png'
 import { SponsorType } from 'components/Sponsor/Sponsor'
 
 export const mock__sponsors_card: SponsorType[] = [
-  { id: 1, image: AccessBank.src },
-  { id: 2, image: Cowrywise.src },
-  { id: 3, image: Productedge.src },
-  { id: 4, image: Printivo.src },
-  { id: 5, image: Teamapt.src },
-  { id: 6, image: Talentql.src },
-  { id: 7, image: Schooladle.src },
-  { id: 8, image: Productedge.src },
-  { id: 9, image: Alphax.src },
-  { id: 10, image: Bolt.src },
-  { id: 11, image: AccessBank.src },
-  { id: 12, image: Cowrywise.src },
+  { id: 1, icon: AccessBank.src },
+  { id: 2, icon: Cowrywise.src },
+  { id: 3, icon: Productedge.src },
+  { id: 4, icon: Printivo.src },
+  { id: 5, icon: Teamapt.src },
+  { id: 6, icon: Talentql.src },
+  { id: 7, icon: Schooladle.src },
+  { id: 8, icon: Productedge.src },
+  { id: 9, icon: Alphax.src },
+  { id: 10, icon: Bolt.src },
+  { id: 11, icon: AccessBank.src },
+  { id: 12, icon: Cowrywise.src },
 ]

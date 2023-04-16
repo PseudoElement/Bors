@@ -11,24 +11,34 @@
   letter-spacing: 0.1em;
   text-align: center;
   text-transform: uppercase;
+  margin-bottom: 30px;
 }
 
 .firstLine {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
 .secondLine {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
 .thirdLine {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
-@media (max-width: #{$tablet-width}) {
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+@media (max-width: #{$tablet-width} ) {
   .title {
     font-size: 80px;
     font-weight: $fw-medium;
@@ -38,9 +48,22 @@
     text-align: center;
     text-transform: uppercase;
   }
+
+  .firstLine {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 33.33%);
+    grid-gap: 20px;
+    div {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
 }
 
-@media (max-width: #{$mobile-width}) {
+@media (max-width: 500px) {
   .title {
     font-size: 50px;
     font-weight: $fw-medium;
@@ -51,24 +74,15 @@
     text-transform: uppercase;
   }
 
-  .sponsors {
-    column-count: 2;
-  }
-
-  .container {
-    display: flex;
-    flex-direction: column;
-  }
-
   .firstLine {
-    display: inline-block;
-  }
-
-  .secondLine {
-    display: inline-block;
-  }
-
-  .thirdLine {
-    display: inline-block;
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-gap: 20px;
+    div {
+      display: flex;
+      justify-content: center;
+    }
   }
 }

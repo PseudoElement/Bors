@@ -16,6 +16,7 @@ interface InputProps {
   placeholder?: string
   withButton?: string
   withIcon?: boolean
+  buttonType?: 'submit' | 'button'
 }
 
 export const Input: FC<InputProps> = ({
@@ -28,6 +29,7 @@ export const Input: FC<InputProps> = ({
   classNameBtn,
   withButton = '',
   withIcon = false,
+  buttonType = 'button',
 }) => {
   const [checked, setChecked] = useState<boolean>(false)
   return (
@@ -40,7 +42,7 @@ export const Input: FC<InputProps> = ({
         value={value ? value : ''}
       />
       {withButton ? (
-        <Button className={classNameBtn} onClick={onClick}>
+        <Button className={classNameBtn} onClick={onClick} type={buttonType}>
           {withButton}
         </Button>
       ) : null}

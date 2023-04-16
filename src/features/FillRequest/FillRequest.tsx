@@ -1,9 +1,10 @@
 import Image from 'next/image'
 import { SubmitHandler, useForm, Controller } from 'react-hook-form'
 
-import { Button, Input } from 'components'
+import { Input } from 'components'
 
 import { EMAIL_VALIDATION_REG } from 'shared/constants/regExp'
+import { sendEmail } from 'shared/api/routes/fillForm'
 import image from '/public/assets/image/fillRequest.png'
 
 import s from './fillRequest.module.scss'
@@ -14,6 +15,7 @@ export const FillRequest = () => {
   const {
     control,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<EmailRecoveryFormProps>({
     defaultValues: {
@@ -21,16 +23,37 @@ export const FillRequest = () => {
     },
   })
 
-  const onSubmit: SubmitHandler<EmailRecoveryFormProps> = defaultValues => {
-    console.log(defaultValues.email)
+  const onSubmitHandler: SubmitHandler<
+    EmailRecoveryFormProps
+  > = async defaultValues => {
+    try {
+      await sendEmail(defaultValues)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
+
     <div className={s.fillrequest} id={'contacts'}>
       <div className={s.fillrequestWrapper}>
         <form className={s.fillrequestAuth}>
           <h3 className={s.fillrequestTitle}>
             Fyll i din e-postadress för att få del av framtida aktietävlingar
+
+    <section className={s.fillRequestSection}>
+      <div className={s.fillRequestCard} id={'contacts'}>
+        <div className={s.image}>
+          <Image layout={'fill'} src={image} alt='Fill Request' />
+        </div>
+
+        <form className={s.forms} onSubmit={handleSubmit(onSubmitHandler)}>
+          <div className={s.shadow} />
+          
+          <h3 className={s.title}>
+            Fyll i din e-postadress för att få del <br /> av framtida
+            aktietävlingar
+
           </h3>
 
           <Controller
@@ -42,28 +65,37 @@ export const FillRequest = () => {
             render={({ field: { onChange, value } }) => (
               <Input
                 placeholder={'Din E-post'}
+
                 classname={s.fillrequestInput}
+
+                classname={s.input}
+
                 value={value}
-                classNameBtn={s.fillrequestInpuBtn}
                 onChange={onChange}
-                onClick={handleSubmit(onSubmit)}
                 type='email'
                 withButton='Sänd'
+
+
+                buttonType='submit'
+
               />
             )}
           />
+
 
           <Button className={s.fillrequestBtn}>Send</Button>
 
           <span className={s.fillrequestInfo}>
             Genom att klicka på “Sänd” godkänner du behandlingen av dina personuppgifter
           </span>
-        </form>
 
-        <div className={s.fillrequestImage}>
-          <Image width={482} height={482} src={image} alt='Fill Request' />
-        </div>
+          <div className={s.info}>
+            Genom att klicka på “Sänd” godkänner du behandlingen av dina
+            personuppgifter
+          </div>
+
+        </form>
       </div>
-    </div>
+    </section>
   )
 }
