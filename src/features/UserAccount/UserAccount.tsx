@@ -130,6 +130,8 @@ export const UserAccount: FC = () => {
             ))}
           </div>
         </div>
+
+    
       )}
 
       {user && (
@@ -145,7 +147,7 @@ export const UserAccount: FC = () => {
                   <Controller
                     name={item.name as 'first_name'}
                     control={control}
-                    rules={{ required: `${item.label} is required` }}
+                    rules={{ required: `${item.label} krävs` }}
                     render={({ field: { onChange, value } }) => (
                       <Input
                         type={item.type}
@@ -160,6 +162,7 @@ export const UserAccount: FC = () => {
                     {errors[item.name as 'email']?.message}
                   </span>
                 )}
+
               </div>
             ))}
           </div>
@@ -172,12 +175,13 @@ export const UserAccount: FC = () => {
               <Controller
                 name='home_address'
                 control={control}
-                rules={{ required: `homeaddress is required` }}
+                rules={{ required: `Hemadress krävs` }}
                 render={({ field: { onChange, value } }) => (
                   <Input type='text' value={value} onChange={onChange} />
                 )}
               />
             </div>
+
             {errors.home_address && (
               <span className={s.errMessage}>
                 {errors.home_address.message}
@@ -196,7 +200,7 @@ export const UserAccount: FC = () => {
                   <Controller
                     name={item.name as 'avanza'}
                     control={control}
-                    rules={{ required: `${item.label} is required` }}
+                    rules={{ required: `${item.label} krävs` }}
                     render={({ field: { onChange, value } }) => (
                       <Input
                         type={item.type}

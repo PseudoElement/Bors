@@ -44,7 +44,7 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
           </div>
 
           <div className={s.currentSection}>
-            <span className={s.titleCurent}>current value</span>
+            <span className={s.titleCurent}>Nuvarande värde</span>
 
             <div className={s.curentValue}>
               {price?.price}
@@ -62,7 +62,7 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
           />
 
           <div className={s.countryInfo}>
-            <span className={s.countryIssuer}>Country of the issuer</span>
+            <span className={s.countryIssuer}>Emittentens land</span>
             <span className={s.country}>{country}</span>
           </div>
         </div>

@@ -1,13 +1,13 @@
 export const mock_by_line_of_business = [
-  'Metallurgical industry',
-  'Heavy industry',
-  'Oil and gas and mining industry',
-  'Telecommunications',
-  'Pharmaceutics and medicine',
-  'IT',
-  'Consumer goods and retail chains',
+  'Metallurgisk industri',
+  'Tung industri',
+  "Olje- och gasgruvindustrin",
+  'Telekommunikation',
+  "Farmaceutik och medicin",
+  "IT",
+  "Konsumentvaror och detaljhandelskedjor",
 ]
 
-export const mock_by_popularity = ['Most popular', 'Least popular']
+export const mock_by_popularity = ['Mest populär', 'Minst populär']
 
 export const mock_by_price = []

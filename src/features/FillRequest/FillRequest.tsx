@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { SubmitHandler, useForm, Controller } from 'react-hook-form'
 
-import { Input } from 'components'
+import { Button, Input } from 'components'
 
 import { EMAIL_VALIDATION_REG } from 'shared/constants/regExp'
 import image from '/public/assets/image/fillRequest.png'
@@ -26,6 +26,7 @@ export const FillRequest = () => {
   }
 
   return (
+
     <div className={s.fillRequestSection}>
       <div className={s.fillRequestCard}>
         <div className={s.image}>
@@ -35,7 +36,7 @@ export const FillRequest = () => {
         <form className={s.forms} id={'contacts'}>
           <div className={s.shadow} />
 
-          <h3 className={s.title}>Fill out an application for authorization</h3>
+          <h3 className={s.title}>Fyll i en ansökan om auktorisation</h3>
 
           <Controller
             name='email'
@@ -45,21 +46,29 @@ export const FillRequest = () => {
             }}
             render={({ field: { onChange, value } }) => (
               <Input
-                placeholder={'Your e-mail'}
+
+                placeholder={'Din e-post'}
                 classname={s.input}
                 value={value}
+                classNameBtn={s.fillrequestInpuBtn}
                 onChange={onChange}
                 onClick={handleSubmit(onSubmit)}
                 type='email'
-                withButton='Send'
+                withButton='Skicka'
               />
             )}
           />
 
+
           <div className={s.info}>
-            By clicking the button you agree to the processing of personal data
+            Genom att klicka på knappen godkänner du behandlingen av personuppgifter
           </div>
+
         </form>
+
+        <div className={s.fillrequestImage}>
+          <Image width={482} height={482} src={image} alt='Fill Request' />
+        </div>
       </div>
     </div>
   )

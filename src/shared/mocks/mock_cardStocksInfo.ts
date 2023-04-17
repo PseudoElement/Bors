@@ -60,27 +60,27 @@ export const card_stocks_info = {
       indicator: '48,32 miljard $',
     },
     {
-      title: 'Inkomst 2011',
+      title: 'Vinst 2011',
       indicator: '48,32 miljard $',
     },
     {
-      title: 'Inkomst 2021',
+      title: 'Vinst 2021',
       indicator: '6,5 miljard $',
     },
     {
-      title: 'Inkomst 2021',
+      title: 'Vinst 2021',
       indicator: '6,5 miljard $',
     },
     {
-      title: 'Inkomst 2021',
+      title: 'Vinst 2021',
       indicator: '6,5 miljard $',
     },
     {
-      title: 'Inkomst 2021',
+      title: 'Vinst 2021',
       indicator: '6,5 miljard $',
     },
     {
-      title: 'Inkomst 2021',
+      title: 'Vinst 2021',
       indicator: '6,5 miljard $',
     },
   ],

@@ -65,7 +65,7 @@ export const RegistrationForm: FC = () => {
         <Controller
           name='name'
           control={control}
-          rules={{ required: 'name is required' }}
+          rules={{ required: 'Användarnamn krävs' }}
           render={({ field: { onChange, value } }) => (
             <Input value={value!} onChange={onChange} />
           )}
@@ -79,7 +79,7 @@ export const RegistrationForm: FC = () => {
         <Controller
           name='email'
           control={control}
-          rules={{ required: 'email is required' }}
+          rules={{ required: 'E-post krävs' }}
           render={({ field: { onChange, value } }) => (
             <Input type='email' value={value} onChange={onChange} />
           )}
@@ -94,7 +94,7 @@ export const RegistrationForm: FC = () => {
         <Controller
           name='password'
           control={control}
-          rules={{ required: 'password is required', minLength: 6 }}
+          rules={{ required: 'Lösenord krävs', minLength: 6 }}
           render={({ field: { onChange, value } }) => (
             <Input withIcon={true} value={value} onChange={onChange} />
           )}
@@ -110,10 +110,10 @@ export const RegistrationForm: FC = () => {
           name='confirm_password'
           control={control}
           rules={{
-            required: 'password confirmation is required',
+            required: 'Lösenordsbekräftelse krävs',
             minLength: 6,
             validate: (value: string, data: UserRegRequest) =>
-              value === data.password || "Passwords doesn't match",
+              value === data.password || "Lösenord matchar inte",
           }}
           render={({ field: { onChange, value } }) => (
             <Input withIcon={true} value={value!} onChange={onChange} />
@@ -127,7 +127,7 @@ export const RegistrationForm: FC = () => {
         {errors.confirm_password
           ? ''
           : getValues('password') !== getValues('confirm_password') && (
-              <div className={s.errorMessage}>password mismatch</div>
+              <div className={s.errorMessage}>Lösenordet matchar inte</div>
             )}
       </label>
       <Button type='submit' className={s.submitBtn}>
@@ -135,14 +135,14 @@ export const RegistrationForm: FC = () => {
       </Button>
 
       <p className={s.agreeInfo}>
-        By clicking the &quot;Register&quot; button, I consent to the collection
-        and processing of my personal data in accordance with the{' '}
+        Genom att klicka på knappen &quot;Registrera&quot; samtycker jag till insamlingen
+        och behandling av mina personuppgifter i enlighet med{' '}
         <Link href={'#'}>
-          <a className={s.link}>Policy</a>
+          <a className={s.link}>Politik</a>
         </Link>{' '}
-        and accept the terms of the{' '}
+        och acceptera villkoren för{' '}
         <Link href={'#'}>
-          <a className={s.link}>User Agreement</a>
+          <a className={s.link}>Användaravtal</a>
         </Link>
       </p>
     </form>

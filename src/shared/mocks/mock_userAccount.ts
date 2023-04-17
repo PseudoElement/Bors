@@ -8,7 +8,7 @@ export const mock_user_fields = {
       name: 'name',
     },
     {
-      label: 'Namn',
+      label: 'Förnamn',
       type: 'text',
       name: 'first_name',
     },
@@ -28,7 +28,7 @@ export const mock_user_fields = {
       name: 'phone_number',
     },
     {
-      label: 'Säkerhetstelefon',
+      label: 'Personnummer',
       type: 'phone',
       name: 'security_number',
     },
