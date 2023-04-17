@@ -18,18 +18,24 @@ import {
   mock_user_icons,
 } from 'shared/mocks/mock_userAccount'
 
-import AvatarImage from '/public/assets/image/avatar.png'
-
 import s from './UserAccount.module.scss'
 
 export const UserAccount: FC = () => {
   const dispatch = useAppDispatch()
   const user = useAppSelector(state => state.user.user)
 
+  const changeAvatar = async (avatar: File) => {
+    try {
+      await userAvatar(avatar)
+      await getUser()
+    } catch (error) {
+      console.error('error from changeAvatar ', error)
+    }
+  }
+
   const getUser = async () => {
     try {
       const data = await authMe()
-
       dispatch(userMeResponse(data.data))
     } catch (error) {
       console.error(error)
@@ -77,14 +83,6 @@ export const UserAccount: FC = () => {
     setAddValues(user, setValue)
   }, [user])
 
-  const changeAvatar = async (avatar: File) => {
-    try {
-      await userAvatar(avatar)
-    } catch (error) {
-      console.error('error from changeAvatar ', error)
-    }
-  }
-
   useEffect(() => {
     getUser()
   }, [dispatch])
@@ -114,8 +112,11 @@ export const UserAccount: FC = () => {
                   name='file-upload'
                   id='file-upload'
                   className={s.inputUpload}
+                  onChange={e => {
+                    if (e.target.files) changeAvatar(e.target.files[0])
+                  }}
                 />
-                <div className={s.textUpload}>Ändra</div>
+                <div className={s.textUpload}>Förändra</div>
               </label>
             </div>
           </div>
@@ -130,8 +131,6 @@ export const UserAccount: FC = () => {
             ))}
           </div>
         </div>
-
-    
       )}
 
       {user && (
@@ -162,7 +161,6 @@ export const UserAccount: FC = () => {
                     {errors[item.name as 'email']?.message}
                   </span>
                 )}
-
               </div>
             ))}
           </div>

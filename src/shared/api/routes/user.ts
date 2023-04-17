@@ -46,5 +46,7 @@ export const userRecoverPassword = (
 export const userAvatar = (
   avatar: File
 ): AxiosPromise<string> => {
-  return api.post(endpoints_user.avatar, {avatar})
+  return api.post(endpoints_user.avatar,{avatar}, {headers: {
+    'Content-type': 'multipart/form-data'
+  }})
 }

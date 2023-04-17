@@ -52,12 +52,16 @@
 }
 
 .labelUpload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: $color-blue;
   cursor: pointer;
 }
 
 .textUpload {
   margin-top: 12px;
+  text-align: center;
 }
 
 .inputUpload {
@@ -67,7 +71,7 @@
 .iconUpload {
   width: 64px;
   height: 64px;
-  background: $color-white;
+  background: $color-gray-f6;
   align-items: center;
   display: flex;
   justify-content: center;
