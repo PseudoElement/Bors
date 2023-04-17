@@ -14,6 +14,7 @@ interface PasswordRecoveryFormProps {
 }
 
 export const PasswordRecovery = () => {
+
   const [isOpenSuccess, setIsOpenSuccess] = useState<boolean>(false)
 
   const {
@@ -35,7 +36,7 @@ export const PasswordRecovery = () => {
     const { email } = data;
     try {
       const response = await userRecoverPassword(email)
-      if(response) {
+      if (response) {
         setIsOpenSuccess(true)
       }
     } catch (error) {
@@ -88,7 +89,7 @@ export const PasswordRecovery = () => {
             )}
           />
           <div className={s.resetBtn}>
-            <Button type='submit'>Återställ lösenordet</Button>
+            <Button className={s.button} type='submit'>Återställ lösenordet</Button>
           </div>
         </form>
       )}

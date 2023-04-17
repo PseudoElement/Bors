@@ -7,6 +7,13 @@
   padding: 14px 24px;
   background: $color-purple-005;
   border-radius: 100px;
+  @include tablet-mobile {
+    max-width: 100%;
+  }
+  @media screen and (max-width: 420px) {
+    padding: 10px 14px;
+    align-items: center;
+  }
 }
 
 .title {

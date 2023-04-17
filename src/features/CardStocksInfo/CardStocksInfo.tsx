@@ -8,6 +8,7 @@ import { IndicatorProps } from 'shared/types/indicators'
 import { Stocks } from 'shared/types/stocks'
 
 import s from './cardStocksInfo.module.scss'
+import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
 
 // @ts-ignore
 interface CardStocksInfoProps extends Stocks {
@@ -33,14 +34,19 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
   indicators,
   profit,
 }) => {
+
+  const { width } = useWindowDimensions()
+
   return (
     <div className={s.wrapperCardInfo}>
       <div className={s.wrapperHeader}>
         <div className={s.titleCard}>
-          <Image width={66} height={66} src={image} alt='icon' />
-          <div className={s.appName}>
-            {company_name}
-            <span className={s.appInitials}>({company_code})</span>
+          <div className={s.titleCardTop}>
+            <Image width={66} height={66} src={image} alt='icon' />
+            <div className={s.appName}>
+              {company_name}
+              <span className={s.appInitials}>({company_code})</span>
+            </div>
           </div>
 
           <div className={s.currentSection}>
@@ -48,6 +54,7 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
 
             <div className={s.curentValue}>
               {price?.price}
+              25.67
               <span>{currencyValue}</span>
             </div>
           </div>
@@ -75,6 +82,23 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
       </div>
 
       <div className={s.textInfoCard}>{textInfoCard}</div>
+
+      {
+        width <= 620 &&
+        <div className={s.mobileCountryCard}>
+          <Image
+            width={36}
+            height={36}
+            src={countryImage!}
+            alt='country icon'
+          />
+
+          <div className={s.mobileCountryInfo}>
+            <span className={s.mobileCountryIssuer}>Country of the issuer</span>
+            <span className={s.mobileCountry}>{country}</span>
+          </div>
+        </div>
+      }
 
       <div className={s.indicators}>
         <div className={s.titleIndicators}>Indikatorer</div>

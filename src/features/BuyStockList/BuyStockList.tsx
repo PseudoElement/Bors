@@ -8,7 +8,7 @@ import s from './BuyStockList.module.scss'
 
 export const BuyStockList: FC<StocksList> = ({ stocks }) => {
   return (
-    <div>
+    <div className={s.popup}>
       <h2 className={s.buystockTitle}>Du har framgångsrikt köpt demo aktier i Börsjaktens aktietävling!</h2>
 
       <div className={s.buystockList}>

@@ -24,7 +24,7 @@ export const MyStocks = () => {
       <div className={s.wrapperText}>
         <div className={s.title}>Mina aktier</div>
         <div className={s.subtitle}>
-          Du kan köpa aktier för 1 000 000 demo kronor, men kan inte sälja eller byta ditt innehav under aktietävlingen. 
+          Du kan köpa aktier för 1 000 000 demo kronor, men kan inte sälja eller byta ditt innehav under aktietävlingen.
         </div>
       </div>
       <div className={s.wrapperContent}>

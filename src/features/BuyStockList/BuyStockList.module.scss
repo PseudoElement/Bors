@@ -1,5 +1,9 @@
 @use 'styles/style' as *;
 
+.popup {
+  padding: 20px;
+}
+
 .buystockTitle {
   width: 100%;
   max-width: 431px;
@@ -9,6 +13,10 @@
   font-weight: $fw-bold;
   letter-spacing: -0.03em;
   margin-top: 64px;
+  @media screen and (max-width: 500px) {
+    font-size: 26px;
+    text-align: center;
+  }
 }
 
 .buystockList {
@@ -29,6 +37,10 @@
   color: $color-gray-a5;
   letter-spacing: -0.02em;
   font-weight: $fw-semibold;
+  @media screen and (max-width: 500px) {
+    font-size: 16px;
+    text-align: center;
+  }
 }
 
 .buystockBtn {

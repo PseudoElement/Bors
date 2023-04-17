@@ -71,7 +71,7 @@ export const FiltersPanel: FC<FiltersPanelProps> = ({
                   onChange={data => console.log('popularity ', data)}
                   data={mock_by_popularity}
                   className={s.short}
-                  
+
                 />
                 <DropMenu
                   title='Efter pris'
