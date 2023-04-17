@@ -10,28 +10,14 @@
   align-items: center;
   justify-content: center;
   margin: 0 8px 16px 8px;
-}
 
-@media (max-width: #{$tablet-width}) {
-  .sponsor {
-    width: 140px;
-    height: 100px;
-    margin: 0 8px 8px 8px;
-  }
-
-  .img {
-    width: 60%;
-  }
-}
-
-@media (max-width: #{$mobile-width}) {
-  .sponsor {
-    min-width: 140px;
+  @media (max-width: 550px) {
+    width: 175px;
     height: 89px;
-    margin: 0 8px 8px 8px;
-  }
 
-  .img {
-    width: 50%;
+    .img {
+      width: 60%;
+    }
   }
 }
+

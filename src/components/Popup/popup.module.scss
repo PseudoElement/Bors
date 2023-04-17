@@ -11,6 +11,12 @@
   align-items: center;
   background: $color-black-blue;
   z-index: 9999;
+
+  @include tablet-mobile {
+    align-items: end;
+    justify-content: start;
+    background-color: transparent;
+  }
 }
 
 .popupWrapper {
@@ -21,6 +27,14 @@
   margin: 0 15px;
   height: 100%;
   max-height: 1200px;
+
+  @include tablet-mobile {
+    padding: 74px 16px 0;
+    margin: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .popupContent {

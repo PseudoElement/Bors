@@ -3,12 +3,15 @@ import { Layout } from 'features'
 import { Provider } from 'react-redux'
 import { store } from 'store'
 import '../src/styles/globals.scss'
+import { AuthCheck } from '../src/shared/hock/AuthCheck'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <Layout>
-        <Component {...pageProps} />
+        <AuthCheck>
+          <Component {...pageProps}/>
+        </AuthCheck>
       </Layout>
     </Provider>
   )

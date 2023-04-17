@@ -20,5 +20,5 @@ export const endpoints_site = {
   site_form: '/site/form/',
   site_info: '/site/info/',
   sponsors: '/site/sponsors/',
-  stocks_top: '/stocks/top/',
+  stocks_top: (date: string) => `/stocks/top?day=${date}`,
 }

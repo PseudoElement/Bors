@@ -10,7 +10,7 @@ import s from './intro.module.scss'
 export const Intro: FC<SiteData> = ({ logo, desc }) => {
   return (
     <div className={s.intro}>
-      <div className={s.backgroundMask}></div>
+      <div className={s.backgroundMask}/>
 
       <div className={s.container}>
         <div className={s.logo}>

@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import cn from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -21,8 +21,8 @@ export interface NavMainProps {
 
 export const NavProfile: FC<NavMainProps> = ({ classNames }) => {
   const dispatch = useAppDispatch()
-  const { push } = useRouter()
-  const [activeLink, setActiveLink] = useState<string>('Personal Account')
+  const { push, pathname } = useRouter()
+  const user = useAppSelector(state => state.user.user)
 
   const logoutUser = async () => {
     await push('/')
@@ -36,7 +36,6 @@ export const NavProfile: FC<NavMainProps> = ({ classNames }) => {
     }
   }
 
-  const user = useAppSelector(state => state.user.user)
 
   return (
     <nav className={cn(s.nav2, classNames)}>
@@ -68,9 +67,9 @@ export const NavProfile: FC<NavMainProps> = ({ classNames }) => {
         {nav_links.map(link => (
           <li
             key={link.label}
-            onClick={() => setActiveLink(link.label)}
+            onClick={() => push(link.link)}
             className={cn(s.link, {
-              [s.active]: activeLink === link.label,
+              [s.active]: pathname === link.link,
             })}
           >
             <Link href={link.link}>
@@ -81,24 +80,28 @@ export const NavProfile: FC<NavMainProps> = ({ classNames }) => {
       </ul>
 
       <div className={s.userInfo}>
-        {user && <div className={s.avatarGroup}>
-          <span>{user?.name}</span>
+        {user && (
+          <div className={s.avatarGroup}>
+            <span>{user?.name}</span>
 
-          <div className={s.userFoto}>
-            <Image
-              src={!user?.avatar ? AvatarImage : user?.avatar as string}
-              width={52}
-              height={52}
-              style={{ objectFit: 'cover' }}
-              alt='avatar'
-            />
+            <div className={s.userFoto}>
+              <Image
+                src={!user?.avatar ? AvatarImage : (user?.avatar as string)}
+                width={52}
+                height={52}
+                style={{ objectFit: 'cover' }}
+                alt='avatar'
+              />
+            </div>
           </div>
-        </div>}
+        )}
 
-        {user && <div className={s.userBalance}>
-          <div>MITT KONTO</div>
-          <span>{String(user?.balance)} sek</span>
-        </div>}
+        {user && (
+          <div className={s.userBalance}>
+            <div>MITT KONTO</div>
+            <span>{String(user?.balance)} sek</span>
+          </div>
+        )}
 
         <Image
           src={'/assets/icons/logout.svg'}

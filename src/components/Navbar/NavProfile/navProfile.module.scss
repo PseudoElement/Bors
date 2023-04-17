@@ -52,10 +52,12 @@
     position: relative;
     font-size: 20px;
     line-height: 110%;
+    font-weight: $fw-medium;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: $color-gray-54;
     cursor: pointer;
+
     @media screen and (max-width: 1062px) {
       font-size: 16px;
     }
@@ -97,7 +99,9 @@
     height: 52px;
     margin-left: 16px;
     border-radius: 50%;
+    overflow: hidden;
   }
+
   .userBalance {
     padding: 0 20px;
     border-right: 1px solid $color-gray-eb;

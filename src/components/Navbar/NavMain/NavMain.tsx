@@ -10,14 +10,25 @@ import s from './navMain.module.scss'
 export interface NavMainProps {
   classNames?: string
   menuOpen: () => void
+  burgerMenuOpen: () => void
 }
 
-export const NavMain: FC<NavMainProps> = ({ classNames, menuOpen }) => {
+export const NavMain: FC<NavMainProps> = ({
+  classNames,
+  menuOpen,
+  burgerMenuOpen,
+}) => {
   return (
-    <nav className={cn(classNames, s.nav1)}>
-      <ul>
+    <nav className={cn(classNames, s.nav)}>
+      <button className={s.burger} onClick={burgerMenuOpen}>
+        <div className={s.burgerLine} />
+        <div className={s.burgerLine} />
+        <div className={s.burgerLine} />
+      </button>
+
+      <ul className={s.links}>
         {main_nav_links.map(item => (
-          <li key={item.label}>
+          <li key={item.label} className={s.link}>
             <Link href={item.link} scroll={false}>
               {item.label}
             </Link>
@@ -25,10 +36,11 @@ export const NavMain: FC<NavMainProps> = ({ classNames, menuOpen }) => {
         ))}
       </ul>
 
-      <button onClick={menuOpen}>
+      <button onClick={menuOpen} className={s.logInButton}>
         <div className={s.btnImg}>
           <AccountImg />
         </div>
+
         <p>Logga In</p>
       </button>
     </nav>

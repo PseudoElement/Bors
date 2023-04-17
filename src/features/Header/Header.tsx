@@ -8,7 +8,6 @@ interface Variant {
 }
 
 export const Header: FC<Variant> = ({ variant }) => {
-
   return (
     <header className={s.header}>
       <div className={s.headerWrapper}>

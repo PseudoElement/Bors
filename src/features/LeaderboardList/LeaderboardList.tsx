@@ -8,7 +8,7 @@ import s from './LeaderboardList.module.scss'
 
 export const LeaderboardList: FC<PropsLeaderboardList> = ({ boards }) => {
   return (
-    <div id={'leaderboard'}>
+    <div className={s.leaderboardSection} id={'leaderboard'}>
       <h2 className={s.leaderboardListTitle}>
         TOPP <br className={s.leaderboardBr} /> <span>LISTAN</span>
       </h2>

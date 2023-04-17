@@ -3,91 +3,83 @@
 .intro {
   width: 100%;
   min-height: 100vh;
-  height: 960px;
-  background: url('../../../public/assets/image/backgroundIntro.png');
+
+  background: url('/assets/image/backgroundIntro.png');
   background-size: cover;
 
-  @media (max-width: 768px) {
-    height: 843px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+
+  position: relative;
+}
+.backgroundMask {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+
+  mix-blend-mode: overlay;
+  background: url('/assets/image/backgroundIntroMask.png');
+  background-size: cover;
+}
+
+.container {
+  max-width: 700px;
+  padding: 0 20px 28px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  @include mobile {
+    max-width: 378px;
+    margin: -843px auto 0;
+  }
+}
+
+.logo {
+  margin-top: 337px;
+
+  @include mobile {
+    display: block;
+    margin-top: 265px;
+  }
+}
+
+.text {
+  margin-top: 227px;
+
+  font-family: $font-Mont;
+  font-style: normal;
+  font-weight: $fw-semibold;
+  font-size: 56px;
+  line-height: 110%;
+  letter-spacing: -0.045em;
+
+  display: flex;
+  align-items: flex-end;
+  text-align: center;
+
+  color: $color-white;
+
+  @include tablet-mobile {
+    font-size: 32px;
+    line-height: 35px;
+  }
+}
+.iconContainer {
+  margin-top: 28px;
+  height: 48px;
+  width: 48px;
+
+  @include mobile {
+    margin-top: 8px;
+    height: 40px;
+    width: 40px;
   }
 
-  .backgroundMask {
-    width: 100%;
-    height: 100%;
-
-    mix-blend-mode: overlay;
-    background: url('../../../public/assets/image/backgroundIntroMask.png');
-    background-size: cover;
-  }
-
-  .container {
-    max-width: 862px;
-    margin: -960px auto 0;
-    padding: 0 10px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    @include mobile {
-      max-width: 378px;
-      margin: -843px auto 0;
-    }
-
-    .logo {
-      margin-top: 337px;
-
-      @include mobile {
-        display: block;
-        margin-top: 265px;
-      }
-    }
-
-    .text {
-      margin-top: 227px;
-
-      font-family: 'Mont';
-      font-style: normal;
-      font-weight: $fw-semibold;
-      font-size: 56px;
-      line-height: 110%;
-      letter-spacing: -0.045em;
-
-      display: flex;
-      align-items: flex-end;
-      text-align: center;
-
-      color: $color-white;
-
-      @include mobile-tablet {
-        font-size: 50px;
-      }
-
-      @include mobile {
-        margin-top: 178px;
-        font-size: 32px;
-      }
-
-      @media (max-width: 375px) {
-        margin-top: 150px;
-      }
-    }
-
-    .iconContainer {
-      margin-top: 28px;
-      height: 48px;
-      width: 48px;
-
-      @include mobile {
-        margin-top: 8px;
-        height: 40px;
-        width: 40px;
-      }
-
-      .iconDown {
-        cursor: pointer;
-      }
-    }
+  .iconDown {
+    cursor: pointer;
   }
 }

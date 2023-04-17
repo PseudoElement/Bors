@@ -21,10 +21,6 @@ export const MyStocks = () => {
 
   return (
     <div className={s.wrapperStocks}>
-      <Head>
-        <title>MINA AKTIER</title>
-        <meta name="description" content="Varje dag kommer vi att uppdatera aktiepriserna och presentera top 10 bästa deltagarnas portföljer i BörsJaktens aktietävling" />
-      </Head>
       <div className={s.wrapperText}>
         <div className={s.title}>Mina aktier</div>
         <div className={s.subtitle}>

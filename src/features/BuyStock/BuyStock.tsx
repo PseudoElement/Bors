@@ -37,18 +37,12 @@ export const BuyStock: FC = () => {
     }
   }
 
-  console.log(stocks)
-
   useEffect(() => {
     getAllStocks()
   }, [dispatch])
 
   return (
     <>
-      <Head>
-        <title>KÖP AKTIER</title>
-        <meta name="description" content="Nu kan du handla aktier med dina demokronor och skapa din drömportfölj." />
-      </Head>
       <Popup
         isOpen={showBuyStockList}
         onClose={() => setShowBuyStockList(false)}

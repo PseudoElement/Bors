@@ -1,4 +1,4 @@
-import { PropsLeaderboard, PropsLeaderboardList } from './leaderboard'
+import { PropsLeaderboard } from './leaderboard'
 
 export interface SiteData {
   desc?: string
@@ -59,9 +59,5 @@ export interface LeadersInfoResponse {
   data: PropsLeaderboard[]
   messge: string
   status: string
-}
-
-export interface PropsLeadersResponse {
-  date: Date
 }
 

@@ -16,10 +16,10 @@ export const InfoCard: FC<InfoCardProps> = ({
 }) => {
   return (
     <div id='info' className={s.card}>
-      <p
+      <div
         className={s.cardTitle}
         dangerouslySetInnerHTML={{ __html: title }}
-      ></p>
+      ></div>
 
       <div className={s.cardImageWrapper}>
         <Image

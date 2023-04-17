@@ -21,11 +21,14 @@ interface LoginFormProps {
   setIsOpenPasswordRecovery: Dispatch<SetStateAction<boolean>>
 }
 
-export const LoginForm: FC<LoginFormProps> = ({ onClose, setIsOpenPasswordRecovery }) => {
+export const LoginForm: FC<LoginFormProps> = ({
+  onClose,
+  setIsOpenPasswordRecovery,
+}) => {
   const dispatch = useAppDispatch()
   const { push } = useRouter()
   const user = useAppSelector(state => state.user)
-  console.log(user)
+
   const {
     control,
     handleSubmit,
@@ -58,10 +61,10 @@ export const LoginForm: FC<LoginFormProps> = ({ onClose, setIsOpenPasswordRecove
     }
   }
 
-    const handleRecoveryPassword = () => {
-        onClose()
-        setIsOpenPasswordRecovery(true)
-    }
+  const handleRecoveryPassword = () => {
+    onClose()
+    setIsOpenPasswordRecovery(true)
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmitLogin)} className={s.form}>
@@ -83,7 +86,9 @@ export const LoginForm: FC<LoginFormProps> = ({ onClose, setIsOpenPasswordRecove
       <label className={s.label}>
         <div className={s.labelInner}>
           <span>Lösenord</span>
-          <span className={s.forgotPassword} onClick={handleRecoveryPassword}>Glömt ditt lösenord?</span>
+          <span className={s.forgotPassword} onClick={handleRecoveryPassword}>
+            Glömt ditt lösenord?
+          </span>
         </div>
         <Controller
           name='password'

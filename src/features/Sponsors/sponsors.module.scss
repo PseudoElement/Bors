@@ -1,23 +1,49 @@
 @use 'styles/style' as *;
 
 .wrap {
-  margin: 190px 0;
+  margin-bottom: 190px;
+
+  @include tablet-mobile {
+    margin-bottom: 70px;
+  }
 }
+
 .title {
+  font-family: $font-Mont;
   font-size: 100px;
-  font-weight: $fw-medium;
   font-weight: $fw-semibold;
   line-height: 110px;
   letter-spacing: 0.1em;
   text-align: center;
   text-transform: uppercase;
   margin-bottom: 30px;
+
+  @include tablet-mobile {
+    font-size: 49px;
+    line-height: 61px;
+    letter-spacing: 0.05em;
+    text-align: center;
+  }
 }
 
 .firstLine {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
+  @include tablet-mobile {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-gap: 20px;
+
+    div {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
 }
 
 .secondLine {
@@ -36,53 +62,4 @@
   display: flex;
   justify-content: center;
   gap: 40px;
-}
-
-@media (max-width: #{$tablet-width} ) {
-  .title {
-    font-size: 80px;
-    font-weight: $fw-medium;
-    font-weight: $fw-semibold;
-    line-height: 61px;
-    letter-spacing: 0.1em;
-    text-align: center;
-    text-transform: uppercase;
-  }
-
-  .firstLine {
-    width: 90%;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 33.33%);
-    grid-gap: 20px;
-    div {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-  }
-}
-
-@media (max-width: 500px) {
-  .title {
-    font-size: 50px;
-    font-weight: $fw-medium;
-    font-weight: $fw-semibold;
-    line-height: 61px;
-    letter-spacing: 0.1em;
-    text-align: center;
-    text-transform: uppercase;
-  }
-
-  .firstLine {
-    width: 90%;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(2, 50%);
-    grid-gap: 20px;
-    div {
-      display: flex;
-      justify-content: center;
-    }
-  }
 }

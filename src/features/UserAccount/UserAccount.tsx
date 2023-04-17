@@ -1,6 +1,5 @@
 import { FC, useEffect } from 'react'
 import Image from 'next/image'
-import Head from 'next/head'
 import cn from 'classnames'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { AxiosError } from 'axios'
@@ -9,7 +8,7 @@ import { Balance, Button, Input } from 'components'
 
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { authMe, userAvatar, userUpdate } from 'shared/api/routes/user'
-import { userMeResponse, userUpdateResponse, newUserRequested } from 'store/slices/userSlice'
+import { userMeResponse, userUpdateResponse } from 'store/slices/userSlice'
 
 import { User } from 'shared/types/user'
 import { setAddValues } from 'shared/helpers/setAddValues'
@@ -32,7 +31,6 @@ export const UserAccount: FC = () => {
       const data = await authMe()
 
       dispatch(userMeResponse(data.data))
-
     } catch (error) {
       console.error(error)
     }
@@ -53,13 +51,9 @@ export const UserAccount: FC = () => {
       home_address: '',
       avanza: null,
       nordnet: null,
-      avatar: ''
+      avatar: '',
     },
   })
-
-  useEffect(() => {
-    setAddValues(user, setValue)
-  }, [user])
 
   const onSubmitHanlder: SubmitHandler<User> = async formData => {
     try {
@@ -79,6 +73,10 @@ export const UserAccount: FC = () => {
     setAddValues(user, setValue)
   }
 
+  useEffect(() => {
+    setAddValues(user, setValue)
+  }, [user])
+
   const changeAvatar = async (avatar: File) => {
     try {
       await userAvatar(avatar)
@@ -93,129 +91,144 @@ export const UserAccount: FC = () => {
 
   return (
     <div className={s.wrapper}>
-      <Head>
-        <title>MITT KONTO</title>
-        <meta name="description" content="Fyll i information om dig och ditt AF kontonummer hos Avanza eller Nordnet för att bli tilldelad aktier gratis." />
-      </Head>
-      {user && <div className={s.header}>
-        <div className={s.wrapperAvatar}>
-          <div className={s.avatar}>
-            <Image
-              width={159}
-              height={159}
-              src={!user?.avatar ? AvatarImage : user?.avatar as string}
-              alt='avatar'
-            />
-          </div>
-          <div className={s.changeAvatar}>
-            <label htmlFor='file-upload' className={s.labelUpload}>
-              <div className={s.iconUpload}>
-                <Image
-                  src={mock_user_icons.camera}
-                  width={30}
-                  height={25}
-                  alt='user image'
+      {user && (
+        <div className={s.header}>
+          <div className={s.wrapperAvatar}>
+            <div className={s.avatar}>
+              <Image width={159} height={159} src={user.avatar} alt='avatar' />
+            </div>
+
+            <div className={s.changeAvatar}>
+              <label htmlFor='file-upload' className={s.labelUpload}>
+                <div className={s.iconUpload}>
+                  <Image
+                    src={mock_user_icons.camera}
+                    width={30}
+                    height={25}
+                    alt='user image'
+                  />
+                </div>
+
+                <input
+                  type='file'
+                  name='file-upload'
+                  id='file-upload'
+                  className={s.inputUpload}
                 />
-              </div>
-              <input
-                type='file'
-                name='file-upload'
-                id='file-upload'
-                className={s.inputUpload}
-                onChange={(e) => {if(e.target.files) changeAvatar(e.target.files[0])}}
+                <div className={s.textUpload}>Ändra</div>
+              </label>
+            </div>
+          </div>
+          <div className={s.wrapperBalance}>
+            {mock_user_balance.map((item, key) => (
+              <Balance
+                key={key}
+                count={user?.balance}
+                currency={item.currency}
+                title={item.title}
               />
-              <div className={s.textUpload}>Ändra</div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {user && (
+        <form className={s.form} onSubmit={handleSubmit(onSubmitHanlder)}>
+          <div className={s.wrapperField}>
+            {mock_user_fields.short.map((item, key) => (
+              <div className={s.field} key={key}>
+                <label className={s.labelField} htmlFor={item.name}>
+                  {item.label}
+                  <span className={s.requiredField}>*</span>
+                </label>
+                <div className={s.textField}>
+                  <Controller
+                    name={item.name as 'first_name'}
+                    control={control}
+                    rules={{ required: `${item.label} is required` }}
+                    render={({ field: { onChange, value } }) => (
+                      <Input
+                        type={item.type}
+                        value={value}
+                        onChange={onChange}
+                      />
+                    )}
+                  />
+                </div>
+                {errors[item.name as 'email'] && (
+                  <span className={s.errMessage}>
+                    {errors[item.name as 'email']?.message}
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className={s.wrapperFullField}>
+            <label htmlFor='homeadress' className={s.labelField}>
+              Adress<span className={s.requiredField}>*</span>
             </label>
-          </div>
-        </div>
-        <div className={s.wrapperBalance}>
-          {mock_user_balance.map((item, key) => (
-            <Balance key={key} count={user?.balance} currency={item.currency} title={item.title} />
-          ))}
-        </div>
-      </div>}
-      {user && <form className={s.form} onSubmit={handleSubmit(onSubmitHanlder)}>
-        <div className={s.wrapperField}>
-          {mock_user_fields.short.map((item, key) => (
-            <div className={s.field} key={key}>
-              <label className={s.labelField} htmlFor={item.name}>
-                {item.label}
-                <span className={s.requiredField}>*</span>
-              </label>
-              <div className={s.textField}>
-                <Controller
-                  name={item.name as 'first_name'}
-                  control={control}
-                  rules={{ required: `${item.label} is required` }}
-                  render={({ field: { onChange, value } }) => (
-                    <Input
-                      type={item.type}
-                      value={value}
-                      onChange={onChange}
-                    />
-                  )}
-                />
-              </div>
-              {errors[item.name as 'email'] && (
-                <span className={s.errMessage}>
-                  {errors[item.name as 'email']?.message}
-                </span>
-              )}
+            <div>
+              <Controller
+                name='home_address'
+                control={control}
+                rules={{ required: `homeaddress is required` }}
+                render={({ field: { onChange, value } }) => (
+                  <Input type='text' value={value} onChange={onChange} />
+                )}
+              />
             </div>
-          ))}
-        </div>
-        <div className={s.wrapperFullField}>
-          <label htmlFor='homeadress' className={s.labelField}>
-            Adress<span className={s.requiredField}>*</span>
-          </label>
-          <div>
-            <Controller
-              name='home_address'
-              control={control}
-              rules={{ required: `homeaddress is required` }}
-              render={({ field: { onChange, value } }) => (
-                <Input type='text' value={value} onChange={onChange} />
-              )}
-            />
+            {errors.home_address && (
+              <span className={s.errMessage}>
+                {errors.home_address.message}
+              </span>
+            )}
           </div>
-          {errors.home_address && (
-            <span className={s.errMessage}>{errors.home_address.message}</span>
-          )}
-        </div>
-        <div className={s.wrapperFlexField}>
-          {mock_user_fields.flex.map((item, key) => (
-            <div className={s.flexField} key={key}>
-              <label htmlFor={item.name} className={s.labelField}>
-                {item.label}
-                <span className={s.requiredField}>*</span>
-              </label>
-              <div>
-                <Controller
-                  name={item.name as 'avanza'}
-                  control={control}
-                  rules={{ required: `${item.label} is required` }}
-                  render={({ field: { onChange, value } }) => (
-                    <Input type={item.type} value={value} onChange={onChange} />
-                  )}
-                />
+
+          <div className={s.wrapperFlexField}>
+            {mock_user_fields.flex.map((item, key) => (
+              <div className={s.flexField} key={key}>
+                <label htmlFor={item.name} className={s.labelField}>
+                  {item.label}
+                  <span className={s.requiredField}>*</span>
+                </label>
+                <div>
+                  <Controller
+                    name={item.name as 'avanza'}
+                    control={control}
+                    rules={{ required: `${item.label} is required` }}
+                    render={({ field: { onChange, value } }) => (
+                      <Input
+                        type={item.type}
+                        value={value}
+                        onChange={onChange}
+                      />
+                    )}
+                  />
+                </div>
+                {errors[item.name as 'avanza'] && (
+                  <span className={s.errMessage}>
+                    {errors[item.name as 'avanza']?.message}
+                  </span>
+                )}
               </div>
-              {errors[item.name as 'avanza'] && (
-                <span className={s.errMessage}>
-                  {errors[item.name as 'avanza']?.message}
-                </span>
-              )}
-            </div>
-          ))}
-        </div>
-        <div className={s.btnsAction}>
-          <Button className={s.actionBtn} type='submit'>
-            Spara ändringar
-          </Button>
-          <Button onClick={onClearSubmit} className={cn(s.actionBtn, s.btnCancel)} type='button'>
-            Avbryt ändringar
-          </Button>
-        </div>
-      </form>}
+            ))}
+          </div>
+
+          <div className={s.btnsAction}>
+            <Button className={s.actionBtn} type='submit'>
+              Spara ändringar
+            </Button>
+            <Button
+              onClick={onClearSubmit}
+              className={cn(s.actionBtn, s.btnCancel)}
+              type='button'
+            >
+              Avbryt ändringar
+            </Button>
+          </div>
+        </form>
+      )}
     </div>
   )
 }

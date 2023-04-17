@@ -18,6 +18,7 @@ import { RegistrationForm } from './RegistrationForm/RegistrationForm'
 import { Balance } from './Balance/Balance'
 import { Counter } from './Counter/Counter'
 import { InfoCard } from './InfoCard/InfoCard'
+import { BurgerMenu } from './BurgerMenu/BurgerMenu'
 
 export {
   Button,
@@ -39,5 +40,6 @@ export {
   RegistrationForm,
   Balance,
   Counter,
+  BurgerMenu,
   InfoCard,
 }
