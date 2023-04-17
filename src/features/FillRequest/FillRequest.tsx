@@ -26,7 +26,6 @@ export const FillRequest = () => {
   }
 
   return (
-
     <div className={s.fillRequestSection}>
       <div className={s.fillRequestCard}>
         <div className={s.image}>
@@ -46,7 +45,6 @@ export const FillRequest = () => {
             }}
             render={({ field: { onChange, value } }) => (
               <Input
-
                 placeholder={'Din e-post'}
                 classname={s.input}
                 value={value}
@@ -59,16 +57,11 @@ export const FillRequest = () => {
             )}
           />
 
-
           <div className={s.info}>
-            Genom att klicka på knappen godkänner du behandlingen av personuppgifter
+            Genom att klicka på knappen godkänner du behandlingen av
+            personuppgifter
           </div>
-
         </form>
-
-        <div className={s.fillrequestImage}>
-          <Image width={482} height={482} src={image} alt='Fill Request' />
-        </div>
       </div>
     </div>
   )
