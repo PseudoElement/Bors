@@ -27,12 +27,8 @@
   order: 2;
   width: 412px;
   height: 412px;
-  margin: -40px 0 -40px -500px;
+  margin: -40px 0 -40px -410px;
   pointer-events: none;
-
-  @include laptop {
-    margin-left: -420px;
-  }
 
   @include mobile-laptop {
     margin: 0 auto -230px auto;
@@ -49,18 +45,15 @@
   width: 300px;
   height: 100%;
   border-radius: 50%;
-  opacity: 0.4;
+  opacity: 0.3;
 
   background-color: $color-purple;
-  filter: blur(100px);
+  filter: blur(50px);
 
   position: absolute;
-  right: 150px;
+  right: 80px;
   top: 0;
 
-  @include laptop {
-    right: 100px;
-  }
   @include mobile-laptop {
     background-color: $color-purple;
     width: 90%;

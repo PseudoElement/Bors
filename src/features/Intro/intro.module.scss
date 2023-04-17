@@ -18,7 +18,8 @@
   height: 100%;
   position: absolute;
   z-index: 1;
-
+  pointer-events: none
+;
   mix-blend-mode: overlay;
   background: url('/assets/image/backgroundIntroMask.png');
   background-size: cover;

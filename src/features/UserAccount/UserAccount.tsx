@@ -93,7 +93,12 @@ export const UserAccount: FC = () => {
         <div className={s.header}>
           <div className={s.wrapperAvatar}>
             <div className={s.avatar}>
-              <Image width={159} height={159} src={user.avatar} alt='avatar' />
+              <Image
+                width={159}
+                height={159}
+                src={user?.avatar ? user.avatar : AvatarImage}
+                alt='avatar'
+              />
             </div>
 
             <div className={s.changeAvatar}>
