@@ -1,43 +1,75 @@
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 import { LeaderboardItems, Slider } from 'components'
 
-import { PropsLeaderboardList } from 'shared/types/leaderboard'
+import { dateOneMonthBefore } from 'shared/helpers/dateFormatters'
+import { getLeaders } from '../../../pages'
+
+import { LeaderList } from 'shared/types/leaderboard'
 
 import s from './LeaderboardList.module.scss'
 
-export const LeaderboardList: FC<PropsLeaderboardList> = ({ boards }) => {
+interface LeaderboardListProps {
+  leadersList: LeaderList[]
+}
+export const LeaderboardList: FC<LeaderboardListProps> = ({ leadersList }) => {
+  const [leaders, setLeaders] = useState<LeaderList[]>(leadersList)
+  const [date, setDate] = useState<Date>(dateOneMonthBefore(new Date(), -3))
+  const [isUpdate, setIsUpdate] = useState<boolean>(false)
+
+  const getMore = async () => {
+    setIsUpdate(true)
+  }
+
+  useEffect(() => {
+    const getMoreLeaders = async () => {
+      const moreLeader = await getLeaders(dateOneMonthBefore(date, 0))
+
+      setDate(dateOneMonthBefore(date, -3))
+      setIsUpdate(false)
+      if (moreLeader) {
+        setLeaders([...leaders, ...moreLeader])
+      }
+    }
+
+    if (isUpdate) {
+      getMoreLeaders()
+    }
+  }, [isUpdate])
+
   return (
     <div className={s.leaderboardSection} id={'leaderboard'}>
       <h2 className={s.leaderboardListTitle}>
         TOPP <br className={s.leaderboardBr} /> <span>LISTAN</span>
       </h2>
 
-      <h2 className={s.leaderboardTitle}>Mars 17, 2023</h2>
-
-      <Slider slidesPerView={2} spaceBetween={90} centeredSlides={true}>
-        {boards.map(board => (
-          <div className={s.loaderBoard} key={board.id}>
+      <Slider
+        slidesPerView={1}
+        spaceBetween={0}
+        centeredSlides={true}
+        getMore={getMore}
+        leaders={leaders}
+      >
+        {leaders?.map((leader, index) => (
+          <div className={s.loaderBoard} key={index}>
             <div className={s.leaderboardList}>
               <div className={s.leaderboardWrapper}>
                 <div className={s.leaderboardInfo}>
-                  <div>
-                    <span className={s.leaderboardName}>Namn</span>
-                  </div>
+                  <div className={s.leaderboardName}>Namn</div>
+
                   <div className={s.leaderboardEntirety}>
-                    <div>
-                      <span className={s.leaderboardPos}>Avkastning</span>
-                    </div>
-                    <div>
-                      <span className={s.leaderboardYie}>Avkastning</span>
-                    </div>
-                    <div>
-                      <span className={s.leaderboardInc}>Inkomstbelopp</span>
-                    </div>
+                    <div className={s.leaderboardPos}>Avkastning</div>
+                    <div className={s.leaderboardYie}>Avkastning</div>
+                    <div className={s.leaderboardInc}>Inkomstbelopp</div>
                   </div>
                 </div>
-                {boards.map(board => (
-                  <LeaderboardItems key={board.id} {...board} />
+
+                {leader.array?.map((list, index) => (
+                  <LeaderboardItems
+                    key={index}
+                    position={index + 1}
+                    {...list}
+                  />
                 ))}
               </div>
             </div>

@@ -103,6 +103,12 @@
     }
   }
 }
+.userAvatar {
+  width: 51px;
+  height: 52px;
+  border-radius: 50%;
+  overflow: hidden;
+}
 
 .leaderboardCount {
   min-width: 346px;

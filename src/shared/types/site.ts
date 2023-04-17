@@ -61,3 +61,6 @@ export interface LeadersInfoResponse {
   status: string
 }
 
+export interface PropsLeadersResponse {
+  date: Date
+}

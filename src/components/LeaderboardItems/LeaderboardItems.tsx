@@ -5,46 +5,51 @@ import { PropsLeaderboard } from 'shared/types/leaderboard'
 
 import s from './leaderboardItems.module.scss'
 
-export const LeaderboardItems: FC<PropsLeaderboard> = ({
+interface LeaderboardItemProps extends PropsLeaderboard {
+  position: number
+}
+export const LeaderboardItems: FC<LeaderboardItemProps> = ({
   id,
+  day,
+  price,
+  buy_price,
   user,
+  percentage,
+  updated_at,
+  created_at,
   position,
-  tempyield,
-  amountOfIncome,
 }) => {
-  const { name, avatarUrl } = user
-
   return (
     <div className={s.leaderboardItem}>
       <div className={s.leaderboardUser}>
-        <Image width={52} height={52} src={avatarUrl} alt='avatar' />
-        <span className={s.leaderboardName}>{name}</span>
+        <div className={s.userAvatar}>
+          <Image width={52} height={52} src={user.avatar} alt='avatar' />
+        </div>
+
+        <span className={s.leaderboardName}>{user.name}</span>
       </div>
+
       <div className={s.leaderboardCount}>
         <div className={s.leaderboardInfo}>
           <div className={s.leaderboardValue}>
             <span className={s.leaderboardPos}>Position</span>
           </div>
+
           <div className={s.leaderboardValue}>
             <span className={s.leaderboardYie}>Yield</span>
           </div>
+
           <div className={s.leaderboardValue}>
             <span className={s.leaderboardInc}>Amount of income</span>
           </div>
         </div>
+
         <div className={s.leaderboardTemp}>
-          <div>
-            <span className={s.leaderboardPosition}>{position}</span>
-          </div>
+          <div className={s.leaderboardPosition}>{position}</div>
+
           <div className={s.leaderboardData}>
-            <div>
-              <span className={s.leaderboardYield}>{tempyield}%</span>
-            </div>
-            <div>
-              <span className={s.leaderboardAmountOfIncome}>
-                {amountOfIncome} SEK
-              </span>
-            </div>
+            <div className={s.leaderboardYield}>{percentage}%</div>
+            <div className={s.leaderboardAmountOfIncome}>{buy_price} SEK</div>
           </div>
         </div>
       </div>

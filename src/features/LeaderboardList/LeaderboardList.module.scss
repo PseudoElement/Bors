@@ -49,6 +49,7 @@
 
 .loaderBoard {
   width: 100%;
+  min-height: 100px;
 }
 
 .leaderboardInfo {
@@ -89,22 +90,6 @@
 
 .leaderboardName {
   @include entirety;
-}
-
-.leaderboardTitle {
-  text-align: center;
-  letter-spacing: -0.045em;
-  color: $color-black;
-  font-weight: $fw-bold;
-  font-size: 40px;
-  margin-bottom: 47px;
-  margin-top: 20px;
-
-  @media (max-width: 490px) {
-    font-size: 32px;
-    font-weight: $fw-semibold;
-    margin-bottom: 24px;
-  }
 }
 
 .leaderboardListTitle {

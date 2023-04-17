@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper'
 import cn from 'classnames'
 
+import { LeaderList } from 'shared/types/leaderboard'
 import ArrowIcon from '/public/assets/icons/Arrow.svg'
 
 import 'swiper/css'
@@ -22,6 +23,8 @@ interface SliderProps {
   classname?: string
   spaceBetween?: number
   breakpoints?: any
+  getMore: () => void
+  leaders: LeaderList[]
 }
 
 export const Slider: FC<SliderProps> = ({
@@ -33,40 +36,40 @@ export const Slider: FC<SliderProps> = ({
   spaceBetween = 0,
   nextEl = 'moreNext',
   prevEl = 'morePrev',
+  getMore,
+  leaders,
 }) => {
+  const [index, setIndex] = useState(0)
   const paginationOptions = withPagination && { clickable: true }
   const navigationOptions = withNavigation && {
     nextEl: `.${nextEl}`,
     prevEl: `.${prevEl}`,
   }
 
-  const [active, setActive] = useState(9)
-
-  const handleClick = () => {
-    if (active === children.length - 10) {
-      setActive(0)
-    } else {
-      setActive(prev => prev - 1)
+  const handleChange = (activeIndex: number) => {
+    setIndex(activeIndex)
+    if (activeIndex > index) {
+      getMore()
     }
   }
 
   return (
     <>
-      {withNavigation && (
-        <div className={cn(s.nextElWrapper)}>
-          <div className={cn(s.swiperButtonNext, nextEl)}>
-            <ArrowIcon alt='arrow' />
-          </div>
-          <div onClick={handleClick} className={cn(s.swiperButtonPrev, prevEl)}>
-            <ArrowIcon alt='arrow' />
-          </div>
+      <div className={cn(s.nextElWrapper)}>
+        <div className={cn(s.swiperButtonNext, nextEl)}>
+          <ArrowIcon alt='arrow' />
         </div>
-      )}
+
+        <h2 className={s.leaderboardTitle}>{leaders?.[index]?.date}</h2>
+
+        <div className={cn(s.swiperButtonPrev, prevEl)}>
+          <ArrowIcon alt='arrow' />
+        </div>
+      </div>
 
       <div className={s.slider}>
         <Swiper
           className={s.swiper}
-          autoHeight={true}
           modules={[Navigation, Pagination]}
           spaceBetween={spaceBetween}
           slidesPerView={slidesPerView}
@@ -84,8 +87,7 @@ export const Slider: FC<SliderProps> = ({
           navigation={navigationOptions || false}
           pagination={paginationOptions}
           centeredSlides={centeredSlides}
-          allowSlideNext={false}
-          initialSlide={children.length - 1}
+          onSlideChange={e => handleChange(e.activeIndex)}
         >
           {children.length
             ? children.map((child, idx) => (
