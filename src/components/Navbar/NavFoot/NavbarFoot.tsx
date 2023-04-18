@@ -3,19 +3,17 @@ import { useRouter } from 'next/router'
 
 import { LoginRegistrationModal, PasswordRecovery } from 'features'
 import { Popup, BurgerMenu } from 'components'
-import { NavProfile } from './NavProfile/NavProfile'
-import { NavMobile } from './NavMobile/NavMobile'
-import { NavMain } from './NavMain/NavMain'
-import { NavFoot } from './NavFoot/NavFoot'
+import { NavFoot } from './NavFoot'
 
 import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
 import { cookies } from 'shared/utils/Cookies'
 
 interface Variant {
-  variant: boolean
+  variant: boolean,
+  socialLink: boolean
 }
 
-export const Navbar: FC<Variant> = ({ variant }) => {
+export const NavbarFoot: FC<Variant> = ({ variant, socialLink }) => {
   const { push } = useRouter()
   const { width } = useWindowDimensions()
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -52,19 +50,13 @@ export const Navbar: FC<Variant> = ({ variant }) => {
       >
         <PasswordRecovery />
       </Popup>
-
-      {!variant ? (
-        <>
-          <NavProfile />
-          <NavMobile />
-        </>
-      ) : (
-          <NavMain
-            menuOpen={handleProfile}
-            burgerMenuOpen={() => setBurgerIsOpen(prevState => !prevState)}
-            isBurgerOpen={isBurgerOpen}
-          />
-        )}  
+      <NavFoot
+        menuOpen={handleProfile}
+        burgerMenuOpen={() => setBurgerIsOpen(prevState => !prevState)}
+        isBurgerOpen={isBurgerOpen}
+        socialLink={socialLink}
+      />
+       
     </>
   )
 }

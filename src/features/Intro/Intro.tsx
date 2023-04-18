@@ -18,7 +18,6 @@ export const Intro: FC<SiteData> = ({ logo, desc, title }) => {
         <Logo logoImage={logo} logoText={title} classNames={s.logo}/>
 
         <p className={s.text}>{desc}</p>
-
         <Link href={'#info'} scroll={false}>
           <div className={s.iconContainer}>
             <Image className={s.iconDown} src={IconDown} alt='icon down' />

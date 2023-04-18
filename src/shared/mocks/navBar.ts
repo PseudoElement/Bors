@@ -39,3 +39,17 @@ export const main_nav_links = [
     link: '#',
   }, */
 ]
+export const main_socialLinks = [
+  {
+    href: 'https://instagram.com',
+    title: "Instagram",
+    src: '/assets/icons/Instagram.svg',
+    imgAlt: 'instagram'
+  },
+  {
+    href: 'https://youtube.com',
+    title: "Youtube",
+    src: '/assets/icons/Youtube.svg',
+    imgAlt: 'youtube'
+  }
+]

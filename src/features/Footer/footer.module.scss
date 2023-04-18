@@ -93,23 +93,7 @@
     cursor: pointer;
   }
   
-  .instLink {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    
-    
-    .circle {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: $color-gray-02;
-      cursor: pointer;
-    }
-  }
+  
 }
 
 .agreement {
@@ -206,4 +190,9 @@
     font-size: 12px;
     line-height: 15px;
   }
+}
+.policyBlock{
+  width: 70%;
+  height: 70%;
+  margin: 0 auto;
 }
