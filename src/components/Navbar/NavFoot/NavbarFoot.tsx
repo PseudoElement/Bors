@@ -52,8 +52,6 @@ export const NavbarFoot: FC<Variant> = ({ variant, socialLink }) => {
       </Popup>
       <NavFoot
         menuOpen={handleProfile}
-        burgerMenuOpen={() => setBurgerIsOpen(prevState => !prevState)}
-        isBurgerOpen={isBurgerOpen}
         socialLink={socialLink}
       />
        

@@ -25,10 +25,11 @@ export const Footer: FC = () => {
             </div>
           </div>
         </div>
+
+
         <NavbarFoot variant={true} socialLink={true}/>
 
         <div className={s.line} />
-
 
         <div className={s.agreement}>
           <span>@2023 BORS JAKTEN</span>

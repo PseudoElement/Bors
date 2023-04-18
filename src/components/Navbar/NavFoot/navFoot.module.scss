@@ -8,13 +8,15 @@
     flex-direction: column;
     gap: 20px;
     width: 100%;
-    margin: 24px auto;
+    margin-bottom: 20px;
     font-weight: $fw-regular;
-    font-size: 18px;
+    font-size: 24px;
     line-height: 110%;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    text-transform: capitalize;
     color: $color-white;
+    font-weight: 600;
+
 }
 
 .navFootSectionFlex{
@@ -58,13 +60,12 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    gap: 15px;
-  }
+
+    gap: 10px; }
   @include mobile-laptop{
     width: 100%;
     justify-content: space-around;
-    gap: 30px;
-  }
+}
 }
 .links {
   display: flex;
@@ -90,7 +91,19 @@
     font-size: 16px;
   }
 }
+
+.line {
+  margin-top: 22px;
+  margin-bottom: 12px;
+  width: 100%;
+  opacity: 0.3;
+  border: 1px solid $color-white;
+  height: 0;
+  max-width: $max-layout-width;
+  width: 100%;
+}
 .logInButton {
+  width: 40%;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -110,8 +123,7 @@
 
   @include tablet-mobile {
     height: 50px;
-    padding-right: 16px;
-    font-size: 13px;
+    font-size: 16px;
     line-height: 110%;
   }
 }
