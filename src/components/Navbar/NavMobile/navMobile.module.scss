@@ -1,4 +1,4 @@
-@use "styles/style" as *;
+@use 'styles/style' as *;
 
 .mobileNavBar {
   padding: 14px 24px;
@@ -6,14 +6,32 @@
   border-radius: 16px;
   background: $color-white;
   border: 1px solid $color-black-05;
-  box-shadow: 0px 5px 10px $color-black-08;
+  box-shadow: 0 5px 10px $color-black-08;
   backdrop-filter: blur(63px);
+  display: none;
+
+  @include mobile-laptop {
+    display: block;
+  }
 }
 
 .mobileNav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.logoMini {
+  display: none;
+
+  @include tablet-mobile {
+    display: block;
+  }
+}
+.logoBig {
+  @include tablet-mobile {
+    display: none;
+  }
 }
 
 .avatarGroup {
@@ -43,8 +61,13 @@
   column-gap: 26px;
 }
 
+.burgerMenu {
+  display: block;
+}
+
 .burgerMenuLine {
   background: $password-gradient;
+  display: block;
 }
 
 .burgerMenuList {
@@ -67,11 +90,10 @@
   color: $color-gray-a5;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 6px;
 }
 
 .burgerMenuBalanceNum {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: $fw-bold;
   background: $password-gradient;
   -webkit-background-clip: text;
@@ -83,6 +105,7 @@
   align-items: center;
   column-gap: 8px;
   border: none;
+  padding: 10px 0;
   background-color: transparent;
 }
 
@@ -94,6 +117,7 @@
   backdrop-filter: blur(63px);
   border-radius: 16px;
   background-color: $color-white;
+
   &:not(:last-child) {
     margin-bottom: 5px;
   }

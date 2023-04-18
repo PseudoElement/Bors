@@ -4,6 +4,7 @@ import cn from 'classnames'
 import s from './burgerMenuButton.module.scss'
 
 export interface BurgerMenuButtonProps {
+  defaultBurger?: string
   defaultStyles?: string
   activeStyles?: string
   setIsOpenMenu: () => void
@@ -15,11 +16,13 @@ export const BurgerMenuButton: FC<BurgerMenuButtonProps> = ({
   isOpenMenu,
   defaultStyles,
   activeStyles,
+  defaultBurger,
 }) => {
   return (
     <button
       onClick={setIsOpenMenu}
       className={cn(
+        defaultBurger,
         s.burgerMenu,
         { [s.activeMenu]: isOpenMenu },
         isOpenMenu ? activeStyles : ''

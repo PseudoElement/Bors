@@ -53,11 +53,10 @@ export const Navbar: FC<Variant> = ({ variant }) => {
       </Popup>
 
       {!variant ? (
-        width > 900 ? (
+        <>
           <NavProfile />
-        ) : (
           <NavMobile />
-        )
+        </>
       ) : (
         <NavMain
           menuOpen={handleProfile}

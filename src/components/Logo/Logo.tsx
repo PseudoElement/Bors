@@ -8,10 +8,16 @@ interface LogoProps {
   logoImage: string
   logoText: string
   classNames?: string
+  size?: 'small' | 'large'
 }
-export const Logo: FC<LogoProps> = ({ logoImage, logoText, classNames }) => {
+export const Logo: FC<LogoProps> = ({
+  logoImage,
+  logoText,
+  classNames,
+  size = 'large',
+}) => {
   return (
-    <div className={cn(s.logo, classNames)}>
+    <div className={cn(s[`logo_${size}`], classNames)}>
       <div className={s.logoImage}>
         {logoImage && <Image src={logoImage} layout='fill' alt='logo' />}
       </div>

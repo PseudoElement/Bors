@@ -2,15 +2,18 @@ import { FC, useState } from 'react'
 import cn from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-import { BurgerMenuButton } from 'components'
+import { BurgerMenuButton, Logo } from 'components'
 
 import { logoutAuth } from 'shared/api/routes/user'
 import { logoutUserRequested } from 'store/slices/userSlice'
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
+import { cookies } from 'shared/utils/Cookies'
 
 import { nav_links } from 'shared/mocks/navBar'
 import defaultAvatarImage from '/public/assets/image/avatar.png'
+import logo from '/public/assets/image/smaloLogo.png'
 
 import s from './navMobile.module.scss'
 
@@ -20,7 +23,7 @@ export interface NavMobileProps {
 
 export const NavMobile: FC<NavMobileProps> = ({ classNames }) => {
   const dispatch = useAppDispatch()
-  const [activeLink, setActiveLink] = useState<string>('Buy Stocks')
+  const { push, pathname } = useRouter()
   const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false)
   const user = useAppSelector(state => state.user.user)
 
@@ -32,21 +35,41 @@ export const NavMobile: FC<NavMobileProps> = ({ classNames }) => {
       console.error(error)
     }
   }
+  const handleLogOut = async () => {
+    await push('/')
+    await cookies.remove('token')
+    await logoutUser()
+  }
 
   return (
     <nav className={cn(s.mobileNavBar, classNames)}>
       <div className={s.mobileNav}>
-        <Link href={'/'}>
-          <a>
-            <Image
-              className={s.mobileLogo}
-              width={29}
-              height={44}
-              alt='logo'
-              src='/assets/icons/LogoColor.png'
-            />
-          </a>
-        </Link>
+        <div className={s.logoMini}>
+          <Link href={'/'}>
+            <a>
+              <Image
+                className={s.mobileLogo}
+                width={29}
+                height={44}
+                alt='logo'
+                src='/assets/icons/LogoColor.png'
+              />
+            </a>
+          </Link>
+        </div>
+
+        <div className={s.logoBig}>
+          <Link href={'/'}>
+            <a>
+              <Logo
+                size={'small'}
+                logoImage={logo.src}
+                logoText={'BörsJakten'}
+                classNames={s.logo}
+              />
+            </a>
+          </Link>
+        </div>
 
         <div className={s.mobileNavbarWrapper}>
           <div className={s.avatarGroup}>
@@ -64,6 +87,7 @@ export const NavMobile: FC<NavMobileProps> = ({ classNames }) => {
           </div>
 
           <BurgerMenuButton
+            defaultBurger={s.burgerMenu}
             isOpenMenu={isOpenMenu}
             setIsOpenMenu={() => setIsOpenMenu(prev => !prev)}
             defaultStyles={s.burgerMenuLine}
@@ -76,20 +100,22 @@ export const NavMobile: FC<NavMobileProps> = ({ classNames }) => {
           <div className={s.burgerMenuTop}>
             <div className={s.burgerMenuTopItem}>
               <div className={s.burgerMenuBalance}>Saldo</div>
-              <div className={s.burgerMenuBalanceNum}>8.983,66 SEK</div>
+              <div className={s.burgerMenuBalanceNum}>{user?.balance} SEK</div>
             </div>
 
-            <button className={s.burgerMenuLogoutWrapper} onClick={logoutUser}>
+            <button
+              className={s.burgerMenuLogoutWrapper}
+              onClick={handleLogOut}
+            >
               <div className={s.burgerMenuLogout}>Logga ut</div>
-              <div>
-                <Image
-                  src='/assets/icons/logout.svg'
-                  width={24}
-                  height={24}
-                  alt='logout'
-                  style={{ cursor: 'pointer' }}
-                />
-              </div>
+
+              <Image
+                src='/assets/icons/logout.svg'
+                width={24}
+                height={24}
+                alt='logout'
+                style={{ cursor: 'pointer' }}
+              />
             </button>
           </div>
 
@@ -97,9 +123,8 @@ export const NavMobile: FC<NavMobileProps> = ({ classNames }) => {
             <div className={s.linkItem} key={item.label}>
               <Link href={item.link}>
                 <a
-                  onClick={() => setActiveLink(item.label)}
                   className={cn(s.burgerLink, {
-                    [s.active]: activeLink === item.label,
+                    [s.active]: pathname === item.link,
                   })}
                 >
                   {item.label}

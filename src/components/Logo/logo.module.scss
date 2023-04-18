@@ -1,38 +1,70 @@
 @use 'styles/style' as *;
 
-.logo {
+.logo_large {
   display: flex;
 
   @include tablet-mobile {
     flex-direction: column;
     align-items: center;
   }
-}
-.logoImage {
-  position: relative;
-  width: 103px;
-  height: 167px;
-}
 
-.logoText {
-  color: $color-white;
-  font-size: 60px;
-  text-transform: uppercase;
-  margin-left: 40px;
+  .logoImage {
+    position: relative;
+    width: 103px;
+    height: 167px;
+  }
 
-  display: flex;
-  align-self: end;
+  .logoText {
+    color: $color-white;
+    font-size: 60px;
+    text-transform: uppercase;
+    margin-left: 40px;
 
-  @include tablet-mobile {
-    font-size: 35px;
-    margin-left: 0;
-    margin-top: 20px;
+    display: flex;
+    align-self: end;
+
+    @include tablet-mobile {
+      font-size: 35px;
+      margin-left: 0;
+      margin-top: 20px;
+    }
+  }
+  .logoWord {
+    font-weight: $fw-regular;
+
+    &:nth-child(1) {
+      font-weight: $fw-bold;
+    }
   }
 }
-.logoWord {
-  font-weight: $fw-regular;
 
-  &:nth-child(1){
-    font-weight: $fw-bold;
+.logo_small {
+  display: flex;
+  align-items: center;
+
+  .logoImage {
+    position: relative;
+    width: 29px;
+    height: 44px;
+  }
+
+  .logoText {
+    display: flex;
+    text-transform: uppercase;
+    font-size: 25px;
+    margin-left: 18px;
+    background: $password-gradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+
+  .logoWord {
+    font-weight: $fw-medium;
+
+    &:nth-child(1) {
+      font-weight: $fw-bold;
+    }
   }
 }

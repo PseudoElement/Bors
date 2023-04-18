@@ -4,7 +4,7 @@ import avatarUrl1 from '/public/assets/image/avatar-1.png'
 import avatarUrl2 from '/public/assets/image/avatar-2.png'
 import avatarUrl3 from '/public/assets/image/avatar-3.png'
 
-export const mock__leaderboard: PropsLeaderboard[] = [
+export const mock__leaderboard = [
   {
     id: 1,
     user: {

@@ -4,14 +4,16 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
+import { Logo } from 'components'
+
 import { logoutAuth } from 'shared/api/routes/user'
 import { logoutUserRequested } from 'store/slices/userSlice'
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { cookies } from 'shared/utils/Cookies'
 
 import { nav_links } from 'shared/mocks/navBar'
-
 import AvatarImage from '/public/assets/image/avatar.png'
+import logo from '/public/assets/image/smaloLogo.png'
 
 import s from './navProfile.module.scss'
 
@@ -36,34 +38,20 @@ export const NavProfile: FC<NavMainProps> = ({ classNames }) => {
     }
   }
 
-
   return (
-    <nav className={cn(s.nav2, classNames)}>
+    <nav className={cn(s.nav, classNames)}>
       <Link href={'/'}>
         <a>
-          <div className={s.logoGroup2}>
-            <div className={s.logo2}>
-              <Image
-                width={29}
-                height={44}
-                alt='logo'
-                src='/assets/icons/LogoColor.png'
-              />
-            </div>
-
-            <div className={s.logoText2}>
-              <Image
-                src='/assets/icons/BorsColor.svg'
-                width={199}
-                height={26.52}
-                alt='BorsJakten'
-              />
-            </div>
-          </div>
+          <Logo
+            size={'small'}
+            logoImage={logo.src}
+            logoText={'BörsJakten'}
+            classNames={s.logo}
+          />
         </a>
       </Link>
 
-      <ul>
+      <ul className={s.tabs}>
         {nav_links.map(link => (
           <li
             key={link.label}
@@ -80,37 +68,35 @@ export const NavProfile: FC<NavMainProps> = ({ classNames }) => {
       </ul>
 
       <div className={s.userInfo}>
-        {user && (
-          <div className={s.avatarGroup}>
-            <span>{user?.name}</span>
+        <div className={s.avatarGroup}>
+          <span>{user?.name}</span>
 
-            <div className={s.userFoto}>
-              <Image
-                src={!user?.avatar ? AvatarImage : (user?.avatar as string)}
-                width={52}
-                height={52}
-                style={{ objectFit: 'cover' }}
-                alt='avatar'
-              />
-            </div>
+          <div className={s.userFoto}>
+            <Image
+              src={!user?.avatar ? AvatarImage : (user?.avatar as string)}
+              width={52}
+              height={52}
+              style={{ objectFit: 'cover' }}
+              alt='avatar'
+            />
           </div>
-        )}
+        </div>
 
-        {user && (
-          <div className={s.userBalance}>
-            <div>MITT KONTO</div>
-            <span>{String(user?.balance)} sek</span>
-          </div>
-        )}
+        <div className={s.userBalance}>
+          <div className={s.title}>MITT KONTO</div>
+          <div className={s.balance}>{String(user?.balance)} sek</div>
+        </div>
 
-        <Image
-          src={'/assets/icons/logout.svg'}
-          width={24}
-          onClick={logoutUser}
-          height={24}
-          alt='logout'
-          style={{ cursor: 'pointer' }}
-        />
+        <button className={s.logOutButton}>
+          <Image
+            src={'/assets/icons/logout.svg'}
+            width={18}
+            onClick={logoutUser}
+            height={18}
+            alt='logout'
+            style={{ cursor: 'pointer' }}
+          />
+        </button>
       </div>
     </nav>
   )
