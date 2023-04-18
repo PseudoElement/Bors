@@ -35,12 +35,12 @@ export const mock_user_fields = {
   ],
   flex: [
     {
-      label: 'Avanza AF kontonummer (Akite & Fondkonto) obs!',
+      label: 'Avanza',
       type: 'text',
       name: 'avanza',
     },
     {
-      label: 'Nordnet AF kontonummer (Akite & Fondkonto) obs!',
+      label: 'Nordnet',
       type: 'text',
       name: 'nordnet',
     },
