@@ -15,7 +15,7 @@ export interface User {
   nordnet: null | string
   old_position: number
   old_stock_balance: number
-  phone_number: null | number
+  phone_number: null | number | string
   position: number
   present: number
   role_id: number
@@ -24,7 +24,6 @@ export interface User {
   stock_balance: number
   updated_at: string
 }
-
 
 export interface LogoutUser {
   data: {

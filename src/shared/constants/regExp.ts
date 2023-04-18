@@ -1,5 +1,6 @@
 export const NUMBER_REG_EXP = [
   '+',
+  /\D/g,
   /[1-9]/,
   /\d/,
   ' ',

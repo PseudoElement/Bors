@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react'
+import { FC, useEffect, ChangeEvent } from 'react'
 import Image from 'next/image'
 import cn from 'classnames'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
@@ -17,6 +17,8 @@ import {
   mock_user_fields,
   mock_user_icons,
 } from 'shared/mocks/mock_userAccount'
+import { EMAIL_VALIDATION_REG, NUMBER_REG_EXP } from 'shared/constants/regExp'
+import { formatTelNumber } from 'shared/helpers/formatTelNumber'
 import defaultAvatarImage from '/public/assets/image/avatar.png'
 
 import s from './UserAccount.module.scss'
@@ -48,6 +50,7 @@ export const UserAccount: FC = () => {
     handleSubmit,
     setValue,
     formState: { errors },
+    setError,
   } = useForm<User>({
     defaultValues: {
       name: '',
@@ -78,6 +81,30 @@ export const UserAccount: FC = () => {
 
   const onClearSubmit = () => {
     setAddValues(user, setValue)
+  }
+
+  const handlerTelNumber = (e: ChangeEvent<HTMLInputElement>) => {
+    const text = e.target.value.replace(NUMBER_REG_EXP[1], '')
+
+    setError('phone_number', {
+      message: text.length < 11 ? 'Requires 11 digits' : '',
+    })
+
+    setValue('phone_number', formatTelNumber(text))
+  }
+
+  const handlerOnlyNumber = (e: ChangeEvent<HTMLInputElement>) => {
+    const name = e.target.name as 'avanza'
+    const text = e.target.value.replace('#', '')
+    const withIcon = name === 'avanza' || name === 'nordnet' ? '#' : ''
+
+    setError(name, {
+      message: !parseInt(text[text.length - 1])
+        ? 'Only numbers are allowed'
+        : '',
+    })
+
+    setValue(name, withIcon + text.replace(NUMBER_REG_EXP[1], ''))
   }
 
   useEffect(() => {
@@ -149,16 +176,33 @@ export const UserAccount: FC = () => {
                   {item.label}
                   <span className={s.requiredField}>*</span>
                 </label>
-
-                <Controller
-                  name={item.name as 'first_name'}
-                  control={control}
-                  rules={{ required: `${item.label} krävs` }}
-                  render={({ field: { onChange, value } }) => (
-                    <Input type={item.type} value={value} onChange={onChange} />
-                  )}
-                />
-
+                <div className={s.textField}>
+                  <Controller
+                    name={item.name as 'first_name'}
+                    control={control}
+                    rules={{
+                      required: `${item.label} krävs`,
+                      pattern:
+                        (item.name as 'email') === 'email'
+                          ? EMAIL_VALIDATION_REG
+                          : undefined,
+                      onChange:
+                        (item.name as 'phone_number') === 'phone_number'
+                          ? handlerTelNumber
+                          : (item.name as 'security_number') ===
+                            'security_number'
+                          ? handlerOnlyNumber
+                          : undefined,
+                    }}
+                    render={({ field: { onChange, value } }) => (
+                      <Input
+                        type={item.type}
+                        value={value}
+                        onChange={onChange}
+                      />
+                    )}
+                  />
+                </div>
                 {errors[item.name as 'email'] && (
                   <span className={s.errMessage}>
                     {errors[item.name as 'email']?.message}
@@ -203,7 +247,10 @@ export const UserAccount: FC = () => {
                   <Controller
                     name={item.name as 'avanza'}
                     control={control}
-                    rules={{ required: `${item.label} krävs` }}
+                    rules={{
+                      required: `${item.label} krävs`,
+                      onChange: handlerOnlyNumber,
+                    }}
                     render={({ field: { onChange, value } }) => (
                       <Input
                         type={item.type}
