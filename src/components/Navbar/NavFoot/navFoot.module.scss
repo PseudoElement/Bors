@@ -23,6 +23,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  align-items: center;
   @include tablet{
     flex-wrap: wrap;
     justify-content: center;
@@ -52,7 +53,7 @@
   }
   @include laptop{
     width: 100%;
-    justify-content: space-around;
+    justify-content: center;
   }
   @include tablet{
     width: 100%;
@@ -64,8 +65,9 @@
     gap: 10px; }
   @include mobile-laptop{
     width: 100%;
-    justify-content: space-around;
-}
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
 }
 .links {
   display: flex;
@@ -73,6 +75,7 @@
   align-items: center;
   list-style: none;
   padding: 0;
+
   @include laptop{
     gap: 70px
   }
@@ -80,15 +83,15 @@
     gap: 30px;
     display: none;
   }
-  @include mobile-laptop{
-    font-size: 20px;
+  @include desktop{
+    gap: 60px;
   }
 }
 .link {
   cursor: pointer;
 
   @include mobile-laptop{
-    font-size: 16px;
+    font-size: 20px;
   }
 }
 
@@ -113,7 +116,6 @@
   box-shadow: 0 4px 10px $color-shadow-0-6;
   border-radius: 79px;
   border: none;
-
   font-size: 18px;
   line-height: 110%;
   letter-spacing: 0.04em;
@@ -126,6 +128,7 @@
     font-size: 16px;
     line-height: 110%;
   }
+
 }
 
 .btnImg {
