@@ -42,7 +42,7 @@ export const StocksCard: FC<StocksCardProps> = ({
   buy_sum_count,
 }) => {
   const [isActiveCard, setIsActiveCard] = useState<boolean>(false)
-  const [counterValue, setCounterValue] = useState(1)
+  const [counterValue, setCounterValue] = useState(count)
 
   const changeCounter = (value: number) => {
     setCounterValue(value)
@@ -89,7 +89,6 @@ export const StocksCard: FC<StocksCardProps> = ({
         {isActiveCard ? (
           <Counter
             min={0}
-            max={10}
             value={counterValue}
             onChange={changeCounter}
           />

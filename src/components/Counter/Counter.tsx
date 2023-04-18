@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler } from 'react'
+import { FC, MouseEventHandler, ChangeEventHandler } from 'react'
 
 import cn from 'classnames'
 
@@ -23,10 +23,10 @@ export const Counter: FC<CounterProps> = ({
     return true
   }
 
-  // const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
-  //     const newValue: number = +e.target.value.replace(/\D/, '')
-  //     if (isValid(newValue)) onChange(newValue)
-  // }
+  const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
+    const newValue: number = +e.target.value.replace(/\D/, '')
+    if (isValid(newValue)) onChange(newValue)
+  }
 
   const increment: MouseEventHandler<HTMLButtonElement> = e => {
     const newValue: number = value + 1
@@ -43,7 +43,11 @@ export const Counter: FC<CounterProps> = ({
       <button className={s.btn} disabled={value === min} onClick={decrement}>
         ‒
       </button>
-      <div className={s.value}>{value}</div>
+      <input
+        className={s.input}
+        value={value}
+        onChange={handleChange}
+      />
       <button
         className={cn(s.btn, s.btn_right)}
         disabled={value === max}

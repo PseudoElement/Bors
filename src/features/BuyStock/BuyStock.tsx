@@ -12,19 +12,22 @@ import {
 } from 'features'
 
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
-import { stockAll } from 'shared/api/routes/stock'
+import { stockAll, buyStocks } from 'shared/api/routes/stock'
 import { getStockResponse } from 'store/slices/stockSlice'
+
+import { Stocks } from 'shared/types/stocks'
 
 import { card_stocks_info } from 'shared/mocks/mock_cardStocksInfo'
 import SearchIcon from '/public/assets/icons/Search.png'
 
 import s from './buyStock.module.scss'
+import { filter } from 'lodash'
 
 export const BuyStock: FC = () => {
   const dispatch = useAppDispatch()
   const [showBuyStockList, setShowBuyStockList] = useState<boolean>(false)
   const [showBuyStockInfo, setShowBuyStockInfo] = useState<boolean>(false)
-  const [stockInBasket, setStockInBasket] = useState<any[]>([])
+  const [stockInBasket, setStockInBasket] = useState<Stocks[]>([])
   const [searchValue, setSearchValue] = useState<string>('')
   const stocks = useAppSelector(state => state.stock.data)
 
@@ -41,13 +44,34 @@ export const BuyStock: FC = () => {
     getAllStocks()
   }, [dispatch])
 
+  const buyStock = async () => {
+    try {
+
+      const stocksObj: any = {}
+      stockInBasket.forEach((item) => {
+        stocksObj[item.id] = 10
+      })
+
+      const response = await buyStocks({ stock: stocksObj })
+      console.log(response)
+      // console.log({ stock: { '1': 5, '2': 10 } })
+    } catch (error) {
+
+    }
+  }
+
+  const deleteStockInBasket = (id: number) => {
+    setStockInBasket(stocks => stocks.filter(item => item.id !== id))
+  }
+
+
   return (
     <>
       <Popup
         isOpen={showBuyStockList}
         onClose={() => setShowBuyStockList(false)}
       >
-        <BuyStockList stocks={stockInBasket} />
+        <BuyStockList onClick={buyStock} stocks={stockInBasket} />
       </Popup>
 
       <Popup
@@ -103,6 +127,7 @@ export const BuyStock: FC = () => {
         {stockInBasket.length !== 0 && (
           <div className={s.bottomBuySection}>
             <BottomBuySection
+              onClick={(id: number) => deleteStockInBasket(id)}
               onClose={() => setShowBuyStockList(true)}
               stocks={stockInBasket}
             />

@@ -6,7 +6,12 @@ import { StocksList } from 'shared/types/stocks'
 
 import s from './BuyStockList.module.scss'
 
-export const BuyStockList: FC<StocksList> = ({ stocks }) => {
+interface BuyStockListProps extends StocksList {
+  onClick?: () => void
+}
+
+export const BuyStockList: FC<BuyStockListProps> = ({ stocks, onClick }) => {
+
   return (
     <div className={s.popup}>
       <h2 className={s.buystockTitle}>Du har framgångsrikt köpt demo aktier i Börsjaktens aktietävling!</h2>
@@ -21,7 +26,7 @@ export const BuyStockList: FC<StocksList> = ({ stocks }) => {
         De är tillgängliga på ditt personliga konto på fliken Mina Aktier
       </p>
 
-      <Button className={s.buystockBtn}>Bekräfta</Button>
+      <Button onClick={onClick} className={s.buystockBtn}>Bekräfta</Button>
     </div>
   )
 }

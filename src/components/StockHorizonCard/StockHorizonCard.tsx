@@ -7,7 +7,7 @@ import { Stocks } from 'shared/types/stocks'
 import s from './StockHorizonCard.module.scss'
 
 interface StockHorizonCardProps extends Stocks {
-  onClick?: () => void
+  onClick?: (id: number) => void
   exchangeCurrency?: string
 }
 
@@ -78,7 +78,7 @@ export const StockHorizonCard: FC<StockHorizonCardProps> = ({
 
       {onClick && (
         <div className={s.cancelBtn}>
-          <button onClick={onClick}>
+          <button onClick={() => onClick(id)}>
             <Image
               src='/assets/icons/cancel-button.svg'
               width={20}

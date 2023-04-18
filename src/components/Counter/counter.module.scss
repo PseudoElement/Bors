@@ -17,8 +17,11 @@
   cursor: pointer;
 }
 
-.value {
+.input {
   font-size: 32px;
   font-weight: 700;
   color: #0a39b2;
+  width: 100%;
+  text-align: center;
+  background-color: transparent;
 }

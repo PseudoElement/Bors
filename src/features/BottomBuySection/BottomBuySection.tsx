@@ -7,17 +7,19 @@ import { StocksList } from 'shared/types/stocks'
 import s from './BottomBuySection.module.scss'
 
 interface BottomBuySectionProps extends StocksList {
-  onClose: () => void
+  onClose: () => void,
+  onClick: (id: number) => void
 }
 
 export const BottomBuySection: FC<BottomBuySectionProps> = ({
   stocks,
   onClose,
+  onClick
 }) => {
   const dataCall = (index: number) => {
     return {
       ...stocks[index],
-      onClick: () => {},
+      onClick: () => console.log(123),
       exchangeCurrency: 'SET',
     }
   }
@@ -26,7 +28,7 @@ export const BottomBuySection: FC<BottomBuySectionProps> = ({
     <section className={s.section}>
       <div className={s.cards}>
         {stocks.map((stock, index) => (
-          <StockHorizonCard {...dataCall(index)} key={index} />
+          <StockHorizonCard  {...dataCall(index)} key={index} onClick={onClick} />
         ))}
       </div>
       <Button onClick={onClose} className={s.button}>
