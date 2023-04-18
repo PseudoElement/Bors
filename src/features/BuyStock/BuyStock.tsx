@@ -1,6 +1,5 @@
 import { FC, useEffect, useState } from 'react'
 import Image from 'next/image'
-import Head from 'next/head'
 import cn from 'classnames'
 
 import { StocksCard, Popup, Input } from 'components'

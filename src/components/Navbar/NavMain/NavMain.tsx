@@ -2,6 +2,8 @@ import { FC } from 'react'
 import cn from 'classnames'
 import Link from 'next/link'
 
+import { BurgerMenuButton } from 'components'
+
 import { main_nav_links } from 'shared/mocks/navBar'
 import AccountImg from '/public/assets/icons/accountImg.svg'
 
@@ -9,6 +11,7 @@ import s from './navMain.module.scss'
 
 export interface NavMainProps {
   classNames?: string
+  isBurgerOpen: boolean
   menuOpen: () => void
   burgerMenuOpen: () => void
 }
@@ -17,14 +20,15 @@ export const NavMain: FC<NavMainProps> = ({
   classNames,
   menuOpen,
   burgerMenuOpen,
+  isBurgerOpen,
 }) => {
   return (
     <nav className={cn(classNames, s.nav)}>
-      <button className={s.burger} onClick={burgerMenuOpen}>
-        <div className={s.burgerLine} />
-        <div className={s.burgerLine} />
-        <div className={s.burgerLine} />
-      </button>
+      <BurgerMenuButton
+        defaultStyles={s.burgerMenuLine}
+        setIsOpenMenu={burgerMenuOpen}
+        isOpenMenu={isBurgerOpen}
+      />
 
       <ul className={s.links}>
         {main_nav_links.map(item => (

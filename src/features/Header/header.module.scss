@@ -2,13 +2,10 @@
 
 .header {
   position: absolute;
-  margin: 0 auto;
   width: 100%;
-  padding: 0px 36px;
-  z-index: 99;
-  @media screen and (max-width: 1500px) {
-    padding: 0px 8px;
-  }
+  z-index: 10;
+  top: 8px;
+  padding: 0 8px;
 }
 
 .headerWrapper {

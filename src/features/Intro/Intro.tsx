@@ -2,20 +2,20 @@ import { FC } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
+import { Logo } from 'components'
+
 import { SiteData } from 'shared/types/site'
 import IconDown from '/public/assets/icons/iconDown.png'
 
 import s from './intro.module.scss'
 
-export const Intro: FC<SiteData> = ({ logo, desc }) => {
+export const Intro: FC<SiteData> = ({ logo, desc, title }) => {
   return (
     <div className={s.intro}>
-      <div className={s.backgroundMask}/>
+      <div className={s.backgroundMask} />
 
       <div className={s.container}>
-        <div className={s.logo}>
-          {logo && <Image src={logo} width={596} height={168} alt='logo' />}
-        </div>
+        <Logo logoImage={logo} logoText={title} classNames={s.logo}/>
 
         <p className={s.text}>{desc}</p>
 

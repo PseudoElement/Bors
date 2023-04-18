@@ -1,9 +1,10 @@
 import { PropsLeaderboard } from './leaderboard'
 
 export interface SiteData {
-  desc?: string
+  desc: string
   infos?: InfoCardProps[]
-  logo?: string
+  logo: string
+  title: string
 }
 
 export interface InfoCardProps {

@@ -25,7 +25,6 @@
   justify-content: center;
   margin: 0 15px;
   height: 100%;
-  max-height: 1200px;
 
   @include tablet-mobile {
     padding: 74px 16px 0;
@@ -61,11 +60,16 @@
       display: none;
     }
   }
+
+  @media screen and (max-width: 700px) {
+    min-height: auto;
+  }
 }
 .wrapperContent {
   overflow: auto;
   height: 100%;
   position: relative;
+
   &::-webkit-scrollbar {
     width: 0;
   }

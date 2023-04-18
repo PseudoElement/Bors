@@ -1,13 +1,13 @@
 @use 'styles/style' as *;
 
 .cards {
-  margin: 0 auto;
+  margin: 0 auto 140px;
 }
 
 @media (min-width: #{$tablet-width}) {
   .cards {
     display: flex;
-    padding: 125px 0 183px 0;
+    padding: 125px 20px 0 20px;
     flex-direction: column;
     max-width: 920px;
     gap: 73px;
@@ -20,7 +20,8 @@
     align-items: center;
     width: 100%;
     flex-direction: column;
-    padding: 72px 0 144px 0;
+    padding: 72px 20px 160px 20px;
+    margin: 0;
     gap: 40px;
   }
 }

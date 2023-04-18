@@ -39,14 +39,6 @@
   }
 }
 
-.leaderboardBr {
-  display: none;
-
-  @media (max-width: 513px) {
-    display: block;
-  }
-}
-
 .loaderBoard {
   width: 100%;
   min-height: 100px;
@@ -96,31 +88,15 @@
   font-size: 100px;
   text-align: center;
   letter-spacing: 0.1em;
+  font-family: $font-Mont;
   text-transform: uppercase;
   color: $color-black;
   font-weight: $fw-semibold;
-  margin-top: 50px;
   margin-bottom: 48px;
-  margin-left: 26px;
 
-  span {
-    margin-left: -26px;
-
-    @media (max-width: 500px) {
-      margin-left: 0;
-    }
-  }
-
-  @media (max-width: 500px) {
-    margin-left: 0;
-  }
-
-  @include mobile-tablet {
-    font-size: 56px;
-  }
-
-  @media (max-width: 490px) {
-    font-size: 56px;
+  @include tablet-mobile {
+    font-size: 45px;
+    line-height: 72px;
     letter-spacing: 0.05em;
   }
 }

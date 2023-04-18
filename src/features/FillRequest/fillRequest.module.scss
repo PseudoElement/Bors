@@ -25,9 +25,9 @@
   z-index: 1;
 
   order: 2;
-  width: 412px;
-  height: 412px;
-  margin: -40px 0 -40px -410px;
+  width: 452px;
+  height: 452px;
+  margin: -40px 0 -40px -452px;
   pointer-events: none;
 
   @include mobile-laptop {
@@ -51,7 +51,7 @@
   filter: blur(50px);
 
   position: absolute;
-  right: 80px;
+  right: 50px;
   top: 0;
 
   @include mobile-laptop {

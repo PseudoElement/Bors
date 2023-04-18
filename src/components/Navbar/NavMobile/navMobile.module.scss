@@ -23,6 +23,12 @@
   padding-right: 16px;
   border-right: 1px solid $color-gray-eb;
 }
+.userFoto {
+  width: 41px;
+  height: 41px;
+  border-radius: 50%;
+  overflow: hidden;
+}
 
 .userName {
   word-break: break-all;
@@ -37,54 +43,8 @@
   column-gap: 26px;
 }
 
-.burgerMenu {
-  width: 34px;
-  height: 25px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
 .burgerMenuLine {
-  width: 100%;
-  height: 5px;
   background: $password-gradient;
-  border-radius: 80px;
-  position: absolute;
-  &:first-child {
-    top: 0;
-    left: 0;
-    transition: 0.3s ease-in;
-  }
-  &:nth-child(2) {
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    transition: 0.3s ease-in;
-  }
-  &:last-child {
-    bottom: 0;
-    left: 0;
-    transition: 0.3s ease-in;
-  }
-}
-
-.activeMenu {
-  .burgerMenuLine {
-    &:first-child {
-      top: 50%;
-      transform: translateY(-50%) rotate(45deg);
-      left: 0;
-    }
-    &:nth-child(2) {
-      opacity: 0;
-    }
-    &:last-child {
-      bottom: 50%;
-      transform: translateY(50%) rotate(-45deg);
-      left: 0;
-    }
-  }
 }
 
 .burgerMenuList {

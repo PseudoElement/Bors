@@ -4,15 +4,24 @@
   padding: 140px 16px 100px;
   max-width: 1400px;
   margin: 0 auto;
+
+  @include tablet-mobile {
+    padding: 104px 16px 24px;
+  }
 }
 
 .header {
   display: flex;
   align-items: center;
+
   @media screen and (max-width: 1440px) {
     justify-content: center;
     flex-direction: column;
     row-gap: 32px;
+  }
+
+  @include tablet-mobile {
+    align-items: start;
   }
 }
 
@@ -20,15 +29,22 @@
   display: flex;
   align-items: center;
   column-gap: 30px;
+
+  @include tablet-mobile {
+    margin: auto;
+  }
 }
 
 .wrapperBalance {
   display: flex;
   column-gap: 30px;
+
   @media screen and (max-width: 921px) {
     column-gap: 20px;
   }
-  @media screen and (max-width: 768px) {
+
+  @include tablet-mobile {
+    width: 100%;
     flex-direction: column;
     row-gap: 14px;
   }
@@ -81,8 +97,10 @@
 .wrapperField {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(356px, 1fr));
+
   @include tablet-mobile {
     grid-template-columns: repeat(1, 1fr);
+    width: 100%;
   }
 }
 
@@ -90,14 +108,26 @@
   width: 356px;
   text-align: start;
   margin-top: 60px;
+
   @include tablet-mobile {
     width: 100%;
+    margin-top: 12px;
+    margin-bottom: 0;
   }
 }
 
 .wrapperFullField {
   text-align: start;
   margin-top: 60px;
+
+  @include tablet-mobile {
+    width: 100%;
+    margin-top: 28px;
+
+    &:nth-child(2){
+      margin-top: 0;
+    }
+  }
 }
 
 .wrapperFlexField {
@@ -105,6 +135,7 @@
   align-items: center;
   justify-content: space-between;
   column-gap: 10px;
+
   @include tablet-mobile {
     flex-direction: column;
   }
@@ -114,19 +145,24 @@
   width: 556px;
   text-align: start;
   margin-top: 60px;
+
   @include tablet-mobile {
     width: 100%;
+    margin-top: 28px;
   }
-}
-
-.textField {
-  margin-top: 14px;
 }
 
 .labelField {
   font-weight: $fw-semibold;
   font-size: 18px;
   color: $color-gray-a5;
+  margin-bottom: 14px;
+  display: inline-block;
+
+  @include tablet-mobile {
+    width: 100%;
+    margin-bottom: 12px;
+  }
 }
 
 .requiredField {
@@ -138,6 +174,7 @@
   justify-content: center;
   margin-top: 98px;
   column-gap: 32px;
+
   @media screen and (max-width: 466px) {
     flex-direction: column;
     row-gap: 28px;
@@ -147,6 +184,12 @@
     @media screen and (max-width: 466px) {
       width: 100%;
     }
+  }
+
+  @include tablet-mobile {
+    width: 100%;
+    margin-top: 28px;
+    row-gap: 21px;
   }
 }
 

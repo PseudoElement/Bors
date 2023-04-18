@@ -14,6 +14,7 @@ interface PopupProps {
   className?: string
   isClosable?: boolean
   contentClassName?: string
+  wrapperClassName?: string
 }
 
 export const Popup: FC<PopupProps> = ({
@@ -23,18 +24,16 @@ export const Popup: FC<PopupProps> = ({
   onClose,
   className,
   contentClassName,
+  wrapperClassName,
 }) => {
   const overlayRef = useRef<HTMLDivElement>(null)
 
-  useClickOutside(overlayRef, onClose)
+  useClickOutside(overlayRef, !isClosable ? onClose : () => {})
 
   if (!isOpen) return null
   return (
-    <div
-      className={cn(s.popupOverlay, className)}
-      ref={!isClosable ? overlayRef : null}
-    >
-      <div className={s.popupWrapper}>
+    <div className={cn(s.popupOverlay, className)} ref={overlayRef}>
+      <div className={cn(s.popupWrapper, wrapperClassName)}>
         <div
           className={cn(s.popupContent, contentClassName)}
           ref={isClosable ? overlayRef : null}

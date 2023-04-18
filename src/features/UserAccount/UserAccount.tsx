@@ -17,6 +17,7 @@ import {
   mock_user_fields,
   mock_user_icons,
 } from 'shared/mocks/mock_userAccount'
+import defaultAvatarImage from '/public/assets/image/avatar.png'
 
 import s from './UserAccount.module.scss'
 
@@ -96,7 +97,7 @@ export const UserAccount: FC = () => {
               <Image
                 width={159}
                 height={159}
-                src={user?.avatar ? user.avatar : AvatarImage}
+                src={user?.avatar ? user.avatar : defaultAvatarImage}
                 alt='avatar'
               />
             </div>
@@ -125,6 +126,7 @@ export const UserAccount: FC = () => {
               </label>
             </div>
           </div>
+
           <div className={s.wrapperBalance}>
             {mock_user_balance.map((item, key) => (
               <Balance
@@ -147,20 +149,16 @@ export const UserAccount: FC = () => {
                   {item.label}
                   <span className={s.requiredField}>*</span>
                 </label>
-                <div className={s.textField}>
-                  <Controller
-                    name={item.name as 'first_name'}
-                    control={control}
-                    rules={{ required: `${item.label} krävs` }}
-                    render={({ field: { onChange, value } }) => (
-                      <Input
-                        type={item.type}
-                        value={value}
-                        onChange={onChange}
-                      />
-                    )}
-                  />
-                </div>
+
+                <Controller
+                  name={item.name as 'first_name'}
+                  control={control}
+                  rules={{ required: `${item.label} krävs` }}
+                  render={({ field: { onChange, value } }) => (
+                    <Input type={item.type} value={value} onChange={onChange} />
+                  )}
+                />
+
                 {errors[item.name as 'email'] && (
                   <span className={s.errMessage}>
                     {errors[item.name as 'email']?.message}
@@ -174,6 +172,7 @@ export const UserAccount: FC = () => {
             <label htmlFor='homeadress' className={s.labelField}>
               Adress<span className={s.requiredField}>*</span>
             </label>
+
             <div>
               <Controller
                 name='home_address'
@@ -199,6 +198,7 @@ export const UserAccount: FC = () => {
                   {item.label}
                   <span className={s.requiredField}>*</span>
                 </label>
+
                 <div>
                   <Controller
                     name={item.name as 'avanza'}
@@ -213,6 +213,7 @@ export const UserAccount: FC = () => {
                     )}
                   />
                 </div>
+
                 {errors[item.name as 'avanza'] && (
                   <span className={s.errMessage}>
                     {errors[item.name as 'avanza']?.message}
@@ -226,6 +227,7 @@ export const UserAccount: FC = () => {
             <Button className={s.actionBtn} type='submit'>
               Spara ändringar
             </Button>
+
             <Button
               onClick={onClearSubmit}
               className={cn(s.actionBtn, s.btnCancel)}

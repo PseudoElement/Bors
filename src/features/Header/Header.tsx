@@ -1,8 +1,9 @@
 import { FC } from 'react'
 
-import { Navbar } from 'components/Navbar/Navbar'
+import { Navbar } from 'components'
 
 import s from './header.module.scss'
+
 interface Variant {
   variant: boolean
 }

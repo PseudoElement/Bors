@@ -20,7 +20,13 @@ export const BurgerMenu: FC<BurgerMenuProps> = ({
   onClose,
 }) => {
   return (
-    <Popup isOpen={isOpen} onClose={onClose} contentClassName={s.burgerPopup}>
+    <Popup
+      isOpen={isOpen}
+      onClose={onClose}
+      isClosable={true}
+      wrapperClassName={s.burgerPopup}
+      className={s.burgerPopupOverlay}
+    >
       <ul className={cn(s.burgerMenu, classNames)}>
         {main_nav_links.map(item => (
           <li key={item.label} className={s.link}>

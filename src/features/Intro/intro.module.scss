@@ -2,7 +2,7 @@
 
 .intro {
   width: 100%;
-  min-height: 100vh;
+  min-height: 960px;
 
   background: url('/assets/image/backgroundIntro.png');
   background-size: cover;
@@ -12,6 +12,10 @@
   align-items: end;
 
   position: relative;
+
+  @include tablet-mobile {
+    min-height: 843px;
+  }
 }
 .backgroundMask {
   width: 100%;
@@ -26,31 +30,28 @@
 }
 
 .container {
-  max-width: 700px;
+  max-width: 740px;
   padding: 0 20px 28px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 
-  @include mobile {
+  @include tablet-mobile {
     max-width: 378px;
     margin: -843px auto 0;
   }
 }
 
 .logo {
-  margin-top: 337px;
+  margin-bottom: 237px;
 
-  @include mobile {
-    display: block;
-    margin-top: 265px;
+  @include tablet-mobile {
+    margin-bottom: 142px;
   }
 }
 
 .text {
-  margin-top: 227px;
-
   font-family: $font-Mont;
   font-style: normal;
   font-weight: $fw-semibold;

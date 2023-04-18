@@ -43,9 +43,7 @@
   position: absolute;
   z-index: 1000;
   top: 0;
-  @media (max-width: 490px) {
-    top: -67px;
-  }
+
 }
 
 .nextElWrapper {

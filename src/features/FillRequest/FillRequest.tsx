@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { SubmitHandler, useForm, Controller } from 'react-hook-form'
 
-import { Button, Input } from 'components'
+import { Input } from 'components'
 
 import { EMAIL_VALIDATION_REG } from 'shared/constants/regExp'
 import image from '/public/assets/image/fillRequest.png'
@@ -29,7 +29,7 @@ export const FillRequest = () => {
     <div className={s.fillRequestSection}>
       <div className={s.fillRequestCard}>
         <div className={s.image}>
-          <Image width={482} height={482} src={image} alt='Fill Request' />
+          <Image layout='fill' src={image} alt='Fill request star' />
         </div>
 
         <form className={s.forms} id={'contacts'}>

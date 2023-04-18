@@ -3,8 +3,8 @@
 .nav {
   display: flex;
   justify-content: space-between;
-  margin: 24px auto;
-  max-width: $max-layout-width;
+  align-items: center;
+  padding: 16px 8px 0;
   width: 100%;
   column-gap: 20px;
   font-weight: $fw-regular;
@@ -15,10 +15,18 @@
   color: $color-white;
 
   @include tablet-mobile {
+    padding: 8px;
     justify-content: space-between;
-    margin: 16px 0;
+  }
+
+  @include mobile-laptop {
+    margin: 0;
+  }
+  @include desktop {
+    padding: 16px 64px 0;
   }
 }
+
 .links {
   display: flex;
   gap: 100px;
@@ -26,18 +34,19 @@
   list-style: none;
   padding: 0;
 
-  @include tablet-mobile {
-    gap: 30px;
+  @include mobile-laptop {
+    gap: 60px;
   }
 
   @include tablet-mobile {
     display: none;
+    gap: 30px;
   }
 }
 .link {
   cursor: pointer;
 
-  @include mobile-laptop{
+  @include mobile-laptop {
     font-size: 16px;
   }
 }
@@ -78,30 +87,13 @@
   border-radius: 62px;
   background: $color-gray-02;
 
-
   @include tablet-mobile {
     width: 40px;
     height: 40px;
+    margin-left: 0;
   }
 }
 
-.burger {
-  display: none;
-  background-color: transparent;
-  border: none;
-
-  @include tablet-mobile {
-    display: block;
-  }
-}
-
-.burgerLine {
-  width: 33px;
-  height: 3px;
-  border-radius: 2px;
-  background-color: $color-white;
-
-  &:nth-child(2){
-    margin: 7px 0;
-  }
+.burgerMenuLine {
+  background: $background-linear-180;
 }

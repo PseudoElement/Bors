@@ -1,14 +1,25 @@
 import { FC } from 'react'
-import s from './logo.module.scss'
-import LogoText from '/public/assets/image/logoText.svg'
-import LogoImage from '/public/assets/icons/Logo.png'
 import Image from 'next/image'
+import cn from 'classnames'
 
-export const Logo: FC = () => {
+import s from './logo.module.scss'
+
+interface LogoProps {
+  logoImage: string
+  logoText: string
+  classNames?: string
+}
+export const Logo: FC<LogoProps> = ({ logoImage, logoText, classNames }) => {
   return (
-    <div className={s.logo}>
-      <Image src={LogoImage} className={s.logoImage} alt='Logo' />
-      <LogoText className={s.logoText} />
+    <div className={cn(s.logo, classNames)}>
+      <div className={s.logoImage}>
+        {logoImage && <Image src={logoImage} layout='fill' alt='logo' />}
+      </div>
+
+      <div className={s.logoText}>
+        <div className={s.logoWord}>{logoText.slice(0, 4)}</div>
+        <div className={s.logoWord}>{logoText.slice(4, logoText.length)}</div>
+      </div>
     </div>
   )
 }

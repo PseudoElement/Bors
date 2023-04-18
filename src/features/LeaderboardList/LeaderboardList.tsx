@@ -3,7 +3,7 @@ import { FC, useEffect, useState } from 'react'
 import { LeaderboardItems, Slider } from 'components'
 
 import { dateOneMonthBefore } from 'shared/helpers/dateFormatters'
-import { getLeaders } from '../../../pages'
+import { getLeaders } from 'pages/MainPage/helpers'
 
 import { LeaderList } from 'shared/types/leaderboard'
 
@@ -39,9 +39,7 @@ export const LeaderboardList: FC<LeaderboardListProps> = ({ leadersList }) => {
 
   return (
     <div className={s.leaderboardSection} id={'leaderboard'}>
-      <h2 className={s.leaderboardListTitle}>
-        TOPP <br className={s.leaderboardBr} /> <span>LISTAN</span>
-      </h2>
+      <h2 className={s.leaderboardListTitle}>TOPPLISTAN</h2>
 
       <Slider
         slidesPerView={1}

@@ -3,11 +3,14 @@ import cn from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { BurgerMenuButton } from 'components'
+
 import { logoutAuth } from 'shared/api/routes/user'
 import { logoutUserRequested } from 'store/slices/userSlice'
-import { useAppDispatch } from 'shared/hooks/redux'
+import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 
 import { nav_links } from 'shared/mocks/navBar'
+import defaultAvatarImage from '/public/assets/image/avatar.png'
 
 import s from './navMobile.module.scss'
 
@@ -19,6 +22,7 @@ export const NavMobile: FC<NavMobileProps> = ({ classNames }) => {
   const dispatch = useAppDispatch()
   const [activeLink, setActiveLink] = useState<string>('Buy Stocks')
   const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false)
+  const user = useAppSelector(state => state.user.user)
 
   const logoutUser = async () => {
     try {
@@ -32,23 +36,25 @@ export const NavMobile: FC<NavMobileProps> = ({ classNames }) => {
   return (
     <nav className={cn(s.mobileNavBar, classNames)}>
       <div className={s.mobileNav}>
-        <div className={s.mobileNavLogo}>
-          <Image
-            className={s.mobileLogo}
-            width={29}
-            height={44}
-            alt='logo'
-            src='/assets/icons/LogoColor.png'
-          />
-        </div>
+        <Link href={'/'}>
+          <a>
+            <Image
+              className={s.mobileLogo}
+              width={29}
+              height={44}
+              alt='logo'
+              src='/assets/icons/LogoColor.png'
+            />
+          </a>
+        </Link>
 
         <div className={s.mobileNavbarWrapper}>
           <div className={s.avatarGroup}>
-            <span className={s.userName}>Green Tree</span>
+            <span className={s.userName}>{user ? user.name : 'User Name'}</span>
 
             <div className={s.userFoto}>
               <Image
-                src='/assets/image/user.png'
+                src={user ? user.avatar : defaultAvatarImage}
                 width={52}
                 height={52}
                 style={{ objectFit: 'cover' }}
@@ -57,14 +63,11 @@ export const NavMobile: FC<NavMobileProps> = ({ classNames }) => {
             </div>
           </div>
 
-          <div
-            onClick={() => setIsOpenMenu(prev => !prev)}
-            className={cn(s.burgerMenu, { [s.activeMenu]: isOpenMenu })}
-          >
-            <div className={s.burgerMenuLine}></div>
-            <div className={s.burgerMenuLine}></div>
-            <div className={s.burgerMenuLine}></div>
-          </div>
+          <BurgerMenuButton
+            isOpenMenu={isOpenMenu}
+            setIsOpenMenu={() => setIsOpenMenu(prev => !prev)}
+            defaultStyles={s.burgerMenuLine}
+          />
         </div>
       </div>
 

@@ -19,6 +19,8 @@ import { Balance } from './Balance/Balance'
 import { Counter } from './Counter/Counter'
 import { InfoCard } from './InfoCard/InfoCard'
 import { BurgerMenu } from './BurgerMenu/BurgerMenu'
+import { Navbar } from './Navbar/Navbar'
+import { BurgerMenuButton } from './BurgerMenuButton/BurgerMenuButton'
 
 export {
   Button,
@@ -37,9 +39,11 @@ export {
   EventSlider,
   Sponsor,
   LoginForm,
+  BurgerMenuButton,
   RegistrationForm,
   Balance,
   Counter,
   BurgerMenu,
+  Navbar,
   InfoCard,
 }

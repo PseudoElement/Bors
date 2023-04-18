@@ -2,11 +2,10 @@ import { FC, useState } from 'react'
 import { useRouter } from 'next/router'
 
 import { LoginRegistrationModal, PasswordRecovery } from 'features'
-import { Popup } from 'components'
+import { Popup, BurgerMenu } from 'components'
 import { NavProfile } from './NavProfile/NavProfile'
 import { NavMobile } from './NavMobile/NavMobile'
 import { NavMain } from './NavMain/NavMain'
-import { BurgerMenu } from '../BurgerMenu/BurgerMenu'
 
 import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
 import { cookies } from 'shared/utils/Cookies'
@@ -62,7 +61,8 @@ export const Navbar: FC<Variant> = ({ variant }) => {
       ) : (
         <NavMain
           menuOpen={handleProfile}
-          burgerMenuOpen={() => setBurgerIsOpen(true)}
+          burgerMenuOpen={() => setBurgerIsOpen(prevState => !prevState)}
+          isBurgerOpen={isBurgerOpen}
         />
       )}
     </>
