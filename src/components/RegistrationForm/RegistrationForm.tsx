@@ -137,12 +137,12 @@ export const RegistrationForm: FC = () => {
       <p className={s.agreeInfo}>
         Genom att klicka på knappen &quot;Registrera&quot; samtycker jag till insamlingen
         och behandling av mina personuppgifter i enlighet med{' '}
-        <Link href={'#'}>
-          <a className={s.link}>Politik</a>
+        <Link href='/assets/files/Tävlingsvillkor.pdf'>
+          <a target="_blank" className={s.link}>Politik</a>
         </Link>{' '}
         och acceptera villkoren för{' '}
-        <Link href={'#'}>
-          <a className={s.link}>Användaravtal</a>
+        <Link href='/assets/files/Tävlingsvillkor.pdf'>
+          <a target="_blank"  className={s.link}>Användaravtal</a>
         </Link>
       </p>
     </form>

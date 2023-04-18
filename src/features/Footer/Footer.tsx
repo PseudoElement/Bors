@@ -26,7 +26,6 @@ export const Footer: FC = () => {
           </div>
         </div>
 
-
         <NavbarFoot variant={true} socialLink={true}/>
 
         <div className={s.line} />
@@ -34,8 +33,8 @@ export const Footer: FC = () => {
         <div className={s.agreement}>
           <span>@2023 BORS JAKTEN</span>
           <span>
-            <Link href={'/'} >
-                  Tävlingsvillkor             
+            <Link href='/assets/files/Tävlingsvillkor.pdf'>
+              <a target="_blank">Tävlingsvillkor</a>
             </Link>
           </span>
         </div>

@@ -12,10 +12,11 @@ import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
 import { cookies } from 'shared/utils/Cookies'
 
 interface Variant {
-  variant: boolean
+  variant: boolean,
+  socialLink?: boolean
 }
 
-export const Navbar: FC<Variant> = ({ variant }) => {
+export const Navbar: FC<Variant> = ({ variant, socialLink }) => {
   const { push } = useRouter()
   const { width } = useWindowDimensions()
   const [isOpen, setIsOpen] = useState<boolean>(false)
