@@ -7,6 +7,7 @@ import { EMAIL_VALIDATION_REG } from 'shared/constants/regExp'
 import image from '/public/assets/image/fillRequest.png'
 
 import s from './fillRequest.module.scss'
+import { sendEmail } from 'shared/api/routes/main'
 
 type EmailRecoveryFormProps = { email: string }
 
@@ -21,8 +22,15 @@ export const FillRequest = () => {
     },
   })
 
-  const onSubmit: SubmitHandler<EmailRecoveryFormProps> = defaultValues => {
-    console.log(defaultValues.email)
+  const onSubmit: SubmitHandler<
+    EmailRecoveryFormProps
+  > = async defaultValues => {
+    try {
+      await sendEmail(defaultValues.email)
+    } catch (e) {
+      console.error(e)
+      alert((e as Error).message)
+    }
   }
 
   return (

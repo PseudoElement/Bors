@@ -5,6 +5,7 @@ import {
   SiteDataResponse,
   SponsorsInfoResponse,
   LeadersInfoResponse,
+  SiteSendEmailResponse,
 } from '../../types/site'
 
 export const getInfoCards = (): AxiosPromise<SiteDataResponse> => {
@@ -19,4 +20,10 @@ export const getLeadersInfo = (
   date: string
 ): AxiosPromise<LeadersInfoResponse> => {
   return api.get(endpoints_site.stocks_top(date))
+}
+
+export const sendEmail = (
+  email: string
+): AxiosPromise<SiteSendEmailResponse> => {
+  return api.post(endpoints_site.site_form, { email })
 }
