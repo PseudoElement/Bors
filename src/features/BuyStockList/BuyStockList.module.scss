@@ -6,14 +6,15 @@
 
 .buystockTitle {
   width: 100%;
-  max-width: 431px;
+  max-width: 531px;
   font-size: 40px;
   margin: 0 auto;
   line-height: 140%;
   font-weight: $fw-bold;
   letter-spacing: -0.03em;
   margin-top: 64px;
-  @media screen and (max-width: 500px) {
+  text-align: center;
+  @include tablet {
     font-size: 26px;
     text-align: center;
   }
@@ -26,6 +27,9 @@
   flex-wrap: wrap;
   margin-top: 34px;
   margin-bottom: 33px;
+  @include tablet {
+    flex-direction: column;
+  }
 }
 
 .buystockDescription {
@@ -37,7 +41,7 @@
   color: $color-gray-a5;
   letter-spacing: -0.02em;
   font-weight: $fw-semibold;
-  @media screen and (max-width: 500px) {
+  @include tablet {
     font-size: 16px;
     text-align: center;
   }

@@ -145,7 +145,8 @@
   gap: 4px;
   width: 100%;
   @include tablet-mobile {
-    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }
 .textInfoCard {

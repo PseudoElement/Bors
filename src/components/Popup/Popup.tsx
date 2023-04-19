@@ -28,7 +28,7 @@ export const Popup: FC<PopupProps> = ({
 }) => {
   const overlayRef = useRef<HTMLDivElement>(null)
 
-  useClickOutside(overlayRef, !isClosable ? onClose : () => {})
+  useClickOutside(overlayRef, !isClosable ? onClose : () => { })
 
   if (!isOpen) return null
   return (

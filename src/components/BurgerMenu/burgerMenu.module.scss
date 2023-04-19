@@ -13,10 +13,6 @@
   padding: 75px 20px 0;
   justify-content: start;
 }
-.burgerPopupOverlay {
-  background-color: transparent;
-  pointer-events: none;
-}
 
 .link {
   cursor: pointer;
@@ -28,4 +24,5 @@
   text-fill-color: transparent;
   font-size: 30px;
   margin-bottom: 25px;
+  text-transform: uppercase;
 }

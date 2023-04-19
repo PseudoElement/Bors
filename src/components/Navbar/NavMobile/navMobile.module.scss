@@ -1,5 +1,19 @@
 @use 'styles/style' as *;
 
+.overlay {
+  width: 100%;
+}
+
+.activeOverlay {
+  position: fixed;
+  padding: 8px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: $color-black-blue;
+}
+
 .mobileNavBar {
   padding: 14px 24px;
   width: 100%;

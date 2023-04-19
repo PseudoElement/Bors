@@ -1,41 +1,39 @@
 @use 'styles/style' as *;
 
-
-.navFoot{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-    margin-bottom: 20px;
-    font-weight: $fw-regular;
-    font-size: 24px;
-    line-height: 110%;
-    letter-spacing: 0.02em;
-    text-transform: capitalize;
-    color: $color-white;
-    font-weight: 600;
-
+.navFoot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+  font-weight: $fw-regular;
+  font-size: 24px;
+  line-height: 110%;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+  color: $color-white;
+  font-weight: 600;
 }
 
-.navFootSectionFlex{
+.navFootSectionFlex {
   display: flex;
   justify-content: space-between;
   width: 100%;
   align-items: center;
-  @include tablet{
+  @include tablet {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 40px;
   }
-  @include laptop{
+  @include laptop {
     flex-wrap: wrap;
     justify-content: center;
     gap: 40px;
   }
-  @include mobile-laptop{
+  @include mobile-laptop {
     justify-content: space-around;
     gap: 20px;
     flex-wrap: wrap;
@@ -47,25 +45,25 @@
   justify-content: end;
   width: 40%;
   gap: 60px;
-  @include desktop{
+  @include desktop {
     width: fit-content;
     justify-content: space-between;
     gap: 40px;
   }
-  @include laptop{
+  @include laptop {
     width: 100%;
     justify-content: center;
   }
-  @include tablet{
+  @include tablet {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 
-    gap: 10px; 
+    gap: 10px;
   }
-  @include mobile-laptop{
+  @include mobile-laptop {
     width: 100%;
     flex-direction: column;
     align-items: center;
@@ -80,21 +78,21 @@
   list-style: none;
   padding: 0;
 
-  @include laptop{
-    gap: 70px
+  @include laptop {
+    gap: 70px;
   }
   @include tablet-mobile {
     gap: 30px;
     display: none;
   }
-  @include desktop{
+  @include desktop {
     gap: 60px;
   }
 }
 .link {
   cursor: pointer;
 
-  @include mobile-laptop{
+  @include mobile-laptop {
     font-size: 24px;
   }
 }
@@ -131,7 +129,6 @@
     font-size: 16px;
     line-height: 110%;
   }
-
 }
 
 .btnImg {
@@ -145,13 +142,11 @@
   border-radius: 62px;
   background: $color-gray-02;
 
-
   @include tablet-mobile {
     width: 40px;
     height: 40px;
   }
 }
-
 
 .burgerMenuLine {
   background: $background-linear-180;
@@ -161,8 +156,7 @@
   display: flex;
   align-items: center;
   gap: 18px;
-  
-  
+
   .circle {
     display: flex;
     align-items: center;
