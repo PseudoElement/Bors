@@ -6,7 +6,6 @@ import Image from 'next/image'
 import { main_nav_links, main_socialLinks } from 'shared/mocks/navBar'
 
 import AccountImg from '/public/assets/icons/accountImg.svg'
-import { BurgerMenuButton } from 'components'
 import s from './navFoot.module.scss'
 
 import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
@@ -55,14 +54,14 @@ export const NavFoot: FC<NavFootProps> = ({
               </div>
             </Link>
             )) : ""}
-          </div>
-
-          <button onClick={menuOpen} className={s.logInButton}>
-            <div className={s.btnImg}>
-              <AccountImg />
-            </div>
-            <p>Logga In</p>
-          </button>
+             <button onClick={menuOpen} className={s.logInButton}>
+                <div className={s.btnImg}>
+                  <AccountImg />
+                </div>
+                <p>Logga In</p>
+            </button>
+          </div>  
+                 
         </div>
       ) : (
         <div  className={cn(classNames, s.navFootSectionItems)}>

@@ -6,7 +6,6 @@ import { Popup, BurgerMenu } from 'components'
 import { NavProfile } from './NavProfile/NavProfile'
 import { NavMobile } from './NavMobile/NavMobile'
 import { NavMain } from './NavMain/NavMain'
-import { NavFoot } from './NavFoot/NavFoot'
 
 import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
 import { cookies } from 'shared/utils/Cookies'
