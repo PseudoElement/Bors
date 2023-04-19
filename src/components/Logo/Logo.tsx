@@ -23,8 +23,8 @@ export const Logo: FC<LogoProps> = ({
       </div>
 
       <div className={s.logoText}>
-        <div className={s.logoWord}>{logoText.slice(0, 4)}</div>
-        <div className={s.logoWord}>{logoText.slice(4, logoText.length)}</div>
+        <div className={s.logoWord}>{logoText?.slice(0, 4)}</div>
+        <div className={s.logoWord}>{logoText?.slice(4, logoText.length)}</div>
       </div>
     </div>
   )

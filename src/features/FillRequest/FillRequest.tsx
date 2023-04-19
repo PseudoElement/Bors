@@ -3,11 +3,12 @@ import { SubmitHandler, useForm, Controller } from 'react-hook-form'
 
 import { Input } from 'components'
 
+import { sendEmail } from 'shared/api/routes/main'
+
 import { EMAIL_VALIDATION_REG } from 'shared/constants/regExp'
 import image from '/public/assets/image/fillRequest.png'
 
 import s from './fillRequest.module.scss'
-import { sendEmail } from 'shared/api/routes/main'
 
 type EmailRecoveryFormProps = { email: string }
 
