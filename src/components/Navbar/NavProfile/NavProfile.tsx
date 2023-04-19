@@ -27,15 +27,18 @@ export const NavProfile: FC<NavMainProps> = ({ classNames }) => {
   const user = useAppSelector(state => state.user.user)
 
   const logoutUser = async () => {
-    await push('/')
-    await cookies.remove('token')
-
     try {
       await logoutAuth()
       dispatch(logoutUserRequested())
     } catch (error) {
       console.error(error)
     }
+  }
+
+  const handleLogOut = async () => {
+    await push('/')
+    await cookies.remove('token')
+    await logoutUser()
   }
 
   return (
@@ -87,16 +90,18 @@ export const NavProfile: FC<NavMainProps> = ({ classNames }) => {
           <div className={s.balance}>{String(user?.balance)} sek</div>
         </div>
 
-        <button className={s.logOutButton}>
-          <Image
-            src={'/assets/icons/logout.svg'}
-            width={18}
-            onClick={logoutUser}
-            height={18}
-            alt='logout'
-            style={{ cursor: 'pointer' }}
-          />
-        </button>
+        <div className={s.logOutButton}>
+          <button onClick={handleLogOut}>
+            <Image
+              src={'/assets/icons/logout.svg'}
+              width={18}
+              onClick={logoutUser}
+              height={18}
+              alt='logout'
+              style={{ cursor: 'pointer' }}
+            />
+          </button>
+        </div>
       </div>
     </nav>
   )

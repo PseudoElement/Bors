@@ -21,6 +21,7 @@ export const getSponsors = async () => {
 export const getInfo = async () => {
   try {
     const { data } = await getInfoCards()
+    console.log(data)
     if (data.status === 'success') {
       return data.data
     }
@@ -42,9 +43,11 @@ export const getLeaders = async (date: Date) => {
       )
       if (data.status === 'success') {
         dataArray.push({
-          date: formatDate({ date, variant: 'MMMM dd, yyyy' }),
-
-          array: data.data,
+          date: formatDate({
+            date: dateOneMonthBefore(date, -i),
+            variant: 'MMMM dd, yyyy',
+          }),
+          array: data?.data,
         })
       }
     }

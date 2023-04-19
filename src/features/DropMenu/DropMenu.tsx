@@ -67,13 +67,8 @@ export const DropMenu: FC<DropMenuProps> = ({
     onChange(activeFilter ? activeFilter : '')
   }, [activeFilter])
 
-  useClickOutside(overlayRef, onMenuClose)
-
   return (
-    <div
-      className={activeDropMenu ? s.menuOverlay : s.block}
-      ref={!activeDropMenu ? overlayRef : null}
-    >
+    <div className={activeDropMenu ? s.menuOverlay : s.block}>
       <div
         className={cn(s.dropMenu, className)}
         onClick={e => e.stopPropagation()}

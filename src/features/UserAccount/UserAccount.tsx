@@ -12,14 +12,11 @@ import { userMeResponse, userUpdateResponse } from 'store/slices/userSlice'
 
 import { User } from 'shared/types/user'
 import { setAddValues } from 'shared/helpers/setAddValues'
-import {
-  mock_user_balance,
-  mock_user_fields,
-  mock_user_icons,
-} from 'shared/mocks/mock_userAccount'
 import { EMAIL_VALIDATION_REG, NUMBER_REG_EXP } from 'shared/constants/regExp'
 import { formatTelNumber } from 'shared/helpers/formatTelNumber'
 import defaultAvatarImage from '/public/assets/image/avatar.png'
+import { mock_user_fields } from 'shared/mocks/mock_userAccount'
+import PhotoCamera from '/public/assets/icons/Camera.svg'
 
 import s from './UserAccount.module.scss'
 
@@ -109,7 +106,7 @@ export const UserAccount: FC = () => {
 
   useEffect(() => {
     setAddValues(user, setValue)
-  }, [user])
+  }, [user?.name])
 
   useEffect(() => {
     getUser()
@@ -132,12 +129,7 @@ export const UserAccount: FC = () => {
             <div className={s.changeAvatar}>
               <label htmlFor='file-upload' className={s.labelUpload}>
                 <div className={s.iconUpload}>
-                  <Image
-                    src={mock_user_icons.camera}
-                    width={30}
-                    height={25}
-                    alt='user image'
-                  />
+                  <PhotoCamera />
                 </div>
 
                 <input
@@ -155,14 +147,19 @@ export const UserAccount: FC = () => {
           </div>
 
           <div className={s.wrapperBalance}>
-            {mock_user_balance.map((item, key) => (
-              <Balance
-                key={key}
-                count={user?.balance}
-                currency={item.currency}
-                title={item.title}
-              />
-            ))}
+            <Balance count={user?.balance} currency={'SEK'} title={'Saldo'} />
+
+            <Balance
+              count={user?.balance}
+              currency={'SEK'}
+              title={'Avkastning'}
+            />
+
+            <Balance
+              count={user?.balance}
+              currency={'bbb'}
+              title={'Rangordning'}
+            />
           </div>
         </div>
       )}

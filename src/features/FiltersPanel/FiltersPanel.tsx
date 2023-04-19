@@ -55,6 +55,7 @@ export const FiltersPanel: FC<FiltersPanelProps> = ({
   useEffect(() => {
     onChange(valueFilters)
   }, [valueFilters])
+
   return (
     <>
       {width <= 567 && (

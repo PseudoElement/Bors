@@ -48,9 +48,7 @@ export const Slider: FC<SliderProps> = ({
 
   const handleChange = (activeIndex: number) => {
     setIndex(activeIndex)
-    if (activeIndex > index) {
-      getMore()
-    }
+    getMore()
   }
 
   return (

@@ -1,5 +1,3 @@
-import { BalanceProps } from 'shared/types/balance'
-
 export const mock_user_fields = {
   short: [
     {
@@ -45,28 +43,4 @@ export const mock_user_fields = {
       name: 'nordnet',
     },
   ],
-}
-
-export const mock_user_balance: BalanceProps[] = [
-  {
-    title: 'Saldo',
-    count: 135.44,
-    currency: 'sek',
-  },
-  {
-    title: 'Avkastning',
-    count: 8.98366,
-    currency: 'sek',
-    profit: '+5.63%',
-  },
-  {
-    title: 'Rangordning',
-    count: 387,
-    profit: '+4',
-  },
-]
-
-export const mock_user_icons = {
-  avatar: '/assets/image/bigUser.png',
-  camera: '/assets/icons/Camera.svg',
 }

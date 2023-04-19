@@ -34,19 +34,28 @@ export const userRegister = (
 export const userUpdate = (
   updateUserForm: User
 ): AxiosPromise<UserMeResponse> => {
-  return api.post(endpoints_user.profile, updateUserForm)
+  const requestData = {
+    first_name: updateUserForm.first_name,
+    last_name: updateUserForm.last_name,
+    phone_number: updateUserForm.phone_number,
+    home_address: updateUserForm.home_address,
+    avanza: updateUserForm.avanza,
+  }
+  return api.post(endpoints_user.profile, requestData)
 }
 
-export const userRecoverPassword = (
-  email: string
-): AxiosPromise<string> => {
-  return api.post(endpoints_user.forgot, {email})
+export const userRecoverPassword = (email: string): AxiosPromise<string> => {
+  return api.post(endpoints_user.forgot, { email })
 }
 
-export const userAvatar = (
-  avatar: File
-): AxiosPromise<string> => {
-  return api.post(endpoints_user.avatar,{avatar}, {headers: {
-    'Content-type': 'multipart/form-data'
-  }})
+export const userAvatar = (avatar: File): AxiosPromise<string> => {
+  return api.post(
+    endpoints_user.avatar,
+    { avatar },
+    {
+      headers: {
+        'Content-type': 'multipart/form-data',
+      },
+    }
+  )
 }

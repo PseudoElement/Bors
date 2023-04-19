@@ -21,14 +21,15 @@ export const MainPage: FC<MainPageProps> = ({
   sponsorsCards,
   leadersList,
 }) => {
+
   return (
     <>
       <Intro {...infoCards} />
       <InfoSection {...infoCards} />
-      {leadersList.length ? (
+      {leadersList?.length ? (
         <LeaderboardList leadersList={leadersList} />
       ) : null}
-      {sponsorsCards.length ? <Sponsors cards={sponsorsCards} /> : null}
+      {sponsorsCards?.length ? <Sponsors cards={sponsorsCards} /> : null}
       <FillRequest />
     </>
   )

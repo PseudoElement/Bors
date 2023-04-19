@@ -12,6 +12,7 @@ import s from './LeaderboardList.module.scss'
 interface LeaderboardListProps {
   leadersList: LeaderList[]
 }
+
 export const LeaderboardList: FC<LeaderboardListProps> = ({ leadersList }) => {
   const [leaders, setLeaders] = useState<LeaderList[]>(leadersList)
   const [date, setDate] = useState<Date>(dateOneMonthBefore(new Date(), -3))
@@ -28,7 +29,7 @@ export const LeaderboardList: FC<LeaderboardListProps> = ({ leadersList }) => {
       setDate(dateOneMonthBefore(date, -3))
       setIsUpdate(false)
       if (moreLeader) {
-        setLeaders([...leaders, ...moreLeader])
+        setLeaders([...leaders, ...moreLeader ])
       }
     }
 

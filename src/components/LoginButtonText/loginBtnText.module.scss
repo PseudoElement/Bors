@@ -3,7 +3,7 @@
 .textWrapper {
   &:has(.name) {
     max-width: 120px;
-    overflow-x: scroll;
+    overflow-x: auto;
   }
   &:has(.name)::-webkit-scrollbar {
     height: 2px;

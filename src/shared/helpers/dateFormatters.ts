@@ -9,6 +9,9 @@ interface DateFormatter {
   variant?: DateVariants
   locale?: string
 }
+
+// format date in 2023-04-18
+// or more custom variant, add new string in DateVariants
 export const formatDate = ({
   date,
   locale,
@@ -19,6 +22,7 @@ export const formatDate = ({
   })
 }
 
+// return date on COUNT month before
 export const dateOneMonthBefore = (
   currentDate = new Date(),
   counter: number = -1

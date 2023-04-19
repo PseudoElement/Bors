@@ -1,9 +1,11 @@
-import s from './Balance.module.scss'
+import { FC } from 'react'
 import Image from 'next/image'
 
 import { BalanceProps } from 'shared/types/balance'
 
-export const Balance: React.FC<BalanceProps> = ({
+import s from './Balance.module.scss'
+
+export const Balance: FC<BalanceProps> = ({
   title,
   count,
   currency,
