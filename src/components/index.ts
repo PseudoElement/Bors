@@ -21,7 +21,7 @@ import { InfoCard } from './InfoCard/InfoCard'
 import { BurgerMenu } from './BurgerMenu/BurgerMenu'
 import { Navbar } from './Navbar/Navbar'
 import { BurgerMenuButton } from './BurgerMenuButton/BurgerMenuButton'
-import { LoginButtonText } from './LoginButtonText/LoginButtonText'
+import { LoginButton } from './LoginButton/LoginButton'
 
 export {
   Button,
@@ -47,5 +47,5 @@ export {
   BurgerMenu,
   Navbar,
   InfoCard,
-  LoginButtonText
+  LoginButton
 }

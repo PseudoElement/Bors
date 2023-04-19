@@ -3,11 +3,10 @@ import cn from 'classnames'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { LoginButtonText } from 'components'
+import { LoginButton } from 'components'
 
 import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
 import { main_nav_links, main_socialLinks } from 'shared/mocks/navBar'
-import AccountImg from '/public/assets/icons/accountImg.svg'
 
 import s from './navFoot.module.scss'
 
@@ -55,23 +54,13 @@ export const NavFoot: FC<NavFootProps> = ({
               </div>
             </Link>
             )) : ""}
-             <button onClick={menuOpen} className={s.logInButton}>
-                <div className={s.btnImg}>
-                  <AccountImg />
-                </div>
-                <LoginButtonText />
-            </button>
+             <LoginButton btnClick={menuOpen}/>
           </div>  
                  
         </div>
       ) : (
         <div  className={cn(classNames, s.navFootSectionItems)}>
-          <button onClick={menuOpen} className={s.logInButton}>
-            <div className={s.btnImg}>
-              <AccountImg />
-            </div>
-            <LoginButtonText />
-          </button>
+          <LoginButton btnClick={menuOpen}/>
           <div className={s.line} />
           <div className={cn(classNames, s.navFootSectionItems)}>
          {socialLink ? main_socialLinks.map(item =>(

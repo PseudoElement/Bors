@@ -3,10 +3,9 @@ import cn from 'classnames'
 import Link from 'next/link'
 
 import { BurgerMenuButton } from 'components'
-import { LoginButtonText } from 'components'
+import { LoginButton } from 'components'
 
 import { main_nav_links } from 'shared/mocks/navBar'
-import AccountImg from '/public/assets/icons/accountImg.svg'
 
 import s from './navMain.module.scss'
 
@@ -40,13 +39,8 @@ export const NavMain: FC<NavMainProps> = ({
           </li>
         ))}
       </ul>
-
-      <button onClick={menuOpen} className={s.logInButton}>
-        <div className={s.btnImg}>
-          <AccountImg />
-        </div>
-        <LoginButtonText/>
-      </button>
+      
+      <LoginButton btnClick={menuOpen}/>
     </nav>
   )
 }
