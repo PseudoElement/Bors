@@ -16,12 +16,12 @@ export interface MainPageProps {
   sponsorsCards: SponsorType[]
   leadersList: LeaderList[]
 }
+
 export const MainPage: FC<MainPageProps> = ({
   infoCards,
   sponsorsCards,
   leadersList,
 }) => {
-
   return (
     <>
       <Intro {...infoCards} />

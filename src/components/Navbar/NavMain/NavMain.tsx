@@ -2,8 +2,7 @@ import { FC } from 'react'
 import cn from 'classnames'
 import Link from 'next/link'
 
-import { BurgerMenuButton } from 'components'
-import { LoginButton } from 'components'
+import { BurgerMenuButton, LoginButton } from 'components'
 
 import { main_nav_links } from 'shared/mocks/navBar'
 
@@ -39,7 +38,7 @@ export const NavMain: FC<NavMainProps> = ({
           </li>
         ))}
       </ul>
-      
+
       <LoginButton btnClick={menuOpen}/>
     </nav>
   )

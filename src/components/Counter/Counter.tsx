@@ -43,6 +43,7 @@ export const Counter: FC<CounterProps> = ({
       <button className={s.btn} disabled={value === min} onClick={decrement}>
         ‒
       </button>
+
       <input
         className={s.input}
         value={value}

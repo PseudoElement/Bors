@@ -13,15 +13,25 @@ export interface LoginBtnProps {
 
 export const LoginButton: FC<LoginBtnProps> = ({ btnClick }) => {
   const user = useAppSelector(state => state.user.user)
+
   return (
     <button onClick={btnClick} className={s.logInButton}>
       <div className={s.btnImg}>
-        {user ? <Image className={s.avatar} src={user.avatar} width={44} height={44} alt='avatar'/>  : <AccountImg />}
+        {user ? (
+          <Image
+            className={s.avatar}
+            src={user.avatar}
+            width={44}
+            height={44}
+            alt='avatar'
+          />
+        ) : (
+          <AccountImg />
+        )}
       </div>
+
       <div className={s.textWrapper}>
-        <div className={s.name}>
-          {user ? user.name : 'LOGGA IN'}
-        </div>
+        <div className={s.name}>{user ? user.name : 'LOGGA IN'}</div>
       </div>
     </button>
   )

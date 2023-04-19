@@ -22,8 +22,7 @@
   height: 100%;
   position: absolute;
   z-index: 1;
-  pointer-events: none
-;
+  pointer-events: none;
   mix-blend-mode: overlay;
   background: url('/assets/image/backgroundIntroMask.png');
   background-size: cover;
@@ -83,5 +82,26 @@
 
   .iconDown {
     cursor: pointer;
+  }
+}
+
+.logoGroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  width: 520px;
+
+  .logo {
+    position: relative;
+    width: 98px;
+    height: 146px;
+  }
+
+  .logoText {
+    position: relative;
+    width: 393px;
+    height: 52px;
+    margin-bottom: 8px;
   }
 }

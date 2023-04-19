@@ -1,8 +1,7 @@
-import { FC, useState, useEffect } from 'react'
+import { FC, useState, SyntheticEvent } from 'react'
 import Image from 'next/image'
 import cn from 'classnames'
 
-import { CardStocksInfo } from 'features'
 import { Counter } from 'components'
 
 import { Stocks } from 'shared/types/stocks'
@@ -42,24 +41,22 @@ export const StocksCard: FC<StocksCardProps> = ({
   buy_sum_count,
 }) => {
   const [isActiveCard, setIsActiveCard] = useState<boolean>(false)
-  const [counterValue, setCounterValue] = useState(count)
+  const [counterValue, setCounterValue] = useState(0)
 
   const changeCounter = (value: number) => {
     setCounterValue(value)
-  }
 
-  const addNft = (e: any) => {
-    e.stopPropagation()
-    onClick?.()
-    setIsActiveCard(prev => !prev)
-  }
-
-  useEffect(() => {
-    if (counterValue === 0) {
-      setCounterValue(1)
+    if (value === 0) {
       setIsActiveCard(false)
     }
-  }, [counterValue])
+  }
+
+  const addNft = (e: SyntheticEvent) => {
+    e.stopPropagation()
+    onClick?.()
+    setCounterValue(1)
+    setIsActiveCard(true)
+  }
 
   return (
     <>
@@ -72,33 +69,44 @@ export const StocksCard: FC<StocksCardProps> = ({
         </div>
 
         <div className={s.appName}>
-          <span className={s.name}>{company_name}</span>
-          <span className={s.initials}>{company_code}</span>
+          <span className={s.name}>
+            {company_name ? company_name : 'Undefined'}
+          </span>
+          <span className={s.initials}>
+            {company_code ? company_code : 'Undefined'}
+          </span>
         </div>
 
         <div className={s.statistics}>
-          <span className={s.currency}>
-            {price?.price} <span>SEK</span>
-          </span>
-          <span className={s.percent}>
-            {' '}
-            <UpArrow /> +{price?.percentage}%
-          </span>
+          <div className={s.currency}>
+            {price?.price ? price.price : <span>Undefined</span>}{' '}
+            <span>SEK</span>
+          </div>
+
+          <div className={s.percent}>
+            {price?.percentage > 0 ? (
+              <div className={s.positive}>
+                <UpArrow />
+                {price?.percentage ? <span>+{price.percentage}</span> : 0}%
+              </div>
+            ) : (
+              <div className={s.negative}>
+                <UpArrow />
+                {price?.percentage ? <span>-{price.percentage}</span> : 0}%
+              </div>
+            )}
+          </div>
         </div>
 
         {isActiveCard ? (
-          <Counter
-            min={0}
-            value={counterValue}
-            onChange={changeCounter}
-          />
+          <Counter min={0} value={counterValue} onChange={changeCounter} />
         ) : (
           <div className={s.buy}>
             <button className={s.buyBtn} onClick={e => addNft(e)}>
               {false ? 'Köp mer' : 'Köpa'}
             </button>
 
-            <span className={s.buyText}>Tillgängliga aktier 824</span>
+            <span className={s.buyText}>Tillgängliga aktier {count}</span>
           </div>
         )}
       </div>
