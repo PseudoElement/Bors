@@ -9,6 +9,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist'
+// @ts-ignore
 import { CookieStorage } from 'redux-persist-cookie-storage'
 import Cookies from 'js-cookie'
 
@@ -22,7 +23,7 @@ const persistConfig = {
 }
 
 const rootReducer = combineReducers({
-  user: userSlice, 
+  user: userSlice,
   stock: stockSlice
 })
 
