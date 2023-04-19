@@ -3,12 +3,13 @@ import cn from 'classnames'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { main_nav_links, main_socialLinks } from 'shared/mocks/navBar'
-
-import AccountImg from '/public/assets/icons/accountImg.svg'
-import s from './navFoot.module.scss'
+import { LoginButtonText } from 'components'
 
 import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
+import { main_nav_links, main_socialLinks } from 'shared/mocks/navBar'
+import AccountImg from '/public/assets/icons/accountImg.svg'
+
+import s from './navFoot.module.scss'
 
 export interface NavFootProps {
   classNames?: string
@@ -58,7 +59,7 @@ export const NavFoot: FC<NavFootProps> = ({
                 <div className={s.btnImg}>
                   <AccountImg />
                 </div>
-                <p>Logga In</p>
+                <LoginButtonText />
             </button>
           </div>  
                  
@@ -69,7 +70,7 @@ export const NavFoot: FC<NavFootProps> = ({
             <div className={s.btnImg}>
               <AccountImg />
             </div>
-            <p>Logga In</p>
+            <LoginButtonText />
           </button>
           <div className={s.line} />
           <div className={cn(classNames, s.navFootSectionItems)}>

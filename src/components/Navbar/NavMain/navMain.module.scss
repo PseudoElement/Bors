@@ -97,3 +97,26 @@
 .burgerMenuLine {
   background: $background-linear-180;
 }
+
+.textWrapper {
+  &:has(div) {
+    max-width: 120px;
+    overflow-x: scroll;
+  }
+  div {
+    max-width: 500px;
+    text-align: start;
+    text-transform: none;
+    white-space: nowrap;
+  }
+  &:has(div)::-webkit-scrollbar {
+    height: 2px;
+  }
+  &:has(div)::-webkit-scrollbar-track {
+    background: $color-gray-02;
+  }
+  &:has(div)::-webkit-scrollbar-thumb {
+    height: 2px;
+    border: 1px solid $color-gray-eb;
+  }
+}

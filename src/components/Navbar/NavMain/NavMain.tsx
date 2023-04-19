@@ -3,6 +3,7 @@ import cn from 'classnames'
 import Link from 'next/link'
 
 import { BurgerMenuButton } from 'components'
+import { LoginButtonText } from 'components'
 
 import { main_nav_links } from 'shared/mocks/navBar'
 import AccountImg from '/public/assets/icons/accountImg.svg'
@@ -44,8 +45,7 @@ export const NavMain: FC<NavMainProps> = ({
         <div className={s.btnImg}>
           <AccountImg />
         </div>
-
-        <p>Logga In</p>
+        <LoginButtonText/>
       </button>
     </nav>
   )
