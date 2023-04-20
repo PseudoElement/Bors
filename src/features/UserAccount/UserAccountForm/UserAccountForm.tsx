@@ -6,8 +6,8 @@ import { AxiosError } from 'axios'
 import { Button, Input } from 'components'
 
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
-import { authMe, userUpdate } from 'shared/api/routes/user'
-import { userMeResponse, userUpdateResponse } from 'store/slices/userSlice'
+import { userUpdate } from 'shared/api/routes/user'
+import { userUpdateResponse } from 'store/slices/userSlice'
 
 import { User } from 'shared/types/user'
 import { setAddValues } from 'shared/helpers/setAddValues'
@@ -21,15 +21,6 @@ export const UserAccountForm: FC = () => {
   const dispatch = useAppDispatch()
   const user = useAppSelector(state => state.user.user)
   const [name, setName] = useState('')
-
-  const getUser = async () => {
-    try {
-      const data = await authMe()
-      dispatch(userMeResponse(data.data))
-    } catch (error) {
-      console.error(error)
-    }
-  }
 
   const {
     control,
@@ -131,10 +122,6 @@ export const UserAccountForm: FC = () => {
     setAddValues(user, setValue)
   }, [user?.name])
 
-  useEffect(() => {
-    getUser()
-  }, [dispatch])
-
   return (
     <>
       {user && (
@@ -144,8 +131,10 @@ export const UserAccountForm: FC = () => {
               <div className={s.field} key={key}>
                 <label className={s.labelField} htmlFor={item.name}>
                   {item.label}
+
                   <span className={s.requiredField}>*</span>
                 </label>
+
                 <div className={s.textField}>
                   <Controller
                     name={item.name as 'first_name'}
@@ -177,6 +166,7 @@ export const UserAccountForm: FC = () => {
                     )}
                   />
                 </div>
+
                 {errors[item.name as 'email'] && (
                   <span className={s.errMessage}>
                     {errors[item.name as 'email']?.message}
@@ -191,16 +181,14 @@ export const UserAccountForm: FC = () => {
               Adress<span className={s.requiredField}>*</span>
             </label>
 
-            <div>
-              <Controller
-                name='home_address'
-                control={control}
-                rules={{ required: `Hemadress krävs` }}
-                render={({ field: { onChange, value } }) => (
-                  <Input type='text' value={value} onChange={onChange} />
-                )}
-              />
-            </div>
+            <Controller
+              name='home_address'
+              control={control}
+              rules={{ required: `Hemadress krävs` }}
+              render={({ field: { onChange, value } }) => (
+                <Input type='text' value={value} onChange={onChange} />
+              )}
+            />
 
             {errors.home_address && (
               <span className={s.errMessage}>
