@@ -37,6 +37,9 @@
   padding-bottom: 14px;
   border-bottom: 1px solid $color-gray-eb;
 }
+.appName {
+  flex-grow: 1;
+}
 
 .name {
   color: $color-black;

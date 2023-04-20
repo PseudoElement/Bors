@@ -1,5 +1,4 @@
 import { FC, useEffect, ChangeEvent } from 'react'
-import Image from 'next/image'
 import cn from 'classnames'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { AxiosError } from 'axios'
@@ -14,7 +13,6 @@ import { User } from 'shared/types/user'
 import { setAddValues } from 'shared/helpers/setAddValues'
 import { EMAIL_VALIDATION_REG, NUMBER_REG_EXP } from 'shared/constants/regExp'
 import { formatTelNumber } from 'shared/helpers/formatTelNumber'
-import defaultAvatarImage from '/public/assets/image/avatar.png'
 import { mock_user_fields } from 'shared/mocks/mock_userAccount'
 import PhotoCamera from '/public/assets/icons/Camera.svg'
 
@@ -118,12 +116,14 @@ export const UserAccount: FC = () => {
         <div className={s.header}>
           <div className={s.wrapperAvatar}>
             <div className={s.avatar}>
-              <Image
-                width={159}
-                height={159}
-                src={user?.avatar ? user.avatar : defaultAvatarImage}
-                alt='avatar'
-              />
+              {user?.avatar ? (
+                <div
+                  className={s.userAvatar}
+                  style={{ backgroundImage: `url("${user.avatar}")` }}
+                />
+              ) : (
+                <div className={s.defaultAvatar} />
+              )}
             </div>
 
             <div className={s.changeAvatar}>

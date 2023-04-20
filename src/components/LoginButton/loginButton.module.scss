@@ -34,6 +34,8 @@
   margin-right: 6px;
   border-radius: 62px;
   background: $color-gray-02;
+  border-radius: 62px;
+  overflow: hidden;
 
   @include tablet-mobile {
     width: 40px;
@@ -41,9 +43,18 @@
     margin-left: 0;
   }
 }
-.avatar {
-  border-radius: 62px;
+.userAvatar, .defaultAvatar {
+  width: 100%;
+  height: 100%;
+  background-position: center top;
+  background-size: cover;
 }
+
+.defaultAvatar {
+  background: url("/assets/icons/accountImg.svg") no-repeat center;
+  background-size: 55%;
+}
+
 .textWrapper {
   max-width: 120px;
   min-width: 93px;

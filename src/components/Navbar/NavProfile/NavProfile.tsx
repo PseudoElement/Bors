@@ -12,7 +12,6 @@ import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { cookies } from 'shared/utils/Cookies'
 
 import { nav_links } from 'shared/mocks/navBar'
-import AvatarImage from '/public/assets/image/avatar.png'
 import logo from '/public/assets/image/smaloLogo.png'
 
 import s from './navProfile.module.scss'
@@ -71,13 +70,14 @@ export const NavProfile: FC<NavMainProps> = ({ classNames }) => {
           <span>{user?.name}</span>
 
           <div className={s.userFoto}>
-            <Image
-              src={!user?.avatar ? AvatarImage : (user?.avatar as string)}
-              width={52}
-              height={52}
-              style={{ objectFit: 'cover' }}
-              alt='avatar'
-            />
+            {user?.avatar ? (
+              <div
+                className={s.userAvatar}
+                style={{ backgroundImage: `url("${user.avatar}")` }}
+              />
+            ) : (
+              <div className={s.defaultAvatar} />
+            )}
           </div>
         </div>
 

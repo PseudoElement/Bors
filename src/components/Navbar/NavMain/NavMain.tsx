@@ -24,6 +24,7 @@ export const NavMain: FC<NavMainProps> = ({
   return (
     <nav className={cn(classNames, s.nav)}>
       <BurgerMenuButton
+        defaultBurger={s.burgerMenu}
         defaultStyles={s.burgerMenuLine}
         setIsOpenMenu={burgerMenuOpen}
         isOpenMenu={isBurgerOpen}
@@ -39,7 +40,7 @@ export const NavMain: FC<NavMainProps> = ({
         ))}
       </ul>
 
-      <LoginButton btnClick={menuOpen}/>
+      <LoginButton btnClick={menuOpen} />
     </nav>
   )
 }

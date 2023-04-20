@@ -1,8 +1,6 @@
 import { FC } from 'react'
-import Image from 'next/image'
 
 import { useAppSelector } from 'shared/hooks/redux'
-import AccountImg from '/public/assets/icons/accountImg.svg'
 
 import s from './loginButton.module.scss'
 
@@ -17,16 +15,13 @@ export const LoginButton: FC<LoginBtnProps> = ({ btnClick }) => {
   return (
     <button onClick={btnClick} className={s.logInButton}>
       <div className={s.btnImg}>
-        {user ? (
-          <Image
-            className={s.avatar}
-            src={user.avatar}
-            width={44}
-            height={44}
-            alt='avatar'
+        {user?.avatar ? (
+          <div
+            className={s.userAvatar}
+            style={{ backgroundImage: `url("${user.avatar}")` }}
           />
         ) : (
-          <AccountImg />
+          <div className={s.defaultAvatar} />
         )}
       </div>
 
