@@ -47,5 +47,5 @@ export {
   BurgerMenu,
   Navbar,
   InfoCard,
-  LoginButtonText
+  LoginButtonText,
 }

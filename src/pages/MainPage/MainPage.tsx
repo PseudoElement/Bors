@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 
 import {
   FillRequest,
@@ -6,10 +6,12 @@ import {
   LeaderboardList,
   Sponsors,
   InfoSection,
+  PopupAfterSubmit,
 } from 'features'
 
 import { SiteData, SponsorType } from 'shared/types/site'
 import { LeaderList } from 'shared/types/leaderboard'
+import { PopupAfterSubmitStatus } from 'shared/enums'
 
 export interface MainPageProps {
   infoCards: SiteData
@@ -21,6 +23,9 @@ export const MainPage: FC<MainPageProps> = ({
   sponsorsCards,
   leadersList,
 }) => {
+  const [popupStatus, setPopupStatus] = useState<PopupAfterSubmitStatus>(
+    PopupAfterSubmitStatus.CLOSED
+  )
 
   return (
     <>
@@ -30,7 +35,12 @@ export const MainPage: FC<MainPageProps> = ({
         <LeaderboardList leadersList={leadersList} />
       ) : null}
       {sponsorsCards?.length ? <Sponsors cards={sponsorsCards} /> : null}
-      <FillRequest />
+      <FillRequest setPopupStatus={setPopupStatus} />
+      <PopupAfterSubmit
+        onClose={() => setPopupStatus(PopupAfterSubmitStatus.CLOSED)}
+        status={popupStatus}
+        type='sendEmail'
+      />
     </>
   )
 }

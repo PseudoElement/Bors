@@ -1,8 +1,7 @@
-import { FC } from 'react'
+import { Dispatch, FC, SetStateAction } from 'react'
 import Link from 'next/link'
 import { useForm, Controller, SubmitHandler } from 'react-hook-form'
-
-import { Input, Button } from 'components'
+import { Input, Button, Popup } from 'components'
 
 import { cookies } from 'shared/utils/Cookies'
 import { UserRegRequest } from 'shared/types/user'
@@ -11,8 +10,13 @@ import { userRegister } from 'shared/api/routes/user'
 import { newUserRequested } from 'store/slices/userSlice'
 
 import s from './registrationForm.module.scss'
+import { PopupAfterSubmitStatus } from 'shared/enums'
 
-export const RegistrationForm: FC = () => {
+interface RegistrationFormProps {
+  openPopup: () => void
+}
+
+export const RegistrationForm: FC<RegistrationFormProps> = ({ openPopup }) => {
   const dispatch = useAppDispatch()
 
   const {
@@ -42,13 +46,14 @@ export const RegistrationForm: FC = () => {
       await cookies.set('token', data.data.access_token)
       await dispatch(newUserRequested(userData))
       await reset()
+      openPopup()
     } catch (error) {
       console.error(error)
       const errorData = {
         user: null,
         authStatus: null,
         token: null,
-        authError: 'registration error'
+        authError: 'registration error',
       }
       dispatch(newUserRequested(errorData))
     }
@@ -57,9 +62,15 @@ export const RegistrationForm: FC = () => {
   const onSubmitRegistration: SubmitHandler<UserRegRequest> = data => {
     registerUser(data)
   }
+  const onError = (e: any) => {
+    alert(JSON.stringify(e))
+  }
 
   return (
-    <form onSubmit={handleSubmit(onSubmitRegistration)} className={s.form}>
+    <form
+      onSubmit={handleSubmit(onSubmitRegistration, onError)}
+      className={s.form}
+    >
       <label className={s.label}>
         <span className={s.labelText}>Användarnamn</span>
         <Controller
@@ -113,7 +124,7 @@ export const RegistrationForm: FC = () => {
             required: 'Lösenordsbekräftelse krävs',
             minLength: 6,
             validate: (value: string, data: UserRegRequest) =>
-              value === data.password || "Lösenord matchar inte",
+              value === data.password || 'Lösenord matchar inte',
           }}
           render={({ field: { onChange, value } }) => (
             <Input withIcon={true} value={value!} onChange={onChange} />
@@ -131,18 +142,22 @@ export const RegistrationForm: FC = () => {
             )}
       </label>
       <Button type='submit' className={s.submitBtn}>
-      Registrera dig 
+        Registrera dig
       </Button>
 
       <p className={s.agreeInfo}>
-        Genom att klicka på knappen &quot;Registrera&quot; samtycker jag till insamlingen
-        och behandling av mina personuppgifter i enlighet med{' '}
+        Genom att klicka på knappen &quot;Registrera&quot; samtycker jag till
+        insamlingen och behandling av mina personuppgifter i enlighet med{' '}
         <Link href='/assets/files/Tävlingsvillkor.pdf'>
-          <a target="_blank" className={s.link}>Politik</a>
+          <a target='_blank' className={s.link}>
+            Politik
+          </a>
         </Link>{' '}
         och acceptera villkoren för{' '}
         <Link href='/assets/files/Tävlingsvillkor.pdf'>
-          <a target="_blank"  className={s.link}>Användaravtal</a>
+          <a target='_blank' className={s.link}>
+            Användaravtal
+          </a>
         </Link>
       </p>
     </form>

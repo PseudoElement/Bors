@@ -1,0 +1,35 @@
+@use '../../styles/style.scss' as *;
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.popupTitle,
+.popupText {
+  font-style: normal;
+  text-align: center;
+}
+
+.popupTitle {
+  font-weight: $fw-bold;
+  font-size: 40px;
+  color: $color-black;
+  margin-top: 50px;
+  margin-bottom: 34px;
+  @include tablet-mobile {
+    margin-top: 38px;
+    margin-bottom: 16px;
+  }
+}
+.popupText {
+  font-weight: $fw-semibold;
+  font-size: 22px;
+  color: $color-gray-a5;
+  margin-bottom: 47px;
+}

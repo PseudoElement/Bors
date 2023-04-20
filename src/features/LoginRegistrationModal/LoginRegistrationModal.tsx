@@ -14,6 +14,7 @@ import { useClickOutside } from 'shared/hooks/useClickOutside'
 import s from './loginRegistrationModal.module.scss'
 
 interface LoginRegistrationModalProps {
+  openPopup: () => void
   isOpen: boolean
   onClose: () => void
   setIsOpenPasswordRecovery: Dispatch<SetStateAction<boolean>>
@@ -23,6 +24,7 @@ export const LoginRegistrationModal: FC<LoginRegistrationModalProps> = ({
   onClose,
   isOpen,
   setIsOpenPasswordRecovery,
+  openPopup,
 }) => {
   const [isActive, setIsActive] = useState<string>('login')
   const overlayRef = useRef<HTMLDivElement>(null)
@@ -42,7 +44,11 @@ export const LoginRegistrationModal: FC<LoginRegistrationModalProps> = ({
   }
 
   return (
-    <div className={s.popupOverlay} ref={!isOpen ? overlayRef : null}>
+    <div
+      onClick={onClose}
+      className={s.popupOverlay}
+      ref={!isOpen ? overlayRef : null}
+    >
       <div
         onClick={e => e.stopPropagation()}
         className={s.modal}
@@ -69,7 +75,7 @@ export const LoginRegistrationModal: FC<LoginRegistrationModalProps> = ({
             onClose={onClose}
           />
         ) : (
-          <RegistrationForm />
+          <RegistrationForm openPopup={openPopup} />
         )}
       </div>
     </div>
