@@ -13,6 +13,7 @@
   z-index: 15;
   padding-top: 111px;
   padding-bottom: 25px;
+  overflow-y: scroll;
   @include tablet-mobile {
     align-items: end;
     justify-content: start;
