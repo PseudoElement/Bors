@@ -63,7 +63,7 @@ export const RegistrationForm: FC<RegistrationFormProps> = ({ openPopup }) => {
     registerUser(data)
   }
   const onError = (e: any) => {
-    alert(JSON.stringify(e))
+    alert('Input corerct data')
   }
 
   return (
