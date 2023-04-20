@@ -45,6 +45,7 @@ import { FilterKeys } from 'shared/types/filterPanel'
 
 import s from './examplePage.module.scss'
 import style from '../../features/DropMenu/dropMenu.module.scss'
+import { PopupAfterSubmitStatus } from 'shared/enums'
 
 export const ExamplePage: FC = () => {
   const sliderItem = event_slider_mock.map((card, idx) => (
@@ -59,6 +60,10 @@ export const ExamplePage: FC = () => {
   const [openPopup, setOpenPopup] = useState<boolean>(false)
 
   const [isOpen, setIsOpen] = useState<boolean>(false)
+
+  const [popupStatus, setPopupStatus] = useState<PopupAfterSubmitStatus>(
+    PopupAfterSubmitStatus.CLOSED
+  )
 
   const [defaultValue, setDefaultValue] = useState<FilterKeys>({
     price: false,
@@ -82,7 +87,7 @@ export const ExamplePage: FC = () => {
         <Header variant={true} />
       </Wrapper>
       <Wrapper text={'drop menu'}>
-      <DropMenu
+        <DropMenu
           title='By line of business'
           onChange={data => console.log('business ', data)}
           data={mock_by_line_of_business}
@@ -136,7 +141,7 @@ export const ExamplePage: FC = () => {
       </Wrapper>
 
       <Wrapper text='FillRequest'>
-        <FillRequest />
+        <FillRequest setPopupStatus={setPopupStatus} />
       </Wrapper>
 
       <Wrapper text='PasswordRecovery'>

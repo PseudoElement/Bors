@@ -6,11 +6,14 @@ import { useClickOutside } from 'shared/hooks/useClickOutside'
 import CloseIcon from '/public/assets/icons/CloseIcon.svg'
 
 import s from './popup.module.scss'
+import { Button } from '../index'
 
 interface PopupProps {
+  buttonText?: string
   children: ReactNode
   isOpen: boolean
   onClose: () => void
+  onSubmit?: () => void
   className?: string
   isClosable?: boolean
   contentClassName?: string
@@ -25,15 +28,24 @@ export const Popup: FC<PopupProps> = ({
   className,
   contentClassName,
   wrapperClassName,
+  buttonText = 'Börja',
+  onSubmit,
 }) => {
   const overlayRef = useRef<HTMLDivElement>(null)
 
-  useClickOutside(overlayRef, !isClosable ? onClose : () => { })
+  useClickOutside(overlayRef, !isClosable ? onClose : () => {})
 
   if (!isOpen) return null
   return (
-    <div className={cn(s.popupOverlay, className)} ref={overlayRef}>
-      <div className={cn(s.popupWrapper, wrapperClassName)}>
+    <div
+      onClick={onClose}
+      className={cn(s.popupOverlay, className)}
+      ref={overlayRef}
+    >
+      <div
+        onClick={e => e.stopPropagation()}
+        className={cn(s.popupWrapper, wrapperClassName)}
+      >
         <div
           className={cn(s.popupContent, contentClassName)}
           ref={isClosable ? overlayRef : null}
@@ -43,7 +55,10 @@ export const Popup: FC<PopupProps> = ({
               <CloseIcon className={s.popupClose} />
             </button>
           )}
-          <div className={s.wrapperContent}>{children}</div>
+          <div className={s.wrapperContent}>
+            {children}
+            <Button onClick={() => onSubmit?.()}>{buttonText}</Button>
+          </div>
         </div>
       </div>
     </div>

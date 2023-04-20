@@ -1,3 +1,4 @@
+import { PopupAfterSubmit } from './PopupAfterSubmit/PopupAfterSubmit'
 import { LeaderboardList } from './LeaderboardList/LeaderboardList'
 import { Layout } from './Layout/Layout'
 import { Header } from './Header/Header'
@@ -38,4 +39,5 @@ export {
   BuyStock,
   InfoSection,
   DropMenu,
+  PopupAfterSubmit,
 }

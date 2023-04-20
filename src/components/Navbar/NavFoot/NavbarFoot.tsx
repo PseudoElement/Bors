@@ -1,14 +1,19 @@
 import { FC, useState } from 'react'
 import { useRouter } from 'next/router'
 
-import { LoginRegistrationModal, PasswordRecovery } from 'features'
+import {
+  LoginRegistrationModal,
+  PasswordRecovery,
+  PopupAfterSubmit,
+} from 'features'
 import { Popup, BurgerMenu } from 'components'
 import { NavFoot } from './NavFoot'
 
 import { cookies } from 'shared/utils/Cookies'
+import { PopupAfterSubmitStatus } from 'shared/enums'
 
 interface Variant {
-  variant: boolean,
+  variant: boolean
   socialLink: boolean
 }
 
@@ -19,6 +24,9 @@ export const NavbarFoot: FC<Variant> = ({ variant, socialLink }) => {
   const [isOpenPasswordRecovery, setIsOpenPasswordRecovery] =
     useState<boolean>(false)
 
+  const [popupStatus, setPopupStatus] = useState<PopupAfterSubmitStatus>(
+    PopupAfterSubmitStatus.CLOSED
+  )
   const handleProfile = () => {
     const token = cookies.get('token')
 
@@ -32,9 +40,15 @@ export const NavbarFoot: FC<Variant> = ({ variant, socialLink }) => {
   return (
     <>
       <LoginRegistrationModal
+        openPopup={() => setPopupStatus(PopupAfterSubmitStatus.SUCCESS)}
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         setIsOpenPasswordRecovery={setIsOpenPasswordRecovery}
+      />
+      <PopupAfterSubmit
+        status={popupStatus}
+        type='registration'
+        onClose={() => setPopupStatus(PopupAfterSubmitStatus.CLOSED)}
       />
 
       <BurgerMenu
@@ -48,12 +62,8 @@ export const NavbarFoot: FC<Variant> = ({ variant, socialLink }) => {
       >
         <PasswordRecovery />
       </Popup>
-      
-      <NavFoot
-        menuOpen={handleProfile}
-        socialLink={socialLink}
-      />
-       
+
+      <NavFoot menuOpen={handleProfile} socialLink={socialLink} />
     </>
   )
 }

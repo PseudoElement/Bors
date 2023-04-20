@@ -10,9 +10,17 @@ import image from '/public/assets/image/fillRequest.png'
 
 import s from './fillRequest.module.scss'
 
-type EmailRecoveryFormProps = { email: string }
+import { sendEmail } from 'shared/api/routes/main'
+import { Dispatch, FC, SetStateAction } from 'react'
+import { PopupAfterSubmitStatus } from 'shared/enums'
 
-export const FillRequest = () => {
+
+type EmailRecoveryFormProps = { email: string }
+interface FillRequestProps {
+  setPopupStatus: Dispatch<SetStateAction<PopupAfterSubmitStatus>>
+}
+
+export const FillRequest: FC<FillRequestProps> = ({ setPopupStatus }) => {
   const {
     control,
     handleSubmit,
@@ -28,9 +36,11 @@ export const FillRequest = () => {
   > = async defaultValues => {
     try {
       await sendEmail(defaultValues.email)
+      setPopupStatus(PopupAfterSubmitStatus.SUCCESS)
     } catch (e) {
+      setPopupStatus(PopupAfterSubmitStatus.ERROR)
       console.error(e)
-      alert((e as Error).message)
+      //  alert((e as Error).message)
     }
   }
 
