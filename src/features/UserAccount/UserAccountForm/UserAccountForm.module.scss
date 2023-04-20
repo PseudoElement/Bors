@@ -1,0 +1,109 @@
+@use 'styles/style' as *;
+
+.wrapperField {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(356px, 1fr));
+
+  @include tablet-mobile {
+    grid-template-columns: repeat(1, 1fr);
+    width: 100%;
+  }
+}
+
+.field {
+  width: 356px;
+  text-align: start;
+  margin-top: 60px;
+
+  @include tablet-mobile {
+    width: 100%;
+    margin-top: 12px;
+    margin-bottom: 0;
+  }
+}
+
+.wrapperFullField {
+  text-align: start;
+  margin-top: 60px;
+
+  @include tablet-mobile {
+    width: 100%;
+    margin-top: 28px;
+
+    &:nth-child(2) {
+      margin-top: 0;
+    }
+  }
+}
+
+.wrapperFlexField {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 10px;
+
+  @include tablet-mobile {
+    flex-direction: column;
+  }
+}
+
+.flexField {
+  width: 556px;
+  text-align: start;
+  margin-top: 60px;
+
+  @include tablet-mobile {
+    width: 100%;
+    margin-top: 28px;
+  }
+}
+
+.labelField {
+  font-weight: $fw-semibold;
+  font-size: 18px;
+  color: $color-gray-a5;
+  margin-bottom: 14px;
+  display: inline-block;
+
+  @include tablet-mobile {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+}
+
+.requiredField {
+  color: $color-red;
+}
+
+.btnsAction {
+  display: flex;
+  justify-content: center;
+  margin-top: 98px;
+  column-gap: 32px;
+
+  @media screen and (max-width: 466px) {
+    flex-direction: column;
+    row-gap: 28px;
+  }
+
+  .actionBtn {
+    @media screen and (max-width: 466px) {
+      width: 100%;
+    }
+  }
+
+  @include tablet-mobile {
+    width: 100%;
+    margin-top: 28px;
+    row-gap: 21px;
+  }
+}
+
+.errMessage {
+  color: $color-red;
+}
+
+.btnCancel {
+  background: #eef2fc;
+  color: $color-blue;
+}
