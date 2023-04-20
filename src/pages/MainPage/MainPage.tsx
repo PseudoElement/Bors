@@ -18,11 +18,13 @@ export interface MainPageProps {
   sponsorsCards: SponsorType[]
   leadersList: LeaderList[]
 }
+
 export const MainPage: FC<MainPageProps> = ({
   infoCards,
   sponsorsCards,
   leadersList,
 }) => {
+
   const [popupStatus, setPopupStatus] = useState<PopupAfterSubmitStatus>(
     PopupAfterSubmitStatus.CLOSED
   )

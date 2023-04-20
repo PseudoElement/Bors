@@ -11,7 +11,7 @@ import {
 } from 'features'
 
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
-import { stockAll, buyStocks } from 'shared/api/routes/stock'
+import { stockAll, buyStocks, detailStock } from 'shared/api/routes/stock'
 import { getStockResponse } from 'store/slices/stockSlice'
 
 import { Stocks } from 'shared/types/stocks'
@@ -20,7 +20,6 @@ import { card_stocks_info } from 'shared/mocks/mock_cardStocksInfo'
 import SearchIcon from '/public/assets/icons/Search.png'
 
 import s from './buyStock.module.scss'
-import { filter } from 'lodash'
 
 export const BuyStock: FC = () => {
   const dispatch = useAppDispatch()
@@ -33,7 +32,7 @@ export const BuyStock: FC = () => {
   const getAllStocks = async () => {
     try {
       const data = await stockAll()
-      dispatch(getStockResponse(data.data))
+      dispatch(getStockResponse(data.data.data.data))
     } catch (e) {
       console.error(e)
     }
@@ -45,24 +44,36 @@ export const BuyStock: FC = () => {
 
   const buyStock = async () => {
     try {
-
       const stocksObj: any = {}
-      stockInBasket.forEach((item) => {
+      stockInBasket.forEach(item => {
         stocksObj[item.id] = 10
       })
 
       const response = await buyStocks({ stock: stocksObj })
       console.log(response)
       // console.log({ stock: { '1': 5, '2': 10 } })
-    } catch (error) {
-
-    }
+    } catch (error) {}
   }
 
   const deleteStockInBasket = (id: number) => {
     setStockInBasket(stocks => stocks.filter(item => item.id !== id))
   }
 
+  const showStockDetails = async (id: number) => {
+    try {
+      const data = await detailStock(id)
+
+      dispatch(
+        getStockResponse(
+          stocks?.map(item => (item.id === id ? data.data.data : item))
+        )
+      )
+      setShowBuyStockInfo(true)
+    } catch (e) {
+      alert((e as Error).message)
+      console.error(e)
+    }
+  }
 
   return (
     <>
@@ -85,13 +96,14 @@ export const BuyStock: FC = () => {
         <h1 className={s.title}>Köp aktier</h1>
 
         <p className={s.pageDescription}>
-          Du kan köpa aktier för 1 000 000 demo kronor, men kan inte sälja eller byta ditt innehav under aktietävlingen.{' '}
+          Du kan köpa aktier för 1 000 000 demo kronor, men kan inte sälja eller
+          byta ditt innehav under aktietävlingen.{' '}
         </p>
 
         <div className={s.filterWrapper}>
           <FiltersPanel
             defaultValue={{ price: true, lineBusiness: true, popularity: true }}
-            onChange={() => { }}
+            onChange={() => {}}
           >
             <div className={s.inputWrapper}>
               <div className={s.searchIcon}>
@@ -114,7 +126,7 @@ export const BuyStock: FC = () => {
           <div className={s.grid}>
             {stocks?.map(item => (
               <StocksCard
-                onShow={() => setShowBuyStockInfo(true)}
+                onShow={() => showStockDetails(item.id)}
                 onClick={() => setStockInBasket(prev => [...prev, item])}
                 key={item.id}
                 {...item}

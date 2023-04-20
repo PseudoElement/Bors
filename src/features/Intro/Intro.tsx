@@ -15,9 +15,26 @@ export const Intro: FC<SiteData> = ({ logo, desc, title }) => {
       <div className={s.backgroundMask} />
 
       <div className={s.container}>
-        <Logo logoImage={logo} logoText={title} classNames={s.logo}/>
+        {logo && title ? (
+          <Logo logoImage={logo} logoText={title} classNames={s.logo} />
+        ) : (
+          <div className={s.logoGroup}>
+            <div className={s.logo}>
+              <Image layout='fill' alt='logo' src='/assets/icons/Logo.png' />
+            </div>
 
-        <p className={s.text}>{desc}</p>
+            <div className={s.logoText}>
+              <Image
+                src='/assets/icons/Bors.svg'
+                layout='fill'
+                alt='BorsJakten'
+              />
+            </div>
+          </div>
+        )}
+
+        <p className={s.text}>{desc ? desc : 'Error text not found'}</p>
+
         <Link href={'#info'} scroll={false}>
           <div className={s.iconContainer}>
             <Image className={s.iconDown} src={IconDown} alt='icon down' />

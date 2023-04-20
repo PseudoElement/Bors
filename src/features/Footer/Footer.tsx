@@ -16,6 +16,7 @@ export const Footer: FC = () => {
             <div className={s.logo}>
               <Image layout='fill' alt='logo' src='/assets/icons/Logo.png' />
             </div>
+
             <div className={s.logoText}>
               <Image
                 src='/assets/icons/Bors.svg'
@@ -32,6 +33,7 @@ export const Footer: FC = () => {
 
         <div className={s.agreement}>
           <span>@2023 BORS JAKTEN</span>
+
           <span>
             <Link href='/assets/files/Tävlingsvillkor.pdf'>
               <a target="_blank">Tävlingsvillkor</a>

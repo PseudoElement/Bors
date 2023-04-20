@@ -29,8 +29,13 @@ export async function getServerSideProps() {
   const infoCards = await getInfo()
   const leadersList = await getLeaders(date)
 
+  if (sponsorsCards || infoCards || leadersList) {
+    return {
+      props: { infoCards, sponsorsCards, leadersList },
+    }
+  }
   return {
-    props: { infoCards, sponsorsCards, leadersList },
+    props: {},
   }
 }
 

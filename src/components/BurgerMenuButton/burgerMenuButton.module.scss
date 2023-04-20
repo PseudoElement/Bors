@@ -3,15 +3,10 @@
 .burgerMenu {
   width: 34px;
   height: 25px;
-  display: none;
   flex-direction: column;
   position: relative;
   border: none;
   background-color: transparent;
-
-  @include tablet-mobile {
-    display: flex;
-  }
 }
 
 .burgerMenuLine {

@@ -1,18 +1,25 @@
 import type { AppProps } from 'next/app'
-import { Layout } from 'features'
 import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
+
+import { Layout } from 'features'
+
 import { store } from 'store'
-import '../src/styles/globals.scss'
+import { persistor } from 'store'
 import { AuthCheck } from '../src/shared/hock/AuthCheck'
+
+import '../src/styles/globals.scss'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
-      <Layout>
+      <PersistGate loading={null} persistor={persistor}>
+        <Layout>
         <AuthCheck>
           <Component {...pageProps}/>
         </AuthCheck>
       </Layout>
+      </PersistGate>
     </Provider>
   )
 }

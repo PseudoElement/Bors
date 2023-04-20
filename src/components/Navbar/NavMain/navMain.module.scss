@@ -94,6 +94,13 @@
   }
 }
 
+.burgerMenu {
+  display: none;
+
+  @include tablet-mobile {
+    display: block;
+  }
+}
 .burgerMenuLine {
   background: $background-linear-180;
 }

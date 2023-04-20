@@ -22,10 +22,10 @@ export const BurgerMenuButton: FC<BurgerMenuButtonProps> = ({
     <button
       onClick={setIsOpenMenu}
       className={cn(
-        defaultBurger,
         s.burgerMenu,
         { [s.activeMenu]: isOpenMenu },
-        isOpenMenu ? activeStyles : ''
+        isOpenMenu ? activeStyles : '',
+        defaultBurger
       )}
     >
       <div className={cn(s.burgerMenuLine, defaultStyles)} />
