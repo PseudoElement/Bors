@@ -1,0 +1,79 @@
+@use 'styles/style' as *;
+
+.logInButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 60px;
+  padding-right: 24px;
+  background: $color-gray-02;
+  box-shadow: 0 4px 10px $color-shadow-0-6;
+  border-radius: 79px;
+  border: none;
+
+  font-size: 18px;
+  line-height: 110%;
+  letter-spacing: 0.04em;
+  color: $color-white;
+  cursor: pointer;
+
+  @include tablet-mobile {
+    height: 50px;
+    padding-right: 16px;
+    font-size: 16px;
+    line-height: 110%;
+  }
+}
+.btnImg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-left: 4px;
+  margin-right: 6px;
+  border-radius: 62px;
+  background: $color-gray-02;
+  border-radius: 62px;
+  overflow: hidden;
+
+  @include tablet-mobile {
+    width: 40px;
+    height: 40px;
+    margin-left: 0;
+  }
+}
+.userAvatar, .defaultAvatar {
+  width: 100%;
+  height: 100%;
+  background-position: center top;
+  background-size: cover;
+}
+
+.defaultAvatar {
+  background: url("/assets/icons/accountImg.svg") no-repeat center;
+  background-size: 55%;
+}
+
+.textWrapper {
+  max-width: 120px;
+  min-width: 93px;
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    height: 2px;
+  }
+  &::-webkit-scrollbar-track {
+    background: $color-gray-02;
+  }
+  &::-webkit-scrollbar-thumb {
+    height: 2px;
+    border: 1px solid $color-gray-eb;
+  }
+  @include tablet-mobile {
+    min-width: 83px;
+  }
+}
+.name {
+  max-width: 500px;
+  white-space: nowrap;
+  }

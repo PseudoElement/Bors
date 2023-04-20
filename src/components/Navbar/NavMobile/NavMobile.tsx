@@ -76,18 +76,18 @@ export const NavMobile: FC<NavMobileProps> = ({ classNames }) => {
             <span className={s.userName}>{user ? user.name : 'User Name'}</span>
 
             <div className={s.userFoto}>
-              <Image
-                src={user ? user.avatar : defaultAvatarImage}
-                width={52}
-                height={52}
-                style={{ objectFit: 'cover' }}
-                alt='avatar'
-              />
+              {user?.avatar ? (
+                <div
+                  className={s.userAvatar}
+                  style={{ backgroundImage: `url("${user.avatar}")` }}
+                />
+              ) : (
+                <div className={s.defaultAvatar} />
+              )}
             </div>
           </div>
 
           <BurgerMenuButton
-            defaultBurger={s.burgerMenu}
             isOpenMenu={isOpenMenu}
             setIsOpenMenu={() => setIsOpenMenu(prev => !prev)}
             defaultStyles={s.burgerMenuLine}

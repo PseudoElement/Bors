@@ -20,7 +20,6 @@ import { card_stocks_info } from 'shared/mocks/mock_cardStocksInfo'
 import SearchIcon from '/public/assets/icons/Search.png'
 
 import s from './buyStock.module.scss'
-import { filter } from 'lodash'
 
 export const BuyStock: FC = () => {
   const dispatch = useAppDispatch()

@@ -55,7 +55,7 @@ export const StockHorizonCard: FC<StockHorizonCardProps> = ({
           <span className={s.stockCostValue}>1 stocks</span>
 
           <h5 className={s.stockCost}>
-            {price.price}
+            {price?.price}
 
             <span className={s.exchangeCurrency}>
               {exchangeCurrency || 'SET'}
@@ -68,7 +68,7 @@ export const StockHorizonCard: FC<StockHorizonCardProps> = ({
         <span className={s.stockCostValue}>{count} stocks</span>
 
         <h5 className={s.stockCost}>
-          {count * price.price}
+          {count * price?.price}
 
           <span className={s.exchangeCurrency}>
             {exchangeCurrency || 'SET'}

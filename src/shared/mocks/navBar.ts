@@ -41,13 +41,13 @@ export const main_nav_links = [
 ]
 export const main_socialLinks = [
   {
-    href: 'https://instagram.com',
+    href: 'https://instagram.com/borsjakten?igshid=YmMyMTA2M2Y=',
     title: "Instagram",
     src: '/assets/icons/Instagram.svg',
     imgAlt: 'instagram'
   },
   {
-    href: 'https://youtube.com',
+    href: 'https://youtube.com/@diazagencygroup1922',
     title: "Youtube",
     src: '/assets/icons/Youtube.svg',
     imgAlt: 'youtube'
