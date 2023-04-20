@@ -65,7 +65,7 @@ export const StocksCard: FC<StocksCardProps> = ({
         className={cn(s.card, { [s.addedItem]: isActiveCard })}
       >
         <div className={s.image}>
-          <Image src={image} width={56} height={56} alt='amazon logo' />
+          <Image src={image} layout='fill' alt='amazon logo' />
         </div>
 
         <div className={s.appName}>
@@ -98,17 +98,19 @@ export const StocksCard: FC<StocksCardProps> = ({
           </div>
         </div>
 
-        {isActiveCard ? (
-          <Counter min={0} value={counterValue} onChange={changeCounter} />
-        ) : (
-          <div className={s.buy}>
-            <button className={s.buyBtn} onClick={e => addNft(e)}>
-              {false ? 'Köp mer' : 'Köpa'}
-            </button>
+        <div className={s.cardFooter}>
+          {isActiveCard ? (
+              <Counter min={0} value={counterValue} onChange={changeCounter} />
+          ) : (
+              <div className={s.buy}>
+                <button className={s.buyBtn} onClick={e => addNft(e)}>
+                  {false ? 'Köp mer' : 'Köpa'}
+                </button>
 
-            <span className={s.buyText}>Tillgängliga aktier {count}</span>
-          </div>
-        )}
+                <span className={s.buyText}>Tillgängliga aktier {count}</span>
+              </div>
+          )}
+        </div>
       </div>
     </>
   )

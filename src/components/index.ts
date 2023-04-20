@@ -21,6 +21,7 @@ import { InfoCard } from './InfoCard/InfoCard'
 import { BurgerMenu } from './BurgerMenu/BurgerMenu'
 import { Navbar } from './Navbar/Navbar'
 import { BurgerMenuButton } from './BurgerMenuButton/BurgerMenuButton'
+import { Pagination } from './Pagination/Pagination'
 import { LoginButton } from './LoginButton/LoginButton'
 
 export {
@@ -41,6 +42,7 @@ export {
   Sponsor,
   LoginForm,
   BurgerMenuButton,
+  Pagination,
   RegistrationForm,
   Balance,
   Counter,

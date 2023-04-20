@@ -1,8 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 import Image from 'next/image'
-import cn from 'classnames'
 
-import { StocksCard, Popup, Input } from 'components'
+import { StocksCard, Popup, Input, Pagination } from 'components'
 import {
   FiltersPanel,
   BottomBuySection,
@@ -31,8 +30,8 @@ export const BuyStock: FC = () => {
 
   const getAllStocks = async () => {
     try {
-      const data = await stockAll()
-      dispatch(getStockResponse(data.data.data.data))
+      const {data} = await stockAll()
+      dispatch(getStockResponse(data.data))
     } catch (e) {
       console.error(e)
     }
@@ -44,6 +43,7 @@ export const BuyStock: FC = () => {
 
   const buyStock = async () => {
     try {
+
       const stocksObj: any = {}
       stockInBasket.forEach(item => {
         stocksObj[item.id] = 10
@@ -76,7 +76,7 @@ export const BuyStock: FC = () => {
   }
 
   return (
-    <>
+    <div className={s.page}>
       <Popup
         isOpen={showBuyStockList}
         onClose={() => setShowBuyStockList(false)}
@@ -92,7 +92,7 @@ export const BuyStock: FC = () => {
         <CardStocksInfo {...card_stocks_info} />
       </Popup>
 
-      <div className={cn(s.page, s.container)}>
+      <div className={s.container}>
         <h1 className={s.title}>Köp aktier</h1>
 
         <p className={s.pageDescription}>
@@ -114,6 +114,7 @@ export const BuyStock: FC = () => {
                   height={24}
                 />
               </div>
+
               <Input
                 classname={s.searchInput}
                 placeholder='Sök'
@@ -135,16 +136,18 @@ export const BuyStock: FC = () => {
           </div>
         </div>
 
-        {stockInBasket.length !== 0 && (
-          <div className={s.bottomBuySection}>
-            <BottomBuySection
-              onClick={(id: number) => deleteStockInBasket(id)}
-              onClose={() => setShowBuyStockList(true)}
-              stocks={stockInBasket}
-            />
-          </div>
-        )}
+        <Pagination />
       </div>
-    </>
+
+      {stockInBasket.length !== 0 && (
+        <div className={s.bottomBuySection}>
+          <BottomBuySection
+            onClick={(id: number) => deleteStockInBasket(id)}
+            onClose={() => setShowBuyStockList(true)}
+            stocks={stockInBasket}
+          />
+        </div>
+      )}
+    </div>
   )
 }

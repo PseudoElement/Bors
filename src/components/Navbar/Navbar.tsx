@@ -11,7 +11,6 @@ import { NavProfile } from './NavProfile/NavProfile'
 import { NavMobile } from './NavMobile/NavMobile'
 import { NavMain } from './NavMain/NavMain'
 
-import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
 import { cookies } from 'shared/utils/Cookies'
 import { PopupAfterSubmitStatus } from 'shared/enums'
 
@@ -20,9 +19,8 @@ interface Variant {
   socialLink?: boolean
 }
 
-export const Navbar: FC<Variant> = ({ variant, socialLink }) => {
+export const Navbar: FC<Variant> = ({ variant }) => {
   const { push } = useRouter()
-  const { width } = useWindowDimensions()
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isBurgerOpen, setBurgerIsOpen] = useState<boolean>(false)
   const [isOpenPasswordRecovery, setIsOpenPasswordRecovery] =

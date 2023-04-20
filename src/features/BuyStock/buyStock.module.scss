@@ -1,7 +1,10 @@
 @use 'styles/style' as *;
 
+.page {
+  padding: 0 16px;
+}
 .container {
-  padding: 140px 14px 100px;
+  padding: 140px 0 0;
   max-width: 1438px;
   margin: 0 auto;
 }
@@ -31,14 +34,22 @@
   grid-template-columns: repeat(6, 1fr);
   column-gap: 16px;
   row-gap: 32px;
+
+  @include laptop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @include mobile-laptop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include tablet-mobile {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 8px;
+    row-gap: 32px;
+  }
 }
 
 .bottomBuySection {
-  position: fixed;
-  bottom: 8px;
-  left: 8px;
-  right: 8px;
-  z-index: 3;
+  margin: 0 8px 8px;
 
   border-radius: 16px;
   border: 1px solid $color-dark-01;
@@ -58,6 +69,7 @@
   box-shadow: none;
   background-color: $color-gray-f6;
   border: none;
+
   input {
     background-color: $color-gray-f6;
     color: $color-blue;

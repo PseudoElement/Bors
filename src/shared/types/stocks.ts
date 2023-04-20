@@ -42,7 +42,7 @@ export interface Price {
 }
 
 export interface StockState {
-  current_page: number | null
+  current_page: number
   data: Stocks[] | null
   first_page_url: string | null
   from: number | null
@@ -54,7 +54,7 @@ export interface StockState {
   per_page: number | null
   prev_page_url: null
   to: number | null
-  total: number | null
+  total: number
 }
 
 export interface getStockResponse {

@@ -1,8 +1,8 @@
 @use 'styles/style' as *;
 
 .card {
-  max-width: 220px;
-  width: 100%;
+  width: 220px;
+  min-width: 220px;
   min-height: 280px;
   padding: 35px 16px 12px;
   border-radius: 20px;
@@ -14,6 +14,18 @@
   flex-direction: column;
   align-items: center;
   outline: 0.73px solid $color-black-05;
+
+  @include laptop {
+    width: 100%;
+  }
+  @include mobile-laptop {
+    width: 100%;
+  }
+  @include tablet-mobile {
+    width: 175px;
+    min-width: 175px;
+    padding: 27px 12px 12px;
+  }
 }
 
 .addedItem {
@@ -24,7 +36,14 @@
 }
 
 .image {
+  position: relative;
   margin-bottom: 39px;
+  width: 56px;
+  height: 56px;
+
+  @include tablet-mobile {
+    margin-bottom: 25px;
+  }
 }
 
 .appName,
@@ -36,34 +55,78 @@
   flex-direction: column;
   padding-bottom: 14px;
   border-bottom: 1px solid $color-gray-eb;
+
+  @include tablet-mobile {
+    padding-bottom: 10px;
+    flex-grow: 0;
+  }
 }
 .appName {
   flex-grow: 1;
+  @include tablet-mobile {
+    padding-bottom: 10px;
+    flex-grow: 0;
+  }
 }
 
 .name {
+  font-family: $font-Mont;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: -0.02em;
   color: $color-black;
   font-weight: $fw-bold;
   text-align: center;
+
+  @include tablet-mobile {
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: -0.02em;
+    margin-bottom: 5px;
+  }
 }
 
 .initials {
   color: $color-gray-a5;
   text-transform: uppercase;
   font-weight: $fw-bold;
+  font-family: $font-Mont;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+
+  @include tablet-mobile {
+    font-size: 14px;
+    line-height: 14px;
+  }
 }
 
 .statistics {
   margin-top: 20px;
   padding-bottom: 15px;
+
+  @include tablet-mobile {
+    flex-grow: 1;
+    margin-top: 10px;
+    padding-bottom: 10px;
+  }
 }
 
 .currency {
   font-size: 25px;
   color: $color-black;
   font-weight: $fw-semibold;
+
+
   span {
     font-size: 16px;
+  }
+
+  @include tablet-mobile {
+    font-size: 21px;
+    font-weight: $fw-bold;
+    line-height: 21px;
+    letter-spacing: -0.02em;
   }
 }
 
@@ -89,14 +152,22 @@
   }
 }
 
+.cardFooter {
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .buy {
-  margin-top: 14px;
+  margin-top: 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .buyBtn {
+  padding: 10px 20px;
   text-transform: uppercase;
   font-weight: $fw-semibold;
   background: $password-gradient;
@@ -109,7 +180,6 @@
 }
 
 .buyText {
-  margin-top: 9px;
   font-size: 12px;
   color: $color-gray-a5;
 }
