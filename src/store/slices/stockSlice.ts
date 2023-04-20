@@ -22,7 +22,7 @@ const stockSlice = createSlice({
   initialState,
   reducers: {
     getStockResponse: (state, action) => {
-      state.data = action.payload.data.data
+      state.data = action.payload
     },
   },
 })
