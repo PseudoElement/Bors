@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 import Image from 'next/image'
+import cn from 'classnames'
 
 import { StocksCard, Popup, Input, Pagination } from 'components'
 import {
@@ -30,7 +31,7 @@ export const BuyStock: FC = () => {
 
   const getAllStocks = async () => {
     try {
-      const {data} = await stockAll()
+      const { data } = await stockAll()
       dispatch(getStockResponse(data.data))
     } catch (e) {
       console.error(e)
@@ -43,7 +44,6 @@ export const BuyStock: FC = () => {
 
   const buyStock = async () => {
     try {
-
       const stocksObj: any = {}
       stockInBasket.forEach(item => {
         stocksObj[item.id] = 10
@@ -76,78 +76,87 @@ export const BuyStock: FC = () => {
   }
 
   return (
-    <div className={s.page}>
-      <Popup
-        isOpen={showBuyStockList}
-        onClose={() => setShowBuyStockList(false)}
-      >
-        <BuyStockList onClick={buyStock} stocks={stockInBasket} />
-      </Popup>
+    <>
+      <div className={s.page}>
+        <Popup
+          isOpen={showBuyStockList}
+          onClose={() => setShowBuyStockList(false)}
+        >
+          <BuyStockList onClick={buyStock} stocks={stockInBasket} />
+        </Popup>
 
-      <Popup
-        isOpen={showBuyStockInfo}
-        onClose={() => setShowBuyStockInfo(false)}
-      >
-        {/*// @ts-ignore*/}
-        <CardStocksInfo {...card_stocks_info} />
-      </Popup>
+        <Popup
+          isOpen={showBuyStockInfo}
+          onClose={() => setShowBuyStockInfo(false)}
+        >
+          {/*// @ts-ignore*/}
+          <CardStocksInfo {...card_stocks_info} />
+        </Popup>
 
-      <div className={s.container}>
-        <h1 className={s.title}>Köp aktier</h1>
+        <div className={s.container}>
+          <h1 className={s.title}>Köp aktier</h1>
 
-        <p className={s.pageDescription}>
-          Du kan köpa aktier för 1 000 000 demo kronor, men kan inte sälja eller
-          byta ditt innehav under aktietävlingen.{' '}
-        </p>
+          <p className={s.pageDescription}>
+            Du kan köpa aktier för 1 000 000 demo kronor, men kan inte sälja
+            eller byta ditt innehav under aktietävlingen.{' '}
+          </p>
 
-        <div className={s.filterWrapper}>
-          <FiltersPanel
-            defaultValue={{ price: true, lineBusiness: true, popularity: true }}
-            onChange={() => {}}
-          >
-            <div className={s.inputWrapper}>
-              <div className={s.searchIcon}>
-                <Image
-                  src={SearchIcon.src}
-                  alt='search'
-                  width={24}
-                  height={24}
+          <div className={s.filterWrapper}>
+            <FiltersPanel
+              defaultValue={{
+                price: true,
+                lineBusiness: true,
+                popularity: true,
+              }}
+              onChange={() => {}}
+            >
+              <div className={s.inputWrapper}>
+                <div className={s.searchIcon}>
+                  <Image
+                    src={SearchIcon.src}
+                    alt='search'
+                    width={24}
+                    height={24}
+                  />
+                </div>
+
+                <Input
+                  classname={s.searchInput}
+                  placeholder='Sök'
+                  value={searchValue}
+                  onChange={e => setSearchValue(e)}
                 />
               </div>
+            </FiltersPanel>
 
-              <Input
-                classname={s.searchInput}
-                placeholder='Sök'
-                value={searchValue}
-                onChange={e => setSearchValue(e)}
-              />
+            <div className={s.grid}>
+              {stocks?.map(item => (
+                <StocksCard
+                  onShow={() => showStockDetails(item.id)}
+                  onClick={() => setStockInBasket(prev => [...prev, item])}
+                  key={item.id}
+                  {...item}
+                />
+              ))}
             </div>
-          </FiltersPanel>
-
-          <div className={s.grid}>
-            {stocks?.map(item => (
-              <StocksCard
-                onShow={() => showStockDetails(item.id)}
-                onClick={() => setStockInBasket(prev => [...prev, item])}
-                key={item.id}
-                {...item}
-              />
-            ))}
           </div>
-        </div>
 
-        <Pagination />
+          <Pagination />
+        </div>
       </div>
 
-      {stockInBasket.length !== 0 && (
-        <div className={s.bottomBuySection}>
-          <BottomBuySection
-            onClick={(id: number) => deleteStockInBasket(id)}
-            onClose={() => setShowBuyStockList(true)}
-            stocks={stockInBasket}
-          />
-        </div>
-      )}
-    </div>
+      <div
+        className={cn(
+          s.bottomBuySection,
+          stockInBasket.length !== 0 ? s.bottomBuySectionShow : ''
+        )}
+      >
+        <BottomBuySection
+          onClick={(id: number) => deleteStockInBasket(id)}
+          onClose={() => setShowBuyStockList(true)}
+          stocks={stockInBasket}
+        />
+      </div>
+    </>
   )
 }
