@@ -16,7 +16,6 @@ import { setStockData, setStockParams } from 'store/slices/stockSlice'
 
 import { Stocks } from 'shared/types/stocks'
 
-import { card_stocks_info } from 'shared/mocks/mock_cardStocksInfo'
 import SearchIcon from '/public/assets/icons/Search.png'
 
 import s from './buyStock.module.scss'
@@ -43,14 +42,23 @@ export const BuyStock: FC = () => {
   const buyStock = async () => {
     const toBuyStocks: any = {}
 
-    stockInBasket.forEach(item => {
-      toBuyStocks[item.id] = item.count
-    })
+    if (showBuyStockInfo && stockDetails) {
+      toBuyStocks[stockDetails.id] = 1
+    }
 
-    await buyStocks({ stock: toBuyStocks })
-    setStockInBasket([])
-    setShowBuyStockInfo(false)
-    // console.log({ stock: { '1': 5, '2': 10 } })
+    if (stockInBasket.length) {
+      stockInBasket.forEach(item => {
+        toBuyStocks[item.id] = 1
+      })
+    }
+
+    try {
+      await buyStocks({ stock: toBuyStocks })
+      // console.log({ stock: { '1': 5, '2': 10 } })
+      setStockInBasket([])
+      setShowBuyStockInfo(false)
+      setShowBuyStockList(true)
+    } catch (e) {}
   }
 
   const deleteStockInBasket = (id: number) => {
@@ -64,9 +72,15 @@ export const BuyStock: FC = () => {
         stocks?.map(item => (item.id === id ? data.data.data : item)) || null
       )
     )
-    console.log(data.data.data)
+
     setStockDetails(data.data.data)
     setShowBuyStockInfo(true)
+  }
+
+  const stockAddToBasket = (item: Stocks) => {
+    if (!stockInBasket.find(itm => itm.id === item.id)) {
+      setStockInBasket(prev => [...prev, item])
+    }
   }
 
   return (
@@ -76,7 +90,7 @@ export const BuyStock: FC = () => {
           isOpen={showBuyStockList}
           onClose={() => setShowBuyStockList(false)}
           buttonText='Bekräfta'
-          onSubmit={buyStock}
+          onSubmit={() => setShowBuyStockList(false)}
         >
           <BuyStockList stocks={stockInBasket} />
         </Popup>
@@ -131,7 +145,7 @@ export const BuyStock: FC = () => {
               {stocks?.map(item => (
                 <StocksCard
                   onShow={() => showStockDetails(item.id)}
-                  onClick={() => setStockInBasket(prev => [...prev, item])}
+                  onClick={() => stockAddToBasket(item)}
                   key={item.id}
                   {...item}
                 />
@@ -151,7 +165,7 @@ export const BuyStock: FC = () => {
       >
         <BottomBuySection
           onClick={(id: number) => deleteStockInBasket(id)}
-          onClose={() => setShowBuyStockList(true)}
+          buyStock={buyStock}
           stocks={stockInBasket}
         />
       </div>

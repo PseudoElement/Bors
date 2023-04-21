@@ -25,7 +25,7 @@ api.interceptors.request.use(
     return config
   },
   function (error) {
-    return error
+    return Promise.reject(error)
   }
 )
 
@@ -52,6 +52,6 @@ api.interceptors.response.use(
     store.dispatch(
       setAppError(errorMessage || error.response.data.messge || error.message)
     )
-    return error
+    return Promise.reject(error)
   }
 )
