@@ -28,6 +28,8 @@ export const BuyStock: FC = () => {
   const [searchValue, setSearchValue] = useState<string>('')
   const stocks = useAppSelector(state => state.stock.data)
 
+  const [gotStocks, setGotStocks] = useState<Stocks[]>()
+
   const getAllStocks = async () => {
     try {
       const {data} = await stockAll()
@@ -39,7 +41,14 @@ export const BuyStock: FC = () => {
 
   useEffect(() => {
     getAllStocks()
+    
   }, [dispatch])
+
+  useEffect(() =>{
+    if(stocks){      
+      setGotStocks(stocks)
+    }
+  }, [stocks])
 
   const buyStock = async () => {
     try {
@@ -56,7 +65,7 @@ export const BuyStock: FC = () => {
   }
 
   const deleteStockInBasket = (id: number) => {
-    setStockInBasket(stocks => stocks.filter(item => item.id !== id))
+    setStockInBasket(gotStocks => gotStocks.filter(item => item.id !== id))
   }
 
   const showStockDetails = async (id: number) => {
@@ -65,7 +74,7 @@ export const BuyStock: FC = () => {
 
       dispatch(
         getStockResponse(
-          stocks?.map(item => (item.id === id ? data.data.data : item))
+          gotStocks?.map(item => (item.id === id ? data.data.data : item))
         )
       )
       setShowBuyStockInfo(true)
@@ -125,7 +134,7 @@ export const BuyStock: FC = () => {
           </FiltersPanel>
 
           <div className={s.grid}>
-            {stocks?.map(item => (
+            {gotStocks?.map(item => (
               <StocksCard
                 onShow={() => showStockDetails(item.id)}
                 onClick={() => setStockInBasket(prev => [...prev, item])}
