@@ -7,6 +7,8 @@ import CloseIcon from '/public/assets/icons/CloseIcon.svg'
 
 import s from './popup.module.scss'
 import { Button } from '../index'
+import { useAppSelector } from 'shared/hooks/redux'
+import { Loading } from 'components/Loading/Loading'
 
 interface PopupProps {
   buttonText?: string
@@ -32,6 +34,7 @@ export const Popup: FC<PopupProps> = ({
   onSubmit,
 }) => {
   const overlayRef = useRef<HTMLDivElement>(null)
+  const app = useAppSelector(state => state.app)
 
   useClickOutside(overlayRef, !isClosable ? onClose : () => {})
 
@@ -57,7 +60,9 @@ export const Popup: FC<PopupProps> = ({
           )}
           <div className={s.wrapperContent}>
             {children}
-            <Button onClick={() => onSubmit?.()}>{buttonText}</Button>
+            <Button onClick={() => onSubmit?.()}>
+              {app.loading ? <Loading /> : buttonText}
+            </Button>
           </div>
         </div>
       </div>

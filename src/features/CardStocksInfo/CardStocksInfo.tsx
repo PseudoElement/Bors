@@ -5,7 +5,7 @@ import Image, { ImageProps } from 'next/image'
 import { Button, Indicator, Tag } from 'components'
 
 import { IndicatorProps } from 'shared/types/indicators'
-import { Stocks } from 'shared/types/stocks'
+import { Country, StockTypes, Stocks } from 'shared/types/stocks'
 
 import s from './cardStocksInfo.module.scss'
 import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
@@ -14,11 +14,11 @@ import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
 interface CardStocksInfoProps extends Stocks {
   currencyValue: string
   countryImage?: ImageProps['src'] | undefined
-  country: string
-  tag: string[]
+  country: Country
+  types: StockTypes[]
   textInfoCard: string
   indicators: IndicatorProps[]
-  profit: IndicatorProps[]
+  revenue: IndicatorProps[]
 }
 
 export const CardStocksInfo: FC<CardStocksInfoProps> = ({
@@ -29,12 +29,11 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
   currencyValue,
   countryImage,
   country,
-  tag,
+  types,
   textInfoCard,
   indicators,
-  profit,
+  revenue,
 }) => {
-
   const { width } = useWindowDimensions()
 
   return (
@@ -70,21 +69,20 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
 
           <div className={s.countryInfo}>
             <span className={s.countryIssuer}>Emittentens land</span>
-            <span className={s.country}>{country}</span>
+            <span className={s.country}>{country.name}</span>
           </div>
         </div>
       </div>
 
       <div className={s.cardTags}>
-        {tag.map((tag, idx) => (
-          <Tag title={tag} key={idx} />
+        {types.map((tag, idx) => (
+          <Tag name={tag.name} key={idx} />
         ))}
       </div>
 
       <div className={s.textInfoCard}>{textInfoCard}</div>
 
-      {
-        width <= 620 &&
+      {width <= 620 && (
         <div className={s.mobileCountryCard}>
           <Image
             width={36}
@@ -95,10 +93,10 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
 
           <div className={s.mobileCountryInfo}>
             <span className={s.mobileCountryIssuer}>Country of the issuer</span>
-            <span className={s.mobileCountry}>{country}</span>
+            <span className={s.mobileCountry}>{country.short_name}</span>
           </div>
         </div>
-      }
+      )}
 
       <div className={s.indicators}>
         <div className={s.titleIndicators}>Indikatorer</div>
@@ -106,7 +104,7 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
         <div className={s.indicatorsItem}>
           {indicators.map((item, idx) => (
             <Indicator
-              title={item.title}
+              name={item.name}
               indicator={item.indicator}
               key={item.indicator}
             />
@@ -118,9 +116,9 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
         <div className={s.titleIndicators}>Intäkter och vinst</div>
 
         <div className={s.indicatorsItem}>
-          {profit.map((item, idx) => (
+          {revenue.map((item, idx) => (
             <Indicator
-              title={item.title}
+              name={item.name}
               indicator={item.indicator}
               key={item.indicator}
             />

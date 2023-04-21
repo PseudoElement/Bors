@@ -65,3 +65,16 @@ export interface getStockResponse {
 export interface StocksList {
   stocks: Stocks[]
 }
+
+export interface StockTypesPrivot {
+  stock_id: number
+  stock_types_id: number
+}
+
+export interface StockTypes {
+  id: number
+  name: string
+  updated_at: string
+  created_at: string
+  privot: StockTypesPrivot
+}

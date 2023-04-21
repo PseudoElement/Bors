@@ -12,7 +12,7 @@ import {
 
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { stockAll, buyStocks, detailStock } from 'shared/api/routes/stock'
-import { getStockResponse } from 'store/slices/stockSlice'
+import { setStockData, setStockParams } from 'store/slices/stockSlice'
 
 import { Stocks } from 'shared/types/stocks'
 
@@ -27,40 +27,30 @@ export const BuyStock: FC = () => {
   const [showBuyStockInfo, setShowBuyStockInfo] = useState<boolean>(false)
   const [stockInBasket, setStockInBasket] = useState<Stocks[]>([])
   const [searchValue, setSearchValue] = useState<string>('')
+  const [stockDetails, setStockDetails] = useState<Stocks | null>(null)
   const stocks = useAppSelector(state => state.stock.data)
 
-  const [gotStocks, setGotStocks] = useState<Stocks[]>()
-
   const getAllStocks = async () => {
-    try {
-      const { data } = await stockAll()
-      dispatch(getStockResponse(data.data))
-    } catch (e) {
-      console.error(e)
-    }
+    const { data } = await stockAll()
+    dispatch(setStockData(data.data.data))
+    dispatch(setStockParams({ ...data.data, data: null }))
   }
 
   useEffect(() => {
     getAllStocks()
-  }, [dispatch])
-
-  useEffect(() => {
-    if (stocks) {
-      setGotStocks(stocks)
-    }
-  }, [stocks])
+  }, [])
 
   const buyStock = async () => {
-    try {
-      const stocksObj: any = {}
-      stockInBasket.forEach(item => {
-        stocksObj[item.id] = 10
-      })
+    const toBuyStocks: any = {}
 
-      const response = await buyStocks({ stock: stocksObj })
-      console.log(response)
-      // console.log({ stock: { '1': 5, '2': 10 } })
-    } catch (error) {}
+    stockInBasket.forEach(item => {
+      toBuyStocks[item.id] = item.count
+    })
+
+    await buyStocks({ stock: toBuyStocks })
+    setStockInBasket([])
+    setShowBuyStockInfo(false)
+    // console.log({ stock: { '1': 5, '2': 10 } })
   }
 
   const deleteStockInBasket = (id: number) => {
@@ -68,19 +58,15 @@ export const BuyStock: FC = () => {
   }
 
   const showStockDetails = async (id: number) => {
-    try {
-      const data = await detailStock(id)
-
-      dispatch(
-        getStockResponse(
-          gotStocks?.map(item => (item.id === id ? data.data.data : item))
-        )
+    const data = await detailStock(id)
+    dispatch(
+      setStockData(
+        stocks?.map(item => (item.id === id ? data.data.data : item)) || null
       )
-      setShowBuyStockInfo(true)
-    } catch (e) {
-      alert((e as Error).message)
-      console.error(e)
-    }
+    )
+    console.log(data.data.data)
+    setStockDetails(data.data.data)
+    setShowBuyStockInfo(true)
   }
 
   return (
@@ -89,8 +75,10 @@ export const BuyStock: FC = () => {
         <Popup
           isOpen={showBuyStockList}
           onClose={() => setShowBuyStockList(false)}
+          buttonText='Bekräfta'
+          onSubmit={buyStock}
         >
-          <BuyStockList onClick={buyStock} stocks={stockInBasket} />
+          <BuyStockList stocks={stockInBasket} />
         </Popup>
 
         <Popup
@@ -98,7 +86,7 @@ export const BuyStock: FC = () => {
           onClose={() => setShowBuyStockInfo(false)}
         >
           {/*// @ts-ignore*/}
-          <CardStocksInfo {...card_stocks_info} />
+          <CardStocksInfo {...stockDetails} />
         </Popup>
 
         <div className={s.container}>
@@ -138,7 +126,7 @@ export const BuyStock: FC = () => {
             </FiltersPanel>
 
             <div className={s.grid}>
-              {gotStocks?.map(item => (
+              {stocks?.map(item => (
                 <StocksCard
                   onShow={() => showStockDetails(item.id)}
                   onClick={() => setStockInBasket(prev => [...prev, item])}

@@ -41,7 +41,7 @@ export const StocksCard: FC<StocksCardProps> = ({
   buy_sum_count,
 }) => {
   const [isActiveCard, setIsActiveCard] = useState<boolean>(false)
-  const [counterValue, setCounterValue] = useState(0)
+  const [counterValue, setCounterValue] = useState<number>(0)
 
   const changeCounter = (value: number) => {
     setCounterValue(value)
@@ -100,15 +100,15 @@ export const StocksCard: FC<StocksCardProps> = ({
 
         <div className={s.cardFooter}>
           {isActiveCard ? (
-              <Counter min={0} value={counterValue} onChange={changeCounter} />
+            <Counter min={0} value={counterValue} onChange={changeCounter} />
           ) : (
-              <div className={s.buy}>
-                <button className={s.buyBtn} onClick={e => addNft(e)}>
-                  {false ? 'Köp mer' : 'Köpa'}
-                </button>
+            <div className={s.buy}>
+              <button className={s.buyBtn} onClick={e => addNft(e)}>
+                {false ? 'Köp mer' : 'Köpa'}
+              </button>
 
-                <span className={s.buyText}>Tillgängliga aktier {count}</span>
-              </div>
+              <span className={s.buyText}>Tillgängliga aktier {count}</span>
+            </div>
           )}
         </div>
       </div>
