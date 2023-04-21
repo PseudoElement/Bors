@@ -47,7 +47,6 @@ export const UserAccountForm: FC = () => {
   const onSubmitHanlder: SubmitHandler<User> = async formData => {
     const { data } = await userUpdate(formData)
     dispatch(userUpdateResponse({ user: data.data, errorMessage: null }))
-    dispatch(setAppSuccess(data.messge))
   }
 
   const handlerFirstName = (e: ChangeEvent<HTMLInputElement>) => {

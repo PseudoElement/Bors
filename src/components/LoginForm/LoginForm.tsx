@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { cookies } from 'shared/utils/Cookies'
 
 import s from './loginForm.module.scss'
+import { Loading } from 'components/Loading/Loading'
 
 export interface FormInputProps {
   email: string
@@ -28,6 +29,7 @@ export const LoginForm: FC<LoginFormProps> = ({
   const dispatch = useAppDispatch()
   const { push } = useRouter()
   const user = useAppSelector(state => state.user)
+  const app = useAppSelector(state => state.app)
 
   const {
     control,
@@ -104,7 +106,7 @@ export const LoginForm: FC<LoginFormProps> = ({
       </label>
 
       <Button type='submit' className={s.submitBtn}>
-        Stiga på
+        {app.loading ? <Loading /> : 'Stiga på'}
       </Button>
     </form>
   )

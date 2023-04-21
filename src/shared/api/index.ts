@@ -1,10 +1,16 @@
 import Axios from 'axios'
 import { store } from 'store'
-import { setAppError, setAppLoading } from 'store/slices/appSlice'
+import {
+  setAppError,
+  setAppLoading,
+  setAppSuccess,
+} from 'store/slices/appSlice'
 
 export * from './endpoints'
 
 export const BASE_URL = 'https://api.xn--brsjakten-07a.se'
+
+const excludePaths = ['/stocks', '/me']
 
 export const api = Axios.create({
   baseURL: BASE_URL + '/api/v1',
@@ -17,16 +23,21 @@ export const api = Axios.create({
 api.interceptors.request.use(
   function (config) {
     store.dispatch(setAppLoading(true))
+
     return config
   },
   function (error) {
-    return Promise.reject(error)
+    return error
   }
 )
 
 api.interceptors.response.use(
   function (response) {
     store.dispatch(setAppLoading(false))
+
+    if (response.config.method !== 'get') {
+      store.dispatch(setAppSuccess(response.data.messge))
+    }
     return response
   },
   function (error) {
@@ -43,6 +54,6 @@ api.interceptors.response.use(
     store.dispatch(
       setAppError(errorMessage || error.response.data.messge || error.message)
     )
-    return Promise.reject(error)
+    return error
   }
 )

@@ -21,33 +21,30 @@ export const Notify: React.FC = () => {
   }, [errorMessage, successMessage])
 
   const handlerCloseNotify = () => {
-    setOpen(false)
     dispatch(setAppError(''))
     dispatch(setAppSuccess(''))
+    setOpen(false)
   }
 
   return (
-    <div
-      className={cn(s.notify, isOpen ? s.active : '')}
-      onClick={handlerCloseNotify}
-    >
+    <div className={cn(s.notify, isOpen ? s.active : '')}>
       {isOpen && (
         <div className={s.wrapper}>
-          {errorMessage && (
-            <Image src='/assets/image/Error.png' width={30} height={30} />
-          )}
-          {successMessage && (
-            <Image
-              src='/assets/image/CheckInCircle.png'
-              width={30}
-              height={30}
-            />
-          )}
+          <Image
+            src={`/assets/image/${
+              (errorMessage && 'Error') || (successMessage && 'CheckInCircle')
+            }.png`}
+            width={30}
+            height={30}
+          />
           <p style={{ color: errorMessage ? 'red' : 'green' }}>
             {errorMessage || successMessage}
           </p>
         </div>
       )}
+      <div className={s.closeIcon} onClick={handlerCloseNotify}>
+        <Image src='/assets/icons/CloseIconBlack.svg' width={15} height={15} />
+      </div>
     </div>
   )
 }

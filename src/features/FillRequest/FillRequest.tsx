@@ -3,7 +3,6 @@ import { SubmitHandler, useForm, Controller } from 'react-hook-form'
 
 import { Input } from 'components'
 
-
 import { EMAIL_VALIDATION_REG } from 'shared/constants/regExp'
 import image from '/public/assets/image/fillRequest.png'
 
@@ -12,7 +11,9 @@ import s from './fillRequest.module.scss'
 import { sendEmail } from 'shared/api/routes/main'
 import { Dispatch, FC, SetStateAction } from 'react'
 import { PopupAfterSubmitStatus } from 'shared/enums'
-
+import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
+import { setAppSuccess } from 'store/slices/appSlice'
+import { Loading } from 'components/Loading/Loading'
 
 type EmailRecoveryFormProps = { email: string }
 interface FillRequestProps {
@@ -20,6 +21,7 @@ interface FillRequestProps {
 }
 
 export const FillRequest: FC<FillRequestProps> = ({ setPopupStatus }) => {
+  const app = useAppSelector(state => state.app)
   const {
     control,
     handleSubmit,
@@ -33,14 +35,7 @@ export const FillRequest: FC<FillRequestProps> = ({ setPopupStatus }) => {
   const onSubmit: SubmitHandler<
     EmailRecoveryFormProps
   > = async defaultValues => {
-    try {
-      await sendEmail(defaultValues.email)
-      setPopupStatus(PopupAfterSubmitStatus.SUCCESS)
-    } catch (e) {
-      setPopupStatus(PopupAfterSubmitStatus.ERROR)
-      console.error(e)
-      //  alert((e as Error).message)
-    }
+    await sendEmail(defaultValues.email)
   }
 
   return (
@@ -70,7 +65,7 @@ export const FillRequest: FC<FillRequestProps> = ({ setPopupStatus }) => {
                 onChange={onChange}
                 onClick={handleSubmit(onSubmit)}
                 type='email'
-                withButton='Skicka'
+                withButton={app.loading ? <Loading /> : 'Skicka'}
               />
             )}
           />

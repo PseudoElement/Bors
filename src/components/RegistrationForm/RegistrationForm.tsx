@@ -5,12 +5,13 @@ import { Input, Button, Popup } from 'components'
 
 import { cookies } from 'shared/utils/Cookies'
 import { UserRegRequest } from 'shared/types/user'
-import { useAppDispatch } from 'shared/hooks/redux'
+import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { userRegister } from 'shared/api/routes/user'
 import { newUserRequested } from 'store/slices/userSlice'
 
 import s from './registrationForm.module.scss'
 import { PopupAfterSubmitStatus } from 'shared/enums'
+import { Loading } from 'components/Loading/Loading'
 
 interface RegistrationFormProps {
   openPopup: () => void
@@ -18,6 +19,7 @@ interface RegistrationFormProps {
 
 export const RegistrationForm: FC<RegistrationFormProps> = ({ openPopup }) => {
   const dispatch = useAppDispatch()
+  const app = useAppSelector(state => state.app)
 
   const {
     control,
@@ -43,9 +45,9 @@ export const RegistrationForm: FC<RegistrationFormProps> = ({ openPopup }) => {
         token: data.data.access_token,
         authError: null,
       }
-      await cookies.set('token', data.data.access_token)
-      await dispatch(newUserRequested(userData))
-      await reset()
+      cookies.set('token', data.data.access_token)
+      dispatch(newUserRequested(userData))
+      reset()
       openPopup()
     } catch (error) {
       console.error(error)
@@ -142,7 +144,7 @@ export const RegistrationForm: FC<RegistrationFormProps> = ({ openPopup }) => {
             )}
       </label>
       <Button type='submit' className={s.submitBtn}>
-        Registrera dig
+        {app.loading ? <Loading /> : 'Registrera dig'}
       </Button>
 
       <p className={s.agreeInfo}>

@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, ReactNode, useState } from 'react'
 
 import cn from 'classnames'
 import s from './input.module.scss'
@@ -14,7 +14,7 @@ interface InputProps {
   classname?: string
   classNameBtn?: string
   placeholder?: string
-  withButton?: string
+  withButton?: string | ReactNode
   withIcon?: boolean
 }
 

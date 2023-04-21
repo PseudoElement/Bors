@@ -3,13 +3,13 @@ import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 
 import { Layout } from 'features'
+import { Notify } from 'components'
 
 import { store } from 'store'
 import { persistor } from 'store'
 import { AuthCheck } from '../src/shared/hock/AuthCheck'
 
 import '../src/styles/globals.scss'
-import { Notify } from 'components/Notify/Notify'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
