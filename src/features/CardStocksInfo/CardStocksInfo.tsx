@@ -125,10 +125,6 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
           ))}
         </div>
       </div>
-
-      <div className={s.buyButton}>
-        <Button>Köp aktier</Button>
-      </div>
     </div>
   )
 }

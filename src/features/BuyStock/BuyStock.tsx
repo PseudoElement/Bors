@@ -84,6 +84,8 @@ export const BuyStock: FC = () => {
         <Popup
           isOpen={showBuyStockInfo}
           onClose={() => setShowBuyStockInfo(false)}
+          onSubmit={buyStock}
+          buttonText='Köp aktier'
         >
           {/*// @ts-ignore*/}
           <CardStocksInfo {...stockDetails} />
