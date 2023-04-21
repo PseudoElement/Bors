@@ -42,7 +42,9 @@
     grid-template-columns: repeat(3, 1fr);
   }
   @include tablet-mobile {
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     column-gap: 8px;
     row-gap: 32px;
   }

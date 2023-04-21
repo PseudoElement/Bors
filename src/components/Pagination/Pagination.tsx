@@ -49,7 +49,7 @@ export const Pagination: FC<PaginationProps> = ({ classNames }) => {
         ))}
 
         <button
-          className={s.paginationButton}
+          className={cn(s.paginationButton, s.buttonNext)}
           onClick={() => handlePush(cur + 1)}
         >
           <div>Fortsätt</div>
@@ -57,7 +57,17 @@ export const Pagination: FC<PaginationProps> = ({ classNames }) => {
         </button>
       </div>
 
-      <div className={s.paginationButton}>Show by 24</div>
+      <div className={s.buttonWrap}>
+        <button className={s.paginationButton}>Show by 24</button>
+
+        <button
+          className={cn(s.paginationButton, s.buttonNextBottom)}
+          onClick={() => handlePush(cur + 1)}
+        >
+          <div>Fortsätt</div>
+          <Arrow />
+        </button>
+      </div>
     </div>
   )
 }
