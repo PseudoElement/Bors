@@ -9,16 +9,18 @@ import { persistor } from 'store'
 import { AuthCheck } from '../src/shared/hock/AuthCheck'
 
 import '../src/styles/globals.scss'
+import { Notify } from 'components/Notify/Notify'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <Layout>
-        <AuthCheck>
-          <Component {...pageProps}/>
-        </AuthCheck>
-      </Layout>
+          <AuthCheck>
+            <Component {...pageProps} />
+            <Notify />
+          </AuthCheck>
+        </Layout>
       </PersistGate>
     </Provider>
   )

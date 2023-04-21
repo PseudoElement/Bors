@@ -1,4 +1,9 @@
-import { Action, configureStore, ThunkAction, combineReducers } from '@reduxjs/toolkit'
+import {
+  Action,
+  configureStore,
+  ThunkAction,
+  combineReducers,
+} from '@reduxjs/toolkit'
 import {
   persistStore,
   persistReducer,
@@ -15,23 +20,25 @@ import Cookies from 'js-cookie'
 
 import userSlice from './slices/userSlice'
 import stockSlice from './slices/stockSlice'
+import { appReducer } from './slices/appSlice'
 
 const persistConfig = {
   key: 'root',
   storage: new CookieStorage(Cookies),
-  whitelist: ['user']
+  whitelist: ['user'],
 }
 
 const rootReducer = combineReducers({
   user: userSlice,
-  stock: stockSlice
+  stock: stockSlice,
+  app: appReducer,
 })
 
 const _persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = configureStore({
   reducer: _persistedReducer,
-  middleware: (getDefaultMiddleware) =>
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
