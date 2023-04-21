@@ -23,6 +23,7 @@ import { Navbar } from './Navbar/Navbar'
 import { BurgerMenuButton } from './BurgerMenuButton/BurgerMenuButton'
 import { Pagination } from './Pagination/Pagination'
 import { LoginButton } from './LoginButton/LoginButton'
+import { Notify } from './Notify/Notify'
 
 export {
   Button,
@@ -49,5 +50,6 @@ export {
   BurgerMenu,
   Navbar,
   InfoCard,
-  LoginButton
+  LoginButton,
+  Notify,
 }

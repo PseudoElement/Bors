@@ -1,9 +1,9 @@
 import { FC, useEffect, ChangeEvent, useState } from 'react'
 import cn from 'classnames'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
-import { AxiosError } from 'axios'
 
 import { Button, Input } from 'components'
+import { Loading } from 'components/Loading/Loading'
 
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { userUpdate } from 'shared/api/routes/user'
@@ -16,11 +16,13 @@ import { formatTelNumber } from 'shared/helpers/formatTelNumber'
 import { mock_user_fields } from 'shared/mocks/mock_userAccount'
 
 import s from './UserAccountForm.module.scss'
+import { setAppSuccess } from 'store/slices/appSlice'
 
 export const UserAccountForm: FC = () => {
   const dispatch = useAppDispatch()
   const user = useAppSelector(state => state.user.user)
   const [name, setName] = useState('')
+  const app = useAppSelector(state => state.app)
 
   const {
     control,
@@ -43,17 +45,8 @@ export const UserAccountForm: FC = () => {
   })
 
   const onSubmitHanlder: SubmitHandler<User> = async formData => {
-    try {
-      const { data } = await userUpdate(formData)
-      dispatch(userUpdateResponse({ user: data.data, errorMessage: null }))
-    } catch (error) {
-      dispatch(
-        userUpdateResponse({
-          user: null,
-          errorMessage: (error as AxiosError).message,
-        })
-      )
-    }
+    const { data } = await userUpdate(formData)
+    dispatch(userUpdateResponse({ user: data.data, errorMessage: null }))
   }
 
   const handlerFirstName = (e: ChangeEvent<HTMLInputElement>) => {
@@ -236,7 +229,7 @@ export const UserAccountForm: FC = () => {
 
           <div className={s.btnsAction}>
             <Button className={s.actionBtn} type='submit'>
-              Spara ändringar
+              {app.loading ? <Loading /> : 'Spara ändringar'}
             </Button>
 
             <Button

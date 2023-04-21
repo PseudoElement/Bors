@@ -3,6 +3,7 @@ import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 
 import { Layout } from 'features'
+import { Notify } from 'components'
 
 import { store } from 'store'
 import { persistor } from 'store'
@@ -15,10 +16,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <Layout>
-        <AuthCheck>
-          <Component {...pageProps}/>
-        </AuthCheck>
-      </Layout>
+          <AuthCheck>
+            <Component {...pageProps} />
+            <Notify />
+          </AuthCheck>
+        </Layout>
       </PersistGate>
     </Provider>
   )
