@@ -4,30 +4,30 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   background: $color-black-blue;
   z-index: 10000;
-  padding-top: 111px;
   padding-bottom: 25px;
+  overflow: auto;
   // @include tablet-mobile {
   //      align-items: end;
   //      justify-content: start;
   //      padding-top: 24px;
   // }
-  overflow-y: scroll;
 
 }
 
 .popupWrapper {
   position: relative;
   margin: 0 15px;
-  max-width: 688px;
+  height: 80%;
+  max-height: 1200px;
   @include tablet-mobile {
-    padding: 74px 16px 0;
+    padding: 0px 16px;
     margin: 0;
     width: 100%;
   }
@@ -35,13 +35,23 @@
 
 .popupContent {
   position: relative;
-  height: 100%;
-  border-radius: 20px;
-  background: linear-gradient($color-white, $color-white) padding-box,
-    $border-gradient-access border-box;
-  border: 3px solid transparent;
   box-shadow: $box-shadow-02;
   backdrop-filter: blur(46.9084px);
+  margin-bottom: 60px;
+  @include mobile-laptop{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 25px;
+  }
+ 
+  @include laptop{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+  
 
   > button {
     position: absolute;
@@ -56,29 +66,40 @@
     border: 1px solid $color-gray-02;
     border-radius: 50%;
     cursor: pointer;
-
-    @include tablet {
-      margin-top: -86px;
-      left: 50%;
-      transform: translateX(-50%);
+    @include tablet-mobile{
+      position: unset;
+    }
+    @include big-tablet{
+      position: unset;
+    }
+    @include laptop{
+      position: unset;
     }
   }
 }
 .wrapperContent {
+  background: linear-gradient($color-white, $color-white) padding-box,
+  $border-gradient-access border-box;
+  border-radius: 20px;
+  border: 3px solid transparent;
   overflow: auto;
-  height: 100%;
   position: relative;
-  padding: 65px 127px 48px 128px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-
+  padding: 55px;
   &::-webkit-scrollbar {
     width: 0;
   }
   -ms-overflow-style: none;
-  @include tablet-mobile {
+  @include mobile-laptop {
     padding: 32px 20px 24px 20px;
   }
+  @include mobile-laptop{
+    padding-bottom: 55px;
+  }
+}
+.popup_added_button{
+  width: 100%;
 }

@@ -60,7 +60,10 @@ export const Popup: FC<PopupProps> = ({
           )}
           <div className={s.wrapperContent}>
             {children}
-            <Button onClick={() => onSubmit?.()}>
+            <Button
+              onClick={() => onSubmit?.()}
+              className={s.popup_added_button}
+            >
               {app.loading ? <Loading /> : buttonText}
             </Button>
           </div>

@@ -10,6 +10,9 @@
   @include tablet-mobile {
     max-width: 100%;
   }
+  @include mobile-laptop{
+    max-width: 100%;
+  }
   @media screen and (max-width: 420px) {
     padding: 10px 14px;
     align-items: center;

@@ -36,6 +36,15 @@ export const BuyStock: FC = () => {
   }
 
   useEffect(() => {
+    if (showBuyStockInfo === true) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'inherit'
+    }
+  }, [showBuyStockInfo])
+
+
+  useEffect(() => {
     getAllStocks()
   }, [])
 
