@@ -107,7 +107,7 @@ export const RegistrationForm: FC<RegistrationFormProps> = ({ openPopup }) => {
         <Controller
           name='password'
           control={control}
-          rules={{ required: 'Lösenord krävs', minLength: 6 }}
+          rules={{ required: 'Lösenord krävs', minLength: 8 }}
           render={({ field: { onChange, value } }) => (
             <Input withIcon={true} value={value} onChange={onChange} />
           )}
@@ -124,7 +124,7 @@ export const RegistrationForm: FC<RegistrationFormProps> = ({ openPopup }) => {
           control={control}
           rules={{
             required: 'Lösenordsbekräftelse krävs',
-            minLength: 6,
+            minLength: 8,
             validate: (value: string, data: UserRegRequest) =>
               value === data.password || 'Lösenord matchar inte',
           }}
