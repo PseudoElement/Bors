@@ -32,7 +32,7 @@ export const BuyStock: FC = () => {
   const getAllStocks = async () => {
     const { data } = await stockAll()
     dispatch(setStockData(data.data.data))
-    dispatch(setStockParams({ ...data.data, data: null }))
+    dispatch(setStockParams(data.data))
   }
 
   useEffect(() => {
@@ -42,7 +42,6 @@ export const BuyStock: FC = () => {
       document.body.style.overflow = 'inherit'
     }
   }, [showBuyStockInfo])
-
 
   useEffect(() => {
     getAllStocks()

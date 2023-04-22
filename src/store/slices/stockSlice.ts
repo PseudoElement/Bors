@@ -16,7 +16,7 @@ const stockSlice = createSlice({
   initialState,
   reducers: {
     setStockParams: (state: StocksTypes, action: PayloadAction<StockState>) => {
-      state.params = action.payload
+      state.params = { ...action.payload, data: null }
     },
     setStockData: (
       state: StocksTypes,
