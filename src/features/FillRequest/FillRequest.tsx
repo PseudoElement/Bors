@@ -35,7 +35,9 @@ export const FillRequest: FC<FillRequestProps> = ({ setPopupStatus }) => {
   const onSubmit: SubmitHandler<
     EmailRecoveryFormProps
   > = async defaultValues => {
-    await sendEmail(defaultValues.email)
+    try {
+      await sendEmail(defaultValues.email)
+    } catch (e) {}
   }
 
   return (

@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 import Image from 'next/image'
+import cn from 'classnames'
 
 import { StocksCard, Popup, Input, Pagination } from 'components'
 import {
@@ -11,11 +12,10 @@ import {
 
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { stockAll, buyStocks, detailStock } from 'shared/api/routes/stock'
-import { getStockResponse } from 'store/slices/stockSlice'
+import { setStockData, setStockParams } from 'store/slices/stockSlice'
 
 import { Stocks } from 'shared/types/stocks'
 
-import { card_stocks_info } from 'shared/mocks/mock_cardStocksInfo'
 import SearchIcon from '/public/assets/icons/Search.png'
 
 import s from './buyStock.module.scss'
@@ -26,17 +26,13 @@ export const BuyStock: FC = () => {
   const [showBuyStockInfo, setShowBuyStockInfo] = useState<boolean>(false)
   const [stockInBasket, setStockInBasket] = useState<Stocks[]>([])
   const [searchValue, setSearchValue] = useState<string>('')
+  const [stockDetails, setStockDetails] = useState<Stocks | null>(null)
   const stocks = useAppSelector(state => state.stock.data)
 
-  const [gotStocks, setGotStocks] = useState<Stocks[]>()
-
   const getAllStocks = async () => {
-    try {
-      const {data} = await stockAll()
-      dispatch(getStockResponse(data.data))
-    } catch (e) {
-      console.error(e)
-    }
+    const { data } = await stockAll()
+    dispatch(setStockData(data.data.data))
+    dispatch(setStockParams(data.data))
   }
 
   useEffect(() => {
@@ -47,30 +43,30 @@ export const BuyStock: FC = () => {
     }
   }, [showBuyStockInfo])
 
-
   useEffect(() => {
     getAllStocks()
-    
-  }, [dispatch])
-
-  useEffect(() =>{
-    if(stocks){      
-      setGotStocks(stocks)
-    }
-  }, [stocks])
+  }, [])
 
   const buyStock = async () => {
-    try {
+    const toBuyStocks: any = {}
 
-      const stocksObj: any = {}
+    if (showBuyStockInfo && stockDetails) {
+      toBuyStocks[stockDetails.id] = 1
+    }
+
+    if (stockInBasket.length) {
       stockInBasket.forEach(item => {
-        stocksObj[item.id] = 10
+        toBuyStocks[item.id] = 1
       })
+    }
 
-      const response = await buyStocks({ stock: stocksObj })
-      console.log(response)
+    try {
+      await buyStocks({ stock: toBuyStocks })
       // console.log({ stock: { '1': 5, '2': 10 } })
-    } catch (error) {}
+      setStockInBasket([])
+      setShowBuyStockInfo(false)
+      setShowBuyStockList(true)
+    } catch (e) {}
   }
 
   const deleteStockInBasket = (id: number) => {
@@ -78,94 +74,109 @@ export const BuyStock: FC = () => {
   }
 
   const showStockDetails = async (id: number) => {
-    try {
-      const data = await detailStock(id)
-
-      dispatch(
-        getStockResponse(
-          gotStocks?.map(item => (item.id === id ? data.data.data : item))
-        )
+    const data = await detailStock(id)
+    dispatch(
+      setStockData(
+        stocks?.map(item => (item.id === id ? data.data.data : item)) || null
       )
-      setShowBuyStockInfo(true)
-    } catch (e) {
-      alert((e as Error).message)
-      console.error(e)
+    )
+
+    setStockDetails(data.data.data)
+    setShowBuyStockInfo(true)
+  }
+
+  const stockAddToBasket = (item: Stocks) => {
+    if (!stockInBasket.find(itm => itm.id === item.id)) {
+      setStockInBasket(prev => [...prev, item])
     }
   }
 
   return (
-    <div className={s.page}>
-      <Popup
-        isOpen={showBuyStockList}
-        onClose={() => setShowBuyStockList(false)}
-      >
-        <BuyStockList onClick={buyStock} stocks={stockInBasket} />
-      </Popup>
+    <>
+      <div className={s.page}>
+        <Popup
+          isOpen={showBuyStockList}
+          onClose={() => setShowBuyStockList(false)}
+          buttonText='Bekräfta'
+          onSubmit={() => setShowBuyStockList(false)}
+        >
+          <BuyStockList stocks={stockInBasket} />
+        </Popup>
 
-      <Popup
-        isOpen={showBuyStockInfo}
-        onClose={() => setShowBuyStockInfo(false)}
-      >
-        {/*// @ts-ignore*/}
-        <CardStocksInfo {...card_stocks_info} />
-      </Popup>
+        <Popup
+          isOpen={showBuyStockInfo}
+          onClose={() => setShowBuyStockInfo(false)}
+          onSubmit={buyStock}
+          buttonText='Köp aktier'
+        >
+          {/*// @ts-ignore*/}
+          <CardStocksInfo {...stockDetails} />
+        </Popup>
 
-      <div className={s.container}>
-        <h1 className={s.title}>Köp aktier</h1>
+        <div className={s.container}>
+          <h1 className={s.title}>Köp aktier</h1>
 
-        <p className={s.pageDescription}>
-          Du kan köpa aktier för 1 000 000 demo kronor, men kan inte sälja eller
-          byta ditt innehav under aktietävlingen.{' '}
-        </p>
+          <p className={s.pageDescription}>
+            Du kan köpa aktier för 1 000 000 demo kronor, men kan inte sälja
+            eller byta ditt innehav under aktietävlingen.{' '}
+          </p>
 
-        <div className={s.filterWrapper}>
-          <FiltersPanel
-            defaultValue={{ price: true, lineBusiness: true, popularity: true }}
-            onChange={() => {}}
-          >
-            <div className={s.inputWrapper}>
-              <div className={s.searchIcon}>
-                <Image
-                  src={SearchIcon.src}
-                  alt='search'
-                  width={24}
-                  height={24}
+          <div className={s.filterWrapper}>
+            <FiltersPanel
+              defaultValue={{
+                price: true,
+                lineBusiness: true,
+                popularity: true,
+              }}
+              onChange={() => {}}
+            >
+              <div className={s.inputWrapper}>
+                <div className={s.searchIcon}>
+                  <Image
+                    src={SearchIcon.src}
+                    alt='search'
+                    width={24}
+                    height={24}
+                  />
+                </div>
+
+                <Input
+                  classname={s.searchInput}
+                  placeholder='Sök'
+                  value={searchValue}
+                  onChange={e => setSearchValue(e)}
                 />
               </div>
+            </FiltersPanel>
 
-              <Input
-                classname={s.searchInput}
-                placeholder='Sök'
-                value={searchValue}
-                onChange={e => setSearchValue(e)}
-              />
+            <div className={s.grid}>
+              {stocks?.map(item => (
+                <StocksCard
+                  onShow={() => showStockDetails(item.id)}
+                  onClick={() => stockAddToBasket(item)}
+                  key={item.id}
+                  {...item}
+                />
+              ))}
             </div>
-          </FiltersPanel>
-
-          <div className={s.grid}>
-            {gotStocks?.map(item => (
-              <StocksCard
-                onShow={() => showStockDetails(item.id)}
-                onClick={() => setStockInBasket(prev => [...prev, item])}
-                key={item.id}
-                {...item}
-              />
-            ))}
           </div>
-        </div>
 
-        <Pagination />
+          <Pagination />
+        </div>
       </div>
 
-      {stockInBasket.length !== 0 && (
-        <div className={s.bottomBuySection}>
-          <BottomBuySection
-            onClick={(id: number) => deleteStockInBasket(id)}
-            onClose={() => setShowBuyStockList(true)}
-            stocks={stockInBasket}
-          />
-        </div>
-      )}
-    </div>
+      <div
+        className={cn(
+          s.bottomBuySection,
+          stockInBasket.length !== 0 ? s.bottomBuySectionShow : ''
+        )}
+      >
+        <BottomBuySection
+          onClick={(id: number) => deleteStockInBasket(id)}
+          buyStock={buyStock}
+          stocks={stockInBasket}
+        />
+      </div>
+    </>
   )
 }

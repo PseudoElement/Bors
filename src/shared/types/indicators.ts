@@ -1,4 +1,4 @@
 export interface IndicatorProps {
-  title: string
+  name: string
   indicator: string
 }

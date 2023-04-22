@@ -51,18 +51,23 @@
 }
 
 .bottomBuySection {
-  margin: 0 8px 8px;
-
   border-radius: 16px;
   border: 1px solid $color-dark-01;
   box-shadow: 0 5px 10px $color-dark-08;
   backdrop-filter: blur(63.6903px);
-
+  position: fixed;
+  bottom: -200px;
+  width: 98%;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all .5s;
 }
-
+.bottomBuySectionShow {
+  bottom: 0;
+}
 .searchInput {
   border-radius: 100px;
   height: 58px;

@@ -1,21 +1,24 @@
 import { FC } from 'react'
-
+import { Swiper } from 'swiper/react'
 import { StockHorizonCard, Button } from 'components'
 
 import { StocksList } from 'shared/types/stocks'
 
 import s from './BottomBuySection.module.scss'
+import { useAppSelector } from 'shared/hooks/redux'
+import { Loading } from 'components/Loading/Loading'
 
 interface BottomBuySectionProps extends StocksList {
-  onClose: () => void,
   onClick: (id: number) => void
+  buyStock: () => void
 }
 
 export const BottomBuySection: FC<BottomBuySectionProps> = ({
   stocks,
-  onClose,
-  onClick
+  buyStock,
+  onClick,
 }) => {
+  const app = useAppSelector(state => state.app)
   const dataCall = (index: number) => {
     return {
       ...stocks[index],
@@ -28,11 +31,15 @@ export const BottomBuySection: FC<BottomBuySectionProps> = ({
     <section className={s.section}>
       <div className={s.cards}>
         {stocks.map((stock, index) => (
-          <StockHorizonCard  {...dataCall(index)} key={index} onClick={onClick} />
+          <StockHorizonCard
+            {...dataCall(index)}
+            key={index}
+            onClick={onClick}
+          />
         ))}
       </div>
-      <Button onClick={onClose} className={s.button}>
-        Köp aktier
+      <Button onClick={buyStock} className={s.button}>
+        {app.loading ? <Loading /> : 'Köp aktier'}
       </Button>
     </section>
   )

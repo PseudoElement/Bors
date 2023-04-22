@@ -3,8 +3,8 @@ import { FC } from 'react'
 import s from './tag.module.scss'
 
 interface TagProps {
-  title: string
+  name: string
 }
-export const Tag: FC<TagProps> = ({ title }) => {
-  return <div className={s.tag}>{title}</div>
+export const Tag: FC<TagProps> = ({ name }) => {
+  return <div className={s.tag}>{name}</div>
 }

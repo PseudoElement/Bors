@@ -10,8 +10,6 @@ export * from './endpoints'
 
 export const BASE_URL = 'https://api.xn--brsjakten-07a.se'
 
-const excludePaths = ['/stocks', '/me']
-
 export const api = Axios.create({
   baseURL: BASE_URL + '/api/v1',
   headers: {
@@ -27,7 +25,7 @@ api.interceptors.request.use(
     return config
   },
   function (error) {
-    return error
+    return Promise.reject(error)
   }
 )
 
@@ -54,6 +52,6 @@ api.interceptors.response.use(
     store.dispatch(
       setAppError(errorMessage || error.response.data.messge || error.message)
     )
-    return error
+    return Promise.reject(error)
   }
 )

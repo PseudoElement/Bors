@@ -37,7 +37,7 @@ export const BuyStockItem: FC<Stocks> = ({
         </div>
         <div>
           <span className={s.buystockStoks}>{count} aktier</span>
-          <p className={s.buystockCurrency}>{price.price} sek</p>
+          <p className={s.buystockCurrency}>{price?.price} sek</p>
         </div>
       </div>
     </div>
