@@ -14,7 +14,7 @@ export interface PaginationProps {
 
 export const Pagination: FC<PaginationProps> = ({ classNames }) => {
   const [pages, setPages] = useState<number[]>([])
-  const { total, current_page } = useAppSelector(state => state.stock)
+  const { total, current_page } = useAppSelector(state => state.stock.params)
 
   const [cur, setCur] = useState(1)
 

@@ -189,12 +189,12 @@ export const ExamplePage: FC = () => {
       </Wrapper>
 
       <Wrapper text='Tag'>
-        <Tag title='SAAS' />
-        <Tag title='E-COMMERCE' />
+        <Tag name='SAAS' />
+        <Tag name='E-COMMERCE' />
       </Wrapper>
 
       <Wrapper text='Indicator'>
-        <Indicator title='Market Cap' indicator='678,17 miljard $' />
+        <Indicator name='Market Cap' indicator='678,17 miljard $' />
       </Wrapper>
 
       <Wrapper text='Filter Panel'>

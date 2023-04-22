@@ -1,13 +1,14 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { mock__stock_pages } from 'shared/mocks/mock_stockCard'
 import { StockState, Stocks } from 'shared/types/stocks'
 
 interface StocksTypes {
-  params: StockState | null
+  params: StockState
   data: Stocks[] | null
 }
 
 const initialState: StocksTypes = {
-  params: null,
+  params: mock__stock_pages,
   data: null,
 }
 

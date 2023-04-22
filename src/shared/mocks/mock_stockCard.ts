@@ -248,3 +248,19 @@ export const mock__stock_card = [
     hasNft: true,
   },
 ]
+
+export const mock__stock_pages = {
+  current_page: 0,
+  data: null,
+  first_page_url: '',
+  from: 0,
+  last_page: 0,
+  last_page_url: null,
+  links: '',
+  next_page_url: null,
+  path: '',
+  per_page: 0,
+  prev_page_url: null,
+  to: 0,
+  total: 0,
+}
