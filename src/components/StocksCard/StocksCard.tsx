@@ -13,7 +13,7 @@ import s from './stocksCard.module.scss'
 interface StocksCardProps {
   onAddToBasket?: (value: Basket) => void
   onShow?: () => void
-  basket: any[]
+  basket: Basket[]
   stock: Stocks
 }
 
@@ -42,7 +42,9 @@ export const StocksCard: FC<StocksCardProps> = ({
   }
 
   useEffect(() => {
-    if (basket.find(item => Object.keys(item.buy)[0] === stock?.id.toString())) {
+    if (
+      basket.find(item => Object.keys(item.buy)[0] === stock?.id.toString())
+    ) {
       setIsActiveCard(true)
     } else {
       setIsActiveCard(false)
