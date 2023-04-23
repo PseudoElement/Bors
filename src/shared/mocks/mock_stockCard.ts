@@ -1,4 +1,3 @@
-import { Stocks } from 'shared/types/stocks'
 import AmazonLogo from '/public/assets/image/amazonLogo.png'
 import FigmaLogo from '/public/assets/image/figmaLogo.png'
 import StripLogo from '/public/assets/image/stripLogo.png'
@@ -248,19 +247,3 @@ export const mock__stock_card = [
     hasNft: true,
   },
 ]
-
-export const mock__stock_pages = {
-  current_page: 0,
-  data: null,
-  first_page_url: '',
-  from: 0,
-  last_page: 0,
-  last_page_url: null,
-  links: '',
-  next_page_url: null,
-  path: '',
-  per_page: 0,
-  prev_page_url: null,
-  to: 0,
-  total: 0,
-}

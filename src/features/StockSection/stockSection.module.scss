@@ -1,0 +1,42 @@
+@use "styles/style" as *;
+
+.grid {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  column-gap: 16px;
+  row-gap: 32px;
+
+  @include laptop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @include mobile-laptop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include tablet-mobile {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 8px;
+    row-gap: 32px;
+  }
+}
+
+.bottomBuySection {
+  border-radius: 16px;
+  border: 1px solid $color-dark-01;
+  box-shadow: 0 5px 10px $color-dark-08;
+  backdrop-filter: blur(63.6903px);
+  position: fixed;
+  bottom: -200px;
+  width: 98%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all .5s;
+}
+.bottomBuySectionShow {
+  bottom: 8px;
+}

@@ -9,15 +9,16 @@ import { PasswordRecovery } from './PasswordRecovery/PasswordRecovety'
 import { FiltersPanel } from './FiltersPanel/FiltersPanel'
 import { BuyStockList } from './BuyStockList/BuyStockList'
 import { FillRequest } from './FillRequest/FillRequest'
-import { MyStocks } from './MyStocks/MyStocks'
+import { MyStocks } from '../pages/MyStocks/MyStocks'
 import { LoginRegistrationModal } from './LoginRegistrationModal/LoginRegistrationModal'
 import { CardStocksInfo } from './CardStocksInfo/CardStocksInfo'
 import { BottomBuySection } from './BottomBuySection/BottomBuySection'
 import { Sponsors } from './Sponsors/Sponsors'
-import { UserAccount } from './UserAccount/UserAccount'
-import { BuyStock } from './BuyStock/BuyStock'
+import { UserAccount } from '../pages/Profile/UserAccount'
+import { BuyStock } from '../pages/BuyStock/BuyStock'
 import { DropMenu } from './DropMenu/DropMenu'
 import { InfoSection } from './InfoSection/InfoSection'
+import { StockSection } from './StockSection/StockSection'
 
 export {
   Layout,
@@ -37,6 +38,7 @@ export {
   CardStocksInfo,
   BottomBuySection,
   BuyStock,
+  StockSection,
   InfoSection,
   DropMenu,
   PopupAfterSubmit,

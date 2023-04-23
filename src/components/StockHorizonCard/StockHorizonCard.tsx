@@ -5,10 +5,11 @@ import Image from 'next/image'
 import { Stocks } from 'shared/types/stocks'
 
 import s from './StockHorizonCard.module.scss'
+import { countToBuy } from '../../shared/helpers/countToBuy'
 
 interface StockHorizonCardProps extends Stocks {
   onClick?: (id: number) => void
-  exchangeCurrency?: string
+  buy: any
 }
 
 export const StockHorizonCard: FC<StockHorizonCardProps> = ({
@@ -35,7 +36,7 @@ export const StockHorizonCard: FC<StockHorizonCardProps> = ({
   updated_at,
   price,
   onClick,
-  exchangeCurrency,
+  buy,
 }) => {
   return (
     <div className={s.stockCard} key={id}>
@@ -52,41 +53,34 @@ export const StockHorizonCard: FC<StockHorizonCardProps> = ({
 
       {onClick && (
         <div className={s.stockCostWrapper}>
-          <span className={s.stockCostValue}>1 stocks</span>
+          <span className={s.stockCostValue}>1 aktier</span>
 
           <h5 className={s.stockCost}>
-            {price?.price}
-
-            <span className={s.exchangeCurrency}>
-              {exchangeCurrency || 'SET'}
-            </span>
+            {price?.price} <span>SEK</span>
           </h5>
         </div>
       )}
 
       <div className={s.stockSumWrapper}>
-        <span className={s.stockCostValue}>{count} stocks</span>
+        <span className={s.stockCostValue}>
+          {countToBuy(Object.values(buy)[0]).buyCount} aktier
+        </span>
 
         <h5 className={s.stockCost}>
-          {count * price?.price}
-
-          <span className={s.exchangeCurrency}>
-            {exchangeCurrency || 'SET'}
-          </span>
+          {countToBuy(Object.values(buy)[0], price?.price).commonPrice}{' '}
+          <span>SEK</span>
         </h5>
       </div>
 
       {onClick && (
-        <div className={s.cancelBtn}>
-          <button onClick={() => onClick(id)}>
-            <Image
-              src='/assets/icons/cancel-button.svg'
-              width={20}
-              height={20}
-              alt={'cancel'}
-            />
-          </button>
-        </div>
+        <button className={s.cancelBtn} onClick={() => onClick(id)}>
+          <Image
+            src='/assets/icons/cancel-button.svg'
+            width={20}
+            height={20}
+            alt={'cancel'}
+          />
+        </button>
       )}
     </div>
   )

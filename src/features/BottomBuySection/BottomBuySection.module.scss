@@ -17,21 +17,22 @@
 .cards {
   height: 67px;
   display: flex;
+  align-items: center;
+
   z-index: 1;
   gap: 8px;
   overflow-y: hidden;
-  overflow-x: scroll;
-}
+  overflow-x: auto;
 
-.cards::-webkit-scrollbar {
-  width: auto;
-  height: 5px;
-  background-color: $color-black-08;
-}
-
-.cards::-webkit-scrollbar-thumb {
-  background: $border-gradient-access;
-  border-radius: 100px;
+  &::-webkit-scrollbar {
+    width: auto;
+    height: 5px;
+    background-color: $color-black-08;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $border-gradient-access;
+    border-radius: 100px;
+  }
 }
 
 .button {

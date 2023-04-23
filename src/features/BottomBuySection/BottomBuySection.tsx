@@ -1,44 +1,42 @@
 import { FC } from 'react'
-import { Swiper } from 'swiper/react'
 import { StockHorizonCard, Button } from 'components'
-
-import { StocksList } from 'shared/types/stocks'
-
-import s from './BottomBuySection.module.scss'
-import { useAppSelector } from 'shared/hooks/redux'
 import { Loading } from 'components/Loading/Loading'
 
-interface BottomBuySectionProps extends StocksList {
+import { useAppSelector } from 'shared/hooks/redux'
+
+import { Basket } from '../StockSection/StockSection'
+
+import s from './BottomBuySection.module.scss'
+
+interface BottomBuySectionProps {
   onClick: (id: number) => void
-  buyStock: () => void
+  onBuyStock: () => void
+  basket: Basket[]
 }
 
 export const BottomBuySection: FC<BottomBuySectionProps> = ({
-  stocks,
-  buyStock,
+  basket,
+  onBuyStock,
   onClick,
 }) => {
   const app = useAppSelector(state => state.app)
-  const dataCall = (index: number) => {
-    return {
-      ...stocks[index],
-      onClick: () => console.log(123),
-      exchangeCurrency: 'SET',
-    }
-  }
 
   return (
     <section className={s.section}>
-      <div className={s.cards}>
-        {stocks.map((stock, index) => (
-          <StockHorizonCard
-            {...dataCall(index)}
-            key={index}
-            onClick={onClick}
-          />
-        ))}
-      </div>
-      <Button onClick={buyStock} className={s.button}>
+      {basket?.length ? (
+        <div className={s.cards}>
+          {basket.map((stock, index) => (
+            <StockHorizonCard
+              {...stock.stock}
+              buy={stock.buy}
+              key={index}
+              onClick={onClick}
+            />
+          ))}
+        </div>
+      ) : null}
+
+      <Button onClick={onBuyStock} className={s.button}>
         {app.loading ? <Loading /> : 'Köp aktier'}
       </Button>
     </section>

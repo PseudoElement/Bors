@@ -1,5 +1,4 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { mock__stock_pages } from 'shared/mocks/mock_stockCard'
 import { StockState, Stocks } from 'shared/types/stocks'
 
 interface StocksTypes {
@@ -7,8 +6,24 @@ interface StocksTypes {
   data: Stocks[] | null
 }
 
+const default_stock_params = {
+  current_page: 0,
+  data: null,
+  first_page_url: '',
+  from: 0,
+  last_page: 0,
+  last_page_url: null,
+  links: '',
+  next_page_url: null,
+  path: '',
+  per_page: 0,
+  prev_page_url: null,
+  to: 0,
+  total: 0,
+}
+
 const initialState: StocksTypes = {
-  params: mock__stock_pages,
+  params: default_stock_params,
   data: null,
 }
 

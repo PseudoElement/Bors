@@ -1,31 +1,23 @@
 import { useState, useEffect } from 'react'
-import { Balance, StocksCard } from 'components'
 
-import { mock_my_stocks } from 'shared/mocks/mock_mySticks'
+import { Balance } from 'components'
+import { StockSection } from 'features'
 
-import { myStocks, stockAll } from 'shared/api/routes/stock'
+import { getMyStocksRequested } from 'shared/api/routes/stock'
 import { useAppSelector } from 'shared/hooks/redux'
 
 import { Stocks } from 'shared/types/stocks'
 
 import s from './myStocks.module.scss'
 
-export interface MyStocksInfo {
-  balance: string
-  profitability: string
-  rating: number
-  currency: string
-  myCard: Stocks[]
-}
-
 export const MyStocks = () => {
-  const [userInfo, setUserInfo] = useState<MyStocksInfo | null>(null)
+  const [myStocks, setMyStocks] = useState<Stocks[] | []>([])
   const user = useAppSelector(state => state.user.user)
 
   const getMyStocks = async () => {
     try {
-      const response = await myStocks()
-      console.log(response.data)
+      const { data } = await getMyStocksRequested()
+      setMyStocks(data.data)
     } catch (error) {
       console.log(error)
     }
@@ -61,11 +53,7 @@ export const MyStocks = () => {
           />
         </div>
 
-        <div className={s.userCard}>
-          {userInfo?.myCard.map((card, idx) => (
-            <StocksCard key={idx} {...card} />
-          ))}
-        </div>
+        {myStocks?.length ? <StockSection stocks={myStocks} /> : null}
       </div>
     </div>
   )

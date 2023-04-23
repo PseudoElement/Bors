@@ -21,7 +21,6 @@ export const getSponsors = async () => {
 export const getInfo = async () => {
   try {
     const { data } = await getInfoCards()
-    console.log(data)
     if (data.status === 'success') {
       return data.data
     }

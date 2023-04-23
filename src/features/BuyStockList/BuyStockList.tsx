@@ -1,12 +1,16 @@
 import { FC } from 'react'
 
-import { Button, BuyStockItem } from 'components'
+import { BuyStockItem } from 'components'
 
-import { StocksList } from 'shared/types/stocks'
+import { Basket } from '../StockSection/StockSection'
 
 import s from './BuyStockList.module.scss'
 
-export const BuyStockList: FC<StocksList> = ({ stocks }) => {
+interface BuyStockListProps {
+  basket: Basket[]
+}
+
+export const BuyStockList: FC<BuyStockListProps> = ({ basket }) => {
   return (
     <div className={s.popup}>
       <h2 className={s.buystockTitle}>
@@ -14,8 +18,8 @@ export const BuyStockList: FC<StocksList> = ({ stocks }) => {
       </h2>
 
       <div className={s.buystockList}>
-        {stocks.map(stock => (
-          <BuyStockItem key={stock.id} {...stock} />
+        {basket.map(stock => (
+          <BuyStockItem key={stock.stock.id} {...stock} />
         ))}
       </div>
 
