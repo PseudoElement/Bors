@@ -35,14 +35,19 @@ export const StockSection: FC<StockSectionProps> = ({ classNames, stocks }) => {
   }
 
   const showStockDetails = async (id: number) => {
-    const data = await detailStock(id)
-    dispatch(
-      setStockData(
-        stocks?.map(item => (item.id === id ? data.data.data : item)) || null
+    try {
+      const data = await detailStock(id)
+      dispatch(
+        setStockData(
+          stocks?.map(item => (item.id === id ? data.data.data : item)) || null
+        )
       )
-    )
-    setStockDetails(data.data.data)
-    setShowBuyStockInfo(true)
+
+      setStockDetails(data.data.data)
+      setShowBuyStockInfo(true)
+    } catch (e) {
+      console.error(e)
+    }
   }
 
   const stockAddToBasket = (value: Basket) => {
@@ -91,16 +96,39 @@ export const StockSection: FC<StockSectionProps> = ({ classNames, stocks }) => {
     // POST buy object
     try {
       const { data } = await buyStocks(buyStock)
+
       if (data.status === 'success') {
         // if res ok clear basket and close buy popup
-        setShowBuyStockList(false)
-        setBasket([])
+        setShowBuyStockList(true)
+
+        return
       }
 
       throw new Error(data.messge)
     } catch (e) {
       console.error(e)
     }
+  }
+
+  const buyOneStock = async () => {
+    if (!stockDetails) return
+
+    try {
+      const { data } = await buyStocks({ stock: { [stockDetails.id]: 1 } })
+      if (data.status === 'success') {
+        setShowBuyStockList(true)
+        setShowBuyStockInfo(false)
+
+        return
+      }
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  const clearBasket = () => {
+    setShowBuyStockList(false)
+    setBasket([])
   }
 
   useEffect(() => {
@@ -115,9 +143,9 @@ export const StockSection: FC<StockSectionProps> = ({ classNames, stocks }) => {
     <>
       <Popup
         isOpen={showBuyStockList}
-        onClose={() => setShowBuyStockList(false)}
+        onClose={clearBasket}
         buttonText='Bekräfta'
-        onSubmit={buyStock}
+        onSubmit={clearBasket}
       >
         <BuyStockList basket={basket} />
       </Popup>
@@ -125,7 +153,7 @@ export const StockSection: FC<StockSectionProps> = ({ classNames, stocks }) => {
       <Popup
         isOpen={showBuyStockInfo}
         onClose={() => setShowBuyStockInfo(false)}
-        onSubmit={buyStock}
+        onSubmit={buyOneStock}
         buttonText='Köp aktier'
       >
         {/*// @ts-ignore*/}
@@ -152,7 +180,7 @@ export const StockSection: FC<StockSectionProps> = ({ classNames, stocks }) => {
       >
         <BottomBuySection
           onClick={(id: number) => deleteStockInBasket(id)}
-          onBuyStock={() => setShowBuyStockList(true)}
+          onBuyStock={buyStock}
           basket={basket}
         />
       </div>

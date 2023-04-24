@@ -25,7 +25,8 @@ api.interceptors.request.use(
     return config
   },
   function (error) {
-    return Promise.reject(error)
+    store.dispatch(setAppLoading(false))
+    return error
   }
 )
 
@@ -39,7 +40,9 @@ api.interceptors.response.use(
     return response
   },
   function (error) {
-    const errorPath = error.response.data.data.error
+    store.dispatch(setAppLoading(false))
+    console.log(error)
+    const errorPath = error.response?.data.data?.error || null
     let errorMessage = ''
 
     if (errorPath) {
@@ -48,10 +51,14 @@ api.interceptors.response.use(
       }
     }
 
-    store.dispatch(setAppLoading(false))
     store.dispatch(
-      setAppError(errorMessage || error.response.data.messge || error.message)
+      setAppError(
+        errorMessage ||
+          error.response?.data.message ||
+          error.response?.data.messge ||
+          error.message
+      )
     )
-    return Promise.reject(error)
+    return error
   }
 )

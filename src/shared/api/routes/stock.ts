@@ -13,7 +13,6 @@ export const getMyStocksRequested = (): AxiosPromise => {
 }
 
 export const buyStocks = (stocks: any): AxiosPromise => {
-  console.log(stocks)
   return api.post(endpoints_stock.stock_buy, stocks)
 }
 
