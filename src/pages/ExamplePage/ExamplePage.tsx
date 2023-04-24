@@ -39,7 +39,6 @@ import { mock__stock_card } from 'shared/mocks/mock_stockCard'
 import { mock__leaderboard } from 'shared/mocks/mock_leaderboard'
 import { card_stocks_info } from 'shared/mocks/mock_cardStocksInfo'
 import { mock_by_line_of_business } from 'shared/mocks/mock_filters'
-import { mock_by_popularity } from 'shared/mocks/mock_filters'
 
 import s from './examplePage.module.scss'
 import style from '../../features/DropMenu/dropMenu.module.scss'
@@ -71,22 +70,6 @@ export const ExamplePage: FC = () => {
 
       <Wrapper text={'header unauthorised'}>
         <Header variant={true} />
-      </Wrapper>
-      <Wrapper text={'drop menu'}>
-        <DropMenu
-          title='By line of business'
-          onChange={data => console.log('business ', data)}
-          data={mock_by_line_of_business}
-          className={style.wide}
-          defaultValues={[false, false, true, false, true, false]}
-        />
-        <DropMenu
-          title='By popularity'
-          onChange={data => console.log('popularity ', data)}
-          data={mock_by_popularity}
-          className={style.short}
-          defaultValues={[false, true]}
-        />
       </Wrapper>
 
       <Wrapper text={'account'}>
