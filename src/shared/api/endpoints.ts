@@ -1,3 +1,5 @@
+import { StockFilters } from '../types/stocks'
+
 export const endpoints_user = {
   register: '/auth/register/',
   login: '/auth/login/',
@@ -9,7 +11,8 @@ export const endpoints_user = {
 }
 
 export const endpoints_stock = {
-  stock_all: '/stock/',
+  stock_all: (filters: StockFilters) =>
+    `/stock?by_price=${filters.price.value}&by_popularity=${filters.popularity.value}&search=${filters.search}&page=${filters.current_page}`,
   stock_buy: '/stock/buy/',
   stock_my: '/stock/my/',
   stock_id: (id: number) => `/stock/${id}/`,

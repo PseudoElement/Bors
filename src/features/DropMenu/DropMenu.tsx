@@ -1,107 +1,72 @@
-import { FC, useState, useRef, MouseEvent, useEffect } from 'react'
+import { FC, useState } from 'react'
 import cn from 'classnames'
 
-import { DropMenuOption } from 'components/DropMenuOption/DropMenuOption'
+import { DropMenuOption } from './DropMenuOption/DropMenuOption'
 
-import { useClickOutside } from 'shared/hooks/useClickOutside'
+import { FilterMeta } from 'shared/types/stocks'
 
 import s from './dropMenu.module.scss'
 
 interface DropMenuProps {
-  defaultValues?: boolean[]
-  title: string
-  onChange: (selectedOption: string) => void
-  data: string[]
+  defaultValues: FilterMeta
+  onChange: (selectedOption: FilterMeta) => void
+  data: FilterMeta[]
   className?: string
 }
-export interface DropMenuState {
-  [key: string]: boolean
-}
+
 export const DropMenu: FC<DropMenuProps> = ({
   defaultValues,
-  title,
   onChange,
   data,
   className,
 }) => {
-  const [menuState, setMenuState] = useState<DropMenuState>(
-    data.reduce(
-      (a, v, i) => ({
-        ...a,
-        [v]: defaultValues === undefined ? false : defaultValues[i],
-      }),
-      {}
-    )
-  )
+  const [value, setValue] = useState<FilterMeta>(defaultValues)
+  const [selectOpen, setSelectOpen] = useState(false)
 
-  const [activeDropMenu, setActiveDropMenu] = useState<boolean>(false)
-  const [showInMenuTitle, setShowInMenuTitle] = useState<string>('')
-
-  const overlayRef = useRef<HTMLDivElement>(null)
-
-  let activeFilter = Object.keys(menuState).find(item => menuState[item])
-
-  const onMenuClose = () => {
-    setActiveDropMenu(false)
-    setShowInMenuTitle(activeFilter ? activeFilter : '')
-    onChange(activeFilter ? activeFilter : '')
+  const handleChange = (value: FilterMeta) => {
+    setValue(value)
+    onChange(value)
+    setSelectOpen(false)
   }
 
-  const handleMenuClick = () => {
-    setActiveDropMenu(prev => !prev)
-    if (activeDropMenu) {
-      onMenuClose()
-    }
+  const handleOpenClose = () => {
+    setSelectOpen(prevState => !prevState)
   }
-
-  const handleResetBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation()
-
-    setShowInMenuTitle('')
-    setMenuState(data.reduce((a, v) => ({ ...a, [v]: false }), {}))
-    onChange('')
-  }
-
-  useEffect(() => {
-    setShowInMenuTitle(activeFilter ? activeFilter : '')
-    onChange(activeFilter ? activeFilter : '')
-  }, [activeFilter])
 
   return (
-    <div className={activeDropMenu ? s.menuOverlay : s.block}>
+    <div className={s.wrap}>
       <div
         className={cn(s.dropMenu, className)}
         onClick={e => e.stopPropagation()}
-        ref={activeDropMenu ? overlayRef : null}
       >
-        <div className={cn(s.select)} onClick={handleMenuClick}>
-          {showInMenuTitle.length === 0 ? (
+        <div className={cn(s.select)} onClick={handleOpenClose}>
+          {value === data[0] ? (
             <>
-              {title}
+              {value.label}
               <div className={s.arrow}></div>
             </>
           ) : (
             <>
               <div className={s.container}>
-                <div className={s.selected}>{showInMenuTitle}</div>
-                <div className={s.mask}></div>
+                <div className={s.selected}>{value.label}</div>
               </div>
 
               <button
                 className={s.resetMenuBtn}
-                onClick={handleResetBtnClick}
+                onClick={() => handleChange(defaultValues)}
               ></button>
             </>
           )}
         </div>
-        <div className={activeDropMenu ? cn(s.options, s.openMenu) : s.options}>
-          {data.map(item => (
+
+        <div className={cn(s.options, { [s.openMenu]: selectOpen })}>
+          {data.slice(1, data.length).map((item, index) => (
             <DropMenuOption
-              key={item}
-              title={item}
-              menuState={menuState}
-              setMenuState={setMenuState}
-              onMenuClose={onMenuClose}
+              key={index}
+              menuValue={item}
+              isSelected={value?.label === item.label}
+              setMenuState={() => handleChange(item)}
+              onMenuClose={() => setSelectOpen(false)}
             />
           ))}
         </div>

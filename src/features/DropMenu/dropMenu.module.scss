@@ -1,19 +1,17 @@
 @use 'styles/style' as *;
 
-.menuOverlay {
-  height: 100%;
+.wrap {
+  flex-grow: 1;
+  min-width: 220px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
 
-.block {
-  display: block;
+  @include tablet-mobile {
+    margin-bottom: 20px;
+  }
 }
 
 .dropMenu {
-  width: 456px;
+  width: 100%;
   font-family: $font-Mont;
   font-style: normal;
   font-weight: $fw-semibold;
@@ -51,10 +49,6 @@
   cursor: pointer;
   background: $color-gray-f6;
   border-radius: 100px;
-
-  @include tablet-mobile {
-    padding: 14px 22px;
-  }
 }
 
 .options {
@@ -71,7 +65,7 @@
   position: absolute;
   z-index: 11;
   width: 100%;
-  top: calc(100% + 10px);
+  top: calc(100% + 5px);
   display: none;
 }
 
@@ -81,28 +75,16 @@
 }
 .container {
   position: relative;
-  width: 92%;
+  width: 100%;
   overflow: hidden;
 }
 .selected {
   display: flex;
   flex-wrap: nowrap;
-  width: 3000px;
   color: $color-pink-2;
   overflow: hidden;
 }
-.mask {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  width: 60px;
-  height: 40px;
-  background: linear-gradient(
-    270deg,
-    $color-gray-f6 26.49%,
-    $color-gray-0 100%
-  );
-}
+
 .arrow {
   width: 19px;
   height: 10px;

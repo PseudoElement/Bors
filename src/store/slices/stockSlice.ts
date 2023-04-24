@@ -7,7 +7,7 @@ interface StocksTypes {
 }
 
 const default_stock_params = {
-  current_page: 0,
+  current_page: 1,
   data: null,
   first_page_url: '',
   from: 0,

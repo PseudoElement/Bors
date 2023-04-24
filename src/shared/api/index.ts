@@ -8,7 +8,7 @@ import {
 
 export * from './endpoints'
 
-export const BASE_URL = 'https://api.xn--brsjakten-07a.se'
+export const BASE_URL = 'https://api.borsjakten.se'
 
 export const api = Axios.create({
   baseURL: BASE_URL + '/api/v1',

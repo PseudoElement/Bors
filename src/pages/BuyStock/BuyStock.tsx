@@ -1,30 +1,47 @@
-import { FC, useEffect, useState } from 'react'
-import Image from 'next/image'
+import { FC, useEffect } from 'react'
 
-import { Input, Pagination } from 'components'
+import { Pagination } from 'components'
 import { FiltersPanel, StockSection } from 'features'
 
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
-import { stockAll } from 'shared/api/routes/stock'
+import { getAllStocks } from './helpers'
 import { setStockData, setStockParams } from 'store/slices/stockSlice'
 
-import SearchIcon from '/public/assets/icons/Search.png'
+import {
+  mock_min_max_popularity,
+  mock_min_max_price,
+} from 'shared/mocks/mock_filters'
+import { StockFilters } from 'shared/types/stocks'
 
 import s from './buyStock.module.scss'
 
 export const BuyStock: FC = () => {
   const dispatch = useAppDispatch()
-  const [searchValue, setSearchValue] = useState<string>('')
   const stocks = useAppSelector(state => state.stock.data)
+  const filterParams = useAppSelector(state => state.stock.params)
+  const filters: StockFilters = {
+    search: '',
+    price: mock_min_max_price[0],
+    popularity: mock_min_max_popularity[0],
+    current_page: filterParams.current_page,
+  }
 
-  const getAllStocks = async () => {
-    const { data } = await stockAll()
-    dispatch(setStockData(data.data.data))
-    dispatch(setStockParams(data.data))
+  const getStocks = async (filters: StockFilters) => {
+    const data = await getAllStocks(filters)
+    if (data) {
+      dispatch(setStockData(data.data))
+      dispatch(setStockParams(data))
+    }
+  }
+
+  const handleFilters = (filters: StockFilters) => {
+    getStocks(filters)
   }
 
   useEffect(() => {
-    getAllStocks()
+    if (!stocks) {
+      getStocks(filters)
+    }
   }, [])
 
   return (
@@ -34,36 +51,11 @@ export const BuyStock: FC = () => {
 
         <p className={s.pageDescription}>
           Du kan köpa aktier för 1 000 000 demo kronor, men kan inte sälja eller
-          byta ditt innehav under aktietävlingen.{' '}
+          byta ditt innehav under aktietävlingen.
         </p>
 
         <div className={s.filterWrapper}>
-          <FiltersPanel
-            defaultValue={{
-              price: true,
-              lineBusiness: true,
-              popularity: true,
-            }}
-            onChange={() => {}}
-          >
-            <div className={s.inputWrapper}>
-              <div className={s.searchIcon}>
-                <Image
-                  src={SearchIcon.src}
-                  alt='search'
-                  width={24}
-                  height={24}
-                />
-              </div>
-
-              <Input
-                classname={s.searchInput}
-                placeholder='Sök'
-                value={searchValue}
-                onChange={e => setSearchValue(e)}
-              />
-            </div>
-          </FiltersPanel>
+          <FiltersPanel onChange={handleFilters} />
         </div>
 
         {stocks ? <StockSection stocks={stocks} /> : null}

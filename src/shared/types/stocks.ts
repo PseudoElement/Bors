@@ -78,3 +78,18 @@ export interface StockTypes {
   created_at: string
   privot: StockTypesPrivot
 }
+
+export type FilterMeta = { label: string; value: MinMax }
+
+export enum MinMax {
+  'Default' = 'asc',
+  'Mest' = 'asc',
+  'Minst' = 'desc',
+}
+
+export interface StockFilters {
+  price: FilterMeta
+  popularity: FilterMeta
+  search: string
+  current_page: number
+}

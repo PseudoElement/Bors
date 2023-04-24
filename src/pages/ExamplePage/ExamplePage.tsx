@@ -41,8 +41,6 @@ import { card_stocks_info } from 'shared/mocks/mock_cardStocksInfo'
 import { mock_by_line_of_business } from 'shared/mocks/mock_filters'
 import { mock_by_popularity } from 'shared/mocks/mock_filters'
 
-import { FilterKeys } from 'shared/types/filterPanel'
-
 import s from './examplePage.module.scss'
 import style from '../../features/DropMenu/dropMenu.module.scss'
 import { PopupAfterSubmitStatus } from 'shared/enums'
@@ -64,18 +62,6 @@ export const ExamplePage: FC = () => {
   const [popupStatus, setPopupStatus] = useState<PopupAfterSubmitStatus>(
     PopupAfterSubmitStatus.CLOSED
   )
-
-  const [defaultValue, setDefaultValue] = useState<FilterKeys>({
-    price: false,
-    lineBusiness: false,
-    popularity: false,
-  })
-
-  const stockHorizonData = {
-    ...mock__stock_card[1],
-    onClick: () => {},
-    exchangeCurrency: 'SET',
-  }
 
   return (
     <div>
@@ -198,7 +184,7 @@ export const ExamplePage: FC = () => {
       </Wrapper>
 
       <Wrapper text='Filter Panel'>
-        <FiltersPanel defaultValue={defaultValue} onChange={setDefaultValue} />
+        {/*<FiltersPanel defaultValue={defaultValue} onChange={setDefaultValue} />*/}
       </Wrapper>
 
       <Wrapper text='Button'>

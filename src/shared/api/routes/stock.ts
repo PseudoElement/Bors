@@ -1,9 +1,11 @@
 import { AxiosPromise } from 'axios'
 import { api, endpoints_stock } from '../index'
-import { getStockResponse, Stocks } from '../../types/stocks'
+import { getStockResponse, StockFilters } from '../../types/stocks'
 
-export const stockAll = (): AxiosPromise<getStockResponse> => {
-  return api.get(endpoints_stock.stock_all)
+export const stockAll = (
+  filters: StockFilters
+): AxiosPromise<getStockResponse> => {
+  return api.get(endpoints_stock.stock_all(filters))
 }
 
 export const getMyStocksRequested = (): AxiosPromise => {

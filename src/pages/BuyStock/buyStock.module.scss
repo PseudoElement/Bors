@@ -27,32 +27,3 @@
   margin-top: 40px;
   position: relative;
 }
-
-.searchInput {
-  border-radius: 100px;
-  height: 58px;
-  max-width: 456px;
-  padding: 10px 22px;
-  box-shadow: none;
-  background-color: $color-gray-f6;
-  border: none;
-
-  input {
-    background-color: $color-gray-f6;
-    color: $color-blue;
-    padding-right: 25px;
-    &::-webkit-input-placeholder {
-      color: $color-blue;
-    }
-  }
-}
-
-.inputWrapper {
-  position: relative;
-}
-
-.searchIcon {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}

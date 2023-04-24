@@ -30,6 +30,7 @@ export const Input: FC<InputProps> = ({
   withIcon = false,
 }) => {
   const [checked, setChecked] = useState<boolean>(withIcon)
+
   return (
     <div className={cn(s.wrapper, classname, { [s.withButton]: withButton })}>
       <input

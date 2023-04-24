@@ -1,119 +1,204 @@
-import { FC, ReactNode, useEffect, useState } from 'react'
-import { FilterKeys } from 'shared/types/filterPanel'
+import { FC, useEffect, useState } from 'react'
+import Image from 'next/image'
 
-import { DropMenu } from 'features/DropMenu/DropMenu'
+import { DropMenu } from 'features'
+import { Input, Popup } from 'components'
 
-import { Button, Popup } from 'components'
+import { useAppSelector } from 'shared/hooks/redux'
 
-import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
-
-import FilterIcon from '/public/assets/icons/FiltersHorizontal.svg'
-
+import { FilterMeta, StockFilters } from 'shared/types/stocks'
 import {
-  mock_by_line_of_business,
-  mock_by_popularity,
+  mock_min_max_popularity,
+  mock_min_max_price,
 } from 'shared/mocks/mock_filters'
+import SearchIcon from '/public/assets/icons/Search.png'
+import FilterIcon from '/public/assets/icons/FiltersHorizontal.svg'
 
 import s from './filtersPanel.module.scss'
 
-interface FilterItemProps {
-  title: string
-  onChange: (value: boolean) => void
-}
-
-const FilterItem: FC<FilterItemProps> = ({ title, onChange }) => {
-  const [active, setActive] = useState<boolean>(false)
-
-  useEffect(() => {
-    onChange(active)
-  }, [active])
-
-  return (
-    <div className={s.filterItem} onClick={() => setActive(!active)}>
-      {title}
-      <span className={s.arrow} />
-    </div>
-  )
-}
-
 interface FiltersPanelProps {
-  onChange: (value: FilterKeys) => void
-  defaultValue: FilterKeys
-  children?: ReactNode
+  onChange: (filters: StockFilters) => void
 }
+export const FiltersPanel: FC<FiltersPanelProps> = ({ onChange }) => {
+  const filterParams = useAppSelector(state => state.stock.params)
+  const [filters, setFilters] = useState<StockFilters>({
+    search: '',
+    price: mock_min_max_price[0],
+    popularity: mock_min_max_popularity[0],
+    current_page: filterParams.current_page,
+  })
 
-export const FiltersPanel: FC<FiltersPanelProps> = ({
-  onChange,
-  defaultValue,
-  children,
-}) => {
-  const [valueFilters, setValueFilters] = useState<FilterKeys>(defaultValue)
+  const handleSearchText = (text: string) => {
+    setFilters({ ...filters, search: text })
+  }
 
-  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const handlePopularity = (value: FilterMeta) => {
+    setFilters({ ...filters, popularity: value })
+  }
 
-  const { width } = useWindowDimensions()
+  const handlePrice = (value: FilterMeta) => {
+    setFilters({ ...filters, price: value })
+  }
+
   useEffect(() => {
-    onChange(valueFilters)
-  }, [valueFilters])
+    onChange(filters)
+  }, [filters])
+
+  // mobile handlers ===========
+  const [isOpenMobilePopup, setIsOpenMobilePopup] = useState<boolean>(false)
+  const [mobileFilters, setMobileFilters] = useState<StockFilters>({
+    search: '',
+    price: mock_min_max_price[0],
+    popularity: mock_min_max_popularity[0],
+    current_page: filterParams.current_page,
+  })
+
+  const mobileHandleFilters = () => {
+    onChange(mobileFilters)
+    setIsOpenMobilePopup(false)
+  }
+
+  const mobileHandlePopularity = () => {
+    setMobileFilters({
+      ...mobileFilters,
+      popularity: mock_min_max_popularity[0],
+    })
+    onChange({ ...mobileFilters, popularity: mock_min_max_popularity[0] })
+  }
+
+  const mobileHandlePrice = () => {
+    setMobileFilters({
+      ...mobileFilters,
+      price: mock_min_max_price[0],
+    })
+    onChange({ ...mobileFilters, price: mock_min_max_price[0] })
+  }
+
+  const mobileHandleSearch = () => {
+    setMobileFilters({
+      ...mobileFilters,
+      search: '',
+    })
+    onChange({ ...mobileFilters, search: '' })
+  }
 
   return (
-    <>
-      {width <= 567 && (
-        <>
-          <div onClick={() => setIsOpen(true)} className={s.mobileSelect}>
-          Filtrera lager <FilterIcon />
-          </div>
-          <Popup isOpen={isOpen} onClose={() => setIsOpen(false)}>
-            <div className={s.mobileFilterPanel}>
-              <div className={s.mobileFilterTitle}>Filtrera lager</div>
-              <div className={s.mobileFilters}>
-                <DropMenu
-                  title='Efter popularitet'
-                  onChange={data => console.log('popularity ', data)}
-                  data={mock_by_popularity}
-                  className={s.short}
+    <div className={s.filters}>
+      <div className={s.desktopFilters}>
+        <DropMenu
+          onChange={data => handlePopularity(data)}
+          data={mock_min_max_popularity}
+          className={s.short}
+          defaultValues={mock_min_max_popularity[0]}
+        />
+        <DropMenu
+          onChange={data => handlePrice(data)}
+          data={mock_min_max_price}
+          className={s.short}
+          defaultValues={mock_min_max_price[0]}
+        />
 
-                />
-                <DropMenu
-                  title='Efter pris'
-                  onChange={data => console.log('popularity ', data)}
-                  data={mock_by_popularity}
-                  className={s.short}
-                />
-                <DropMenu
-                  title='Efter bransch'
-                  onChange={data => console.log('business ', data)}
-                  data={mock_by_line_of_business}
-                  className={s.wide}
-                />
-                {children && children}
-                <Button className={s.btn}>Filtrera</Button>
-              </div>
-            </div>
-          </Popup>
-        </>
-      )}
-      <div className={s.filters}>
-        <DropMenu
-          title='Efter popularitet'
-          onChange={data => console.log('popularity ', data)}
-          data={mock_by_popularity}
-          className={s.short}
-        />
-        <DropMenu
-          title='Efter pris'
-          onChange={data => console.log('popularity ', data)}
-          data={mock_by_popularity}
-          className={s.short}
-        />
-        <DropMenu
-          title='Efter bransch'
-          onChange={data => console.log('business ', data)}
-          data={mock_by_line_of_business}
-          className={s.wide}
-        />
-        {children && children}
+        <div className={s.inputWrapper}>
+          <div className={s.searchIcon}>
+            <Image src={SearchIcon.src} alt='search' width={24} height={24} />
+          </div>
+
+          <Input
+            classname={s.searchInput}
+            placeholder='Sök'
+            value={filters.search}
+            onChange={e => handleSearchText(e)}
+          />
+        </div>
       </div>
-    </>
+
+      {/* mobile filters*/}
+      <div className={s.mobileFilters}>
+        <button
+          onClick={() => setIsOpenMobilePopup(true)}
+          className={s.mobileSelect}
+        >
+          Filtrera lager <FilterIcon />
+        </button>
+
+        <div className={s.mobileFiltersActive}>
+          {mobileFilters.price !== mock_min_max_price[0] ? (
+            <div className={s.filter}>
+              <div>{mobileFilters.price.label}</div>
+
+              <button
+                className={s.resetMenuBtn}
+                onClick={mobileHandlePrice}
+              ></button>
+            </div>
+          ) : null}
+
+          {mobileFilters.popularity !== mock_min_max_popularity[0] ? (
+            <div className={s.filter}>
+              <div>{mobileFilters.popularity.label}</div>
+
+              <button
+                className={s.resetMenuBtn}
+                onClick={mobileHandlePopularity}
+              ></button>
+            </div>
+          ) : null}
+
+          {mobileFilters.search ? (
+            <div className={s.filter}>
+              <div>{mobileFilters.search}</div>
+
+              <button
+                className={s.resetMenuBtn}
+                onClick={mobileHandleSearch}
+              ></button>
+            </div>
+          ) : null}
+        </div>
+      </div>
+
+      <Popup
+        isOpen={isOpenMobilePopup}
+        onClose={() => setIsOpenMobilePopup(false)}
+        onSubmit={mobileHandleFilters}
+      >
+        <div className={s.mobileFiltersPopup}>
+          <div className={s.mobileFiltersTitle}>Filter stocks</div>
+
+          <DropMenu
+            onChange={data =>
+              setMobileFilters({ ...mobileFilters, popularity: data })
+            }
+            data={mock_min_max_popularity}
+            className={s.short}
+            defaultValues={mobileFilters.popularity}
+          />
+
+          <DropMenu
+            onChange={data =>
+              setMobileFilters({ ...mobileFilters, price: data })
+            }
+            data={mock_min_max_price}
+            className={s.short}
+            defaultValues={mobileFilters.price}
+          />
+
+          <div className={s.inputWrapper}>
+            <div className={s.searchIcon}>
+              <Image src={SearchIcon.src} alt='search' width={24} height={24} />
+            </div>
+
+            <Input
+              classname={s.searchInput}
+              placeholder='Sök'
+              value={mobileFilters.search}
+              onChange={data =>
+                setMobileFilters({ ...mobileFilters, search: data })
+              }
+            />
+          </div>
+        </div>
+      </Popup>
+    </div>
   )
 }

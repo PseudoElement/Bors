@@ -17,7 +17,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['api.xn--brsjakten-07a.se'],
+    domains: ['api.xn--brsjakten-07a.se', 'borsjakten.se', 'api.borsjakten.se'],
   },
   i18n: {
     locales: ['de'],
