@@ -20,6 +20,7 @@ interface PopupProps {
   isClosable?: boolean
   contentClassName?: string
   wrapperClassName?: string
+  withButton?: boolean
 }
 
 export const Popup: FC<PopupProps> = ({
@@ -32,6 +33,7 @@ export const Popup: FC<PopupProps> = ({
   wrapperClassName,
   buttonText = 'Börja',
   onSubmit,
+  withButton = true,
 }) => {
   const overlayRef = useRef<HTMLDivElement>(null)
   const app = useAppSelector(state => state.app)
@@ -60,12 +62,15 @@ export const Popup: FC<PopupProps> = ({
           )}
           <div className={s.wrapperContent}>
             {children}
-            <Button
+            {withButton && (
+
+                <Button
               onClick={() => onSubmit?.()}
               className={s.popup_added_button}
             >
               {app.loading ? <Loading /> : buttonText}
             </Button>
+            )}
           </div>
         </div>
       </div>
