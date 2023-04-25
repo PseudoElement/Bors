@@ -56,12 +56,10 @@ export const NavbarFoot: FC<Variant> = ({ variant, socialLink }) => {
         onClose={() => setBurgerIsOpen(false)}
       />
 
-      <Popup
-        isOpen={isOpenPasswordRecovery}
-        onClose={() => setIsOpenPasswordRecovery(false)}
-      >
-        <PasswordRecovery />
-      </Popup>
+      <PasswordRecovery
+        isOpenPasswordRecovery={isOpenPasswordRecovery}
+        setIsOpenPasswordRecovery={() => setIsOpenPasswordRecovery(false)}
+      />
 
       <NavFoot menuOpen={handleProfile} socialLink={socialLink} />
     </>

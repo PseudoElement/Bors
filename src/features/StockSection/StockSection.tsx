@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 import cn from 'classnames'
 
-import { Popup, StocksCard } from 'components'
+import { Pagination, Popup, StocksCard } from 'components'
 import { BuyStockList, CardStocksInfo, BottomBuySection } from 'features'
 
 import { buyStocks, detailStock } from 'shared/api/routes/stock'
@@ -140,7 +140,7 @@ export const StockSection: FC<StockSectionProps> = ({ classNames, stocks }) => {
   }, [showBuyStockInfo])
 
   return (
-    <>
+    <section style={{ paddingBottom: `${basket.length ? '150px' : '20px'}` }}>
       <Popup
         isOpen={showBuyStockList}
         onClose={clearBasket}
@@ -173,10 +173,9 @@ export const StockSection: FC<StockSectionProps> = ({ classNames, stocks }) => {
       </div>
 
       <div
-        className={cn(
-          s.bottomBuySection,
-          basket.length !== 0 ? s.bottomBuySectionShow : ''
-        )}
+        className={cn(s.bottomBuySection, {
+          [s.bottomBuySectionShow]: basket.length,
+        })}
       >
         <BottomBuySection
           onClick={(id: number) => deleteStockInBasket(id)}
@@ -184,6 +183,8 @@ export const StockSection: FC<StockSectionProps> = ({ classNames, stocks }) => {
           basket={basket}
         />
       </div>
-    </>
+
+      <Pagination />
+    </section>
   )
 }

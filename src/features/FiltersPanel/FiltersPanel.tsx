@@ -4,7 +4,13 @@ import Image from 'next/image'
 import { DropMenu } from 'features'
 import { Input, Popup } from 'components'
 
-import { useAppSelector } from 'shared/hooks/redux'
+import {
+  setStockData,
+  setStockFilters,
+  setStockParams,
+} from 'store/slices/stockSlice'
+import { getAllStocks } from 'pages/BuyStock/helpers'
+import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 
 import { FilterMeta, StockFilters } from 'shared/types/stocks'
 import {
@@ -16,11 +22,10 @@ import FilterIcon from '/public/assets/icons/FiltersHorizontal.svg'
 
 import s from './filtersPanel.module.scss'
 
-interface FiltersPanelProps {
-  onChange: (filters: StockFilters) => void
-}
-export const FiltersPanel: FC<FiltersPanelProps> = ({ onChange }) => {
+export const FiltersPanel: FC = () => {
+  const dispatch = useAppDispatch()
   const filterParams = useAppSelector(state => state.stock.params)
+
   const [filters, setFilters] = useState<StockFilters>({
     search: '',
     price: mock_min_max_price[0],
@@ -40,8 +45,17 @@ export const FiltersPanel: FC<FiltersPanelProps> = ({ onChange }) => {
     setFilters({ ...filters, price: value })
   }
 
+  const getStocks = async (filters: StockFilters) => {
+    const data = await getAllStocks(filters)
+    if (data) {
+      dispatch(setStockData(data.data))
+      dispatch(setStockParams(data))
+    }
+  }
+
   useEffect(() => {
-    onChange(filters)
+    getStocks(filters)
+    dispatch(setStockFilters(filters))
   }, [filters])
 
   // mobile handlers ===========
@@ -54,7 +68,7 @@ export const FiltersPanel: FC<FiltersPanelProps> = ({ onChange }) => {
   })
 
   const mobileHandleFilters = () => {
-    onChange(mobileFilters)
+    getStocks(mobileFilters)
     setIsOpenMobilePopup(false)
   }
 
@@ -63,7 +77,7 @@ export const FiltersPanel: FC<FiltersPanelProps> = ({ onChange }) => {
       ...mobileFilters,
       popularity: mock_min_max_popularity[0],
     })
-    onChange({ ...mobileFilters, popularity: mock_min_max_popularity[0] })
+    getStocks({ ...mobileFilters, popularity: mock_min_max_popularity[0] })
   }
 
   const mobileHandlePrice = () => {
@@ -71,7 +85,7 @@ export const FiltersPanel: FC<FiltersPanelProps> = ({ onChange }) => {
       ...mobileFilters,
       price: mock_min_max_price[0],
     })
-    onChange({ ...mobileFilters, price: mock_min_max_price[0] })
+    getStocks({ ...mobileFilters, price: mock_min_max_price[0] })
   }
 
   const mobileHandleSearch = () => {
@@ -79,7 +93,7 @@ export const FiltersPanel: FC<FiltersPanelProps> = ({ onChange }) => {
       ...mobileFilters,
       search: '',
     })
-    onChange({ ...mobileFilters, search: '' })
+    getStocks({ ...mobileFilters, search: '' })
   }
 
   return (

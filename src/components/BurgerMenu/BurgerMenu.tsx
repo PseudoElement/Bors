@@ -24,6 +24,7 @@ export const BurgerMenu: FC<BurgerMenuProps> = ({
       isOpen={isOpen}
       onClose={onClose}
       isClosable={true}
+      withButton={false}
       wrapperClassName={s.burgerPopup}
       className={s.burgerPopupOverlay}
     >

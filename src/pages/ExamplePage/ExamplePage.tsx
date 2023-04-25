@@ -114,12 +114,11 @@ export const ExamplePage: FC = () => {
       </Wrapper>
 
       <Wrapper text='PasswordRecovery'>
-        <Popup
-          isOpen={openPasswordRecovery}
-          onClose={() => setOpenPasswordRecovery(false)}
-        >
-          <PasswordRecovery />
-        </Popup>
+        <PasswordRecovery
+          setIsOpenPasswordRecovery={() => setOpenPasswordRecovery(false)}
+          isOpenPasswordRecovery={openPasswordRecovery}
+        />
+
         <button onClick={() => setOpenPasswordRecovery(true)}>
           Password recovery
         </button>

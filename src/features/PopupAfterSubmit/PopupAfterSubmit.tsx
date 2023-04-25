@@ -47,7 +47,7 @@ export const PopupAfterSubmit: FC<PopupAfterSubmitProps> = ({
             alt='Success'
           />
           <div className={s.popupTitle}>
-            Du har registrerat dig på BörsJakten, Sverige största aktietävling!
+            Du har registrerat dig på BörsJakten, <br/> Sverige största aktietävling!
           </div>
           <div className={s.popupText}>
             Din ansökan har skickats med framgång.

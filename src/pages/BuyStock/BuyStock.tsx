@@ -1,16 +1,11 @@
 import { FC, useEffect } from 'react'
 
-import { Pagination } from 'components'
 import { FiltersPanel, StockSection } from 'features'
 
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { getAllStocks } from './helpers'
 import { setStockData, setStockParams } from 'store/slices/stockSlice'
 
-import {
-  mock_min_max_popularity,
-  mock_min_max_price,
-} from 'shared/mocks/mock_filters'
 import { StockFilters } from 'shared/types/stocks'
 
 import s from './buyStock.module.scss'
@@ -18,13 +13,7 @@ import s from './buyStock.module.scss'
 export const BuyStock: FC = () => {
   const dispatch = useAppDispatch()
   const stocks = useAppSelector(state => state.stock.data)
-  const filterParams = useAppSelector(state => state.stock.params)
-  const filters: StockFilters = {
-    search: '',
-    price: mock_min_max_price[0],
-    popularity: mock_min_max_popularity[0],
-    current_page: filterParams.current_page,
-  }
+  const filters = useAppSelector(state => state.stock.filters)
 
   const getStocks = async (filters: StockFilters) => {
     const data = await getAllStocks(filters)
@@ -32,10 +21,6 @@ export const BuyStock: FC = () => {
       dispatch(setStockData(data.data))
       dispatch(setStockParams(data))
     }
-  }
-
-  const handleFilters = (filters: StockFilters) => {
-    getStocks(filters)
   }
 
   useEffect(() => {
@@ -55,12 +40,10 @@ export const BuyStock: FC = () => {
         </p>
 
         <div className={s.filterWrapper}>
-          <FiltersPanel onChange={handleFilters} />
+          <FiltersPanel />
         </div>
 
         {stocks ? <StockSection stocks={stocks} /> : null}
-
-        <Pagination />
       </div>
     </div>
   )

@@ -58,12 +58,10 @@ export const Navbar: FC<Variant> = ({ variant }) => {
         onClose={() => setBurgerIsOpen(false)}
       />
 
-      <Popup
-        isOpen={isOpenPasswordRecovery}
-        onClose={() => setIsOpenPasswordRecovery(false)}
-      >
-        <PasswordRecovery />
-      </Popup>
+      <PasswordRecovery
+        isOpenPasswordRecovery={isOpenPasswordRecovery}
+        setIsOpenPasswordRecovery={() => setIsOpenPasswordRecovery(false)}
+      />
 
       {!variant ? (
         <>

@@ -26,7 +26,9 @@ export const LoginButton: FC<LoginBtnProps> = ({ btnClick }) => {
       </div>
 
       <div className={s.textWrapper}>
-        <div className={s.name}>{user ? user.name : 'LOGGA IN'}</div>
+        <div className={s.name}>
+          {user ? <span>{user.name}</span> : <span>LOGGA IN</span>}
+        </div>
       </div>
     </button>
   )

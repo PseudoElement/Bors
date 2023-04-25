@@ -1,7 +1,7 @@
 @use 'styles/style' as *;
 
 .popup {
-  padding: 20px;
+  padding: 20px 10px;
 }
 
 .buystockTitle {
@@ -12,8 +12,8 @@
   line-height: 140%;
   font-weight: $fw-bold;
   letter-spacing: -0.03em;
-  margin-top: 64px;
   text-align: center;
+
   @include tablet {
     font-size: 26px;
     text-align: center;
@@ -27,6 +27,8 @@
   flex-wrap: wrap;
   margin-top: 34px;
   margin-bottom: 33px;
+  width: 100%;
+
   @include tablet {
     flex-direction: column;
   }

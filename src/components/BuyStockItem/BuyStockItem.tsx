@@ -2,10 +2,11 @@ import { FC } from 'react'
 
 import Image from 'next/image'
 
+import { countToBuy } from 'shared/helpers/countToBuy'
+
 import { Basket } from 'features/StockSection/StockSection'
 
 import s from './buyStockItem.module.scss'
-import { countToBuy } from '../../shared/helpers/countToBuy'
 
 export const BuyStockItem: FC<Basket> = ({ buy, stock }) => {
   return (

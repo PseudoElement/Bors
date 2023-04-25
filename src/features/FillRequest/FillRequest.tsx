@@ -64,6 +64,7 @@ export const FillRequest: FC<FillRequestProps> = ({ setPopupStatus }) => {
                 onChange={onChange}
                 onClick={handleSubmit(onSubmit)}
                 type='email'
+                classNameBtn={s.inputButton}
                 withButton={app.loading ? <Loading /> : 'Skicka'}
               />
             )}

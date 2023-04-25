@@ -1,4 +1,7 @@
 @use 'styles/style' as *;
+.burgerPopupOverlay {
+  align-items: start;
+}
 
 .burgerMenu {
   padding: 20px;
@@ -9,6 +12,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .burgerPopup {
   padding: 75px 20px 0;
   justify-content: start;

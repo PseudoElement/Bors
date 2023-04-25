@@ -14,7 +14,6 @@
   text-align: left;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 13px 18px;
 }
 
@@ -31,7 +30,16 @@
 }
 
 .buystockTitle {
+  font-family: $font-Mont;
   font-size: 16px;
+  font-weight: $fw-bold;
+  line-height: 16px;
+  letter-spacing: -0.02em;
+
+  @include tablet-mobile {
+    font-size: 12px;
+    line-height: 12px;
+  }
 }
 
 .buystockInitials {
@@ -39,6 +47,11 @@
   font-size: 18px;
   font-weight: $fw-bold;
   letter-spacing: -0.02em;
+
+  @include tablet-mobile {
+    font-size: 14px;
+    line-height: 14px;
+  }
 }
 
 .buystockStoks {
@@ -47,6 +60,11 @@
   opacity: 0.6;
   font-size: 16px;
   font-weight: $fw-semibold;
+
+  @include tablet-mobile {
+    font-size: 12px;
+    line-height: 12px;
+  }
 }
 
 .buystockCurrency {
@@ -55,4 +73,9 @@
   font-weight: $fw-bold;
   font-size: 18px;
   text-transform: uppercase;
+
+  @include tablet-mobile {
+    font-size: 14px;
+    line-height: 14px;
+  }
 }
