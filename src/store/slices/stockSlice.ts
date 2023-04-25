@@ -29,6 +29,7 @@ const default_stock_params: StockState = {
 
 const default_stock_filters: StockFilters = {
   current_page: 1,
+  per_page: 12,
   search: '',
   price: mock_min_max_price[0],
   popularity: mock_min_max_popularity[0],

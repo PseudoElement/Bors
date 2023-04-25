@@ -31,6 +31,7 @@ export const FiltersPanel: FC = () => {
     price: mock_min_max_price[0],
     popularity: mock_min_max_popularity[0],
     current_page: filterParams.current_page,
+    per_page: filterParams.per_page
   })
 
   const handleSearchText = (text: string) => {
@@ -65,6 +66,7 @@ export const FiltersPanel: FC = () => {
     price: mock_min_max_price[0],
     popularity: mock_min_max_popularity[0],
     current_page: filterParams.current_page,
+    per_page: filterParams.per_page
   })
 
   const mobileHandleFilters = () => {

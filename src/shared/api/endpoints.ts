@@ -12,7 +12,7 @@ export const endpoints_user = {
 
 export const endpoints_stock = {
   stock_all: (filters: StockFilters) =>
-    `/stock?by_price=${filters.price.value}&by_popularity=${filters.popularity.value}&search=${filters.search}&page=${filters.current_page}`,
+    `/stock?by_price=${filters.price.value}&by_popularity=${filters.popularity.value}&per_page=${filters.per_page}&search=${filters.search}&page=${filters.current_page}`,
   stock_buy: '/stock/buy/',
   stock_my: '/stock/my/',
   stock_id: (id: number) => `/stock/${id}/`,

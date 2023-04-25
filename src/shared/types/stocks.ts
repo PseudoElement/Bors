@@ -51,7 +51,7 @@ export interface StockState {
   links: string | null
   next_page_url: null
   path: string | null
-  per_page: number | null
+  per_page: number
   prev_page_url: null
   to: number | null
   total: number
@@ -92,4 +92,5 @@ export interface StockFilters {
   popularity: FilterMeta
   search: string
   current_page: number
+  per_page: number
 }
