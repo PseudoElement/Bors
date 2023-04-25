@@ -1,14 +1,14 @@
 import { FC, ReactNode, useRef } from 'react'
 import cn from 'classnames'
 
+import { Loading, Button } from 'components'
+
 import { useClickOutside } from 'shared/hooks/useClickOutside'
+import { useAppSelector } from 'shared/hooks/redux'
 
 import CloseIcon from '/public/assets/icons/CloseIcon.svg'
 
 import s from './popup.module.scss'
-import { Button } from '../index'
-import { useAppSelector } from 'shared/hooks/redux'
-import { Loading } from 'components/Loading/Loading'
 
 interface PopupProps {
   buttonText?: string

@@ -14,14 +14,20 @@
   flex-direction: column;
   gap: 20px;
 }
+
 .title {
   width: fit-content;
   font-style: normal;
-  font-weight: $fw-bold;
+  font-weight: $fw-semibold;
   font-size: 56px;
   line-height: 100%;
   letter-spacing: -0.02em;
   color: $color-black;
+
+  @include tablet-mobile {
+    font-size: 40px;
+    line-height: 40px;
+  }
 }
 
 .subtitle {
@@ -34,49 +40,15 @@
   line-height: 130%;
   letter-spacing: -0.02em;
   color: $color-gray-a5;
-}
 
-.titleInfo {
-  font-style: normal;
-  font-weight: $fw-semibold;
-  font-size: 18px;
-  line-height: 100%;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: $color-gray-a5;
-}
-.info {
-  display: flex;
-  gap: 10px;
-  background: $password-gradient;
-  background-clip: text;
-  color: transparent;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 48px;
-  line-height: 100%;
-  letter-spacing: -0.03em;
+  @include tablet-mobile {
+    font-size: 16px;
+    line-height: 21px;
+  }
 }
 
 .wrapperContent {
   display: flex;
   flex-direction: column;
   gap: 48px;
-}
-.userInfo {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 20px;
-}
-
-.currency {
-  font-size: 35px;
-  line-height: 60px;
-}
-
-.userCard {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  justify-content: center;
 }

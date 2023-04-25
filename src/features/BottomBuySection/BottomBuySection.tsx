@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import { StockHorizonCard, Button } from 'components'
-import { Loading } from 'components/Loading/Loading'
+
+import { StockHorizonCard, Button, Loading } from 'components'
 
 import { useAppSelector } from 'shared/hooks/redux'
 

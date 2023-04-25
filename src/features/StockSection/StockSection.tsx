@@ -132,7 +132,7 @@ export const StockSection: FC<StockSectionProps> = ({ classNames, stocks }) => {
   }
 
   useEffect(() => {
-    if (showBuyStockInfo === true) {
+    if (showBuyStockInfo) {
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = 'inherit'

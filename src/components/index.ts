@@ -24,6 +24,7 @@ import { BurgerMenuButton } from './BurgerMenuButton/BurgerMenuButton'
 import { Pagination } from './Pagination/Pagination'
 import { LoginButton } from './LoginButton/LoginButton'
 import { Notify } from './Notify/Notify'
+import { Loading } from './Loading/Loading'
 
 export {
   Button,
@@ -52,4 +53,5 @@ export {
   InfoCard,
   LoginButton,
   Notify,
+  Loading,
 }

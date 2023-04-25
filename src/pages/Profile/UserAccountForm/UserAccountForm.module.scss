@@ -17,7 +17,7 @@
 
   @include tablet-mobile {
     width: 100%;
-    margin-top: 12px;
+    margin-top: 28px;
     margin-bottom: 0;
   }
 }
@@ -102,7 +102,9 @@
 .errMessage {
   color: $color-red;
 }
-
+.homeAddress {
+  padding-top: 28px;
+}
 .btnCancel {
   background: #eef2fc;
   color: $color-blue;

@@ -62,16 +62,16 @@ export const StocksCard: FC<StocksCardProps> = ({
 
       <div className={s.appName}>
         <span className={s.name}>
-          {stock?.company_name ? stock?.company_name : 'Undefined'}
+          {stock?.company_name ? stock?.company_name : null}
         </span>
         <span className={s.initials}>
-          {stock?.company_code ? stock?.company_code : 'Undefined'}
+          {stock?.company_code ? stock?.company_code : null}
         </span>
       </div>
 
       <div className={s.statistics}>
         <div className={s.currency}>
-          {stock?.price?.price ? stock?.price.price : <span>Undefined</span>}{' '}
+          {stock?.price?.price ? stock?.price.price : null}
           <span>SEK</span>
         </div>
 

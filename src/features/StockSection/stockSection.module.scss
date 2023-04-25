@@ -20,6 +20,11 @@
     column-gap: 8px;
     row-gap: 32px;
   }
+
+  @media (max-width: 573px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .bottomBuySection {

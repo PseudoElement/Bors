@@ -2,7 +2,7 @@ import { Dispatch, FC, SetStateAction } from 'react'
 import { useForm, Controller, SubmitHandler } from 'react-hook-form'
 import { useRouter } from 'next/router'
 
-import { Input, Button } from 'components'
+import { Input, Button, Loading } from 'components'
 
 import { userAuth } from 'shared/api/routes/user'
 import { userAuthResponse } from 'store/slices/userSlice'
@@ -10,7 +10,6 @@ import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { cookies } from 'shared/utils/Cookies'
 
 import s from './loginForm.module.scss'
-import { Loading } from 'components/Loading/Loading'
 
 export interface FormInputProps {
   email: string

@@ -25,21 +25,6 @@
   }
 }
 
-.wrapperBalance {
-  display: flex;
-  column-gap: 30px;
-
-  @media screen and (max-width: 921px) {
-    column-gap: 20px;
-  }
-
-  @include tablet-mobile {
-    width: 100%;
-    flex-direction: column;
-    row-gap: 14px;
-  }
-}
-
 .avatar {
   display: flex;
   align-items: center;

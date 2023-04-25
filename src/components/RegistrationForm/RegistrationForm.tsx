@@ -1,7 +1,8 @@
-import { Dispatch, FC, SetStateAction } from 'react'
+import { FC } from 'react'
 import Link from 'next/link'
 import { useForm, Controller, SubmitHandler } from 'react-hook-form'
-import { Input, Button, Popup } from 'components'
+
+import { Input, Button, Loading } from 'components'
 
 import { cookies } from 'shared/utils/Cookies'
 import { UserRegRequest } from 'shared/types/user'
@@ -10,8 +11,6 @@ import { userRegister } from 'shared/api/routes/user'
 import { newUserRequested } from 'store/slices/userSlice'
 
 import s from './registrationForm.module.scss'
-import { PopupAfterSubmitStatus } from 'shared/enums'
-import { Loading } from 'components/Loading/Loading'
 
 interface RegistrationFormProps {
   openPopup: () => void

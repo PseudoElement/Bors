@@ -19,6 +19,7 @@ import { BuyStock } from '../pages/BuyStock/BuyStock'
 import { DropMenu } from './DropMenu/DropMenu'
 import { InfoSection } from './InfoSection/InfoSection'
 import { StockSection } from './StockSection/StockSection'
+import { BalancePanel } from './BalancePanel/BalancePanel'
 
 export {
   Layout,
@@ -40,6 +41,7 @@ export {
   BuyStock,
   StockSection,
   InfoSection,
+  BalancePanel,
   DropMenu,
   PopupAfterSubmit,
 }

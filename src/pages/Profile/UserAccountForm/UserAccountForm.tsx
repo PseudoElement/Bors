@@ -2,8 +2,7 @@ import { FC, useEffect, ChangeEvent, useState } from 'react'
 import cn from 'classnames'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 
-import { Button, Input } from 'components'
-import { Loading } from 'components/Loading/Loading'
+import { Button, Input, Loading } from 'components'
 
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { userUpdate } from 'shared/api/routes/user'
@@ -16,7 +15,6 @@ import { formatTelNumber } from 'shared/helpers/formatTelNumber'
 import { mock_user_fields } from 'shared/mocks/mock_userAccount'
 
 import s from './UserAccountForm.module.scss'
-import { setAppSuccess } from 'store/slices/appSlice'
 
 export const UserAccountForm: FC = () => {
   const dispatch = useAppDispatch()
@@ -171,7 +169,7 @@ export const UserAccountForm: FC = () => {
             ))}
           </div>
 
-          <div className={s.wrapperFullField}>
+          <div className={cn(s.wrapperFullField, s.homeAddress)}>
             <label htmlFor='homeadress' className={s.labelField}>
               Adress<span className={s.requiredField}>*</span>
             </label>

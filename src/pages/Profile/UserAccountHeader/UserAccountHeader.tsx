@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { Balance } from 'components'
+import { BalancePanel } from 'features'
 
 import { useAppSelector } from 'shared/hooks/redux'
 
@@ -38,58 +38,41 @@ export const UserAccountHeader: FC<UserAccountHeaderProps> = ({
   }, [user?.name])
 
   return (
-    <>
-      {user && (
-        <div className={s.header}>
-          <div className={s.wrapperAvatar}>
-            <div className={s.avatar}>
-              {user?.avatar ? (
-                <div
-                  className={s.userAvatar}
-                  style={{ backgroundImage: `url("${user.avatar}")` }}
-                />
-              ) : (
-                <div className={s.defaultAvatar} />
-              )}
-            </div>
-
-            <div className={s.changeAvatar}>
-              <label htmlFor='file-upload' className={s.labelUpload}>
-                <div className={s.iconUpload}>
-                  <PhotoCamera />
-                </div>
-
-                <input
-                  type='file'
-                  name='file-upload'
-                  id='file-upload'
-                  className={s.inputUpload}
-                  onChange={e => {
-                    if (e.target.files) changeAvatar(e.target.files[0])
-                  }}
-                />
-                <div className={s.textUpload}>Förändra</div>
-              </label>
-            </div>
-          </div>
-
-          <div className={s.wrapperBalance}>
-            <Balance count={user?.balance} currency={'SEK'} title={'Saldo'} />
-
-            <Balance
-              count={user?.balance}
-              currency={'SEK'}
-              title={'Avkastning'}
+    <div className={s.header}>
+      <div className={s.wrapperAvatar}>
+        <div className={s.avatar}>
+          {user?.avatar ? (
+            <div
+              className={s.userAvatar}
+              style={{ backgroundImage: `url("${user.avatar}")` }}
             />
-
-            <Balance
-              count={user?.balance}
-              currency={'bbb'}
-              title={'Rangordning'}
-            />
-          </div>
+          ) : (
+            <div className={s.defaultAvatar} />
+          )}
         </div>
-      )}
-    </>
+
+        <div className={s.changeAvatar}>
+          <label htmlFor='file-upload' className={s.labelUpload}>
+            <div className={s.iconUpload}>
+              <PhotoCamera />
+            </div>
+
+            <input
+              type='file'
+              name='file-upload'
+              id='file-upload'
+              className={s.inputUpload}
+              onChange={e => {
+                if (e.target.files) changeAvatar(e.target.files[0])
+              }}
+            />
+
+            <div className={s.textUpload}>Förändra</div>
+          </label>
+        </div>
+      </div>
+
+      <BalancePanel />
+    </div>
   )
 }

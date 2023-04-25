@@ -12,7 +12,6 @@ import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { cookies } from 'shared/utils/Cookies'
 
 import { nav_links } from 'shared/mocks/navBar'
-import defaultAvatarImage from '/public/assets/image/avatar.png'
 import logo from '/public/assets/image/smaloLogo.png'
 
 import s from './navMobile.module.scss'
@@ -120,8 +119,8 @@ export const NavMobile: FC<NavMobileProps> = ({ classNames }) => {
           </div>
 
           {nav_links.map(item => (
-            <div className={s.linkItem} key={item.label}>
-              <Link href={item.link}>
+            <Link href={item.link} key={item.label}>
+              <div className={s.linkItem}>
                 <a
                   className={cn(s.burgerLink, {
                     [s.active]: pathname === item.link,
@@ -129,8 +128,8 @@ export const NavMobile: FC<NavMobileProps> = ({ classNames }) => {
                 >
                   {item.label}
                 </a>
-              </Link>
-            </div>
+              </div>
+            </Link>
           ))}
         </div>
       )}
