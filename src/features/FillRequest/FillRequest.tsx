@@ -48,7 +48,7 @@ export const FillRequest: FC<FillRequestProps> = ({ setPopupStatus }) => {
         <form className={s.forms} id={'contacts'}>
           <div className={s.shadow} />
 
-          <h3 className={s.title}>Fyll i en ansökan om auktorisation</h3>
+          <h3 className={s.title}>Följ Börsjakten och anmäl dig till vårt nyhetsbrev</h3>
 
           <Controller
             name='email'

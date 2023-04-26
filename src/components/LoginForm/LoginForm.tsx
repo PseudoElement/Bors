@@ -105,7 +105,7 @@ export const LoginForm: FC<LoginFormProps> = ({
       </label>
 
       <Button type='submit' className={s.submitBtn}>
-        {app.loading ? <Loading /> : 'Stiga på'}
+        {app.loading ? <Loading /> : 'Logga in'}
       </Button>
     </form>
   )

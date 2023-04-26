@@ -40,7 +40,7 @@ export const NavFoot: FC<NavFootProps> = ({
             {socialLink
               ? main_socialLinks.map(item => (
                   <Link href={item.href} key={item.title}>
-                    <a>
+                    <a target='_blank' rel="noopener noreferrer">
                       <div className={s.socialLink}>
                         <span>{item.title}</span>
 
@@ -70,7 +70,7 @@ export const NavFoot: FC<NavFootProps> = ({
             {socialLink
               ? main_socialLinks.map(item => (
                   <Link href={item.href} key={item.title}>
-                    <a>
+                    <a target='_blank' rel="noopener noreferrer">
                       <div className={s.socialLink}>
                         <span>{item.title}</span>
 
