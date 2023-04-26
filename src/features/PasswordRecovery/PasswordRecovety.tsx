@@ -81,7 +81,7 @@ export const PasswordRecovery: FC<PasswordRecoveryProps> = ({
                 )}
               />
             ) : (
-              'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.'
+              'Ange din mejladress för att återställa ditt lösenord.'
             )}
           </div>
         </div>

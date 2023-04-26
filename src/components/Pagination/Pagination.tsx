@@ -17,7 +17,6 @@ export const Pagination: FC<PaginationProps> = ({ classNames }) => {
   const { total, current_page, per_page } = useAppSelector(state => state.stock.params)
   const ccc = useAppSelector(state => state.stock.params)
 
-  console.log(ccc)
   const [cur, setCur] = useState(1)
 
   const handlePush = (page: number) => {
