@@ -55,7 +55,7 @@ export const UserAccountForm: FC = () => {
 
     if (value.length > 20) {
       setError('first_name', {
-        message: 'Not more 20 digits',
+        message: 'Inte mer 20 siffror',
       })
     } else {
       setError('first_name', {
@@ -72,7 +72,7 @@ export const UserAccountForm: FC = () => {
 
     if (value.length > 20) {
       setError('last_name', {
-        message: 'Not more 20 digits',
+        message: 'Inte mer 20 siffror',
       })
     } else {
       setError('last_name', {
@@ -91,7 +91,7 @@ export const UserAccountForm: FC = () => {
     const text = e.target.value.replace(NUMBER_REG_EXP[1], '')
 
     setError('phone_number', {
-      message: text.length < 11 ? 'Requires 11 digits' : '',
+      message: text.length < 11 ? 'Kräver 11 siffror' : '',
     })
 
     setValue('phone_number', formatTelNumber(text))
@@ -104,7 +104,7 @@ export const UserAccountForm: FC = () => {
 
     setError(name, {
       message: !parseInt(text[text.length - 1])
-        ? 'Only numbers are allowed'
+        ? 'Endast siffror är tillåtna'
         : '',
     })
 

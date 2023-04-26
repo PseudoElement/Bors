@@ -21,7 +21,7 @@ export const mock_user_fields = {
       name: 'email',
     },
     {
-      label: 'Telefonnummer',
+      label: 'Mobilnummer',
       type: 'phone',
       name: 'phone_number',
     },
