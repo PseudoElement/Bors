@@ -28,12 +28,10 @@ export const StockSection: FC<StockSectionProps> = ({
   stocks,
   withPagination,
 }) => {
-  const dispatch = useAppDispatch()
   const [showBuyStockList, setShowBuyStockList] = useState<boolean>(false)
   const [showBuyStockInfo, setShowBuyStockInfo] = useState<boolean>(false)
-
-  const [basket, setBasket] = useState<Basket[]>([])
   const [stockDetails, setStockDetails] = useState<Stocks | null>(null)
+  const [basket, setBasket] = useState<Basket[]>([])
 
   const deleteStockInBasket = (id: number) => {
     setBasket(prevState => prevState.filter(item => item.stock.id !== id))
