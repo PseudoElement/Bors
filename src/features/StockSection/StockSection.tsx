@@ -5,8 +5,6 @@ import { Pagination, Popup, StocksCard } from 'components'
 import { BuyStockList, CardStocksInfo, BottomBuySection } from 'features'
 
 import { buyStocks, detailStock } from 'shared/api/routes/stock'
-import { setStockData } from 'store/slices/stockSlice'
-import { useAppDispatch } from 'shared/hooks/redux'
 
 import { Stocks } from 'shared/types/stocks'
 
