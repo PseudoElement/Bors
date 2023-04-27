@@ -1,71 +1,84 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { StockState, Stocks, StockFilters } from 'shared/types/stocks'
+import {
+  Stocks,
+  StockFilters,
+  StocksResponse,
+  StockPagination,
+} from 'shared/types/stocks'
 import {
   mock_min_max_popularity,
   mock_min_max_price,
 } from '../../shared/mocks/mock_filters'
 
-interface StocksTypes {
-  params: StockState
-  filters: StockFilters
-  data: Stocks[] | null
-}
-
-const default_stock_params: StockState = {
-  current_page: 1,
+const default_stock_params: StocksResponse = {
   data: null,
   first_page_url: '',
   from: 0,
-  last_page: 0,
-  last_page_url: null,
+  last_page_url: '',
   links: '',
   next_page_url: null,
   path: '',
-  per_page: 0,
   prev_page_url: null,
   to: 0,
+  last_page: 0,
+  per_page: 24,
+  current_page: 1,
   total: 0,
 }
 
 const default_stock_filters: StockFilters = {
-  current_page: 1,
-  per_page: 12,
   search: '',
   price: mock_min_max_price[0],
   popularity: mock_min_max_popularity[0],
 }
 
-const initialState: StocksTypes = {
+export interface StocksState {
+  params: StocksResponse
+  filters: StockFilters
+  data: Stocks[] | null
+  request: boolean
+}
+
+const initialState: StocksState = {
   params: default_stock_params,
   data: null,
   filters: default_stock_filters,
+  request: false,
 }
 
 const stockSlice = createSlice({
   name: 'stockSlice',
   initialState,
   reducers: {
-    setStockParams: (state: StocksTypes, action: PayloadAction<StockState>) => {
-      state.params = { ...action.payload, data: null }
-      state.filters.current_page = action.payload.current_page
+    setStockData: (
+      state: StocksState,
+      action: PayloadAction<StocksResponse>
+    ) => {
+      state.data = action.payload.data
+      state.params = action.payload
+      state.request = false
     },
-
     setStockFilters: (
-      state: StocksTypes,
+      state: StocksState,
       action: PayloadAction<StockFilters>
     ) => {
-      state.filters = action.payload
+      state.request = true
+      state.filters.search = action.payload.search
+      state.filters.price = action.payload.price
+      state.filters.popularity = action.payload.popularity
     },
-    setStockData: (
-      state: StocksTypes,
-      action: PayloadAction<Stocks[] | null>
+    setStockPagination: (
+      state: StocksState,
+      action: PayloadAction<StockPagination>
     ) => {
-      state.data = action.payload
+      state.request = true
+      state.params.current_page = action.payload.current_page
+      state.params.per_page = action.payload.per_page
     },
   },
 })
 
-export const { setStockParams, setStockData, setStockFilters } =
+export const { setStockData, setStockFilters, setStockPagination } =
   stockSlice.actions
 
 export default stockSlice.reducer

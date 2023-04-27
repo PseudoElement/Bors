@@ -50,6 +50,7 @@
 
 .buttonWrap {
   display: flex;
+  position: relative;
 
   @include tablet-mobile {
     margin-top: 20px;

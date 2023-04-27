@@ -3,31 +3,37 @@ import { FC, useEffect } from 'react'
 import { FiltersPanel, StockSection } from 'features'
 
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
-import { getAllStocks } from './helpers'
-import { setStockData, setStockParams } from 'store/slices/stockSlice'
+import { setStockData } from 'store/slices/stockSlice'
+import { stockAll } from 'shared/api/routes/stock'
 
-import { StockFilters } from 'shared/types/stocks'
+import { Params } from 'shared/types/stocks'
 
 import s from './buyStock.module.scss'
 
 export const BuyStock: FC = () => {
   const dispatch = useAppDispatch()
-  const stocks = useAppSelector(state => state.stock.data)
-  const filters = useAppSelector(state => state.stock.filters)
+  const { request, params, data, filters } = useAppSelector(
+    state => state.stock
+  )
 
-  const getStocks = async (filters: StockFilters) => {
-    const data = await getAllStocks(filters)
-    if (data) {
-      dispatch(setStockData(data.data))
-      dispatch(setStockParams(data))
+  const getStocks = async (params: Params) => {
+    try {
+      const { data } = await stockAll(params)
+      if (data?.status === 'success') {
+        dispatch(setStockData(data.data))
+      }
+      throw new Error(data.messge)
+    } catch (e) {
+      // TODO
+      // console.log(e)
     }
   }
 
   useEffect(() => {
-    if (!stocks) {
-      getStocks(filters)
+    if (request) {
+      getStocks({ ...filters, ...params })
     }
-  }, [])
+  }, [request])
 
   return (
     <div className={s.page}>
@@ -43,7 +49,7 @@ export const BuyStock: FC = () => {
           <FiltersPanel />
         </div>
 
-        {stocks ? <StockSection stocks={stocks} /> : null}
+        {data ? <StockSection stocks={data} /> : null}
       </div>
     </div>
   )

@@ -41,29 +41,26 @@ export interface Price {
   updated_at: string
 }
 
-export interface StockState {
-  current_page: number
-  data: Stocks[] | null
-  first_page_url: string | null
-  from: number | null
-  last_page: number | null
-  last_page_url: string | null
-  links: string | null
-  next_page_url: null
-  path: string | null
-  per_page: number
-  prev_page_url: null
-  to: number | null
-  total: number
-}
-
 export interface getStockResponse {
-  data: StockState
+  data: StocksResponse
   messge: string
   status: string
 }
-export interface StocksList {
-  stocks: Stocks[]
+
+export interface StocksResponse {
+  current_page: number
+  data: Stocks[] | null
+  first_page_url: string
+  from: number
+  last_page: number
+  last_page_url: string
+  links: string
+  next_page_url: null
+  path: string
+  per_page: number
+  prev_page_url: null
+  to: number
+  total: number
 }
 
 export interface StockTypesPrivot {
@@ -91,6 +88,27 @@ export interface StockFilters {
   price: FilterMeta
   popularity: FilterMeta
   search: string
+}
+
+export interface StockPagination {
   current_page: number
   per_page: number
+}
+
+export interface Params {
+  current_page: number
+  first_page_url: string
+  from: number
+  last_page: number
+  last_page_url: string
+  links: string
+  next_page_url: null
+  path: string
+  per_page: number
+  prev_page_url: null
+  to: number
+  total: number
+  price: FilterMeta
+  popularity: FilterMeta
+  search: string
 }

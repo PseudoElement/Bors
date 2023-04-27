@@ -1,4 +1,4 @@
-import { StockFilters } from '../types/stocks'
+import { Params } from '../types/stocks'
 
 export const endpoints_user = {
   register: '/auth/register/',
@@ -11,8 +11,8 @@ export const endpoints_user = {
 }
 
 export const endpoints_stock = {
-  stock_all: (filters: StockFilters) =>
-    `/stock?by_price=${filters.price.value}&by_popularity=${filters.popularity.value}&per_page=${filters.per_page}&search=${filters.search}&page=${filters.current_page}`,
+  stock_all: (params: Params) =>
+    `/stock?by_price=${params?.price?.value}&by_popularity=${params?.popularity?.value}&per_page=${params.per_page}&search=${params.search}&page=${params.current_page}`,
   stock_buy: '/stock/buy/',
   stock_my: '/stock/my/',
   stock_id: (id: number) => `/stock/${id}/`,

@@ -4,13 +4,8 @@ import Image from 'next/image'
 import { DropMenu } from 'features'
 import { Input, Popup } from 'components'
 
-import {
-  setStockData,
-  setStockFilters,
-  setStockParams,
-} from 'store/slices/stockSlice'
-import { getAllStocks } from 'pages/BuyStock/helpers'
-import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
+import { setStockFilters } from 'store/slices/stockSlice'
+import { useAppDispatch } from 'shared/hooks/redux'
 
 import { FilterMeta, StockFilters } from 'shared/types/stocks'
 import {
@@ -24,14 +19,11 @@ import s from './filtersPanel.module.scss'
 
 export const FiltersPanel: FC = () => {
   const dispatch = useAppDispatch()
-  const filterParams = useAppSelector(state => state.stock.params)
 
   const [filters, setFilters] = useState<StockFilters>({
     search: '',
     price: mock_min_max_price[0],
     popularity: mock_min_max_popularity[0],
-    current_page: filterParams.current_page,
-    per_page: filterParams.per_page
   })
 
   const handleSearchText = (text: string) => {
@@ -46,16 +38,7 @@ export const FiltersPanel: FC = () => {
     setFilters({ ...filters, price: value })
   }
 
-  const getStocks = async (filters: StockFilters) => {
-    const data = await getAllStocks(filters)
-    if (data) {
-      dispatch(setStockData(data.data))
-      dispatch(setStockParams(data))
-    }
-  }
-
   useEffect(() => {
-    getStocks(filters)
     dispatch(setStockFilters(filters))
   }, [filters])
 
@@ -65,12 +48,10 @@ export const FiltersPanel: FC = () => {
     search: '',
     price: mock_min_max_price[0],
     popularity: mock_min_max_popularity[0],
-    current_page: filterParams.current_page,
-    per_page: filterParams.per_page
   })
 
   const mobileHandleFilters = () => {
-    getStocks(mobileFilters)
+    dispatch(setStockFilters(mobileFilters))
     setIsOpenMobilePopup(false)
   }
 
@@ -79,7 +60,12 @@ export const FiltersPanel: FC = () => {
       ...mobileFilters,
       popularity: mock_min_max_popularity[0],
     })
-    getStocks({ ...mobileFilters, popularity: mock_min_max_popularity[0] })
+    dispatch(
+      setStockFilters({
+        ...mobileFilters,
+        popularity: mock_min_max_popularity[0],
+      })
+    )
   }
 
   const mobileHandlePrice = () => {
@@ -87,7 +73,9 @@ export const FiltersPanel: FC = () => {
       ...mobileFilters,
       price: mock_min_max_price[0],
     })
-    getStocks({ ...mobileFilters, price: mock_min_max_price[0] })
+    dispatch(
+      setStockFilters({ ...mobileFilters, price: mock_min_max_price[0] })
+    )
   }
 
   const mobileHandleSearch = () => {
@@ -95,7 +83,7 @@ export const FiltersPanel: FC = () => {
       ...mobileFilters,
       search: '',
     })
-    getStocks({ ...mobileFilters, search: '' })
+    dispatch(setStockFilters({ ...mobileFilters, search: '' }))
   }
 
   return (

@@ -35,19 +35,19 @@ export const StockSection: FC<StockSectionProps> = ({ classNames, stocks }) => {
   }
 
   const showStockDetails = async (id: number) => {
-    try {
-      const data = await detailStock(id)
-      dispatch(
-        setStockData(
-          stocks?.map(item => (item.id === id ? data.data.data : item)) || null
-        )
-      )
-
-      setStockDetails(data.data.data)
-      setShowBuyStockInfo(true)
-    } catch (e) {
-      console.error(e)
-    }
+    // try {
+    //   const data = await detailStock(id)
+    //   dispatch(
+    //     setStockData(
+    //       stocks?.map(item => (item.id === id ? data.data.data : item)) || null
+    //     )
+    //   )
+    //
+    //   setStockDetails(data.data.data)
+    //   setShowBuyStockInfo(true)
+    // } catch (e) {
+    //   console.error(e)
+    // }
   }
 
   const stockAddToBasket = (value: Basket) => {
