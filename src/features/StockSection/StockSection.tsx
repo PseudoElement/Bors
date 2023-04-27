@@ -15,6 +15,7 @@ import s from './stockSection.module.scss'
 export interface StockSectionProps {
   classNames?: string
   stocks: Stocks[]
+  withPagination?: boolean
 }
 
 export interface Basket {
@@ -22,7 +23,11 @@ export interface Basket {
   buy: any
 }
 
-export const StockSection: FC<StockSectionProps> = ({ classNames, stocks }) => {
+export const StockSection: FC<StockSectionProps> = ({
+  classNames,
+  stocks,
+  withPagination,
+}) => {
   const dispatch = useAppDispatch()
   const [showBuyStockList, setShowBuyStockList] = useState<boolean>(false)
   const [showBuyStockInfo, setShowBuyStockInfo] = useState<boolean>(false)
@@ -35,19 +40,13 @@ export const StockSection: FC<StockSectionProps> = ({ classNames, stocks }) => {
   }
 
   const showStockDetails = async (id: number) => {
-    // try {
-    //   const data = await detailStock(id)
-    //   dispatch(
-    //     setStockData(
-    //       stocks?.map(item => (item.id === id ? data.data.data : item)) || null
-    //     )
-    //   )
-    //
-    //   setStockDetails(data.data.data)
-    //   setShowBuyStockInfo(true)
-    // } catch (e) {
-    //   console.error(e)
-    // }
+    try {
+      const data = await detailStock(id)
+      setStockDetails(data.data.data)
+      setShowBuyStockInfo(true)
+    } catch (e) {
+      console.error(e)
+    }
   }
 
   const stockAddToBasket = (value: Basket) => {
@@ -184,7 +183,7 @@ export const StockSection: FC<StockSectionProps> = ({ classNames, stocks }) => {
         />
       </div>
 
-      <Pagination />
+      {withPagination ? <Pagination /> : null}
     </section>
   )
 }

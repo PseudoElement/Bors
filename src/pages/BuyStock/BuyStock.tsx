@@ -49,7 +49,7 @@ export const BuyStock: FC = () => {
           <FiltersPanel />
         </div>
 
-        {data ? <StockSection stocks={data} /> : null}
+        {data ? <StockSection stocks={data} withPagination/> : null}
       </div>
     </div>
   )
