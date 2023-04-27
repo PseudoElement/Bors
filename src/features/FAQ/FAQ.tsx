@@ -18,7 +18,7 @@ const FAQ = () => {
     setActiveTabIndex(index)
   }
   return (
-    <div className={s.container}>
+    <div className={s.container} id={'faq'}>
       <h2 className={s.faqHeader}>OM Tävlingen</h2>
 
       <Tabs

@@ -18,10 +18,6 @@ export const main_nav_links = [
     label: 'Hem',
     link: '#about',
   },
-  // {
-  //   label: 'Events',
-  //   link: '#event',
-  // },
   {
     label: 'Topplistan',
     link: '#leaderboard',
@@ -34,10 +30,6 @@ export const main_nav_links = [
     label: 'Kontakta Oss',
     link: '#contacts',
   },
-  /*   {
-    label: 'Stock',
-    link: '#',
-  }, */
 ]
 export const main_socialLinks = [
   {
