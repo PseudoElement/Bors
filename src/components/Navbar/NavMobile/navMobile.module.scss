@@ -139,7 +139,7 @@
   backdrop-filter: blur(63px);
   border-radius: 16px;
   background-color: $color-white;
-
+  text-transform: uppercase;
   &:not(:last-child) {
     margin-bottom: 5px;
   }

@@ -10,7 +10,7 @@ export const nav_links = [
   {
     label: 'MINA AKTIER',
     link: '/profile/my_stocks',
-  },
+  }
 ]
 
 export const main_nav_links = [

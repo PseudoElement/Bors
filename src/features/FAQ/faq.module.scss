@@ -1,0 +1,104 @@
+@use 'styles/style' as *;
+
+.container {
+  padding: 0 0 140px;
+  max-width: 1438px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+.faqHeader{
+  font-family:  $font-Mont;
+  font-weight: $fw-semibold;
+  font-size: 100px;
+  line-height: 110%;
+  margin-bottom: 48px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #000000;
+  @include tablet{
+    font-size: 49px;  
+  }
+}
+.faqBlock{
+  display: flex;
+  gap: 130px;
+  @include tablet{
+    flex-direction: column;
+  }
+  @include mobile-laptop{
+    display: none;
+  }
+}
+.faqTabList{
+  width: 100%;
+  flex: 1;
+  ul{
+    margin: 0;
+  }
+}
+.faqTabPanel{
+  width: 100%;
+  flex: 2;
+}
+.tabList{
+  margin: 0;
+  padding: 20px 0;
+  border-top:  1px solid #EBEBEB;
+  list-style: none;
+  font-family: $font-Mont;
+  font-style: normal;
+  font-weight: $fw-semibold;
+  font-size: 28px;
+  letter-spacing: -0.02em;  
+  color: #878787;
+  cursor: pointer;
+  &:first-child{
+    border-top: none;
+    padding-top: 0;
+  }
+  &:hover{
+    background: linear-gradient(90deg, #0A39B1 29.69%, #E0098A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  @include tablet{
+    padding: 0;
+  }
+}
+.active{
+  font-weight: 800;
+  background: linear-gradient(90deg, #0A39B1 29.69%, #E0098A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  @include tablet{
+    margin-bottom: 30px;
+  }
+}
+.tabPanel{
+  font-family: $font-Mont;
+  font-weight: $fw-bold;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  color: #000000;
+  white-space: pre-wrap;
+  @include tablet{
+    font-size: 22px;
+  }
+}
+.accordionItem{
+  display: none;
+  padding: 20px 0;
+  border-top:  1px solid #EBEBEB;
+  &:first-child{
+    border-top: none;
+    padding-top: 0;
+  }
+  @include mobile-laptop{
+    display: block;
+  }
+}
+  

@@ -12,6 +12,7 @@ import {
 import { SiteData, SponsorType } from 'shared/types/site'
 import { LeaderList } from 'shared/types/leaderboard'
 import { PopupAfterSubmitStatus } from 'shared/enums'
+import FAQ from 'features/FAQ/FAQ'
 
 export interface MainPageProps {
   infoCards: SiteData
@@ -37,12 +38,14 @@ export const MainPage: FC<MainPageProps> = ({
         <LeaderboardList leadersList={leadersList} />
       ) : null}
       {sponsorsCards?.length ? <Sponsors cards={sponsorsCards} /> : null}
+      <FAQ />
       <FillRequest setPopupStatus={setPopupStatus} />
       <PopupAfterSubmit
         onClose={() => setPopupStatus(PopupAfterSubmitStatus.CLOSED)}
         status={popupStatus}
         type='sendEmail'
       />
+      
     </>
   )
 }
