@@ -33,6 +33,7 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
   textInfoCard,
   indicators,
   revenue,
+  last_price,
 }) => {
   const { width } = useWindowDimensions()
 
@@ -52,8 +53,7 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
             <span className={s.titleCurent}>Nuvarande värde</span>
 
             <div className={s.curentValue}>
-              {price?.price}
-              25.67
+              {last_price ? last_price.price : price}
               <span>{currencyValue}</span>
             </div>
           </div>
