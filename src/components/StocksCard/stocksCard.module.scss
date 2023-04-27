@@ -134,28 +134,6 @@
   }
 }
 
-.percent {
-  font-weight: $fw-semibold;
-  display: flex;
-  align-items: center;
-}
-.positive {
-  color: $color-green-0d;
-  svg {
-    margin-right: 5px;
-    fill: $color-green-0d;
-  }
-}
-.negative {
-  color: $color-red;
-
-  svg {
-    margin-right: 5px;
-    transform: rotate(180deg);
-    fill: $color-red;
-  }
-}
-
 .cardFooter {
   height: 55px;
   display: flex;

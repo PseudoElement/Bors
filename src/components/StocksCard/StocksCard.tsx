@@ -2,11 +2,10 @@ import { FC, useState, SyntheticEvent, useEffect } from 'react'
 import Image from 'next/image'
 import cn from 'classnames'
 
-import { Counter } from 'components'
+import { Counter, Percent } from 'components'
 
 import { Stocks } from 'shared/types/stocks'
 import { Basket } from 'features/StockSection/StockSection'
-import UpArrow from '/public/assets/image/ArrowUp.svg'
 
 import s from './stocksCard.module.scss'
 
@@ -75,29 +74,7 @@ export const StocksCard: FC<StocksCardProps> = ({
           <span>SEK</span>
         </div>
 
-        <div className={s.percent}>
-          {stock?.price?.percentage > 0 ? (
-            <div className={s.positive}>
-              <UpArrow />
-              {stock?.price?.percentage ? (
-                <span>+{stock?.price.percentage}</span>
-              ) : (
-                0
-              )}
-              %
-            </div>
-          ) : (
-            <div className={s.negative}>
-              <UpArrow />
-              {stock?.price?.percentage ? (
-                <span>-{stock?.price.percentage}</span>
-              ) : (
-                0
-              )}
-              %
-            </div>
-          )}
-        </div>
+        <Percent count={stock?.price?.percentage} />
       </div>
 
       <div className={s.cardFooter}>

@@ -1,9 +1,5 @@
 @use 'styles/style' as *;
 
-.wrapper {
-  display: flex;
-}
-
 .wrapper:not(:last-child) {
   padding-right: 40px;
   border-right: 1px solid $color-gray-eb;
@@ -20,7 +16,6 @@
 
 .wrapperContent {
   display: flex;
-  flex-direction: column;
   align-items: flex-start;
   gap: 10px;
 }
@@ -43,8 +38,9 @@
   font-style: normal;
   font-weight: $fw-bold;
   font-size: 48px;
-  line-height: 100%;
+  line-height: 38px;
   letter-spacing: -0.03em;
+
   @media screen and (max-width: 921px) {
     font-size: 38px;
   }
@@ -56,19 +52,14 @@
 .currency {
   text-transform: uppercase;
   font-size: 35px;
+  align-self: end;
+  line-height: 30px;
+
   @media screen and (max-width: 390px) {
     font-size: 23px;
   }
 }
 
-.imageProfit {
-  display: flex;
-  align-items: center;
-  color: $color-green-0d;
-}
-
-.textProfit {
-  color: md_color_green;
-  font-weight: $fw-semibold;
-  font-size: 24px;
+.percent {
+  align-self: end;
 }

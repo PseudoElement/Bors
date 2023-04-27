@@ -23,6 +23,9 @@ export interface User {
   ssn: null | string
   stock_balance: number
   updated_at: string
+  diff_position: number
+  profitability: number
+  total_balance: number
 }
 
 export interface LogoutUser {

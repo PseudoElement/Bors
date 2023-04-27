@@ -7,7 +7,7 @@ import { Notify } from 'components'
 
 import { store } from 'store'
 import { persistor } from 'store'
-import { AuthCheck } from '../src/shared/hock/AuthCheck'
+import { AuthCheck } from '../src/shared/hoc/AuthCheck'
 
 import '../src/styles/globals.scss'
 

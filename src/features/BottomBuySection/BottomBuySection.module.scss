@@ -39,7 +39,7 @@
 .button {
   min-width: 180px;
   height: 56px;
-  white-space: none;
+  white-space: nowrap;
   @media screen and (max-width: 658px) {
     width: 358px;
   }

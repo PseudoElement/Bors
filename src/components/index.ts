@@ -25,6 +25,7 @@ import { Pagination } from './Pagination/Pagination'
 import { LoginButton } from './LoginButton/LoginButton'
 import { Notify } from './Notify/Notify'
 import { Loading } from './Loading/Loading'
+import { Percent } from './Percent/Percent'
 
 export {
   Button,
@@ -54,4 +55,5 @@ export {
   LoginButton,
   Notify,
   Loading,
+  Percent,
 }

@@ -1,34 +1,43 @@
 import { FC } from 'react'
-import Image from 'next/image'
 
-import { BalanceProps } from 'shared/types/balance'
+import { Percent } from 'components'
 
 import s from './Balance.module.scss'
+
+export interface BalanceProps {
+  title: string
+  count?: number
+  currency?: string
+  profit?: number
+  currencyPosition?: 'left' | 'right'
+}
 
 export const Balance: FC<BalanceProps> = ({
   title,
   count,
   currency,
   profit,
+  currencyPosition = 'right',
 }) => {
   return (
-    <div className={s.wrapper}>
+    <div>
+      <div className={s.title}>{title}</div>
+
       <div className={s.wrapperContent}>
-        <span className={s.title}>{title}</span>
         <div className={s.content}>
-          {title === 'rating' && '№'} {count}
-          {currency && <span className={s.currency}>{currency}</span>}
-          {profit && (
-            <div className={s.imageProfit}>
-              <Image
-                src='/assets/icons/ArrowUp.svg'
-                width={24}
-                height={18}
-                alt='arrow up'
-              />
-              <span className={s.textProfit}>{profit}</span>
-            </div>
-          )}
+          {currencyPosition === 'left' ? (
+            <div className={s.currency}>{currency}</div>
+          ) : null}
+
+          <div>{count}</div>
+
+          {currencyPosition === 'right' ? (
+            <div className={s.currency}>{currency}</div>
+          ) : null}
+        </div>
+
+        <div className={s.percent}>
+          {profit !== undefined ? <Percent count={profit} /> : null}
         </div>
       </div>
     </div>
