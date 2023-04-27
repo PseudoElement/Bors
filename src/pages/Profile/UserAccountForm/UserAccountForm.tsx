@@ -182,10 +182,12 @@ export const UserAccountForm: FC = () => {
                   <Controller
                     name={item.name as 'avanza'}
                     control={control}
-                    rules={{
+                    rules={(item.name === "nordnet") ? {onChange: handlerOnlyNumber}:
+                      {
                       required: `${item.label} krävs`,
                       onChange: handlerOnlyNumber,
-                    }}
+                      }
+                    }
                     render={({ field: { onChange, value } }) => (
                       <Input
                         type={item.type}
