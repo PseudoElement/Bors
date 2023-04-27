@@ -35,7 +35,6 @@ export const UserAccountForm: FC = () => {
       last_name: '',
       email: '',
       phone_number: null,
-      home_address: '',
       avanza: null,
       nordnet: null,
       avatar: '',
@@ -167,27 +166,6 @@ export const UserAccountForm: FC = () => {
                 )}
               </div>
             ))}
-          </div>
-
-          <div className={cn(s.wrapperFullField, s.homeAddress)}>
-            <label htmlFor='homeadress' className={s.labelField}>
-              Adress<span className={s.requiredField}>*</span>
-            </label>
-
-            <Controller
-              name='home_address'
-              control={control}
-              rules={{ required: `Hemadress krävs` }}
-              render={({ field: { onChange, value } }) => (
-                <Input type='text' value={value} onChange={onChange} />
-              )}
-            />
-
-            {errors.home_address && (
-              <span className={s.errMessage}>
-                {errors.home_address.message}
-              </span>
-            )}
           </div>
 
           <div className={s.wrapperFlexField}>

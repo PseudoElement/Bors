@@ -38,7 +38,6 @@ export const userUpdate = (
     first_name: updateUserForm.first_name,
     last_name: updateUserForm.last_name,
     phone_number: updateUserForm.phone_number,
-    home_address: updateUserForm.home_address,
     avanza: updateUserForm.avanza,
   }
   return api.post(endpoints_user.profile, requestData)

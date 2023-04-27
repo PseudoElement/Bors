@@ -8,7 +8,7 @@ export interface User {
   email_verified_at: null
   first_name: null | string
   forgot_password_at: string
-  home_address: null | string
+  home_address?: null | string
   id: number
   last_name: string | null
   name: string
