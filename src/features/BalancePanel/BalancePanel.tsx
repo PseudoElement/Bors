@@ -26,7 +26,7 @@ export const BalancePanel: FC<BalancePanelProps> = ({ classNames }) => {
       />
 
       <Balance
-        count={user?.diff_position}
+        count={user?.position}
         currency={'№'}
         currencyPosition={'left'}
         title={'Rangordning'}
