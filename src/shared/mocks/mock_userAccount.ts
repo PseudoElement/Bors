@@ -36,11 +36,13 @@ export const mock_user_fields = {
       label: 'Avanza',
       type: 'text',
       name: 'avanza',
+      isRequired: true
     },
     {
       label: 'Nordnet',
       type: 'text',
       name: 'nordnet',
+      isRequired: false
     },
   ],
 }

@@ -61,8 +61,9 @@ export const UserAccountForm: FC = () => {
         message: '',
       })
     }
-
-    setValue('first_name', value[0].toUpperCase() + value.substring(1))
+    if(value[0] !== undefined){
+      setValue('first_name', value[0].toUpperCase() + value.substring(1));
+    }
   }
 
   const handlerLastName = (e: ChangeEvent<HTMLInputElement>) => {
@@ -78,8 +79,9 @@ export const UserAccountForm: FC = () => {
         message: '',
       })
     }
-
-    setValue('last_name', value[0].toUpperCase() + value.substring(1))
+    if(value[0] !== undefined){
+      setValue('last_name', value[0].toUpperCase() + value.substring(1));
+    }
   }
 
   const onClearSubmit = () => {
@@ -113,6 +115,7 @@ export const UserAccountForm: FC = () => {
   useEffect(() => {
     setAddValues(user, setValue)
   }, [user?.name])
+  const [, set] = useState();
 
   return (
     <>
@@ -182,9 +185,9 @@ export const UserAccountForm: FC = () => {
                   <Controller
                     name={item.name as 'avanza'}
                     control={control}
-                    rules={(item.name === "nordnet") ? {onChange: handlerOnlyNumber}:
+                    rules={
                       {
-                      required: `${item.label} krävs`,
+                      required: item.isRequired ?`${item.label} krävs` : false,
                       onChange: handlerOnlyNumber,
                       }
                     }
