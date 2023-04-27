@@ -4,7 +4,7 @@ export const nav_links = [
     link: '/profile/buy_stocks',
   },
   {
-    label: 'MITT KONTO',
+    label: 'MIN PROFIL',
     link: '/profile/account',
   },
   {
