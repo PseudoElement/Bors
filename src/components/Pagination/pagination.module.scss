@@ -25,7 +25,8 @@
   }
 }
 
-.pageButton, .paginationButton {
+.pageButton,
+.paginationButton {
   width: 39px;
   height: 39px;
   border-radius: 37px;
@@ -45,7 +46,6 @@
   &:not(:nth-last-child(1)) {
     margin-right: 16px;
   }
-
 }
 
 .buttonWrap {
@@ -56,6 +56,11 @@
     margin-top: 20px;
   }
 }
+.showButton {
+  max-height: 39px;
+  text-transform: uppercase;
+}
+
 .buttonNext {
   @include tablet-mobile {
     display: none;

@@ -2,10 +2,11 @@ import React from 'react'
 import { FC } from 'react'
 import Image from 'next/image'
 
+import { countToBuy } from 'shared/helpers/countToBuy'
+
 import { Stocks } from 'shared/types/stocks'
 
 import s from './StockHorizonCard.module.scss'
-import { countToBuy } from '../../shared/helpers/countToBuy'
 
 interface StockHorizonCardProps extends Stocks {
   onClick?: (id: number) => void
@@ -37,6 +38,7 @@ export const StockHorizonCard: FC<StockHorizonCardProps> = ({
   price,
   onClick,
   buy,
+    last_price
 }) => {
   return (
     <div className={s.stockCard} key={id}>
@@ -56,7 +58,7 @@ export const StockHorizonCard: FC<StockHorizonCardProps> = ({
           <span className={s.stockCostValue}>1 aktier</span>
 
           <h5 className={s.stockCost}>
-            {price?.price} <span>SEK</span>
+            {last_price? last_price.price : price} <span>SEK</span>
           </h5>
         </div>
       )}
@@ -67,7 +69,7 @@ export const StockHorizonCard: FC<StockHorizonCardProps> = ({
         </span>
 
         <h5 className={s.stockCost}>
-          {countToBuy(Object.values(buy)[0], price?.price).commonPrice}{' '}
+          {countToBuy(Object.values(buy)[0], last_price? last_price.price : price).commonPrice}{' '}
           <span>SEK</span>
         </h5>
       </div>

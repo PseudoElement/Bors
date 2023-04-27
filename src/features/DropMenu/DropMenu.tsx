@@ -12,6 +12,10 @@ interface DropMenuProps {
   onChange: (selectedOption: FilterMeta) => void
   data: FilterMeta[]
   className?: string
+  dropSide?: 'Top' | 'Bottom'
+  activeColor?: 'Pink' | 'Blue'
+  resetValue?: boolean
+  withArrow?: 'ArrowTop' | 'ArrowBottom' | 'None'
 }
 
 export const DropMenu: FC<DropMenuProps> = ({
@@ -19,6 +23,10 @@ export const DropMenu: FC<DropMenuProps> = ({
   onChange,
   data,
   className,
+  dropSide = 'Bottom',
+  activeColor = 'Pink',
+  resetValue = true,
+  withArrow = 'None',
 }) => {
   const [value, setValue] = useState<FilterMeta>(defaultValues)
   const [selectOpen, setSelectOpen] = useState(false)
@@ -34,32 +42,43 @@ export const DropMenu: FC<DropMenuProps> = ({
   }
 
   return (
-    <div className={s.wrap}>
-      <div
-        className={cn(s.dropMenu, className)}
-        onClick={e => e.stopPropagation()}
-      >
+    <div className={cn(s.wrap, className)}>
+      <div className={s.dropMenu} onClick={e => e.stopPropagation()}>
         <div className={cn(s.select)} onClick={handleOpenClose}>
           {value === data[0] ? (
             <>
               {value.label}
-              <div className={s.arrow}></div>
+              <div className={s.arrow} />
             </>
           ) : (
             <>
               <div className={s.container}>
-                <div className={s.selected}>{value.label}</div>
+                <div className={cn(s.selected, [s[`${activeColor}`]])}>
+                  {value.label}
+                </div>
               </div>
 
-              <button
-                className={s.resetMenuBtn}
-                onClick={() => handleChange(defaultValues)}
-              ></button>
+              {withArrow !== 'None' ? (
+                <div
+                  className={cn(s.arrow, {
+                    [s[`${withArrow}`]]: !selectOpen,
+                  })}
+                />
+              ) : null}
+
+              {resetValue ? (
+                <button
+                  className={s.resetMenuBtn}
+                  onClick={() => handleChange(defaultValues)}
+                />
+              ) : null}
             </>
           )}
         </div>
 
-        <div className={cn(s.options, { [s.openMenu]: selectOpen })}>
+        <div
+          className={cn(s.options, { [s[`openMenu${dropSide}`]]: selectOpen })}
+        >
           {data.slice(1, data.length).map((item, index) => (
             <DropMenuOption
               key={index}

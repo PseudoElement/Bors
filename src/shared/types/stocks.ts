@@ -1,3 +1,5 @@
+import { object } from 'prop-types'
+
 export interface Stocks {
   buy_sum_count: string
   company_code: string
@@ -12,12 +14,13 @@ export interface Stocks {
   growth_eps: number
   id: number
   image: string
+  last_price: Price
   market_cap: number
   name: string
   net_profit_margin: number
   p_e: number
   p_s: number
-  price: Price
+  price: number
   real_count: number
   revenue_growth: number
   updated_at: string
@@ -76,7 +79,7 @@ export interface StockTypes {
   privot: StockTypesPrivot
 }
 
-export type FilterMeta = { label: string; value: MinMax }
+export type FilterMeta = { label: string; value: MinMax | string }
 
 export enum MinMax {
   'Default' = 'asc',

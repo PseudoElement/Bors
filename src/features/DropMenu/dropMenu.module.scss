@@ -4,6 +4,7 @@
   flex-grow: 1;
   min-width: 220px;
   display: flex;
+  height: 60px;
 
   @include tablet-mobile {
     margin-bottom: 20px;
@@ -45,14 +46,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 19px 22px;
   cursor: pointer;
+  padding: 0 20px;
+  height: 100%;
   background: $color-gray-f6;
   border-radius: 100px;
 }
 
 .options {
-  display: flex;
   flex-direction: column;
   justify-content: flex-start;
   padding: 8px;
@@ -65,14 +66,21 @@
   position: absolute;
   z-index: 11;
   width: 100%;
-  top: calc(100% + 5px);
   display: none;
 }
 
-.openMenu {
+.openMenuBottom {
   display: flex;
+  top: calc(100% + 5px);
   pointer-events: all;
 }
+
+.openMenuTop {
+  display: flex;
+  bottom: calc(100% + 5px);
+  pointer-events: all;
+}
+
 .container {
   position: relative;
   width: 100%;
@@ -81,8 +89,14 @@
 .selected {
   display: flex;
   flex-wrap: nowrap;
-  color: $color-pink-2;
   overflow: hidden;
+}
+.Pink {
+  color: $color-pink-2;
+}
+
+.Blue {
+  color: $color-blue-b2;
 }
 
 .arrow {
@@ -92,6 +106,9 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+.ArrowTop {
+  transform: rotate(180deg);
 }
 
 .resetMenuBtn {

@@ -8,7 +8,7 @@ import {
 import {
   mock_min_max_popularity,
   mock_min_max_price,
-} from '../../shared/mocks/mock_filters'
+} from 'shared/mocks/mock_filters'
 
 const default_stock_params: StocksResponse = {
   data: null,

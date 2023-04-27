@@ -29,7 +29,12 @@ export const BuyStockItem: FC<Basket> = ({ buy, stock }) => {
           </span>
 
           <p className={s.buystockCurrency}>
-            {countToBuy(Object.values(buy)[0], stock?.price?.price).commonPrice}{' '}
+            {
+              countToBuy(
+                Object.values(buy)[0],
+                stock?.last_price ? stock?.last_price?.price : stock?.price
+              ).commonPrice
+            }{' '}
             sek
           </p>
         </div>

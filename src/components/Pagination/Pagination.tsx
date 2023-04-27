@@ -1,14 +1,16 @@
 import { FC, useEffect, useState } from 'react'
 import cn from 'classnames'
 
+import { DropMenu } from 'features'
+
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { pageSetter } from 'shared/helpers/pageSetter'
 import { setStockPagination } from 'store/slices/stockSlice'
 
+import { FilterMeta } from 'shared/types/stocks'
 import Arrow from '/public/assets/icons/paginationArrow.svg'
 
 import s from './pagination.module.scss'
-import { DropMenuOption } from '../../features/DropMenu/DropMenuOption/DropMenuOption'
 
 export interface PaginationProps {
   classNames?: string
@@ -24,6 +26,12 @@ export const Pagination: FC<PaginationProps> = ({ classNames }) => {
     dispatch(setStockPagination({ current_page: page, per_page: per_page }))
   }
 
+  const handlePerPage = (perPage: number) => {
+    dispatch(
+      setStockPagination({ current_page: current_page, per_page: perPage })
+    )
+  }
+
   const handleNext = (page: number) => {
     if (page !== last_page) {
       handlePush(page + 1)
@@ -32,40 +40,55 @@ export const Pagination: FC<PaginationProps> = ({ classNames }) => {
 
   useEffect(() => {
     setPages(pageSetter(total, current_page, last_page))
-  }, [current_page])
+  }, [current_page, last_page])
+
+  const perPage: FilterMeta[] = [
+    { value: '0', label: 'this object is hidden' },
+    { value: '6', label: 'Visas senast 6' },
+    { value: '12', label: 'Visas senast 12' },
+    { value: '24', label: 'Visas senast 24' },
+    { value: '48', label: 'Visas senast 48' },
+  ]
 
   return (
     <div className={cn(s.paginationWrap, classNames)}>
       <div className={s.pagination}>
-        {pages.map(page => (
-          <button
-            key={page}
-            onClick={() => handlePush(page)}
-            className={cn(s.pageButton, { [s.active]: current_page === page })}
-          >
-            {page}
-          </button>
-        ))}
+        {pages.length > 1 ? (
+          <>
+            {pages.map(page => (
+              <button
+                key={page}
+                onClick={() => handlePush(page)}
+                className={cn(s.pageButton, {
+                  [s.active]: current_page === page,
+                })}
+              >
+                {page}
+              </button>
+            ))}
 
-        <button
-          className={cn(s.paginationButton, s.buttonNext)}
-          onClick={() => handleNext(current_page)}
-        >
-          <div>Fortsätt</div>
-          <Arrow />
-        </button>
+            <button
+              className={cn(s.paginationButton, s.buttonNext)}
+              onClick={() => handleNext(current_page)}
+            >
+              <div>Fortsätt</div>
+              <Arrow />
+            </button>
+          </>
+        ) : null}
       </div>
 
       <div className={s.buttonWrap}>
-        <button className={s.paginationButton}>Show by 24</button>
-
-        <button
-          className={cn(s.paginationButton, s.buttonNextBottom)}
-          onClick={() => handleNext(current_page)}
-        >
-          <div>Fortsätt</div>
-          <Arrow />
-        </button>
+        <DropMenu
+          className={s.showButton}
+          resetValue={false}
+          withArrow='ArrowTop'
+          activeColor='Blue'
+          dropSide='Top'
+          data={perPage}
+          defaultValues={perPage[3]}
+          onChange={value => handlePerPage(+value.value)}
+        />
       </div>
     </div>
   )

@@ -70,11 +70,11 @@ export const StocksCard: FC<StocksCardProps> = ({
 
       <div className={s.statistics}>
         <div className={s.currency}>
-          {stock?.price?.price ? stock?.price.price : null}
+          {stock.last_price ? stock.last_price.price : stock.price}
           <span>SEK</span>
         </div>
 
-        <Percent count={stock?.price?.percentage} />
+        <Percent count={stock?.last_price?.percentage} />
       </div>
 
       <div className={s.cardFooter}>
