@@ -42,10 +42,25 @@ export const UserAccountForm: FC = () => {
   })
 
   const onSubmitHanlder: SubmitHandler<User> = async formData => {
-    try {
-      const { data } = await userUpdate(formData)
-      dispatch(userUpdateResponse({ user: data.data, errorMessage: null }))
-    } catch {}
+    
+    if((!formData?.avanza && !formData?.nordnet) ||
+    (typeof formData?.avanza === 'string' && 
+    typeof formData?.nordnet === 'string') ) 
+    {
+      setError('avanza', {
+        message: 'Endast ett av fälten kan fyllas i.'
+      })
+      setError('nordnet', {
+        message: 'Endast ett av fälten kan fyllas i.'
+      })
+      
+    }else{
+      try {
+        const { data } = await userUpdate(formData)
+        dispatch(userUpdateResponse({ user: data.data, errorMessage: null }))
+        } catch {}
+      }      
+    
   }
 
   const handlerFirstName = (e: ChangeEvent<HTMLInputElement>) => {
@@ -99,7 +114,7 @@ export const UserAccountForm: FC = () => {
   const handlerOnlyNumber = (e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name as 'avanza'
     const text = e.target.value.replace('#', '')
-    const withIcon = name === 'avanza' || name === 'nordnet' ? '#' : ''
+    const withIcon = ((name === 'avanza' || name === 'nordnet') && !(e.target.value === '')) ? '#' : ''
 
     setError(name, {
       message: !parseInt(text[text.length - 1])
