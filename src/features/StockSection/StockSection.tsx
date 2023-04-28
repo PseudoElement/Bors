@@ -37,8 +37,8 @@ export const StockSection: FC<StockSectionProps> = ({
 
   const showStockDetails = async (id: number) => {
     try {
-      const data = await detailStock(id)
-      setStockDetails(data.data.data)
+      const {data} = await detailStock(id)
+      setStockDetails(data.data)
       setShowBuyStockInfo(true)
     } catch (e) {
       console.error(e)

@@ -1,6 +1,6 @@
 export function formatTelNumber(text: string) {
   const space = text.length > 1 && text.length > 4 ? ' ' : ''
-  const slsh = text.length > 4 && text.length > 9 ? '-' : ''
+  const slsh = text.length > 4 && text.length > 9 ? ' ' : ''
  
 
   return (

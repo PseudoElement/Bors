@@ -1,5 +1,3 @@
-import { object } from 'prop-types'
-
 export interface Stocks {
   buy_sum_count: string
   company_code: string

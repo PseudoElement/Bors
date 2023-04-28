@@ -20,8 +20,14 @@ export const Percent: FC<PercentProps> = ({ classNames, count }) => {
         </div>
       ) : (
         <div className={s.negative}>
-          <UpArrow />
-          {count}%
+          {count ? (
+            <>
+              <UpArrow /> {count}
+            </>
+          ) : (
+            0
+          )}
+          %
         </div>
       )}
     </div>

@@ -19,7 +19,6 @@ import s from './filtersPanel.module.scss'
 
 export const FiltersPanel: FC = () => {
   const dispatch = useAppDispatch()
-
   const [filters, setFilters] = useState<StockFilters>({
     search: '',
     price: mock_min_max_price[0],

@@ -19,7 +19,6 @@ import s from './UserAccountForm.module.scss'
 export const UserAccountForm: FC = () => {
   const dispatch = useAppDispatch()
   const user = useAppSelector(state => state.user.user)
-  const [name, setName] = useState('')
   const app = useAppSelector(state => state.app)
 
   const {
@@ -38,6 +37,7 @@ export const UserAccountForm: FC = () => {
       avanza: null,
       nordnet: null,
       avatar: '',
+      ssn: '',
     },
   })
 
@@ -50,7 +50,6 @@ export const UserAccountForm: FC = () => {
 
   const handlerFirstName = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
-    setName(value)
 
     if (value.length > 20) {
       setError('first_name', {
@@ -68,7 +67,6 @@ export const UserAccountForm: FC = () => {
 
   const handlerLastName = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
-    setName(value)
 
     if (value.length > 20) {
       setError('last_name', {
@@ -115,7 +113,6 @@ export const UserAccountForm: FC = () => {
   useEffect(() => {
     setAddValues(user, setValue)
   }, [user?.name])
-  const [, set] = useState();
 
   return (
     <>

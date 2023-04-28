@@ -28,7 +28,7 @@ export const mock_user_fields = {
     {
       label: 'Personnummer',
       type: 'phone',
-      name: 'security_number',
+      name: 'ssn',
     },
   ],
   flex: [
