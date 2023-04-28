@@ -188,9 +188,7 @@ export const UserAccountForm: FC = () => {
               <div className={s.flexField} key={key}>
                 <label htmlFor={item.name} className={s.labelField}>
                   {item.label}
-                  {item.name === 'avanza' && (
-                    <span className={s.requiredField}>*</span>
-                  )}
+                 
                 </label>
 
                 <div>

@@ -36,7 +36,7 @@ export const mock_user_fields = {
       label: 'Avanza',
       type: 'text',
       name: 'avanza',
-      isRequired: true
+      isRequired: false
     },
     {
       label: 'Nordnet',
