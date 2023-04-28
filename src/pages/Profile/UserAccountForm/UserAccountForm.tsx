@@ -42,25 +42,22 @@ export const UserAccountForm: FC = () => {
   })
 
   const onSubmitHanlder: SubmitHandler<User> = async formData => {
-    
-    if((!formData?.avanza && !formData?.nordnet) ||
-    (typeof formData?.avanza === 'string' && 
-    typeof formData?.nordnet === 'string') ) 
-    {
+    if (
+      (!formData?.avanza && !formData?.nordnet) ||
+      (formData?.avanza?.length && formData?.nordnet?.length)
+    ) {
       setError('avanza', {
-        message: 'Endast ett av fälten kan fyllas i.'
+        message: 'Endast ett av fälten kan fyllas i.',
       })
       setError('nordnet', {
-        message: 'Endast ett av fälten kan fyllas i.'
+        message: 'Endast ett av fälten kan fyllas i.',
       })
-      
-    }else{
+    } else {
       try {
         const { data } = await userUpdate(formData)
         dispatch(userUpdateResponse({ user: data.data, errorMessage: null }))
-        } catch {}
-      }      
-    
+      } catch {}
+    }
   }
 
   const handlerFirstName = (e: ChangeEvent<HTMLInputElement>) => {
@@ -75,8 +72,8 @@ export const UserAccountForm: FC = () => {
         message: '',
       })
     }
-    if(value[0] !== undefined){
-      setValue('first_name', value[0].toUpperCase() + value.substring(1));
+    if (value[0] !== undefined) {
+      setValue('first_name', value[0].toUpperCase() + value.substring(1))
     }
   }
 
@@ -92,8 +89,8 @@ export const UserAccountForm: FC = () => {
         message: '',
       })
     }
-    if(value[0] !== undefined){
-      setValue('last_name', value[0].toUpperCase() + value.substring(1));
+    if (value[0] !== undefined) {
+      setValue('last_name', value[0].toUpperCase() + value.substring(1))
     }
   }
 
@@ -114,7 +111,10 @@ export const UserAccountForm: FC = () => {
   const handlerOnlyNumber = (e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name as 'avanza'
     const text = e.target.value.replace('#', '')
-    const withIcon = ((name === 'avanza' || name === 'nordnet') && !(e.target.value === '')) ? '#' : ''
+    const withIcon =
+      (name === 'avanza' || name === 'nordnet') && !(e.target.value === '')
+        ? '#'
+        : ''
 
     setError(name, {
       message: !parseInt(text[text.length - 1])
@@ -188,19 +188,16 @@ export const UserAccountForm: FC = () => {
               <div className={s.flexField} key={key}>
                 <label htmlFor={item.name} className={s.labelField}>
                   {item.label}
-                 
                 </label>
 
                 <div>
                   <Controller
                     name={item.name as 'avanza'}
                     control={control}
-                    rules={
-                      {
-                      required: item.isRequired ?`${item.label} krävs` : false,
+                    rules={{
+                      required: item.isRequired ? `${item.label} krävs` : false,
                       onChange: handlerOnlyNumber,
-                      }
-                    }
+                    }}
                     render={({ field: { onChange, value } }) => (
                       <Input
                         type={item.type}
