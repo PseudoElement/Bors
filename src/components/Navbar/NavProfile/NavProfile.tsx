@@ -83,7 +83,7 @@ export const NavProfile: FC<NavMainProps> = ({ classNames }) => {
 
         <div className={s.userBalance}>
           <div className={s.title}>MITT KONTO</div>
-          <div className={s.balance}>{user?.balance} sek</div>
+          <div className={s.balance}>{user?.total_balance} sek</div>
         </div>
 
         <div className={s.logOutButton}>
