@@ -1,4 +1,3 @@
-import { api } from '../api'
 import { cookies } from '../utils/Cookies'
 
 export const useToken = () => {
