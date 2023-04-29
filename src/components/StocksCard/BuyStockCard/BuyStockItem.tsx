@@ -13,7 +13,7 @@ export const BuyStockItem: FC<Basket> = ({ buy, stock }) => {
     <div className={s.buystockItem}>
       <div className={s.buystockWrapper}>
         <div className={s.buystockRow}>
-          <div>
+          <div className={s.cardLogo}>
             <Image width={40} height={40} src={stock?.image} alt='Icon' />
           </div>
 

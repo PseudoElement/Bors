@@ -23,12 +23,17 @@
   padding-right: 16px;
   gap: 5px;
   border-right: 1px solid $color-blue-b2-opacity;
+  max-width: 150px;
+  overflow: hidden;
+  white-space: nowrap;
 
   + div {
     margin-left: 14px;
   }
 }
-
+.cardLogo {
+  min-width: 40px;
+}
 .buystockTitle {
   font-family: $font-Mont;
   font-size: 16px;
