@@ -101,9 +101,6 @@ export const UserAccountForm: FC = () => {
   const handlerTelNumber = (e: ChangeEvent<HTMLInputElement>) => {
     const text = e.target.value.replace(NUMBER_REG_EXP[1], '')
 
-    setError('phone_number', {
-      message: text.length < 11 ? 'Kräver 11 siffror' : '',
-    })
 
     setValue('phone_number', formatTelNumber(text))
   }
@@ -148,6 +145,7 @@ export const UserAccountForm: FC = () => {
                     control={control}
                     rules={{
                       required: `${item.label} krävs`,
+                      minLength: item.type === 'phone' ? 12 : undefined,
                       pattern:
                         (item.name as 'email') === 'email'
                           ? EMAIL_VALIDATION_REG
@@ -169,6 +167,7 @@ export const UserAccountForm: FC = () => {
                         type={item.type}
                         value={value}
                         onChange={onChange}
+                        placeholder={item.placeholder}
                       />
                     )}
                   />
@@ -178,6 +177,9 @@ export const UserAccountForm: FC = () => {
                   <span className={s.errMessage}>
                     {errors[item.name as 'email']?.message}
                   </span>
+                )}
+                {errors[item.name as 'phone_number'] && errors[item.name as 'phone_number']!.type === 'minLength' && (
+                  <span className={s.errMessage}>Kräver 10 siffror</span>
                 )}
               </div>
             ))}

@@ -24,6 +24,8 @@ export const mock_user_fields = {
       label: 'Mobilnummer',
       type: 'phone',
       name: 'phone_number',
+      placeholder: 'Kräver 10 siffror',
+      maxLength: 12
     },
     {
       label: 'Personnummer',

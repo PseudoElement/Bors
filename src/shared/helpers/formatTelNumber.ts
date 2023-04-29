@@ -12,6 +12,6 @@ export function formatTelNumber(text: string) {
     slsh +
     text.substring(7, 9) +
     slsh +
-    text.substring(9, 11)
+    text.substring(9, 10)
   )
 }
