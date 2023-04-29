@@ -6,6 +6,7 @@ import { Input, Popup } from 'components'
 
 import { setStockFilters } from 'store/slices/stockSlice'
 import { useAppDispatch } from 'shared/hooks/redux'
+import { useDebounce } from 'shared/hooks/useDebounce'
 
 import { FilterMeta, StockFilters } from 'shared/types/stocks'
 import {
@@ -37,9 +38,11 @@ export const FiltersPanel: FC = () => {
     setFilters({ ...filters, price: value })
   }
 
+  const debouncedFilters = useDebounce(filters, 500);
+
   useEffect(() => {
-    dispatch(setStockFilters(filters))
-  }, [filters])
+    dispatch(setStockFilters(debouncedFilters) )
+  }, [debouncedFilters])
 
   // mobile handlers ===========
   const [isOpenMobilePopup, setIsOpenMobilePopup] = useState<boolean>(false)
