@@ -3,6 +3,7 @@
 .balance {
   display: flex;
   column-gap: 30px;
+  flex-wrap: wrap;
 
   @media screen and (max-width: 921px) {
     column-gap: 20px;
