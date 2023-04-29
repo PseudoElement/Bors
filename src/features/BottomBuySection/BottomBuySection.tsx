@@ -4,6 +4,8 @@ import { StockHorizonCard, Button, Loading } from 'components'
 
 import { useAppSelector } from 'shared/hooks/redux'
 
+import { checkUser } from 'shared/helpers/checkUser'
+
 import { Basket } from '../StockSection/StockSection'
 
 import s from './BottomBuySection.module.scss'
@@ -19,7 +21,14 @@ export const BottomBuySection: FC<BottomBuySectionProps> = ({
   onBuyStock,
   onClick,
 }) => {
+  const user = useAppSelector(state => state.user.user)
   const app = useAppSelector(state => state.app)
+
+  const onAddBuyStock = () => {
+    if (checkUser(user)) {
+      onBuyStock()
+    }
+  }
 
   return (
     <section className={s.section}>
@@ -36,7 +45,7 @@ export const BottomBuySection: FC<BottomBuySectionProps> = ({
         </div>
       ) : null}
 
-      <Button onClick={onBuyStock} className={s.button}>
+      <Button onClick={onAddBuyStock} className={s.button}>
         {app.loading ? <Loading /> : 'Köp aktier'}
       </Button>
     </section>

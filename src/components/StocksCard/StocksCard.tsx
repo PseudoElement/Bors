@@ -36,6 +36,7 @@ export const StocksCard: FC<StocksCardProps> = ({
 
   const addNft = (e: SyntheticEvent) => {
     e.stopPropagation()
+
     onAddToBasket?.({ stock: stock, buy: { [`${stock?.id}`]: 1 } })
     setCounterValue(1)
   }
