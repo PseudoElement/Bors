@@ -10,14 +10,6 @@ import { Country, StockTypes, Stocks } from 'shared/types/stocks'
 import s from './cardStocksInfo.module.scss'
 import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
 
-// @ts-ignore
-interface CardStocksInfoProps extends Stocks {
-  currencyValue: string
-  country: Country
-  types: StockTypes[]
-  indicators: IndicatorProps[]
-}
-
 export const CardStocksInfo: FC<Stocks> = ({
   image,
   company_name,
@@ -43,6 +35,7 @@ export const CardStocksInfo: FC<Stocks> = ({
   market_cap,
   country_id,
   revenue,
+    types,
 }) => {
   const { width } = useWindowDimensions()
 
@@ -96,9 +89,9 @@ export const CardStocksInfo: FC<Stocks> = ({
       </div>
 
       <div className={s.cardTags}>
-        {/*{types.map((tag, idx) => (*/}
-        {/*  <Tag name={tag.name} key={idx} />*/}
-        {/*))}*/}
+        {types.map((tag, idx) => (
+          <Tag name={tag.name} key={idx} />
+        ))}
       </div>
 
       <div className={s.textInfoCard}>{desc}</div>

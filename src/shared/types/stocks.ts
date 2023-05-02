@@ -23,6 +23,7 @@ export interface Stocks {
   revenue_growth: number
   updated_at: string
   revenue: []
+  types: StockTypes[]
 }
 export interface Country {
   created_at: string
