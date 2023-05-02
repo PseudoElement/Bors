@@ -84,12 +84,11 @@
 }
 .currentSection {
   display: flex;
-  flex-direction: column;
   width: 50%;
   gap: 6px;
+  flex-direction: column;
   padding-left: 25px;
   border-left: 1px solid $color-gray-eb;
-
   @include tablet-mobile {
     width: 40%;
   }
@@ -115,26 +114,38 @@
       font-size: 13px;
     }
   }
-  .curentValue {
-    font-weight: $fw-bold;
-    font-size: 36px;
-    line-height: 100%;
-    letter-spacing: -0.03em;
-    background: $pagination-gradient;
-    background-clip: text;
-    color: transparent;
-    & > span {
-      font-size: 25px;
-      margin-left: 5px;
-    }
+}
+.curentValue {
+  display: flex;
+}
 
-    @include tablet {
-      font-size: 32px;
-      & > span {
-        font-size: 20px;
-      }
+.price {
+  font-weight: $fw-bold;
+  font-size: 36px;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+  background: $pagination-gradient;
+  background-clip: text;
+  color: transparent;
+
+
+  & > span {
+    font-size: 25px;
+    margin-left: 5px;
+  }
+
+  @include tablet {
+    font-size: 32px;
+    & > span {
+      font-size: 20px;
     }
   }
+}
+
+.percent {
+  align-self: end;
+  margin-left: 10px ;
+  padding-bottom: 5px;
 }
 .countryCard {
   display: flex;

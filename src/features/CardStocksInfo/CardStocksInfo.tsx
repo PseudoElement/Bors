@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import Image, { ImageProps } from 'next/image'
 
-import { Button, Indicator, Tag } from 'components'
+import { Button, Indicator, Percent, Tag } from 'components'
 
 import { IndicatorProps } from 'shared/types/indicators'
 import { Country, StockTypes, Stocks } from 'shared/types/stocks'
@@ -18,14 +18,12 @@ interface CardStocksInfoProps extends Stocks {
   indicators: IndicatorProps[]
 }
 
-export const CardStocksInfo: FC<CardStocksInfoProps> = ({
+export const CardStocksInfo: FC<Stocks> = ({
   image,
   company_name,
   company_code,
   price,
-  currencyValue,
   country,
-  types,
   last_price,
   name,
   count,
@@ -44,7 +42,7 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
   net_profit_margin,
   market_cap,
   country_id,
-  indicators,
+  revenue,
 }) => {
   const { width } = useWindowDimensions()
 
@@ -71,8 +69,15 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
             <span className={s.titleCurent}>Nuvarande värde</span>
 
             <div className={s.curentValue}>
-              {last_price ? last_price.price : price}
-              <span>{currencyValue}</span>
+              <div className={s.price}>
+                {last_price ? last_price.price : price}
+                <span>SEK</span>
+              </div>
+
+              <Percent
+                classNames={s.percent}
+                count={last_price ? last_price?.percentage : 0}
+              />
             </div>
           </div>
 
@@ -91,9 +96,9 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
       </div>
 
       <div className={s.cardTags}>
-        {types.map((tag, idx) => (
-          <Tag name={tag.name} key={idx} />
-        ))}
+        {/*{types.map((tag, idx) => (*/}
+        {/*  <Tag name={tag.name} key={idx} />*/}
+        {/*))}*/}
       </div>
 
       <div className={s.textInfoCard}>{desc}</div>

@@ -159,8 +159,7 @@ export const StockSection: FC<StockSectionProps> = ({
         onSubmit={buyOneStock}
         buttonText='Köp aktier'
       >
-        {/*// @ts-ignore*/}
-        <CardStocksInfo {...stockDetails} />
+        {stockDetails ? <CardStocksInfo {...stockDetails} /> : null}
       </Popup>
 
       <div className={cn(s.grid, classNames)}>
