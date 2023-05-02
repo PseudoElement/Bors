@@ -13,6 +13,22 @@ import s from './intro.module.scss'
 
 export const Intro: FC<SiteData> = ({ logo, desc, title }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const [isActive, setIsActive] = useState(false)
+  const [active, setActive] = useState<string | null>(null)
+
+  const onClickActive = () => {
+    if (active) {
+      setActive('login')
+    }
+    setIsOpen(true)
+    setActive('registration')
+  }
+
+  const isActiveClick = () => {
+    setActive(isActive ? 'registration' : 'login')
+
+    setIsActive(!isActive)
+  }
 
   return (
     <div className={s.intro}>
@@ -36,14 +52,16 @@ export const Intro: FC<SiteData> = ({ logo, desc, title }) => {
             </div>
           </div>
         )}
-        <Button className={s.introBtn}>
+        <Button onClick={onClickActive} className={s.introBtn}>
           Registrera dig
         </Button>
         <LoginRegistrationModal
           isOpen={isOpen}
-          onClose={() => setIsOpen(true)}
-          setIsOpenPasswordRecovery={() => setIsOpen(true)}
-          openPopup={() => setIsOpen(true)}
+          onClose={() => setIsOpen(false)}
+          isActiveDialog={active}
+          setIsActiveDialog={isActiveClick}
+          setIsOpenPasswordRecovery={() => setIsOpen(false)}
+          openPopup={() => setIsOpen(false)}
         />
         <p className={s.text}>{desc ? desc : 'Error text not found'}</p>
 
