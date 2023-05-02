@@ -3,6 +3,7 @@ import { FC } from 'react'
 import { Percent } from 'components'
 
 import s from './Balance.module.scss'
+import {toFixedCount} from "../../shared/helpers/countToBuy";
 
 export interface BalanceProps {
   title: string
@@ -29,7 +30,7 @@ export const Balance: FC<BalanceProps> = ({
             <div className={s.currency}>{currency}</div>
           ) : null}
 
-          <div>{count?.toFixed(2)}</div>
+          <div>{toFixedCount(count)}</div>
 
           {currencyPosition === 'right' ? (
             <div className={s.currency}>{currency}</div>
