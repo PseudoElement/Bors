@@ -35,11 +35,14 @@
   padding: 0;
 
   @include mobile-laptop {
-    gap: 60px;
+    gap: 6px;
   }
 
   @include tablet-mobile {
     display: none;
+    gap: 30px;
+  }
+  @include laptop{
     gap: 30px;
   }
 }
