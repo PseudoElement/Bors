@@ -16,29 +16,12 @@ interface StockHorizonCardProps extends Stocks {
 export const StockHorizonCard: FC<StockHorizonCardProps> = ({
   id,
   image,
-  p_s,
-  p_e,
-  count,
-  real_count,
-  buy_sum_count,
   company_code,
   company_name,
-  name,
-  net_profit_margin,
-  market_cap,
-  growth_eps,
-  diluted_eps,
-  ebitda,
-  revenue_growth,
-  desc,
-  country,
-  country_id,
-  created_at,
-  updated_at,
   price,
   onClick,
   buy,
-    last_price
+  last_price,
 }) => {
   return (
     <div className={s.stockCard} key={id}>
@@ -58,18 +41,23 @@ export const StockHorizonCard: FC<StockHorizonCardProps> = ({
           <span className={s.stockCostValue}>1 aktier</span>
 
           <h5 className={s.stockCost}>
-            {last_price? last_price.price : price} <span>SEK</span>
+            {last_price ? last_price.price : price} <span>SEK</span>
           </h5>
         </div>
       )}
 
       <div className={s.stockSumWrapper}>
         <span className={s.stockCostValue}>
-          {countToBuy(Object.values(buy)[0]).buyCount} aktier
+          {countToBuy(Object.values(buy)[0], 0).buyCount} aktier
         </span>
 
         <h5 className={s.stockCost}>
-          {countToBuy(Object.values(buy)[0], last_price? last_price.price : price).commonPrice}{' '}
+          {
+            countToBuy(
+              Object.values(buy)[0],
+              last_price ? last_price.price : price
+            ).commonPrice
+          }{' '}
           <span>SEK</span>
         </h5>
       </div>

@@ -29,7 +29,7 @@ export const Balance: FC<BalanceProps> = ({
             <div className={s.currency}>{currency}</div>
           ) : null}
 
-          <div>{count}</div>
+          <div>{count?.toFixed(2)}</div>
 
           {currencyPosition === 'right' ? (
             <div className={s.currency}>{currency}</div>
