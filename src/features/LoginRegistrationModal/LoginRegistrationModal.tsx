@@ -65,7 +65,7 @@ export const LoginRegistrationModal: FC<LoginRegistrationModalProps> = ({
             onClick={() => setIsActive('registration')}
             className={isActive === 'registration' ? s.activeTitle : ''}
           >
-            / Registrering
+            / Registrera dig
           </span>
         </div>
 
