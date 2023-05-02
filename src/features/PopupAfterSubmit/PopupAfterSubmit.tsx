@@ -47,10 +47,12 @@ export const PopupAfterSubmit: FC<PopupAfterSubmitProps> = ({
             alt='Success'
           />
           <div className={s.popupTitle}>
-          Tack för din registrering! Nu återstår ett sista steg,<wbr/> Bekräfta din e-postadress för att påbörja ditt deltagande i Börsjakten!
+            Tack för din registrering! <br/>Nu återstår ett sista steg, Bekräfta din
+            e-postadress för <br/>att påbörja ditt deltagande i Börsjakten!
           </div>
           <div className={s.popupText}>
-          Tänk på att kolla skräpposten om du inte har fått bekräftelsemejlet. Lycka till!
+            Tänk på att kolla skräpposten om du inte har fått bekräftelsemejlet.
+            Lycka till!
           </div>
         </div>
       )}
