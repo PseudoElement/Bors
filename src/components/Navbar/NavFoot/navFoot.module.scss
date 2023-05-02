@@ -2,26 +2,97 @@
 
 .navFoot {
   display: flex;
+  font-family: $font-Mont;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
   gap: 20px;
   width: 100%;
   margin-bottom: 20px;
-  font-weight: $fw-regular;
-  font-size: 24px;
+  font-weight: $fw-semibold;
   line-height: 110%;
   letter-spacing: 0.02em;
   text-transform: capitalize;
   color: $color-white;
-  font-weight: 600;
+}
+
+.logoWrapper {
+  flex: 1;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  @include mobile-laptop{
+    padding: 0 82px;
+  }
+  .logoGroup {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    @include mobile-tablet{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-around;
+    }
+    @include tablet{
+      max-width: 226px;
+      justify-content: center;
+      align-items: end;
+      gap: 28px;
+    }
+    @include big-tablet{
+      align-items: end;
+    }    
+    @include laptop{
+      flex-wrap: nowrap;
+    }
+    .logo {
+      position: relative;
+      width: 70px;
+      height: 94px;
+      @include mobile-laptop{
+        width: 86px;
+        height: 131px;
+      }
+    }
+    .logoText {
+      position: relative;
+      width: 246px;
+      height: 26px;
+      margin-bottom: 8px;
+      @include mobile-laptop{
+        width: 226px;
+      }
+    }
+  }
+  .logoTitle {
+    width: 479px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: end;
+    margin-left: 64px;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 120%;
+    letter-spacing: -0.045em;
+    color: $color-white;
+    text-align: start;
+    mix-blend-mode: overlay;
+    @media screen and (max-width: 1215px) {
+      font-size: 26px;
+    }
+  }
 }
 
 .navFootSectionFlex {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   width: 100%;
   align-items: center;
+  gap: 35px;
+
   @include tablet {
     flex-wrap: wrap;
     justify-content: center;
@@ -40,59 +111,75 @@
   }
 }
 
-.navFootSectionItems {
+.navFootSectionTopItems{
+  width: 100%;
   display: flex;
-  justify-content: end;
-  width: 40%;
-  gap: 60px;
-
-  @include desktop {
-    width: fit-content;
-    justify-content: space-between;
+  justify-content: space-around;
+  align-items: end;
+  padding: 50px 100px 0;
+  gap: 80px;
+  font-size: 18px;
+  text-transform: capitalize;
+  @include mobile-laptop {
+    padding: 50px 50px 0;
+    flex-direction: column;
     align-items: center;
+    justify-content: space-around;
+    gap: 31px;
+    flex-wrap: wrap;
+  }
+  @include laptop{
+    padding: 50px 50px 0;
     gap: 40px;
   }
+}
+
+.navFootSectionBottomItems {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  font-size: 28px;
+  padding-bottom: 15px;
   @include laptop {
     width: 100%;
-    justify-content: center;
+    align-items: center;
   }
   @include tablet {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    gap: 10px;
+    gap: 20px;
   }
   @include mobile-laptop {
     width: 100%;
     flex-direction: column;
-    align-items: center;
-    gap: 10px;
+    gap: 20px;
   }
 }
 
 .links {
+  flex: 2;
   display: flex;
-  gap: 100px;
+  gap: 40px;
   align-items: center;
+  justify-content: space-around;
   list-style: none;
   padding: 0;
-
+  margin: 0;
   @include laptop {
-    gap: 70px;
+    gap: 35px;
+    margin-bottom: 8px;
   }
   @include tablet-mobile {
     gap: 30px;
     display: none;
   }
-  @include desktop {
-    gap: 60px;
-  }
 }
+
 .link {
   cursor: pointer;
-
   @include mobile-laptop {
     font-size: 24px;
   }
@@ -105,9 +192,9 @@
   opacity: 0.3;
   border: 1px solid $color-white;
   height: 0;
-  max-width: $max-layout-width;
   width: 100%;
 }
+
 .logInButton {
   display: flex;
   align-items: center;
@@ -124,7 +211,6 @@
   text-transform: uppercase;
   color: $color-white;
   cursor: pointer;
-
   @include tablet-mobile {
     height: 50px;
     font-size: 16px;
@@ -142,7 +228,6 @@
   margin-right: 6px;
   border-radius: 62px;
   background: $color-gray-02;
-
   @include tablet-mobile {
     width: 40px;
     height: 40px;
@@ -157,7 +242,6 @@
   display: flex;
   align-items: center;
   gap: 18px;
-
   .circle {
     display: flex;
     align-items: center;
@@ -192,3 +276,4 @@
     border: 1px solid $color-gray-eb;
   }
 }
+

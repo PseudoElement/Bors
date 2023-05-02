@@ -15,23 +15,29 @@ export const nav_links = [
 
 export const main_nav_links = [
   {
-    label: 'Hem',
-    link: '#',
+    label: 'HEM',
+    link: '#header',
   },
   {
-    label: 'Topplistan',
+    label: 'TOPPLISTAN',
     link: '#leaderboard',
   },
   {
-    label: 'Sponsor',
+    label: 'SPONSOR',
     link: '#sponsors',
   },
   {
-    label: 'Kontakta Oss',
+    label: 'KONTAKTA OSS',
     link: '#contacts',
   },
 ]
 export const main_socialLinks = [
+  {
+    href: 'mailto:Info@borsjakten.se',
+    title: "Info@borsjakten.se",
+    src: '/assets/icons/email.svg',
+    imgAlt: 'email_info@borsjakten.se'
+  },
   {
     href: 'https://instagram.com/borsjakten?igshid=YmMyMTA2M2Y=',
     title: "Instagram",

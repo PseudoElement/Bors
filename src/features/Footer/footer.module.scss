@@ -1,9 +1,9 @@
-@use '../../styles/style.scss' as *;
+@use 'styles/style' as *;
 
 .footer {
-  width: 100vw;
+  width: 100%;
   padding-bottom: 18px;
-  background-image: url('../../../public/assets/image/background.png');
+  background-image: url('/assets/image/background.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -12,59 +12,11 @@
   margin: 0 auto;
   max-width: 92%;
 }
-.logoWrapper {
-  max-width: 100%;
-  display: flex;
-  justify-content: center;
-  margin: 0 auto 70px auto;
-  padding-top: 60px;
-  padding-left: 42px;
-
-  .logoGroup {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: end;
-    justify-content: space-between;
-    width: 520px;
-
-    .logo {
-      position: relative;
-      width: 98px;
-      height: 146px;
-    }
-    .logoText {
-      position: relative;
-      width: 393px;
-      height: 52px;
-      margin-bottom: 8px;
-    }
-  }
-
-  .logoTitle {
-    width: 479px;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: end;
-    margin-left: 64px;
-
-    font-weight: 600;
-    font-size: 32px;
-    line-height: 120%;
-    letter-spacing: -0.045em;
-    color: $color-white;
-    text-align: start;
-    mix-blend-mode: overlay;
-    @media screen and (max-width: 1215px) {
-      font-size: 26px;
-    }
-  }
-}
 
 .line {
   opacity: 0.3;
   border: 1px solid $color-white;
   height: 0;
-  max-width: $max-layout-width;
   width: 100%;
   margin: 0 auto;
 }
@@ -79,7 +31,7 @@
   width: 100%;
   margin: 31px auto;
   color: $color-white;
-  
+
   .location,
   .mail,
   .instLink {
@@ -87,13 +39,11 @@
     line-height: 130%;
     letter-spacing: -0.02em;
   }
-  
+
   .mail,
   .instLink {
     cursor: pointer;
   }
-  
-  
 }
 
 .agreement {
@@ -103,7 +53,7 @@
   max-width: $max-footer-bottom-line-width;
   margin: 21px auto 0 auto;
   gap: 64px;
-  
+
   color: $color-white;
   font-size: 16px;
   font-weight: $fw-light;
@@ -115,7 +65,6 @@
   .footer {
     height: unset;
     padding-bottom: 10px;
-
   }
   .logoWrapper {
     flex-direction: column;
@@ -155,7 +104,7 @@
       mix-blend-mode: normal;
     }
   }
-  
+
   .contacts {
     flex-direction: column;
     justify-content: center;
@@ -163,16 +112,16 @@
     width: 100%;
     margin: 29px 0 24px 0;
     gap: max(16px, 10.4%);
-    
+
     .location,
     .mail,
     .instLink {
       font-size: 24px;
     }
-    
+
     .icons {
       width: 280px;
-      
+
       .circle {
         width: 56px;
         height: 56px;
@@ -183,12 +132,12 @@
     max-width: max(266px, 82%);
     margin: 14px auto 0 auto;
     gap: 22px;
-    
+
     font-size: 12px;
     line-height: 15px;
   }
 }
-.policyBlock{
+.policyBlock {
   width: 70%;
   height: 70%;
   margin: 0 auto;
