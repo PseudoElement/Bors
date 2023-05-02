@@ -19,7 +19,7 @@ const FAQ = () => {
   }
   return (
     <div className={s.container} id={'faq'}>
-      <h2 className={s.faqHeader}>OM Tävlingen</h2>
+      <h2 className={s.faqHeader}>Frågor och svar</h2>
 
       <Tabs
         selectedIndex={activeTabIndex}
