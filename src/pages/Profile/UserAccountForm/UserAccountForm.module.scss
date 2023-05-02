@@ -129,3 +129,50 @@
     display: none;
   }
 }
+
+.visaExample {
+  display: flex;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.example {
+  position: absolute;
+  width: 300px;
+  height: 380px;
+  border-radius: 20px;
+  top: -400px;
+  left: 0;
+  padding: 5px;
+  pointer-events: none;
+  background-color: $color-white;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.08);
+  z-index: 100;
+  @media screen and (max-width: 350px){
+    width: 275px;
+    height: 360px;
+  }
+}
+
+.visa {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 140%;
+  color: $color-blue;
+  &:hover {
+    color: $color-black;
+  }
+}
+
+.exampleImg {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-image: url('/assets/image/example.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

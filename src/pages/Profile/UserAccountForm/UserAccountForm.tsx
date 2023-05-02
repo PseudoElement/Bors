@@ -21,6 +21,7 @@ export const UserAccountForm: FC = () => {
   const dispatch = useAppDispatch()
   const user = useAppSelector(state => state.user.user)
   const app = useAppSelector(state => state.app)
+  const [isOpenExample, setIsOpenExample] = useState(false)
 
   const {
     control,
@@ -129,6 +130,10 @@ export const UserAccountForm: FC = () => {
     setValue(name, withIcon + text.replace(NUMBER_REG_EXP[1], ''))
   }
 
+  const toggleExample = () => {
+    setIsOpenExample(prev => !prev)
+  }
+
   useEffect(() => {
     setAddValues(user, setValue)
   }, [user?.name])
@@ -232,6 +237,16 @@ export const UserAccountForm: FC = () => {
               </div>
             ))}
           </div>
+          <div className={s.visaExample}>
+            <div className={s.example} style={{opacity: isOpenExample ? '1' : '0'}}>
+              <div className={s.exampleImg}>
+              </div>
+            </div>
+            <div onClick={toggleExample} className={s.visa} style={{color: isOpenExample ? 'red' : '#0a39b1'}}>
+              visa will exempel
+            </div>
+          </div>
+          
 
           <div className={s.btnsAction}>
             <Button className={s.actionBtn} type='submit'>
