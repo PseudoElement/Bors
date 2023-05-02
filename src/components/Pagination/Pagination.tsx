@@ -87,7 +87,7 @@ export const Pagination: FC<PaginationProps> = ({ classNames }) => {
           dropSide='Top'
           data={perPage}
           defaultValues={perPage[3]}
-          onChange={value => handlePerPage(+value.value)}
+          onChange={value => handlePerPage(value.value ? +value.value : 0)}
         />
       </div>
     </div>
