@@ -11,13 +11,13 @@ export const mock_by_line_of_business = [
 ]
 
 export const mock_min_max_popularity: FilterMeta[] = [
-  { label: 'Köp Populära', value: MinMax.Default },
+  { label: 'Köp Populära', value: null },
   { label: 'Mest populär', value: MinMax.Mest },
   { label: 'Minst populär', value: MinMax.Minst },
 ]
 
 export const mock_min_max_price: FilterMeta[] = [
-  { label: 'Efter pris', value: MinMax.Default },
+  { label: 'Efter pris', value: null },
   { label: 'Mest populär', value: MinMax.Mest },
   { label: 'Minst populär', value: MinMax.Minst },
 ]

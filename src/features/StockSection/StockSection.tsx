@@ -34,7 +34,7 @@ export const StockSection: FC<StockSectionProps> = ({
   const [showBuyStockInfo, setShowBuyStockInfo] = useState<boolean>(false)
   const [stockDetails, setStockDetails] = useState<Stocks | null>(null)
   const [basket, setBasket] = useState<Basket[]>([])
-  console.log(stockDetails)
+
   const deleteStockInBasket = (id: number) => {
     setBasket(prevState => prevState.filter(item => item.stock.id !== id))
   }

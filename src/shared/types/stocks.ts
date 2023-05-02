@@ -77,7 +77,7 @@ export interface StockTypes {
   privot: StockTypesPrivot
 }
 
-export type FilterMeta = { label: string; value: MinMax | string }
+export type FilterMeta = { label: string; value: MinMax | string | null }
 
 export enum MinMax {
   'Default' = 'asc',
