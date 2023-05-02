@@ -16,7 +16,7 @@ export const nav_links = [
 export const main_nav_links = [
   {
     label: 'HEM',
-    link: '#',
+    link: '#header',
   },
   {
     label: 'FRÅGOR OCH SVAR',
