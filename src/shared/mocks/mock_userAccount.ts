@@ -38,7 +38,7 @@ export const mock_user_fields = {
     },
     {
       label: 'Personnummer',
-      type: 'number',
+      type: 'phone',
       name: 'ssn',
       placeholder: 'Kräver 12 siffror',
       maxLength: 10,
