@@ -12,6 +12,7 @@ import { User } from 'shared/types/user'
 import { setAddValues } from 'shared/helpers/setAddValues'
 import { EMAIL_VALIDATION_REG, NUMBER_REG_EXP } from 'shared/constants/regExp'
 import { formatTelNumber } from 'shared/helpers/formatTelNumber'
+import { formatPersonNumber } from 'shared/helpers/formatPersonNumber'
 import { mock_user_fields } from 'shared/mocks/mock_userAccount'
 
 import s from './UserAccountForm.module.scss'
@@ -105,6 +106,12 @@ export const UserAccountForm: FC = () => {
     setValue('phone_number', formatTelNumber(text))
   }
 
+  const handlerPersonNumber = (e: ChangeEvent<HTMLInputElement>) => {
+    const text = e.target.value.replace(NUMBER_REG_EXP[1], '')
+
+    setValue('ssn', formatPersonNumber(text))
+  }
+
   const handlerOnlyNumber = (e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name as 'avanza'
     const text = e.target.value.replace('#', '')
@@ -144,8 +151,8 @@ export const UserAccountForm: FC = () => {
                     name={item.name as 'first_name'}
                     control={control}
                     rules={{
-                      required: `${item.label} krävs`,
-                      minLength: item.type === 'phone' ? 12 : undefined,
+                      required: item.type !== 'phone' ? `${item.label} krävs` : item.name === 'ssn' ? 'Kräver 12 siffror' : 'Kräver 10 siffror',
+                      minLength: (item.name === 'ssn') ? 12 : (item.name === 'phone_number') ? 13 : undefined,
                       pattern:
                         (item.name as 'email') === 'email'
                           ? EMAIL_VALIDATION_REG
@@ -156,6 +163,9 @@ export const UserAccountForm: FC = () => {
                           : (item.name as 'security_number') ===
                             'security_number'
                           ? handlerOnlyNumber
+                          : (item.name as 'ssn') ===
+                            'ssn'
+                          ? handlerPersonNumber
                           : item.name === 'first_name'
                           ? handlerFirstName
                           : (item.name as 'last_name') === 'last_name'
@@ -179,11 +189,15 @@ export const UserAccountForm: FC = () => {
                   </span>
                 )}
                 {errors[item.name as 'phone_number'] && errors[item.name as 'phone_number']!.type === 'minLength' && (
-                  <span className={s.errMessage}>Kräver 10 siffror</span>
+                  <span className={s.errMessage}>
+                    {item.name === 'phone_number' ? 'Kräver 10 siffror' : ''}
+                    {item.name === 'ssn' ? 'Kräver 12 siffror' : ''}
+                  </span>
                 )}
               </div>
             ))}
           </div>
+          <div className={s.depository}>Depånummer (AF-kontonr) * Observera att du måste fylla i ett fullständiga Aktie&fondkontonr hos Avanza eller Nordnet för att kunna delta i BörsJakten`s aktietävling och för att bli tilldelad kostnadsfria aktier i Investmentbolaget Nosium efter avslutad tävling.</div>
 
           <div className={s.wrapperFlexField}>
             {mock_user_fields.flex.map((item, key) => (

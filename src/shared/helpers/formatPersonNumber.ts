@@ -1,0 +1,1 @@
+export function formatPersonNumber(text: string) {return text.substring(0,12)}
