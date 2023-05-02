@@ -16,7 +16,7 @@ export const nav_links = [
 export const main_nav_links = [
   {
     label: 'Hem',
-    link: '#about',
+    link: '#',
   },
   {
     label: 'Topplistan',
