@@ -1,5 +1,5 @@
 export interface Stocks {
-  buy_sum_count: string
+  buy_count: string
   company_code: string
   company_name: string
   count: number
@@ -22,8 +22,8 @@ export interface Stocks {
   real_count: number
   revenue_growth: number
   updated_at: string
+  revenue: []
 }
-
 export interface Country {
   created_at: string
   id: 1

@@ -4,9 +4,8 @@
   display: flex;
   flex-direction: column;
   gap: 25px;
-  width: 100%;
-  max-width: 930px;
-  padding-bottom: 20px ;
+  width: 930px;
+  padding-bottom: 20px;
   font-family: $font-Mont;
   font-style: normal;
   & > div:nth-child(2) {
@@ -20,6 +19,10 @@
   & > div:nth-child(4) {
     padding-bottom: 25px;
     border-bottom: 1px solid $color-gray-eb;
+  }
+
+  @media screen and (max-width: 1080px) {
+    width: 100%;
   }
 
   @media screen and (max-width: 600px) {
@@ -40,7 +43,11 @@
   align-items: center;
   gap: 20px;
   height: 66px;
-  @media screen and (max-width: 520px) {
+  width: 100%;
+  @include tablet-mobile {
+    width: 100%;
+  }
+  @media screen and (max-width: 420px) {
     height: auto;
     flex-direction: column;
   }
@@ -49,33 +56,44 @@
 .titleCardTop {
   display: flex;
   align-items: center;
+  width: 50%;
   column-gap: 10px;
   @media screen and (max-width: 520px) {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
+    width: 100%;
   }
 }
 
 .appName {
   font-weight: $fw-bold;
-  font-size: 32px;
+  font-size: 21px;
   line-height: 100%;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
   letter-spacing: -0.02em;
   color: $color-black;
-  @media screen and (max-width: 520px) {
-    width: min-content;
+  @media screen and (max-width: 840px) {
+    font-size: 18px;
+  }
+  @include tablet-mobile {
+    font-size: 16px;
   }
 }
 .currentSection {
   display: flex;
   flex-direction: column;
+  width: 50%;
   gap: 6px;
   padding-left: 25px;
   border-left: 1px solid $color-gray-eb;
-  @media screen and (max-width: 520px) {
+
+  @include tablet-mobile {
+    width: 40%;
+  }
+  @media screen and (max-width: 420px) {
     border: none;
     border-top: 1px solid $color-gray-eb;
     padding-top: 16px;
@@ -92,6 +110,10 @@
     letter-spacing: 0.07em;
     text-transform: uppercase;
     color: $color-gray-a5;
+
+    @include tablet {
+      font-size: 13px;
+    }
   }
   .curentValue {
     font-weight: $fw-bold;
@@ -105,11 +127,21 @@
       font-size: 25px;
       margin-left: 5px;
     }
+
+    @include tablet {
+      font-size: 32px;
+      & > span {
+        font-size: 20px;
+      }
+    }
   }
 }
 .countryCard {
   display: flex;
+  justify-content: flex-end;
   gap: 10px;
+  width: 33%;
+
   .countryInfo {
     display: flex;
     flex-direction: column;
@@ -119,11 +151,18 @@
   .country {
     text-align: start;
   }
-  @media screen and (max-width: 520px) {
+  @include tablet-mobile {
     display: none;
   }
 }
 
+.countryImage {
+  width: 40px;
+  height: 40px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 .countryIssuer {
   font-weight: $fw-semibold;
   font-size: 12px;
@@ -174,11 +213,21 @@
   line-height: 140%;
   color: $color-black;
 }
-.indicatorsItem {
+.indicatorContainer {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  column-gap: 16px;
+  width: 100%;
+  gap: 16px;
+
+  @include mobile-laptop {
+    flex-direction: column;
+  }
+}
+.indicatorWrap {
+  width: 50%;
+
+  @include mobile-laptop {
+    width: 100%;
+  }
 }
 .buyButton {
   width: 100%;
@@ -190,19 +239,41 @@
 }
 
 .mobileCountryCard {
-  display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
+  display: none;
+
+  @include tablet-mobile {
+    display: flex;
+  }
 }
 
 .mobileCountryInfo {
   display: flex;
   flex-direction: column;
 }
-
+.mobileCountryIssuer {
+  font-size: 14px;
+}
 .mobileCountry {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: $fw-bold;
   color: $color-black;
+}
+.icon {
+  width: 30%;
+  height: 60px;
+
+  .companyLogo {
+    width: 70px;
+    height: 70px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  @include tablet-mobile {
+    width: 30%;
+  }
 }

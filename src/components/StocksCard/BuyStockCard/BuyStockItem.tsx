@@ -14,7 +14,10 @@ export const BuyStockItem: FC<Basket> = ({ buy, stock }) => {
       <div className={s.buystockWrapper}>
         <div className={s.buystockRow}>
           <div className={s.cardLogo}>
-            <Image width={40} height={40} src={stock?.image} alt='Icon' />
+            <div
+                className={s.companyLogo}
+                style={{ backgroundImage: `url("${stock?.image}")` }}
+            ></div>
           </div>
 
           <div>
@@ -25,7 +28,7 @@ export const BuyStockItem: FC<Basket> = ({ buy, stock }) => {
 
         <div>
           <span className={s.buystockStoks}>
-            {countToBuy(Object.values(buy)[0]).buyCount} aktier
+            {countToBuy(Object.values(buy)[0], 0).buyCount} aktier
           </span>
 
           <p className={s.buystockCurrency}>

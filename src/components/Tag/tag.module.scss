@@ -12,4 +12,8 @@
   text-transform: uppercase;
   color: $color-purple;
   border-radius: 85px;
+
+  @include tablet-mobile {
+    font-size: 14px;
+  }
 }

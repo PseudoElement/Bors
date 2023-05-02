@@ -4,14 +4,12 @@ export function formatTelNumber(text: string) {
  
 
   return (
-    text.substring(0, 1) +
+    text.substring(0, 3) +
     space +
-    text.substring(1, 4) +
-    space +
-    text.substring(4, 7) +
+    text.substring(3, 6) +
     slsh +
-    text.substring(7, 9) +
+    text.substring(6, 8) +
     slsh +
-    text.substring(9, 10)
+    text.substring(8, 10)
   )
 }

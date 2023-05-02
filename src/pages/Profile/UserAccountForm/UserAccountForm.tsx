@@ -100,8 +100,6 @@ export const UserAccountForm: FC = () => {
 
   const handlerTelNumber = (e: ChangeEvent<HTMLInputElement>) => {
     const text = e.target.value.replace(NUMBER_REG_EXP[1], '')
-
-
     setValue('phone_number', formatTelNumber(text))
   }
 
@@ -145,7 +143,7 @@ export const UserAccountForm: FC = () => {
                     control={control}
                     rules={{
                       required: `${item.label} krävs`,
-                      minLength: item.type === 'phone' ? 12 : undefined,
+                      minLength: item.maxLength ? item.maxLength : undefined,
                       pattern:
                         (item.name as 'email') === 'email'
                           ? EMAIL_VALIDATION_REG
@@ -178,9 +176,10 @@ export const UserAccountForm: FC = () => {
                     {errors[item.name as 'email']?.message}
                   </span>
                 )}
-                {errors[item.name as 'phone_number'] && errors[item.name as 'phone_number']!.type === 'minLength' && (
-                  <span className={s.errMessage}>Kräver 10 siffror</span>
-                )}
+                {errors[item.name as 'phone_number'] &&
+                  errors[item.name as 'phone_number']!.type === 'minLength' && (
+                    <span className={s.errMessage}>Kräver 10 siffror</span>
+                  )}
               </div>
             ))}
           </div>

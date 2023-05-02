@@ -19,7 +19,9 @@ export const MyStocks = () => {
       console.log(error)
     }
   }
-
+  const refreshMyStocks = () => {
+    getMyStocks()
+  }
   useEffect(() => {
     getMyStocks()
   }, [])
@@ -38,7 +40,7 @@ export const MyStocks = () => {
       <div className={s.wrapperContent}>
         <BalancePanel />
 
-        {myStocks?.length ? <StockSection stocks={myStocks} /> : null}
+        {myStocks?.length ? <StockSection myStocks onRefresh={refreshMyStocks} stocks={myStocks} /> : null}
       </div>
     </div>
   )

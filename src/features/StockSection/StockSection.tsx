@@ -14,6 +14,8 @@ export interface StockSectionProps {
   classNames?: string
   stocks: Stocks[]
   withPagination?: boolean
+  myStocks?: boolean
+  onRefresh?: () => void
 }
 
 export interface Basket {
@@ -25,12 +27,14 @@ export const StockSection: FC<StockSectionProps> = ({
   classNames,
   stocks,
   withPagination,
+  myStocks,
+  onRefresh
 }) => {
   const [showBuyStockList, setShowBuyStockList] = useState<boolean>(false)
   const [showBuyStockInfo, setShowBuyStockInfo] = useState<boolean>(false)
   const [stockDetails, setStockDetails] = useState<Stocks | null>(null)
   const [basket, setBasket] = useState<Basket[]>([])
-
+  console.log(stockDetails)
   const deleteStockInBasket = (id: number) => {
     setBasket(prevState => prevState.filter(item => item.stock.id !== id))
   }
@@ -95,7 +99,9 @@ export const StockSection: FC<StockSectionProps> = ({
       if (data.status === 'success') {
         // if res ok clear basket and close buy popup
         setShowBuyStockList(true)
-
+        if(myStocks && onRefresh) {
+          onRefresh()
+        }
         return
       }
 
@@ -113,7 +119,9 @@ export const StockSection: FC<StockSectionProps> = ({
       if (data.status === 'success') {
         setShowBuyStockList(true)
         setShowBuyStockInfo(false)
-
+        if(myStocks && onRefresh) {
+          onRefresh()
+        }
         return
       }
     } catch (e) {
@@ -163,6 +171,7 @@ export const StockSection: FC<StockSectionProps> = ({
             key={item.id}
             basket={basket}
             stock={item}
+            myStocks={myStocks}
           />
         ))}
       </div>

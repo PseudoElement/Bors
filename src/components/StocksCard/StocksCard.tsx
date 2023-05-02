@@ -14,6 +14,7 @@ interface StocksCardProps {
   onShow?: () => void
   basket: Basket[]
   stock: Stocks
+  myStocks?: boolean
 }
 
 export const StocksCard: FC<StocksCardProps> = ({
@@ -21,6 +22,7 @@ export const StocksCard: FC<StocksCardProps> = ({
   onAddToBasket,
   basket,
   stock,
+  myStocks,
 }) => {
   const [isActiveCard, setIsActiveCard] = useState<boolean>(false)
   const [counterValue, setCounterValue] = useState<number>(0)
@@ -57,7 +59,10 @@ export const StocksCard: FC<StocksCardProps> = ({
       className={cn(s.card, { [s.addedItem]: isActiveCard })}
     >
       <div className={s.image}>
-        <Image src={stock?.image} layout='fill' alt='amazon logo' />
+        <div
+          className={s.companyLogo}
+          style={{ backgroundImage: `url("${stock?.image}")` }}
+        ></div>
       </div>
 
       <div className={s.appName}>
@@ -70,12 +75,18 @@ export const StocksCard: FC<StocksCardProps> = ({
       </div>
 
       <div className={s.statistics}>
-        <div className={s.currency}>
-          {stock.last_price ? stock.last_price.price : stock.price}
-          <span>SEK</span>
-        </div>
+        {myStocks && (
+          <span className={s.myStocks}>Antal aktier {stock?.buy_count}</span>
+        )}
 
-        <Percent count={stock?.last_price?.percentage} />
+        <div className={s.priceWrap}>
+          <div className={s.currency}>
+            {stock.last_price ? stock.last_price.price : stock.price}
+            <span>SEK</span>
+          </div>
+
+          <Percent count={stock?.last_price?.percentage} />
+        </div>
       </div>
 
       <div className={s.cardFooter}>
@@ -84,7 +95,7 @@ export const StocksCard: FC<StocksCardProps> = ({
         ) : (
           <div className={s.buy}>
             <button className={s.buyBtn} onClick={e => addNft(e)}>
-              {false ? 'Köp mer' : 'Köpa'}
+              {myStocks ? 'Köp mer' : 'Köpa'}
             </button>
 
             <span className={s.buyText}>

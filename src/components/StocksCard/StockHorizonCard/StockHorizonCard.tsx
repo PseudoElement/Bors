@@ -16,6 +16,11 @@ interface StockHorizonCardProps extends Stocks {
 export const StockHorizonCard: FC<StockHorizonCardProps> = ({
   id,
   image,
+  p_s,
+  p_e,
+  count,
+  real_count,
+  buy_count,
   company_code,
   company_name,
   price,
@@ -27,7 +32,10 @@ export const StockHorizonCard: FC<StockHorizonCardProps> = ({
     <div className={s.stockCard} key={id}>
       <div className={s.stockNameBlock}>
         <div className={s.stockNameBlockImageWrapper}>
-          <Image src={image} width={40} height={40} alt={'stock card image'} />
+          <div
+            className={s.companyLogo}
+            style={{ backgroundImage: `url("${image}")` }}
+          ></div>
         </div>
 
         <div className={s.stockNameBlockTextWrapper}>

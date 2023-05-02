@@ -13,12 +13,9 @@ import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
 // @ts-ignore
 interface CardStocksInfoProps extends Stocks {
   currencyValue: string
-  countryImage?: ImageProps['src'] | undefined
   country: Country
   types: StockTypes[]
-  textInfoCard: string
   indicators: IndicatorProps[]
-  revenue: IndicatorProps[]
 }
 
 export const CardStocksInfo: FC<CardStocksInfoProps> = ({
@@ -27,13 +24,27 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
   company_code,
   price,
   currencyValue,
-  countryImage,
   country,
   types,
-  textInfoCard,
-  indicators,
-  revenue,
   last_price,
+  name,
+  count,
+  real_count,
+  buy_count,
+  p_s,
+  p_e,
+  id,
+  created_at,
+  desc,
+  updated_at,
+  ebitda,
+  revenue_growth,
+  growth_eps,
+  diluted_eps,
+  net_profit_margin,
+  market_cap,
+  country_id,
+  indicators,
 }) => {
   const { width } = useWindowDimensions()
 
@@ -42,10 +53,17 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
       <div className={s.wrapperHeader}>
         <div className={s.titleCard}>
           <div className={s.titleCardTop}>
-            <Image width={66} height={66} src={image} alt='icon' />
+            <div className={s.icon}>
+              <div
+                className={s.companyLogo}
+                style={{ backgroundImage: `url("${image}")` }}
+              ></div>
+            </div>
+
             <div className={s.appName}>
-              {company_name}
-              <span className={s.appInitials}>({company_code})</span>
+              <span className={s.appInitials}>
+                {company_name} ({company_code})
+              </span>
             </div>
           </div>
 
@@ -57,19 +75,17 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
               <span>{currencyValue}</span>
             </div>
           </div>
-        </div>
 
-        <div className={s.countryCard}>
-          <Image
-            width={36}
-            height={36}
-            src={countryImage!}
-            alt='country icon'
-          />
+          <div className={s.countryCard}>
+            <div
+              className={s.countryImage}
+              style={{ backgroundImage: `url("${country.image}")` }}
+            />
 
-          <div className={s.countryInfo}>
-            <span className={s.countryIssuer}>Emittentens land</span>
-            <span className={s.country}>{country.name}</span>
+            <div className={s.countryInfo}>
+              <span className={s.countryIssuer}>{country.short_name}</span>
+              <span className={s.country}>{country.name}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -80,49 +96,43 @@ export const CardStocksInfo: FC<CardStocksInfoProps> = ({
         ))}
       </div>
 
-      <div className={s.textInfoCard}>{textInfoCard}</div>
+      <div className={s.textInfoCard}>{desc}</div>
 
-      {width <= 620 && (
-        <div className={s.mobileCountryCard}>
-          <Image
-            width={36}
-            height={36}
-            src={countryImage!}
-            alt='country icon'
-          />
+      <div className={s.mobileCountryCard}>
+        <div
+          className={s.countryImage}
+          style={{ backgroundImage: `url("${country.image}")` }}
+        />
 
-          <div className={s.mobileCountryInfo}>
-            <span className={s.mobileCountryIssuer}>Country of the issuer</span>
-            <span className={s.mobileCountry}>{country.short_name}</span>
-          </div>
-        </div>
-      )}
-
-      <div className={s.indicators}>
-        <div className={s.titleIndicators}>Indikatorer</div>
-
-        <div className={s.indicatorsItem}>
-          {indicators.map((item, idx) => (
-            <Indicator
-              name={item.name}
-              indicator={item.indicator}
-              key={item.indicator}
-            />
-          ))}
+        <div className={s.mobileCountryInfo}>
+          <span className={s.mobileCountryIssuer}>{country.short_name}</span>
+          <span className={s.mobileCountry}>{country.short_name}</span>
         </div>
       </div>
 
       <div className={s.indicators}>
-        <div className={s.titleIndicators}>Intäkter och vinst</div>
+        <div className={s.titleIndicators}>Indikatorer</div>
 
-        <div className={s.indicatorsItem}>
-          {revenue.map((item, idx) => (
+        <div className={s.indicatorContainer}>
+          <div className={s.indicatorWrap}>
+            <Indicator name={'Market Cap'} indicator={`${market_cap} SEK`} />
+            <Indicator name={'Ebitda'} indicator={`${ebitda} SEK`} />
+            <Indicator name={'P/E'} indicator={`${p_e}`} />
+            <Indicator name={'P/S'} indicator={`${p_s}`} />
+          </div>
+
+          <div className={s.indicatorWrap}>
+            <Indicator name={'Diluted EPS'} indicator={`${diluted_eps} SEK`} />
+            <Indicator name={'Growth EPS'} indicator={`${growth_eps}%`} />
             <Indicator
-              name={item.name}
-              indicator={item.indicator}
-              key={item.indicator}
+              name={'Revenue growth'}
+              indicator={`${revenue_growth}%`}
             />
-          ))}
+            <Indicator
+              name={'Net Profit Margin'}
+              indicator={`${net_profit_margin}%`}
+            />
+          </div>
         </div>
       </div>
     </div>

@@ -30,6 +30,10 @@
   @media (max-width: 573px) {
     margin: auto;
   }
+  @media (max-width: 370px) {
+    width: 150px;
+    min-width: 150px;
+  }
 }
 
 .addedItem {
@@ -42,8 +46,17 @@
 .image {
   position: relative;
   margin-bottom: 39px;
-  width: 56px;
-  height: 56px;
+  width: 80%;
+  height: 70px;
+
+  .companyLogo {
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 
   @include tablet-mobile {
     margin-bottom: 25px;
@@ -54,9 +67,8 @@
 .statistics {
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   flex-direction: column;
+  justify-content: space-between;
   padding-bottom: 14px;
   border-bottom: 1px solid $color-gray-eb;
 
@@ -67,6 +79,8 @@
 }
 .appName {
   flex-grow: 1;
+  align-items: center;
+
   @include tablet-mobile {
     padding-bottom: 10px;
     flex-grow: 0;
@@ -98,6 +112,7 @@
   font-size: 18px;
   line-height: 18px;
   letter-spacing: -0.02em;
+  margin-top: 5px;
 
   @include tablet-mobile {
     font-size: 14px;
@@ -116,12 +131,15 @@
   }
 }
 
+.priceWrap {
+  display: flex;
+  width: 100%;
+}
 .currency {
   font-size: 25px;
   color: $color-black;
   font-weight: $fw-semibold;
-
-
+  width: 100%;
   span {
     font-size: 16px;
     margin-left: 3px;
@@ -165,4 +183,10 @@
 .buyText {
   font-size: 12px;
   color: $color-gray-a5;
+}
+.myStocks {
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 11px;
+  letter-spacing: -0.02em;
 }

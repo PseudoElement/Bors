@@ -2,11 +2,12 @@
 
 .indicators {
   width: 100%;
-  max-width: 400px;
   display: flex;
   padding: 14px 24px;
   background: $color-purple-005;
   border-radius: 100px;
+  margin-bottom: 8px;
+
   @include tablet-mobile {
     max-width: 100%;
   }
