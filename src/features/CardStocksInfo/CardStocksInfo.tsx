@@ -1,14 +1,11 @@
 import { FC } from 'react'
+import Link from 'next/link'
 
-import Image, { ImageProps } from 'next/image'
+import { Indicator, Percent, Tag } from 'components'
 
-import { Button, Indicator, Percent, Tag } from 'components'
-
-import { IndicatorProps } from 'shared/types/indicators'
-import { Country, StockTypes, Stocks } from 'shared/types/stocks'
+import { Stocks } from 'shared/types/stocks'
 
 import s from './cardStocksInfo.module.scss'
-import { useWindowDimensions } from 'shared/hooks/useWindowDimensions'
 
 export const CardStocksInfo: FC<Stocks> = ({
   image,
@@ -35,10 +32,8 @@ export const CardStocksInfo: FC<Stocks> = ({
   market_cap,
   country_id,
   revenue,
-    types,
+  types,
 }) => {
-  const { width } = useWindowDimensions()
-
   return (
     <div className={s.wrapperCardInfo}>
       <div className={s.wrapperHeader}>
@@ -88,10 +83,18 @@ export const CardStocksInfo: FC<Stocks> = ({
         </div>
       </div>
 
-      <div className={s.cardTags}>
-        {types.map((tag, idx) => (
-          <Tag name={tag.name} key={idx} />
-        ))}
+      <div className={s.cardTagsWrap}>
+        <div className={s.cardTags}>
+          {types.map((tag, idx) => (
+            <Tag name={tag.name} key={idx} />
+          ))}
+        </div>
+
+        <Link href={'/'}>
+          <a target='_blank'>
+            <button className={s.companyLink}>aaa</button>
+          </a>
+        </Link>
       </div>
 
       <div className={s.textInfoCard}>{desc}</div>

@@ -45,10 +45,6 @@
 
 .logo {
   margin-bottom: 54px;
-
-  @include tablet-mobile {
-    margin-bottom: 142px;
-  }
 }
 
 .introBtn {
@@ -64,6 +60,10 @@
   border-style: solid;
   border-radius: 50em;
   border: 2px solid $color-gray-02;
+
+  @include tablet-mobile {
+    margin-bottom: 135px;
+  }
 }
 
 .text {

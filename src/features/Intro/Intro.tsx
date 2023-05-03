@@ -52,6 +52,7 @@ export const Intro: FC<SiteData> = ({ logo, desc, title }) => {
             </div>
           </div>
         )}
+
         <Button onClick={onClickActive} className={s.introBtn}>
           Registrera dig
         </Button>
