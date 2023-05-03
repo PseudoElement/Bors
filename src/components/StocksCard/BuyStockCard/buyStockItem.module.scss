@@ -24,8 +24,6 @@
   gap: 5px;
   border-right: 1px solid $color-blue-b2-opacity;
   max-width: 150px;
-  overflow: hidden;
-  white-space: nowrap;
 
   + div {
     margin-left: 14px;
@@ -58,7 +56,7 @@
 .buystockInitials {
   color: $color-gray-a5;
   font-size: 18px;
-  font-weight: $fw-bold;
+  font-weight: $fw-semibold;
   letter-spacing: -0.02em;
 
   @include tablet-mobile {

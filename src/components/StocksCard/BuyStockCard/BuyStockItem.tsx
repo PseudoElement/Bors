@@ -1,7 +1,5 @@
 import { FC } from 'react'
 
-import Image from 'next/image'
-
 import { countToBuy } from 'shared/helpers/countToBuy'
 
 import { Basket } from 'features/StockSection/StockSection'
@@ -15,8 +13,8 @@ export const BuyStockItem: FC<Basket> = ({ buy, stock }) => {
         <div className={s.buystockRow}>
           <div className={s.cardLogo}>
             <div
-                className={s.companyLogo}
-                style={{ backgroundImage: `url("${stock?.image}")` }}
+              className={s.companyLogo}
+              style={{ backgroundImage: `url("${stock?.image}")` }}
             ></div>
           </div>
 

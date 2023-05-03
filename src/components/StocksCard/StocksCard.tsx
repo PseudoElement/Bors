@@ -1,8 +1,9 @@
 import { FC, useState, SyntheticEvent, useEffect } from 'react'
-import Image from 'next/image'
 import cn from 'classnames'
 
 import { Counter, Percent } from 'components'
+
+import { toFixedCount } from 'shared/helpers/countToBuy'
 
 import { Stocks } from 'shared/types/stocks'
 import { Basket } from 'features/StockSection/StockSection'
@@ -81,8 +82,12 @@ export const StocksCard: FC<StocksCardProps> = ({
         )}
 
         <div className={s.priceWrap}>
-          <div className={cn(s.currency, { [s.selectedCardPrice]: isActiveCard })}>
-            {stock.last_price ? stock.last_price.price : stock.price}
+          <div
+            className={cn(s.currency, { [s.selectedCardPrice]: isActiveCard })}
+          >
+            {stock.last_price
+              ? toFixedCount(stock.last_price.price)
+              : toFixedCount(stock.price)}
             <span>SEK</span>
           </div>
 

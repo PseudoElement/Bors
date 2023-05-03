@@ -3,6 +3,8 @@ import Link from 'next/link'
 
 import { Indicator, Percent, Tag } from 'components'
 
+import { toFixedCount } from 'shared/helpers/countToBuy'
+
 import { Stocks } from 'shared/types/stocks'
 
 import s from './cardStocksInfo.module.scss'
@@ -33,7 +35,7 @@ export const CardStocksInfo: FC<Stocks> = ({
   country_id,
   revenue,
   types,
-    url
+  url,
 }) => {
   return (
     <div className={s.wrapperCardInfo}>
@@ -59,7 +61,9 @@ export const CardStocksInfo: FC<Stocks> = ({
 
             <div className={s.curentValue}>
               <div className={s.price}>
-                {last_price ? last_price.price : price}
+                {last_price
+                  ? toFixedCount(last_price.price)
+                  : toFixedCount(price)}
                 <span>SEK</span>
               </div>
 
@@ -93,7 +97,9 @@ export const CardStocksInfo: FC<Stocks> = ({
 
         <Link href={`/${url}`}>
           <a target='_blank'>
-            <button className={s.companyLink}>{url ? url : 'link not found'}</button>
+            <button className={s.companyLink}>
+              {url ? url : 'link not found'}
+            </button>
           </a>
         </Link>
       </div>

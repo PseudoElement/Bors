@@ -43,6 +43,8 @@
   color: $color-gray-a5;
   letter-spacing: -0.02em;
   font-weight: $fw-semibold;
+  text-align: center;
+
   @include tablet {
     font-size: 16px;
     text-align: center;

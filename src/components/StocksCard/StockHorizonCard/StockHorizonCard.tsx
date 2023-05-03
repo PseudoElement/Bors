@@ -2,7 +2,7 @@ import React from 'react'
 import { FC } from 'react'
 import Image from 'next/image'
 
-import { countToBuy } from 'shared/helpers/countToBuy'
+import { countToBuy, toFixedCount } from 'shared/helpers/countToBuy'
 
 import { Stocks } from 'shared/types/stocks'
 
@@ -49,7 +49,8 @@ export const StockHorizonCard: FC<StockHorizonCardProps> = ({
           <span className={s.stockCostValue}>1 aktier</span>
 
           <h5 className={s.stockCost}>
-            {last_price ? last_price.price : price} <span>SEK</span>
+            {last_price ? toFixedCount(last_price.price) : toFixedCount(price)}{' '}
+            <span>SEK</span>
           </h5>
         </div>
       )}
