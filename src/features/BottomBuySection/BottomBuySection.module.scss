@@ -9,6 +9,8 @@
   position: relative;
   padding: 10px;
   max-width: 98%;
+  z-index: 2;
+
   @media screen and (max-width: 658px) {
     flex-direction: column;
   }

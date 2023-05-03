@@ -79,6 +79,7 @@
   flex-direction: column;
   justify-content: space-between;
   text-align: left;
+  min-width: 50px;
 
   .stockCostValue {
     font-weight: $fw-semibold;

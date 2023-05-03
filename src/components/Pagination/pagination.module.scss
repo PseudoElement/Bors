@@ -51,6 +51,7 @@
 .buttonWrap {
   display: flex;
   position: relative;
+  z-index: 0;
 
   @include tablet-mobile {
     margin-top: 20px;
@@ -83,6 +84,7 @@
   width: auto;
   padding: 0 24px;
   min-width: 186px;
+
   svg {
     margin-left: 6px;
   }
