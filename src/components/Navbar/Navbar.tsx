@@ -23,11 +23,24 @@ export const Navbar: FC<Variant> = ({ variant }) => {
   const { push } = useRouter()
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isBurgerOpen, setBurgerIsOpen] = useState<boolean>(false)
+  const [active, setActive] = useState<string | null>('login')
+  const [isActive, setIsActive] = useState(false)
   const [isOpenPasswordRecovery, setIsOpenPasswordRecovery] =
     useState<boolean>(false)
   const [popupStatus, setPopupStatus] = useState<PopupAfterSubmitStatus>(
     PopupAfterSubmitStatus.CLOSED
   )
+
+  const onClickActive = () => {
+    setIsOpen(true)
+    setActive('login')
+  }
+
+  const isActiveClick = () => {
+    setActive(isActive ? 'registration' : 'login')
+
+    setIsActive(!isActive)
+  }
 
   const handleProfile = () => {
     const token = cookies.get('token')
@@ -42,9 +55,11 @@ export const Navbar: FC<Variant> = ({ variant }) => {
   return (
     <>
       <LoginRegistrationModal
-        openPopup={() => setPopupStatus(PopupAfterSubmitStatus.SUCCESS)}
+        isActiveDialog={active}
+        openPopup={onClickActive}
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
+        setIsActiveDialog={isActiveClick}
         setIsOpenPasswordRecovery={setIsOpenPasswordRecovery}
       />
       <PopupAfterSubmit

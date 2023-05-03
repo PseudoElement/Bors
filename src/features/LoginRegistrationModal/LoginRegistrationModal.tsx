@@ -14,6 +14,8 @@ import { useClickOutside } from 'shared/hooks/useClickOutside'
 import s from './loginRegistrationModal.module.scss'
 
 interface LoginRegistrationModalProps {
+  isActiveDialog?: string | null;
+  setIsActiveDialog?: (isActiveDialog?: string | null) => void;
   openPopup: () => void
   isOpen: boolean
   onClose: () => void
@@ -22,11 +24,13 @@ interface LoginRegistrationModalProps {
 
 export const LoginRegistrationModal: FC<LoginRegistrationModalProps> = ({
   onClose,
+  isActiveDialog,
+  setIsActiveDialog,
   isOpen,
   setIsOpenPasswordRecovery,
   openPopup,
 }) => {
-  const [isActive, setIsActive] = useState<string>('login')
+  const isActive = 'login'
   const overlayRef = useRef<HTMLDivElement>(null)
 
   useClickOutside(overlayRef, onClose)
@@ -38,6 +42,7 @@ export const LoginRegistrationModal: FC<LoginRegistrationModalProps> = ({
       document.body.style.overflow = 'inherit'
     }
   }, [isOpen])
+
 
   if (!isOpen) {
     return null
@@ -56,27 +61,25 @@ export const LoginRegistrationModal: FC<LoginRegistrationModalProps> = ({
       >
         <div className={s.title}>
           <span
-            onClick={() => setIsActive('login')}
-            className={isActive === 'login' ? s.activeTitle : ''}
+            onClick={() => setIsActiveDialog!('login')}
+            className={isActiveDialog === 'login' ? s.activeTitle : ''}
           >
             Logga In
           </span>{' '}
           <span
-            onClick={() => setIsActive('registration')}
-            className={isActive === 'registration' ? s.activeTitle : ''}
+            onClick={() => setIsActiveDialog!('registration')}
+            className={isActiveDialog === 'registration' ? s.activeTitle : ''}
           >
-            / Registrera dig
+            / Registera
           </span>
         </div>
 
-        {isActive === 'login' ? (
+        {isActive === isActiveDialog ? (
           <LoginForm
             setIsOpenPasswordRecovery={setIsOpenPasswordRecovery}
             onClose={onClose}
           />
-        ) : (
-          <RegistrationForm openPopup={openPopup} />
-        )}
+        ) : <RegistrationForm openPopup={openPopup} />}
       </div>
     </div>
   )

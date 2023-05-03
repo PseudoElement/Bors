@@ -17,6 +17,7 @@
     min-height: 843px;
   }
 }
+
 .backgroundMask {
   width: 100%;
   height: 100%;
@@ -43,11 +44,26 @@
 }
 
 .logo {
-  margin-bottom: 237px;
+  margin-bottom: 54px;
 
   @include tablet-mobile {
     margin-bottom: 142px;
   }
+}
+
+.introBtn {
+  background: linear-gradient($color-gray-01, $color-gray-02) padding-box,
+    linear-gradient(to bottom, $color-gray-01, transparent) border-box;
+  box-shadow: $color-shadow-0-06;
+  padding: 19px 32px;
+  letter-spacing: 0.005em;
+  font-size: 26px;
+  line-height: 110%;
+  margin-bottom: 237px;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 50em;
+  border: 2px solid $color-gray-02;
 }
 
 .text {
@@ -69,6 +85,7 @@
     line-height: 35px;
   }
 }
+
 .iconContainer {
   margin-top: 28px;
   height: 48px;
