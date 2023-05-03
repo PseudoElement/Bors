@@ -69,6 +69,7 @@ export const StocksCard: FC<StocksCardProps> = ({
         <span className={s.name}>
           {stock?.company_name ? stock?.company_name : null}
         </span>
+
         <span className={s.initials}>
           {stock?.company_code ? stock?.company_code : null}
         </span>
@@ -80,7 +81,7 @@ export const StocksCard: FC<StocksCardProps> = ({
         )}
 
         <div className={s.priceWrap}>
-          <div className={s.currency}>
+          <div className={cn(s.currency, { [s.selectedCardPrice]: isActiveCard })}>
             {stock.last_price ? stock.last_price.price : stock.price}
             <span>SEK</span>
           </div>

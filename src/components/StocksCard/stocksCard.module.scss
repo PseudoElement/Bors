@@ -107,7 +107,7 @@
 .initials {
   color: $color-gray-a5;
   text-transform: uppercase;
-  font-weight: $fw-bold;
+  font-weight: $fw-semibold;
   font-family: $font-Mont;
   font-size: 18px;
   line-height: 18px;
@@ -151,6 +151,10 @@
     line-height: 21px;
     letter-spacing: -0.02em;
   }
+}
+
+.selectedCardPrice {
+  color: $color-blue-b2;
 }
 
 .cardFooter {
