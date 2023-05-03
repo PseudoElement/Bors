@@ -33,6 +33,7 @@ export const CardStocksInfo: FC<Stocks> = ({
   country_id,
   revenue,
   types,
+    url
 }) => {
   return (
     <div className={s.wrapperCardInfo}>
@@ -90,9 +91,9 @@ export const CardStocksInfo: FC<Stocks> = ({
           ))}
         </div>
 
-        <Link href={'/'}>
+        <Link href={`/${url}`}>
           <a target='_blank'>
-            <button className={s.companyLink}>aaa</button>
+            <button className={s.companyLink}>{url ? url : 'link not found'}</button>
           </a>
         </Link>
       </div>

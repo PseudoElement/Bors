@@ -24,6 +24,7 @@ export interface Stocks {
   updated_at: string
   revenue: []
   types: StockTypes[]
+  url: string | null
 }
 export interface Country {
   created_at: string

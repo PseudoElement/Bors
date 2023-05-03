@@ -142,6 +142,7 @@ export const StockSection: FC<StockSectionProps> = ({
     }
   }, [showBuyStockInfo])
 
+  console.log(stockDetails)
   return (
     <section style={{ paddingBottom: `${basket.length ? '150px' : '20px'}` }}>
       <Popup
