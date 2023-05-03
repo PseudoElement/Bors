@@ -45,8 +45,8 @@ export const UserAccountForm: FC = () => {
 
   const onSubmitHanlder: SubmitHandler<User> = async formData => {
     if (
-      (!formData?.avanza && !formData?.nordnet) ||
-      (formData?.avanza?.length && formData?.nordnet?.length)
+        (!formData?.avanza && !formData?.nordnet) ||
+        (formData?.avanza?.length && formData?.nordnet?.length)
     ) {
       setError('avanza', {
         message: 'Endast ett av fälten kan fyllas i.',
@@ -115,14 +115,14 @@ export const UserAccountForm: FC = () => {
     const name = e.target.name as 'avanza'
     const text = e.target.value.replace('#', '')
     const withIcon =
-      (name === 'avanza' || name === 'nordnet') && !(e.target.value === '')
-        ? '#'
-        : ''
+        (name === 'avanza' || name === 'nordnet') && !(e.target.value === '')
+            ? '#'
+            : ''
 
     setError(name, {
       message: !parseInt(text[text.length - 1])
-        ? 'Endast siffror är tillåtna'
-        : '',
+          ? 'Endast siffror är tillåtna'
+          : '',
     })
 
     setValue(name, withIcon + text.replace(NUMBER_REG_EXP[1], ''))
@@ -137,130 +137,130 @@ export const UserAccountForm: FC = () => {
   }, [user?.name])
 
   return (
-    <>
-      {user && (
-        <form className={s.form} onSubmit={handleSubmit(onSubmitHanlder)}>
-          <div className={s.wrapperField}>
-            {mock_user_fields.short.map((item, key) => (
-              <div className={s.field} key={key}>
-                <label className={s.labelField} htmlFor={item.name}>
-                  {item.label}
+      <>
+        {user && (
+            <form className={s.form} onSubmit={handleSubmit(onSubmitHanlder)}>
+              <div className={s.wrapperField}>
+                {mock_user_fields.short.map((item, key) => (
+                    <div className={s.field} key={key}>
+                      <label className={s.labelField} htmlFor={item.name}>
+                        {item.label}
 
-                  <span className={s.requiredField}>*</span>
-                </label>
+                        <span className={s.requiredField}>*</span>
+                      </label>
 
-                <div className={s.textField}>
-                  <Controller
-                    name={item.name as 'first_name'}
-                    control={control}
-                    rules={{
-                      required: item.type !== 'phone' ? `${item.label} krävs` : item.name === 'ssn' ? 'Kräver 12 siffror' : 'Kräver 10 siffror',
-                      minLength: (item.name === 'ssn') ? 12 : (item.name === 'phone_number') ? 13 : undefined,
-                      pattern:
-                        (item.name as 'email') === 'email'
-                          ? EMAIL_VALIDATION_REG
-                          : undefined,
-                      onChange:
-                        (item.name as 'phone_number') === 'phone_number'
-                          ? handlerTelNumber
-                          : (item.name as 'security_number') ===
-                            'security_number'
-                          ? handlerOnlyNumber
-                          : (item.name as 'ssn') ===
-                            'ssn'
-                          ? handlerPersonNumber
-                          : item.name === 'first_name'
-                          ? handlerFirstName
-                          : (item.name as 'last_name') === 'last_name'
-                          ? handlerLastName
-                          : undefined,
-                    }}
-                    render={({ field: { onChange, value } }) => (
-                      <Input
-                        type={item.type}
-                        value={value}
-                        onChange={onChange}
-                        placeholder={item.placeholder}
-                      />
-                    )}
-                  />
-                </div>
+                      <div className={s.textField}>
+                        <Controller
+                            name={item.name as 'first_name'}
+                            control={control}
+                            rules={{
+                              required: item.type !== 'phone' ? `${item.label} krävs` : item.name === 'ssn' ? 'Kräver 12 siffror' : 'Kräver 10 siffror',
+                              minLength: (item.name === 'ssn') ? 12 : (item.name === 'phone_number') ? 13 : undefined,
+                              pattern:
+                                  (item.name as 'email') === 'email'
+                                      ? EMAIL_VALIDATION_REG
+                                      : undefined,
+                              onChange:
+                                  (item.name as 'phone_number') === 'phone_number'
+                                      ? handlerTelNumber
+                                      : (item.name as 'security_number') ===
+                                      'security_number'
+                                          ? handlerOnlyNumber
+                                          : (item.name as 'ssn') ===
+                                          'ssn'
+                                              ? handlerPersonNumber
+                                              : item.name === 'first_name'
+                                                  ? handlerFirstName
+                                                  : (item.name as 'last_name') === 'last_name'
+                                                      ? handlerLastName
+                                                      : undefined,
+                            }}
+                            render={({ field: { onChange, value } }) => (
+                                <Input
+                                    type={item.type}
+                                    value={value}
+                                    onChange={onChange}
+                                    placeholder={item.placeholder}
+                                />
+                            )}
+                        />
+                      </div>
 
-                {errors[item.name as 'email'] && (
-                  <span className={s.errMessage}>
+                      {errors[item.name as 'email'] && (
+                          <span className={s.errMessage}>
                     {errors[item.name as 'email']?.message}
                   </span>
-                )}
-                {errors[item.name as 'phone_number'] && errors[item.name as 'phone_number']!.type === 'minLength' && (
-                  <span className={s.errMessage}>
+                      )}
+                      {errors[item.name as 'phone_number'] && errors[item.name as 'phone_number']!.type === 'minLength' && (
+                          <span className={s.errMessage}>
                     {item.name === 'phone_number' ? 'Kräver 10 siffror' : ''}
-                    {item.name === 'ssn' ? 'Kräver 12 siffror' : ''}
+                            {item.name === 'ssn' ? 'Kräver 12 siffror' : ''}
                   </span>
-                )}
+                      )}
+                    </div>
+                ))}
               </div>
-            ))}
-          </div>
-          <div className={s.depository}>Depånummer (AF-kontonr) * Observera att du måste fylla i ett fullständiga Aktie&fondkontonr hos Avanza eller Nordnet för att kunna delta i BörsJakten`s aktietävling och för att bli tilldelad kostnadsfria aktier i Investmentbolaget Nosium efter avslutad tävling.</div>
+              <div className={s.depository}>Depånummer (AF-kontonr) * Observera att du måste fylla i ett fullständiga Aktie&fondkontonr hos Avanza eller Nordnet för att kunna delta i BörsJakten`s aktietävling och för att bli tilldelad kostnadsfria aktier i Investmentbolaget Nosium efter avslutad tävling.</div>
 
-          <div className={s.wrapperFlexField}>
-            {mock_user_fields.flex.map((item, key) => (
-              <div className={s.flexField} key={key}>
-                <label htmlFor={item.name} className={s.labelField}>
-                  {item.label}
-                </label>
+              <div className={s.wrapperFlexField}>
+                {mock_user_fields.flex.map((item, key) => (
+                    <div className={s.flexField} key={key}>
+                      <label htmlFor={item.name} className={s.labelField}>
+                        {item.label}
+                      </label>
 
-                <div>
-                  <Controller
-                    name={item.name as 'avanza'}
-                    control={control}
-                    rules={{
-                      required: item.isRequired ? `${item.label} krävs` : false,
-                      onChange: handlerOnlyNumber,
-                    }}
-                    render={({ field: { onChange, value } }) => (
-                      <Input
-                        type={item.type}
-                        value={value}
-                        onChange={onChange}
-                      />
-                    )}
-                  />
-                </div>
+                      <div>
+                        <Controller
+                            name={item.name as 'avanza'}
+                            control={control}
+                            rules={{
+                              required: item.isRequired ? `${item.label} krävs` : false,
+                              onChange: handlerOnlyNumber,
+                            }}
+                            render={({ field: { onChange, value } }) => (
+                                <Input
+                                    type={item.type}
+                                    value={value}
+                                    onChange={onChange}
+                                />
+                            )}
+                        />
+                      </div>
 
-                {errors[item.name as 'avanza'] && (
-                  <span className={s.errMessage}>
+                      {errors[item.name as 'avanza'] && (
+                          <span className={s.errMessage}>
                     {errors[item.name as 'avanza']?.message}
                   </span>
-                )}
+                      )}
+                    </div>
+                ))}
               </div>
-            ))}
-          </div>
-          <div className={s.visaExample}>
-            <div className={s.example} style={{opacity: isOpenExample ? '1' : '0'}}>
-              <div className={s.exampleImg}>
+              <div className={s.visaExample}>
+                <div className={s.example} style={{opacity: isOpenExample ? '1' : '0'}}>
+                  <div className={s.exampleImg}>
+                  </div>
+                </div>
+                <div onClick={toggleExample} className={s.visa} style={{color: isOpenExample ? 'red' : '#0a39b1'}}>
+                  visa exempel
+                </div>
               </div>
-            </div>
-            <div onClick={toggleExample} className={s.visa} style={{color: isOpenExample ? 'red' : '#0a39b1'}}>
-              visa will exempel
-            </div>
-          </div>
 
 
-          <div className={s.btnsAction}>
-            <Button className={s.actionBtn} type='submit'>
-              {app.loading ? <Loading /> : 'Spara ändringar'}
-            </Button>
+              <div className={s.btnsAction}>
+                <Button className={s.actionBtn} type='submit'>
+                  {app.loading ? <Loading /> : 'Spara ändringar'}
+                </Button>
 
-            <Button
-              onClick={onClearSubmit}
-              className={cn(s.actionBtn, s.btnCancel)}
-              type='button'
-            >
-              Avbryt ändringar
-            </Button>
-          </div>
-        </form>
-      )}
-    </>
+                <Button
+                    onClick={onClearSubmit}
+                    className={cn(s.actionBtn, s.btnCancel)}
+                    type='button'
+                >
+                  Avbryt ändringar
+                </Button>
+              </div>
+            </form>
+        )}
+      </>
   )
 }
