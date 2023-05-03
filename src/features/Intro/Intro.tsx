@@ -55,6 +55,7 @@ export const Intro: FC<SiteData> = ({ logo, desc, title }) => {
         <Button onClick={onClickActive} className={s.introBtn}>
           Registrera dig
         </Button>
+
         <LoginRegistrationModal
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
@@ -63,6 +64,7 @@ export const Intro: FC<SiteData> = ({ logo, desc, title }) => {
           setIsOpenPasswordRecovery={() => setIsOpen(false)}
           openPopup={() => setIsOpen(false)}
         />
+
         <p className={s.text}>{desc ? desc : 'Error text not found'}</p>
 
         <Link href={'#info'} scroll={false}>

@@ -37,8 +37,10 @@
   background: $color-black-blue;
   z-index: 9999;
   overflow-y: scroll;
-}
 
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar { width: 0; }
+}
 @media (min-width: #{$mobile-width}) and (max-width: #{$tablet-width}) {
   .modal {
     position: absolute;

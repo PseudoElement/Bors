@@ -35,15 +35,6 @@ export const LoginRegistrationModal: FC<LoginRegistrationModalProps> = ({
 
   useClickOutside(overlayRef, onClose)
 
-  useEffect(() => {
-    if (isOpen === true) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'inherit'
-    }
-  }, [isOpen])
-
-
   if (!isOpen) {
     return null
   }
