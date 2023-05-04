@@ -13,6 +13,12 @@
   z-index: 10000;
   padding-bottom: 25px;
   overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 0; /* ширина для вертикального скролла */
+    height: 0; /* высота для горизонтального скролла */
+    background-color: #143861;
+  }
 }
 
 .popupWrapper {

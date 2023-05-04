@@ -9,7 +9,8 @@
   background: $color-gray-02;
   box-shadow: 0 4px 10px $color-shadow-0-6;
   border-radius: 79px;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: none;
 
   font-size: 18px;
   line-height: 110%;
@@ -53,13 +54,25 @@
 
 .defaultAvatar {
   background: url('/assets/icons/accountImg.svg') no-repeat center;
-  background-size: 55%;
+  background-size: 35%;
 }
 
 .textWrapper {
   max-width: 120px;
   min-width: 93px;
+  overflow: hidden;
   overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    width: 2px; /* ширина для вертикального скролла */
+    height: 2px; /* высота для горизонтального скролла */
+    background-color: $color-dark-blue;
+  }
+  /* ползунок скроллбара */
+  &::-webkit-scrollbar-thumb {
+    border-radius: 9em;
+    box-shadow: inset 1px 1px 10px #f3faf7;
+  }
 
   @include tablet-mobile {
     min-width: 83px;
@@ -67,5 +80,12 @@
 }
 
 .name {
+  font-family: $font-Mont;
+  font-size: 18px;
+  font-weight: $fw-semibold;
+  line-height: 20px;
+  letter-spacing: 0.04em;
+  text-align: left;
+
   white-space: nowrap;
 }

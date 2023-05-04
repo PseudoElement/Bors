@@ -3,31 +3,22 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { Button, Logo } from 'components'
+import { LoginRegistrationModal } from 'features'
 
 import { SiteData } from 'shared/types/site'
 import IconDown from '/public/assets/icons/iconDown.png'
-
-import { LoginRegistrationModal } from 'features/LoginRegistrationModal/LoginRegistrationModal'
 
 import s from './intro.module.scss'
 
 export const Intro: FC<SiteData> = ({ logo, desc, title }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [isActive, setIsActive] = useState(false)
-  const [active, setActive] = useState<string | null>(null)
+  const [defActive, setDefActive] = useState<'login' | 'reg' | undefined>(
+    undefined
+  )
 
   const onClickActive = () => {
-    if (active) {
-      setActive('login')
-    }
+    setDefActive('reg')
     setIsOpen(true)
-    setActive('registration')
-  }
-
-  const isActiveClick = () => {
-    setActive(isActive ? 'registration' : 'login')
-
-    setIsActive(!isActive)
   }
 
   return (
@@ -58,10 +49,9 @@ export const Intro: FC<SiteData> = ({ logo, desc, title }) => {
         </Button>
 
         <LoginRegistrationModal
+          defActiveTab={defActive}
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
-          isActiveDialog={active}
-          setIsActiveDialog={isActiveClick}
           setIsOpenPasswordRecovery={() => setIsOpen(false)}
           openPopup={() => setIsOpen(false)}
         />

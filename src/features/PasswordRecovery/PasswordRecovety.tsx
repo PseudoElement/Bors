@@ -5,6 +5,7 @@ import cn from 'classnames'
 import { Button, Input, Popup } from 'components'
 
 import { userRecoverPassword } from 'shared/api/routes/user'
+import { EMAIL_VALIDATION_REG } from 'shared/constants/regExp'
 
 import s from './passwordRecovery.module.scss'
 
@@ -25,7 +26,6 @@ export const PasswordRecovery: FC<PasswordRecoveryProps> = ({
   const {
     control,
     handleSubmit,
-    register,
     reset,
     formState: { errors },
   } = useForm<PasswordRecoveryFormProps>({
@@ -91,13 +91,14 @@ export const PasswordRecovery: FC<PasswordRecoveryProps> = ({
           <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
             <Controller
               name='email'
+              rules={{
+                required: true,
+                pattern: EMAIL_VALIDATION_REG,
+                minLength: 8,
+              }}
               control={control}
               render={({ field: { onChange, value } }) => (
                 <Input
-                  {...register('email', {
-                    required: true,
-                    minLength: { value: 8, message: 'error' },
-                  })}
                   placeholder={'Skriv in e-mail'}
                   value={value}
                   onChange={onChange}

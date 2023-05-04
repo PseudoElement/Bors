@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import Link from 'next/link'
 import { useForm, Controller, SubmitHandler } from 'react-hook-form'
+import { useRouter } from 'next/router'
 
 import { Input, Button, Loading } from 'components'
 
@@ -18,6 +19,7 @@ interface RegistrationFormProps {
 
 export const RegistrationForm: FC<RegistrationFormProps> = ({ openPopup }) => {
   const dispatch = useAppDispatch()
+  const { push } = useRouter()
   const app = useAppSelector(state => state.app)
 
   const {
@@ -47,6 +49,7 @@ export const RegistrationForm: FC<RegistrationFormProps> = ({ openPopup }) => {
       cookies.set('token', data.data.access_token)
       dispatch(newUserRequested(userData))
       reset()
+      push('/profile/account')
       openPopup()
     } catch (error) {
       console.error(error)

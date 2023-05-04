@@ -14,8 +14,7 @@ import { useClickOutside } from 'shared/hooks/useClickOutside'
 import s from './loginRegistrationModal.module.scss'
 
 interface LoginRegistrationModalProps {
-  isActiveDialog?: string | null;
-  setIsActiveDialog?: (isActiveDialog?: string | null) => void;
+  defActiveTab?: 'login' | 'reg'
   openPopup: () => void
   isOpen: boolean
   onClose: () => void
@@ -23,17 +22,22 @@ interface LoginRegistrationModalProps {
 }
 
 export const LoginRegistrationModal: FC<LoginRegistrationModalProps> = ({
+  defActiveTab = 'login',
   onClose,
-  isActiveDialog,
-  setIsActiveDialog,
   isOpen,
   setIsOpenPasswordRecovery,
   openPopup,
 }) => {
-  const isActive = 'login'
   const overlayRef = useRef<HTMLDivElement>(null)
+  const [activeTab, setActiveTab] = useState<'login' | 'reg'>('login')
 
   useClickOutside(overlayRef, onClose)
+
+  useEffect(() => {
+    if (defActiveTab) {
+      setActiveTab(defActiveTab)
+    }
+  }, [defActiveTab])
 
   if (!isOpen) {
     return null
@@ -52,25 +56,27 @@ export const LoginRegistrationModal: FC<LoginRegistrationModalProps> = ({
       >
         <div className={s.title}>
           <span
-            onClick={() => setIsActiveDialog!('login')}
-            className={isActiveDialog === 'login' ? s.activeTitle : ''}
+            onClick={() => setActiveTab!('login')}
+            className={activeTab === 'login' ? s.activeTitle : ''}
           >
             Logga In
           </span>{' '}
           <span
-            onClick={() => setIsActiveDialog!('registration')}
-            className={isActiveDialog === 'registration' ? s.activeTitle : ''}
+            onClick={() => setActiveTab('reg')}
+            className={activeTab === 'reg' ? s.activeTitle : ''}
           >
             / Registera
           </span>
         </div>
 
-        {isActive === isActiveDialog ? (
+        {activeTab === 'login' ? (
           <LoginForm
             setIsOpenPasswordRecovery={setIsOpenPasswordRecovery}
             onClose={onClose}
           />
-        ) : <RegistrationForm openPopup={openPopup} />}
+        ) : (
+          <RegistrationForm openPopup={openPopup} />
+        )}
       </div>
     </div>
   )

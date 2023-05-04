@@ -21,25 +21,19 @@ interface Variant {
 
 export const Navbar: FC<Variant> = ({ variant }) => {
   const { push } = useRouter()
+
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isBurgerOpen, setBurgerIsOpen] = useState<boolean>(false)
-  const [active, setActive] = useState<string | null>('login')
-  const [isActive, setIsActive] = useState(false)
+
   const [isOpenPasswordRecovery, setIsOpenPasswordRecovery] =
     useState<boolean>(false)
+
   const [popupStatus, setPopupStatus] = useState<PopupAfterSubmitStatus>(
     PopupAfterSubmitStatus.CLOSED
   )
 
   const onClickActive = () => {
     setIsOpen(true)
-    setActive('login')
-  }
-
-  const isActiveClick = () => {
-    setActive(isActive ? 'registration' : 'login')
-
-    setIsActive(!isActive)
   }
 
   const handleProfile = () => {
@@ -55,13 +49,12 @@ export const Navbar: FC<Variant> = ({ variant }) => {
   return (
     <>
       <LoginRegistrationModal
-        isActiveDialog={active}
         openPopup={onClickActive}
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
-        setIsActiveDialog={isActiveClick}
         setIsOpenPasswordRecovery={setIsOpenPasswordRecovery}
       />
+
       <PopupAfterSubmit
         type='registration'
         onClose={() => setPopupStatus(PopupAfterSubmitStatus.CLOSED)}

@@ -56,10 +56,9 @@
   font-size: 26px;
   line-height: 110%;
   margin-bottom: 237px;
-  border-width: 2px;
-  border-style: solid;
   border-radius: 50em;
-  border: 2px solid $color-gray-02;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-bottom: none;
 
   @include tablet-mobile {
     margin-bottom: 135px;
