@@ -61,23 +61,11 @@
   min-width: 93px;
   overflow-x: auto;
 
-  &::-webkit-scrollbar {
-    height: 2px;
-  }
-  &::-webkit-scrollbar-track {
-    background: $color-gray-02;
-  }
-  &::-webkit-scrollbar-thumb {
-    height: 2px;
-    border: 1px solid $color-gray-eb;
-  }
-
   @include tablet-mobile {
     min-width: 83px;
   }
 }
 
 .name {
-  max-width: 500px;
   white-space: nowrap;
 }
