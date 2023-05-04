@@ -10,6 +10,7 @@ import { logoutAuth } from 'shared/api/routes/user'
 import { logoutUserRequested } from 'store/slices/userSlice'
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { cookies } from 'shared/utils/Cookies'
+import { toFixedCount } from 'shared/helpers/countToBuy'
 
 import { nav_links } from 'shared/mocks/navBar'
 import logo from '/public/assets/image/smaloLogo.png'
@@ -72,13 +73,13 @@ export const NavMobile: FC<NavMobileProps> = ({ classNames }) => {
 
         <div className={s.mobileNavbarWrapper}>
           <div className={s.avatarGroup}>
-            <span className={s.userName}>{user ? user.name : 'User Name'}</span>
+            <span className={s.userName}>{user ? user?.name : 'User Name'}</span>
 
             <div className={s.userFoto}>
               {user?.avatar ? (
                 <div
                   className={s.userAvatar}
-                  style={{ backgroundImage: `url("${user.avatar}")` }}
+                  style={{ backgroundImage: `url("${user?.avatar}")` }}
                 />
               ) : (
                 <div className={s.defaultAvatar} />
@@ -99,7 +100,9 @@ export const NavMobile: FC<NavMobileProps> = ({ classNames }) => {
           <div className={s.burgerMenuTop}>
             <div className={s.burgerMenuTopItem}>
               <div className={s.burgerMenuBalance}>Saldo</div>
-              <div className={s.burgerMenuBalanceNum}>{user?.balance} SEK</div>
+              <div className={s.burgerMenuBalanceNum}>
+                {toFixedCount(user?.total_balance)} SEK
+              </div>
             </div>
 
             <button

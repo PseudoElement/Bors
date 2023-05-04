@@ -10,6 +10,7 @@ import { logoutAuth } from 'shared/api/routes/user'
 import { logoutUserRequested } from 'store/slices/userSlice'
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { cookies } from 'shared/utils/Cookies'
+import { toFixedCount } from 'shared/helpers/countToBuy'
 
 import { nav_links } from 'shared/mocks/navBar'
 import logo from '/public/assets/image/smaloLogo.png'
@@ -73,7 +74,7 @@ export const NavProfile: FC<NavMainProps> = ({ classNames }) => {
             {user?.avatar ? (
               <div
                 className={s.userAvatar}
-                style={{ backgroundImage: `url("${user.avatar}")` }}
+                style={{ backgroundImage: `url("${user?.avatar}")` }}
               />
             ) : (
               <div className={s.defaultAvatar} />
@@ -83,7 +84,9 @@ export const NavProfile: FC<NavMainProps> = ({ classNames }) => {
 
         <div className={s.userBalance}>
           <div className={s.title}>MITT KONTO</div>
-          <div className={s.balance}>{user?.total_balance} sek</div>
+          <div className={s.balance}>
+            {toFixedCount(user?.total_balance)} sek
+          </div>
         </div>
 
         <div className={s.logOutButton}>
