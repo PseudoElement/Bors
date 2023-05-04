@@ -57,7 +57,7 @@ export const LeaderboardList: FC<LeaderboardListProps> = ({ leadersList }) => {
                   <div className={s.leaderboardName}>Namn</div>
 
                   <div className={s.leaderboardEntirety}>
-                    <div className={s.leaderboardPos}>Avkastning</div>
+                    <div className={s.leaderboardPos}>Placera</div>
                     <div className={s.leaderboardYie}>Avkastning</div>
                     <div className={s.leaderboardInc}>Inkomstbelopp</div>
                   </div>
