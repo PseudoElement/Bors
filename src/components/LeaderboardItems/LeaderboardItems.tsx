@@ -23,10 +23,10 @@ export const LeaderboardItems: FC<LeaderboardItemProps> = ({
     <div className={s.leaderboardItem}>
       <div className={s.leaderboardUser}>
         <div className={s.userAvatar}>
-          <Image width={52} height={52} src={user.avatar} alt='avatar' />
+          <Image width={52} height={52} src={user?.avatar} alt='avatar' />
         </div>
 
-        <span className={s.leaderboardName}>{user.name}</span>
+        <span className={s.leaderboardName}>{user?.name}</span>
       </div>
 
       <div className={s.leaderboardCount}>

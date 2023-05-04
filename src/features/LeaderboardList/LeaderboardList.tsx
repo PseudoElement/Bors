@@ -63,7 +63,7 @@ export const LeaderboardList: FC<LeaderboardListProps> = ({ leadersList }) => {
                   </div>
                 </div>
 
-                {leader.array?.map((list, index) => (
+                {leader?.array?.map((list, index) => (
                   <LeaderboardItems
                     key={index}
                     position={index + 1}
