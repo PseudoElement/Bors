@@ -101,5 +101,9 @@
   }
 }
 .popup_added_button{
-  width: 100%;
+  width: 200px;
+
+  @media  screen and (max-width: 490px) {
+    width: 100%;
+  }
 }
