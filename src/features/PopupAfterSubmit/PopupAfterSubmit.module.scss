@@ -25,6 +25,7 @@
   @include tablet-mobile {
     margin-top: 38px;
     margin-bottom: 16px;
+    font-size: 26px;
   }
 }
 .popupText {
@@ -32,4 +33,7 @@
   font-size: 22px;
   color: $color-gray-a5;
   margin-bottom: 47px;
+  @include tablet-mobile {
+    font-size: 16px;
+  }
 }

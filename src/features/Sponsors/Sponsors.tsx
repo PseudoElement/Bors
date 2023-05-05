@@ -12,7 +12,7 @@ export const Sponsors: FC<SponsorsList> = ({ cards }) => {
   const { width } = useWindowDimensions()
   return (
     <section className={s.wrap} id={'sponsors'}>
-      <div className={s.title}>Sponsors</div>
+      <div className={s.title}>Sponsorer</div>
 
       {width >= 1440 ? (
         <div className={s.sponsors}>
