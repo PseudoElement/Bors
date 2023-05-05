@@ -6,7 +6,7 @@ import {
   PasswordRecovery,
   PopupAfterSubmit,
 } from 'features'
-import { Popup, BurgerMenu } from 'components'
+import { BurgerMenu } from 'components'
 import { NavProfile } from './NavProfile/NavProfile'
 import { NavMobile } from './NavMobile/NavMobile'
 import { NavMain } from './NavMain/NavMain'
@@ -33,7 +33,8 @@ export const Navbar: FC<Variant> = ({ variant }) => {
   )
 
   const onClickActive = () => {
-    setIsOpen(true)
+    setIsOpen(false)
+    setPopupStatus(PopupAfterSubmitStatus.SUCCESS)
   }
 
   const handleProfile = () => {

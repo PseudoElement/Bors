@@ -3,9 +3,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { Button, Logo } from 'components'
-import { LoginRegistrationModal } from 'features'
+import { LoginRegistrationModal, PopupAfterSubmit } from 'features'
 
 import { SiteData } from 'shared/types/site'
+import { PopupAfterSubmitStatus } from 'shared/enums'
 import IconDown from '/public/assets/icons/iconDown.png'
 
 import s from './intro.module.scss'
@@ -15,6 +16,14 @@ export const Intro: FC<SiteData> = ({ logo, desc, title }) => {
   const [defActive, setDefActive] = useState<'login' | 'reg' | undefined>(
     undefined
   )
+  const [popupStatus, setPopupStatus] = useState<PopupAfterSubmitStatus>(
+    PopupAfterSubmitStatus.CLOSED
+  )
+
+  const onRegSuccess = () => {
+    setIsOpen(false)
+    setPopupStatus(PopupAfterSubmitStatus.SUCCESS)
+  }
 
   const onClickActive = () => {
     setDefActive('reg')
@@ -53,7 +62,13 @@ export const Intro: FC<SiteData> = ({ logo, desc, title }) => {
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
           setIsOpenPasswordRecovery={() => setIsOpen(false)}
-          openPopup={() => setIsOpen(false)}
+          openPopup={onRegSuccess}
+        />
+
+        <PopupAfterSubmit
+          type='registration'
+          onClose={() => setPopupStatus(PopupAfterSubmitStatus.CLOSED)}
+          status={popupStatus}
         />
 
         <p className={s.text}>{desc ? desc : 'Error text not found'}</p>
