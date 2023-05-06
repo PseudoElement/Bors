@@ -27,7 +27,7 @@ export const main_nav_links = [
     link: '#leaderboard',
   },
   {
-    label: 'SPONSOR',
+    label: 'SPONSORER',
     link: '#sponsors',
   },
   {
