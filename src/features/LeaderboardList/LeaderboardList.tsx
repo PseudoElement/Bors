@@ -29,7 +29,7 @@ export const LeaderboardList: FC<LeaderboardListProps> = ({ leadersList }) => {
       setDate(dateOneMonthBefore(date, -3))
       setIsUpdate(false)
       if (moreLeader) {
-        setLeaders([...leaders, ...moreLeader ])
+        setLeaders([...leaders, ...moreLeader])
       }
     }
 

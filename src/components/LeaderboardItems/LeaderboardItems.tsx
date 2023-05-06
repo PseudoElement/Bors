@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { PropsLeaderboard } from 'shared/types/leaderboard'
 
 import s from './leaderboardItems.module.scss'
+import { toFixedCount } from '../../shared/helpers/countToBuy'
 
 interface LeaderboardItemProps extends PropsLeaderboard {
   position: number
@@ -48,8 +49,12 @@ export const LeaderboardItems: FC<LeaderboardItemProps> = ({
           <div className={s.leaderboardPosition}>{position}</div>
 
           <div className={s.leaderboardData}>
-            <div className={s.leaderboardYield}>{percentage}%</div>
-            <div className={s.leaderboardAmountOfIncome}>{buy_price} SEK</div>
+            <div className={s.leaderboardYield}>
+              {toFixedCount(percentage)}%
+            </div>
+            <div className={s.leaderboardAmountOfIncome}>
+              {toFixedCount(buy_price)} SEK
+            </div>
           </div>
         </div>
       </div>
