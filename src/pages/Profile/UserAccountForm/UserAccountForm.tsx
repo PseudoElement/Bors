@@ -112,7 +112,7 @@ export const UserAccountForm: FC = () => {
   }
 
   const handlerOnlyNumber = (e: ChangeEvent<HTMLInputElement>) => {
-    const name = e.target.name as 'avanza'
+    const name = e.target.name as 'avanza' | 'nordnet'
     const text = e.target.value.replace('#', '')
     const withIcon =
         (name === 'avanza' || name === 'nordnet') && !(e.target.value === '')
@@ -125,7 +125,11 @@ export const UserAccountForm: FC = () => {
           : '',
     })
 
-    setValue(name, withIcon + text.replace(NUMBER_REG_EXP[1], ''))
+    name === 'avanza' 
+      ? setValue(name, withIcon + text.replace(NUMBER_REG_EXP[1], '').substring(0,11)) 
+      : setValue(name, withIcon + text.replace(NUMBER_REG_EXP[1], '').substring(0,8))
+
+    
   }
 
   const toggleExample = () => {
@@ -215,6 +219,7 @@ export const UserAccountForm: FC = () => {
                             control={control}
                             rules={{
                               required: item.isRequired ? `${item.label} krävs` : false,
+                              minLength: (item.name === 'avanza') ? 12 : (item.name === 'nordnet') ? 9 : undefined,
                               onChange: handlerOnlyNumber,
                             }}
                             render={({ field: { onChange, value } }) => (
@@ -230,6 +235,12 @@ export const UserAccountForm: FC = () => {
                       {errors[item.name as 'avanza'] && (
                           <span className={s.errMessage}>
                     {errors[item.name as 'avanza']?.message}
+                  </span>
+                      )}
+                      {errors[item.name as 'avanza'] && errors[item.name as 'avanza']!.type === 'minLength' && (
+                          <span className={s.errMessage}>
+                            {item.name === 'avanza' ? 'Kräver 11 siffror' : ''}
+                            {item.name === 'nordnet' ? 'Kräver 8 siffror' : ''}
                   </span>
                       )}
                     </div>
