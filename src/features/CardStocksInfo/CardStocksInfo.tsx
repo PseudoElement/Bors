@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Indicator, Percent, Tag } from 'components'
 
 import { toFixedCount } from 'shared/helpers/countToBuy'
+import { getDomain } from 'shared/helpers/getDomain'
 
 import { Stocks } from 'shared/types/stocks'
 
@@ -98,7 +99,7 @@ export const CardStocksInfo: FC<Stocks> = ({
         <Link href={`/${url}`}>
           <a target='_blank'>
             <button className={s.companyLink}>
-              {url ? url : 'link not found'}
+              {url ? getDomain(url) : 'link not found'}
             </button>
           </a>
         </Link>
