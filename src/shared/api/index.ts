@@ -10,7 +10,9 @@ export * from './endpoints'
 
 export const BASE_URL = 'https://api.borsjakten.se'
 
+
 export const api = Axios.create({
+  // baseURL: process.env.NEXT_PUBLIC_BASE_URL + '/api/v1',
   baseURL: BASE_URL + '/api/v1',
   headers: {
     Accept: 'application/json',

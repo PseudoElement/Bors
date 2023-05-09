@@ -1,5 +1,16 @@
 @use 'styles/style' as *;
 
+.outerWrapper {
+  background: url('/assets/image/profileBackground.png');
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  @include tablet-mobile {
+    background: none;
+  }
+}
+
 .wrapper {
   padding: 140px 16px 100px;
   max-width: 1400px;

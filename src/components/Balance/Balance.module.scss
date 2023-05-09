@@ -12,12 +12,6 @@
   }
 }
 
-.wrapper:nth-child(3) {
-  @media screen and (max-width: 921px) {
-    border-right: none;
-  }
-}
-
 .wrapperContent {
   display: flex;
   align-items: flex-start;
