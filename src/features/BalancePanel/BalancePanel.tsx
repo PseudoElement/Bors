@@ -16,6 +16,9 @@ export const BalancePanel: FC<BalancePanelProps> = ({ classNames }) => {
 
   return (
     <div className={cn(s.balance, classNames)}>
+
+      <Balance count={user?.balance} currency={'SEK'} title={'Tillgängligt för köp'} />
+
       <Balance count={user?.total_balance} currency={'SEK'} title={'Saldo'} />
 
       <Balance

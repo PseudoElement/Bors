@@ -2,8 +2,9 @@ import { FC } from 'react'
 
 import { Percent } from 'components'
 
-import s from './Balance.module.scss'
 import {toFixedCount} from "../../shared/helpers/countToBuy";
+
+import s from './Balance.module.scss'
 
 export interface BalanceProps {
   title: string
@@ -21,7 +22,7 @@ export const Balance: FC<BalanceProps> = ({
   currencyPosition = 'right',
 }) => {
   return (
-    <div>
+    <div className={s.wrapper}>
       <div className={s.title}>{title}</div>
 
       <div className={s.wrapperContent}>

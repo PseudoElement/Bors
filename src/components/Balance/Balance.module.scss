@@ -1,11 +1,9 @@
 @use 'styles/style' as *;
 
 .wrapper:not(:last-child) {
-  padding-right: 40px;
+  padding-right: 20px;
   border-right: 1px solid $color-gray-eb;
-  @media screen and (max-width: 921px) {
-    padding-right: 20px;
-  }
+
   @media screen and (max-width: 768px) {
     padding-right: 0px;
     padding-bottom: 14px;
@@ -14,16 +12,23 @@
   }
 }
 
+.wrapper:nth-child(3) {
+  @media screen and (max-width: 921px) {
+    border-right: none;
+  }
+}
+
 .wrapperContent {
   display: flex;
   align-items: flex-start;
   gap: 10px;
+  margin-top: 5px;
 }
 
 .title {
   font-style: normal;
   font-weight: $fw-semibold;
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: $color-gray-a5;
@@ -31,29 +36,23 @@
 
 .content {
   display: flex;
-  gap: 10px;
+  gap: 5px;
   background: $password-gradient;
   background-clip: text;
   color: transparent;
   font-style: normal;
   font-weight: $fw-bold;
-  font-size: 48px;
-  line-height: 40px;
+  font-size: 28px;
+  line-height: 26px;
   letter-spacing: -0.03em;
 
-  @media screen and (max-width: 921px) {
-    font-size: 38px;
-  }
-  @media screen and (max-width: 390px) {
-    font-size: 35px;
-  }
 }
 
 .currency {
   text-transform: uppercase;
-  font-size: 35px;
+  font-size: 24px;
   align-self: end;
-  line-height: 30px;
+  line-height: 24px;
 
   @media screen and (max-width: 390px) {
     font-size: 23px;

@@ -37,7 +37,7 @@
   margin: 30px 0 0;
 
   @include laptop {
-    max-width: 420px;
+    max-width: 380px;
   }
 }
 .link {
@@ -51,6 +51,10 @@
   text-transform: uppercase;
   color: $color-gray-54;
   cursor: pointer;
+
+  @include laptop {
+    font-size: 18px;
+  }
 }
 
 .active {

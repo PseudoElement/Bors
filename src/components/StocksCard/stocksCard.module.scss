@@ -134,18 +134,25 @@
 .priceWrap {
   display: flex;
   width: 100%;
+
+  @include tablet-mobile {
+    flex-direction: column;
+  }
 }
 .currency {
+  display: flex;
+  align-items: baseline;
   font-size: 25px;
   color: $color-black;
   font-weight: $fw-semibold;
-  width: 100%;
+  flex-grow: 1;
   span {
     font-size: 16px;
     margin-left: 3px;
   }
 
   @include tablet-mobile {
+    justify-content: center;
     font-size: 21px;
     font-weight: $fw-bold;
     line-height: 21px;
@@ -193,4 +200,9 @@
   font-size: 11px;
   line-height: 11px;
   letter-spacing: -0.02em;
+
+  @include tablet-mobile {
+    text-align: center;
+    margin-bottom: 5px;
+  }
 }

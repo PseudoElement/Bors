@@ -1,6 +1,8 @@
 import { FC } from 'react'
 import cn from 'classnames'
 
+import { toFixedCount } from 'shared/helpers/countToBuy'
+
 import UpArrow from '/public/assets/image/ArrowUp.svg'
 
 import s from './percent.module.scss'
@@ -16,13 +18,13 @@ export const Percent: FC<PercentProps> = ({ classNames, count }) => {
       {count && count > 0 ? (
         <div className={s.positive}>
           <UpArrow />
-          {count}%
+          {toFixedCount(count)}%
         </div>
       ) : (
         <div className={s.negative}>
           {count ? (
             <>
-              <UpArrow /> {count}
+              <UpArrow /> {toFixedCount(count)}
             </>
           ) : (
             0
