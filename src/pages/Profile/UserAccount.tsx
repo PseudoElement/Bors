@@ -35,9 +35,12 @@ export const UserAccount: FC = () => {
   }, [dispatch])
 
   return (
-    <div className={s.wrapper}>
-      <UserAccountHeader changeAvatar={changeAvatar} />
-      <UserAccountForm />
+    <div className={s.outerWrapper}>
+      <div className={s.wrapper}>
+        <UserAccountHeader changeAvatar={changeAvatar} />
+        <UserAccountForm />
+      </div>
     </div>
+    
   )
 }

@@ -2,13 +2,9 @@
 
 .balance {
   display: flex;
-  column-gap: 30px;
+  column-gap: 20px;
   row-gap: 14px;
   flex-wrap: wrap;
-
-  @media screen and (max-width: 921px) {
-    column-gap: 20px;
-  }
 
   @include tablet-mobile {
     width: 100%;
