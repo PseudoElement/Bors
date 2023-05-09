@@ -96,13 +96,11 @@ export const CardStocksInfo: FC<Stocks> = ({
           ))}
         </div>
 
-        <Link href={`/${url}`}>
-          <a target='_blank'>
+          <a target='_blank' href={url!} rel='noreferrer'>
             <button className={s.companyLink}>
               {url ? getDomain(url) : 'link not found'}
             </button>
           </a>
-        </Link>
       </div>
 
       <div className={s.textInfoCard}>{desc}</div>
