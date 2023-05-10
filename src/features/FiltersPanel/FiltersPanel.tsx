@@ -42,7 +42,12 @@ export const FiltersPanel: FC = () => {
   const debouncedFilters = useDebounce(filters, 500)
 
   useEffect(() => {
-    if (debouncedFilters.search.length < 3 && data?.length) return
+    if (
+      debouncedFilters.search &&
+      debouncedFilters.search.length < 3 &&
+      data?.length
+    )
+      return
 
     dispatch(setStockData({ ...params, current_page: 1, data }))
     dispatch(setStockFilters(debouncedFilters))
