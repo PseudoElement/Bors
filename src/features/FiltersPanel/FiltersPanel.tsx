@@ -4,8 +4,8 @@ import Image from 'next/image'
 import { DropMenu } from 'features'
 import { Input, Popup } from 'components'
 
-import { setStockFilters } from 'store/slices/stockSlice'
-import { useAppDispatch } from 'shared/hooks/redux'
+import { setStockData, setStockFilters } from 'store/slices/stockSlice'
+import { useAppDispatch, useAppSelector } from 'shared/hooks/redux'
 import { useDebounce } from 'shared/hooks/useDebounce'
 
 import { FilterMeta, StockFilters } from 'shared/types/stocks'
@@ -25,6 +25,7 @@ export const FiltersPanel: FC = () => {
     price: mock_min_max_price[0],
     popularity: mock_min_max_popularity[0],
   })
+  const { params, data } = useAppSelector(state => state.stock)
 
   const handleSearchText = (text: string) => {
     setFilters({ ...filters, search: text })
@@ -38,10 +39,13 @@ export const FiltersPanel: FC = () => {
     setFilters({ ...filters, price: value })
   }
 
-  const debouncedFilters = useDebounce(filters, 500);
+  const debouncedFilters = useDebounce(filters, 500)
 
   useEffect(() => {
-    dispatch(setStockFilters(debouncedFilters) )
+    if (debouncedFilters.search.length < 3 && data?.length) return
+
+    dispatch(setStockData({ ...params, current_page: 1, data }))
+    dispatch(setStockFilters(debouncedFilters))
   }, [debouncedFilters])
 
   // mobile handlers ===========
