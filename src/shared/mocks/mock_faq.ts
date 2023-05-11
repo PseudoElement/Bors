@@ -22,7 +22,7 @@ export const mock__faq = [
   {
     id: 5,
     title: 'Vad vinner man?',
-    text: '1:a Pris är 100.000 SEK + en hotellövernattning i Stockholm tillsammans med en exklusiv middag med NOSIUM & Börsjakten.\n\ \n\ 2:a Pris 30 000 SEK.\n\ \n\ 3:e Pris 20 000 SEK.\n\ \n\ Eventuell vinstskatt står deltagaren för. Skulle flera deltagare ha samma procentuella avkastning på sina respektive portföljer får de dela på vinsten.',
+    text: '1:a Pris är 100.000 SEK + en hotellövernattning i Stockholm tillsammans med en exklusiv middag med NOSIUM & Börsjakten.\n \n 2:a Pris 30 000 SEK.\n \n 3:e Pris 20 000 SEK.\n \n Eventuell vinstskatt står deltagaren för. Skulle flera deltagare ha samma procentuella avkastning på sina respektive portföljer får de dela på vinsten.',
   },
   {
     id: 6,
@@ -37,24 +37,25 @@ export const mock__faq = [
   {
     id: 8,
     title: 'Hur länge varar tävlingen?',
-    text: 'Tävlingen startar 09.00 måndagen den 14 Maj och avslutas onsdagen den 14e Juni.',
+    text: 'Tävlingen startar 09.00 Söndagen den 21 Maj och avslutas onsdagen den 21 Juni.',
   },
   {
     id: 9,
     title:
-      'Grafen på min portföljs dagliga utveckling visar på stora hopp och\n\ fall vilket ser konstigt ut. Är det verkligen rätt?',
-    text: 'Detta kan bero på att vi gör dagliga uppdateringar vid olika tillfällen för att uppdatera alla kurser/stats/topplistor. Ett annat alternativ kan vara att just någon aktie i din portfölj handlas med låg likviditet och därav ett hopp upp eller ner.'
+      'Grafen på min portföljs dagliga utveckling visar på stora hopp och\n fall vilket ser konstigt ut. Är det verkligen rätt?',
+    text: 'Detta kan bero på att vi gör dagliga uppdateringar vid olika tillfällen för att uppdatera alla kurser/stats/topplistor. Ett annat alternativ kan vara att just någon aktie i din portfölj handlas med låg likviditet och därav ett hopp upp eller ner.',
   },
   {
     id: 10,
     title: 'Jag hittar inte bolaget jag vill investera i på er börslista?',
-    text: 'I Börsjaktens aktieportfölj kan du investera i de flesta bolagen på \n\ Stockholmsbörsen. Vi har en blandning av stora, medelstora och småbolag.'
+    text: 'I Börsjaktens aktieportfölj kan du investera i de flesta bolagen på \n Stockholmsbörsen. Vi har en blandning av stora, medelstora och småbolag.',
   },
   {
     id: 11,
     title: 'Hur beräknas avkastningen på min portfölj?',
-    text: 'Om en aktie läggs till i din portfölj så görs det på öppningskursen vid nästa\n\ ' + 
-    'börsdag, om exponeringen mot en aktie höjs, vill den delen av exponeringen som är ny baseras på öppningskursen vid nästa börsdag, medan den tidigare exponeringen baseras på stängningskursen från förra börsdagen Om en portfölj skapas under en börsdag vill nästa avslut i aktierna i portföljen användas. Den totala exponeringen mot aktier som spelaren valt hålls konstant, och ändras inte baserat på värdeutvecklingen av aktier.'
+    text:
+      'Om en aktie läggs till i din portfölj så görs det på öppningskursen vid nästa\n ' +
+      'börsdag, om exponeringen mot en aktie höjs, vill den delen av exponeringen som är ny baseras på öppningskursen vid nästa börsdag, medan den tidigare exponeringen baseras på stängningskursen från förra börsdagen Om en portfölj skapas under en börsdag vill nästa avslut i aktierna i portföljen användas. Den totala exponeringen mot aktier som spelaren valt hålls konstant, och ändras inte baserat på värdeutvecklingen av aktier.',
   },
   {
     id: 12,
